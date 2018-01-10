@@ -2,11 +2,11 @@
 
 The IOTA Swift API Library
 
-It's a working-in-progress project, right now there is full support for address generation (with Keccak written in C) and basic commands to a full-node
+It's a work-in-progress project, right now there is full support for address generation (with Keccak written in C) and basic commands to a full-node.
 
 ## Compatibility
 
-IotaKit should be compatible with all architectures, tested on iOS/MacOS
+IotaKit should be compatible with all architectures, tested on iOS/MacOS.
 
 ## Dependencies
 
@@ -30,7 +30,7 @@ iota.nodeInfo({ (result) in
 
 IotaKit is maintained by [Pasquale Ambrosini](https://pascalbros.github.io)
 
-You can follow me on Twitter at [@PascalAmbro](http://twitter.com/PascalAmbro) for project updates and releases.
+You can follow me on Twitter at [@PascalAmbro](http://twitter.com/PascalAmbro).
 
 
 ## License
