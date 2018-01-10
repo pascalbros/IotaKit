@@ -1,0 +1,4 @@
+module sha3 [system][extern_c]{
+    header "sha3.h"
+    export *
+}
