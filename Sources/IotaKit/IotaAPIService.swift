@@ -42,7 +42,7 @@ class IotaAPIService: IotaAPIServices {
 		
 		var data = command(withString: "getBalances")
 		data["addresses"] = addresses
-		data["threshold"] = 1
+		data["threshold"] = 100
 		service.POST(data: data, destination: nodeAddress, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
@@ -82,7 +82,7 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
-	static func trytes(nodeAddress: String, hashes: [String], _ success: @escaping (_ trytes: [String]) -> Void, _ error: @escaping (Error) -> Void) {
+	static func trytes(nodeAddress: String, hashes: [String], _ success: @escaping (_ trytes: [String: String]) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		var data = command(withString: "getTrytes")
 		data["hashes"] = hashes
@@ -91,11 +91,16 @@ class IotaAPIService: IotaAPIServices {
 				error(IotaAPIError("Error converting JSON"))
 				return
 			}
-			guard let hashes = dict["trytes"] as? [String] else {
+			guard let trytes = dict["trytes"] as? [String] else {
 				error(IotaAPIError("Error retrieving hashes"))
 				return
 			}
-			success(hashes)
+			var result: [String: String] = [:]
+			for i in 0..<hashes.count {
+				print(IotaConverter.transactionObject(trytes: trytes[i]))
+				result[hashes[i]] = trytes[i]
+			}
+			success(result)
 		}) { (e) in
 			error(e)
 		}

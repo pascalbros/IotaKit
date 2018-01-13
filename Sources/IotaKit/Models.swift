@@ -16,5 +16,8 @@ public struct IotaAccount {
 }
 
 public struct IotaTransaction {
+	public internal(set) var value: Int = 0
+	public internal(set) var address = ""
+	public internal(set) var tag = ""
 	
 }

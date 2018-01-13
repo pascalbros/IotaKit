@@ -21,4 +21,12 @@ public struct IotaAPIUtils {
 		}
 		return address
 	}
+	
+	public static func isSeed(_ string: String) -> Bool {
+		guard string.count > 1 && string.count <= 81 else { return false }
+		for c in string {
+			guard IotaConverter.trytesAlphabet.index(of: c) != nil else { return false }
+		}
+		return true
+	}
 }

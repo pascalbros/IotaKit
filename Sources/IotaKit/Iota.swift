@@ -27,6 +27,10 @@ public class Iota {
 		IotaAPIService.findTransactions(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 	
+	public func trytes(hashes: [String], _ success: @escaping (_ trytes: [String: String]) -> Void, error: @escaping (Error) -> Void) {
+		IotaAPIService.trytes(nodeAddress: self.address, hashes: hashes, success, error)
+	}
+	
 	public func accountData(seed: String, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void) {
 		
 		var account = IotaAccount()

@@ -17,3 +17,11 @@ extension String {
 		return String(self[start ..< end])
 	}
 }
+
+extension Array {
+	func slice(from: Int, to: Int) -> Array {
+		let start = index(0, offsetBy: from)
+		let end = index(start, offsetBy: to - from)
+		return Array(self[start..<end])
+	}
+}

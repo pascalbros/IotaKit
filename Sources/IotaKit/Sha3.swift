@@ -41,7 +41,8 @@ class PASHA3 {
 	
 	func close() {
 		if self.context != nil {
-			self.context.deinitialize()
+			self.context.deallocate(capacity: 1)
+			self.context = nil
 		}
 	}
 	
