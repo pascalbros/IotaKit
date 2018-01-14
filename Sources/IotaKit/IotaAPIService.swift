@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IotaAPIError: Error {
+public struct IotaAPIError: Error {
 	
 	let message: String
 	init(_ message: String) {
@@ -97,7 +97,6 @@ class IotaAPIService: IotaAPIServices {
 			}
 			var result: [String: String] = [:]
 			for i in 0..<hashes.count {
-				print(IotaConverter.transactionObject(trytes: trytes[i]))
 				result[hashes[i]] = trytes[i]
 			}
 			success(result)

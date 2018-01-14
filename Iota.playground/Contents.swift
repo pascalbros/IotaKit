@@ -4,12 +4,25 @@ import Cocoa
 import PlaygroundSupport
 import IotaKit
 
-let iota = Iota(node: "http://localhost", port: 14265)
+let useTestNet = true
+var nodeAddress = "http://localhost:14265"
 
-iota.nodeInfo({ (result) in
-	print(result)
-}) { (error) in
-	print(error)
+if useTestNet {
+	nodeAddress = "https://testnet140.tangle.works"
 }
+
+let iota = Iota(node: nodeAddress)
+let seed = "FOWOCCYJILZYRVCMDKWOMWHMFB9KGGBNVXJSAXRBQJJOSIC9XQIYAFJSZPSPKYXWGAH9DRQSBY9PAGHUA"
+iota.debug = true
+
+func accountData(iota: Iota, seed: String) {
+	iota.accountData(seed: seed, { (account) in
+		print(account)
+	}) { (error) in
+		print(error)
+	}
+}
+
+accountData(iota: iota, seed: seed)
 
 PlaygroundPage.current.needsIndefiniteExecution = true

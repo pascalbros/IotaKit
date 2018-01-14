@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */; };
 		504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C0E2006AF89007C6C7E /* Kerl.swift */; };
 		504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C102006AF89007C6C7E /* WSUtils.swift */; };
 		504C6C262006AF8A007C6C7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C112006AF89007C6C7E /* Utils.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaNodeSelector.swift; sourceTree = "<group>"; };
 		504C6C0E2006AF89007C6C7E /* Kerl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kerl.swift; sourceTree = "<group>"; };
 		504C6C102006AF89007C6C7E /* WSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSUtils.swift; sourceTree = "<group>"; };
 		504C6C112006AF89007C6C7E /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				504C6C0F2006AF89007C6C7E /* Utils */,
 				504C6C192006AF89007C6C7E /* Sha3.swift */,
 				504C6C1A2006AF89007C6C7E /* Checksum.swift */,
+				503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */,
 				504C6C1B2006AF89007C6C7E /* Converter.swift */,
 				504C6C122006AF89007C6C7E /* Iota.swift */,
 				504C6C1C2006AF89007C6C7E /* IotaAPIService.swift */,
@@ -309,6 +312,7 @@
 			buildActionMask = 0;
 			files = (
 				504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */,
+				503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */,
 				504C6C2E2006AF8A007C6C7E /* Converter.swift in Sources */,
 				504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */,
 				504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */,

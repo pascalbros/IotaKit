@@ -9,10 +9,34 @@ import Foundation
 
 public class Iota {
 	
-	fileprivate let address: String
+	fileprivate(set) var address: String = ""
+	public var debug = false
+	
+	public init(prefersHTTPS: Bool = false, _ onReady: @escaping (Iota?) -> Void) {
+		
+		IotaNodeSelector.bestNode({ (nodes) in
+			var add = nodes.first!.fullAddress
+			if prefersHTTPS {
+				for n in nodes {
+					if !n.address.hasPrefix("https") {
+						continue
+					}
+					add = n.fullAddress
+					break
+				}
+			}
+			onReady(Iota(node: add))
+		}) { (error) in
+			onReady(nil)
+		}
+	}
 	
 	public init(node: String, port: UInt) {
 		self.address = node.appending(":").appending(String(port))
+	}
+	
+	public init(node: String) {
+		self.address = node
 	}
 	
 	public func nodeInfo(_ success: @escaping ([String: Any]) -> Void, error: @escaping (Error) -> Void) {
@@ -38,7 +62,9 @@ public class Iota {
 		var lastAddress = ""
 		
 		func findBalances() {
+			IotaDebug("Getting balances")
 			self.balances(addresses: account.addresses, { (balances) in
+				self.IotaDebug("Got balances \(balances.count)")
 				account.balance = balances.reduce(0, { (r, e) -> Int in return r+e.value })
 				success(account)
 			}) { (e) in
@@ -48,7 +74,9 @@ public class Iota {
 		
 		func findTransactions() {
 			let address = IotaAPIUtils.newAddress(seed: seed, security: 2, index: index, checksum: false)
+			IotaDebug("Getting transactions")
 			IotaAPIService.findTransactions(nodeAddress: self.address, addresses: [address], { (hashes) in
+				self.IotaDebug("Got transactions \(hashes.count)")
 				if hashes.count == 0 {
 					findBalances()
 				}else{
@@ -64,5 +92,9 @@ public class Iota {
 		}
 		
 		findTransactions()
+	}
+	
+	fileprivate func IotaDebug(_ items: Any, separator: String = " ", terminator: String = "\n") {
+		if self.debug { print("[IotaKit] \(items)", separator: separator, terminator: terminator) }
 	}
 }

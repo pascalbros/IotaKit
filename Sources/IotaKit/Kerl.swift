@@ -54,9 +54,7 @@ class Kerl {
 			off += Kerl.HASH_LENGTH
 			l -= Kerl.HASH_LENGTH
 		} while l > 0
-//		for a in trit_state {
-//			print(a)
-//		}
+
 		return self
 	}
 	
