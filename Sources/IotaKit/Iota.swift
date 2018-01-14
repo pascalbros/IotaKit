@@ -25,7 +25,8 @@ public class Iota {
 					break
 				}
 			}
-			onReady(Iota(node: add))
+			self.address = add
+			onReady(self)
 		}) { (error) in
 			onReady(nil)
 		}
