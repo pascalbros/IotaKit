@@ -21,3 +21,29 @@ public struct IotaTransaction {
 	public internal(set) var tag = ""
 	
 }
+
+public struct IotaTransfer {
+	public internal(set) var timestamp: String?
+	public internal(set) var address: String
+	public internal(set) var hash: String?
+	public internal(set) var persistence: Bool
+	public internal(set) var value: UInt
+	public internal(set) var message: String
+	public internal(set) var tag: String
+	
+	init(address: String, value: UInt = 0, timestamp: String? = nil, hash: String? = nil, persistence: Bool = false, message: String = "", tag: String = "") {
+		self.timestamp = timestamp
+		self.address = address
+		self.hash = hash
+		self.persistence = persistence
+		self.value = value
+		self.message = message
+		self.tag = tag
+	}
+}
+
+public struct IotaBundle {
+	public static let emptyHash = "999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+	public internal(set) var transactions: [IotaTransaction] = []
+	public internal(set) var length = 0
+}
