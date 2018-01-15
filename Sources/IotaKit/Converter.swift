@@ -165,22 +165,4 @@ public class IotaConverter {
 		}
 		return value;
 	}
-	
-	//TODO
-	static func transactionObject(trytes: String) -> IotaTransaction {
-		var transaction = IotaTransaction()
-		let transactionTrits = self.trits(fromString: trytes)
-		//var hash: [Int] = Array(repeating: 0, count: 243)
-		//let kerl = Kerl()
-		//_ = kerl.absorb(trits: transactionTrits)
-		//_ = kerl.squeeze(trits: &hash, offset: 0, length: hash.count)
-		let address = trytes.substring(from: 2187, to: 2268)
-		let tag = trytes.substring(from: 2592, to: 2619)
-		let value = longValue(transactionTrits.slice(from: 6804, to: 6837))
-		
-		transaction.tag = tag
-		transaction.value = value
-		transaction.address = address
-		return transaction
-	}
 }
