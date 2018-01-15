@@ -95,6 +95,11 @@ public class Iota {
 		findTransactions()
 	}
 	
+	public func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String, inputs: [String]?, validateInputs: Bool) -> [String]? {
+		
+		return nil
+	}
+	
 	fileprivate func IotaDebug(_ items: Any, separator: String = " ", terminator: String = "\n") {
 		if self.debug { print("[IotaKit] \(items)", separator: separator, terminator: terminator) }
 	}
