@@ -64,7 +64,7 @@ public extension IotaTransaction {
 		result += IotaConverter.trytes(trits: attachmentTimestampLowerTrits)
 		result += IotaConverter.trytes(trits: attachmentTimestampUpperTrits)
 		result += self.nonce
-		
+
 		return result
 	}
 }

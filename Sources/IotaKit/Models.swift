@@ -34,10 +34,11 @@ public struct IotaTransaction {
 	public internal(set) var attachmentTimestampLowerBound: UInt = 0
 	public internal(set) var attachmentTimestampUpperBound: UInt = 0
 	
-	init(value: UInt, address: String, tag: String) {
+	init(value: UInt, address: String, tag: String, timestamp: UInt) {
 		self.value = value
 		self.address = address
-		self.tag = tag
+		self.obsoleteTag = tag
+		self.timestamp = timestamp
 	}
 }
 
@@ -50,7 +51,7 @@ public struct IotaTransfer {
 	public internal(set) var message: String
 	public internal(set) var tag: String
 	
-	init(address: String, value: UInt = 0, timestamp: String? = nil, hash: String? = nil, persistence: Bool = false, message: String = "", tag: String = "") {
+	public init(address: String, value: UInt = 0, timestamp: String? = nil, hash: String? = nil, persistence: Bool = false, message: String = "", tag: String = "") {
 		self.timestamp = timestamp
 		self.address = address
 		self.hash = hash
@@ -62,7 +63,7 @@ public struct IotaTransfer {
 }
 
 public struct IotaBundle {
-	public static let emptyHash = "999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+	internal static let emptyHash = "999999999999999999999999999999999999999999999999999999999999999999999999999999999"
 	public internal(set) var transactions: [IotaTransaction] = []
 	public internal(set) var length = 0
 }

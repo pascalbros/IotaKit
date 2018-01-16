@@ -25,7 +25,7 @@ class Kerl: CurlSource {
 	fileprivate static let INT_LENGTH = BYTE_LENGTH / 4;
 	
 	init() {
-		self.reset()
+		self.reset(false)
 	}
 	
 	deinit {
@@ -33,7 +33,7 @@ class Kerl: CurlSource {
 	}
 	
 	func reset() {
-		self.reset(false)
+		self.reset(true)
 	}
 	
 	func reset(_ onlyKeccak: Bool) {

@@ -140,7 +140,11 @@ public class IotaConverter {
 	}
 	
 	static func trits(trytes: Int, length: Int) -> [Int] {
-		let trits = self.trits(trytes: trytes)
+		var trits = self.trits(trytes: trytes)
+		if trits.count < length {
+			trits.append(contentsOf: Array(repeating: 0, count: length-trits.count))
+			return trits
+		}
 		return trits.slice(from: 0, to: length)
 	}
 	

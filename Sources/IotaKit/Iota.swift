@@ -94,7 +94,7 @@ public class Iota {
 		findTransactions()
 	}
 	
-	public func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String, inputs: [String]?, validateInputs: Bool) -> [String]? {
+	public func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String?, inputs: [String]?, validateInputs: Bool) -> [String]? {
 		var bundle = IotaBundle()
 		var signatureFragment: [String] = []
 		var totalValue: UInt = 0
@@ -127,8 +127,8 @@ public class Iota {
 			tag = transfer.tag
 			tag.rightPad(count: IotaConstants.tagLength, character: "9")
 			
-			let timestamp = Date().timeIntervalSince1970
-			bundle.addEntry(signatureMessageLength: signatureMessageLength, address: transfer.address, value: transfer.value, tag: tag, timestamp: UInt64(timestamp))
+			let timestamp = 1516116084//floor(Date().timeIntervalSince1970)
+			bundle.addEntry(signatureMessageLength: signatureMessageLength, address: transfer.address, value: transfer.value, tag: tag, timestamp: UInt(timestamp))
 			totalValue += transfer.value
 		}
 		
@@ -136,7 +136,7 @@ public class Iota {
 			//TODO
 		}else{
 			bundle.finalize(customCurl: nil)
-			//bundle.addTrytes
+			bundle.addTrytes(signatureFragments: signatureFragment)
 			
 			let trxb = bundle.transactions
 			var bundleTrytes: [String] = []

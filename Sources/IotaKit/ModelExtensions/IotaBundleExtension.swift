@@ -9,10 +9,10 @@ import Foundation
 
 public extension IotaBundle {
 	
-	public mutating func addEntry(signatureMessageLength: Int, address: String, value: UInt, tag: String, timestamp: UInt64) {
+	public mutating func addEntry(signatureMessageLength: Int, address: String, value: UInt, tag: String, timestamp: UInt) {
 		for i in 0..<signatureMessageLength {
 
-			let trx = IotaTransaction(value: i == 0 ? value : 0, address: address, tag: tag)
+			let trx = IotaTransaction(value: i == 0 ? value : 0, address: address, tag: tag, timestamp: timestamp)
 			self.transactions.append(trx)
 		}
 	}
@@ -40,13 +40,13 @@ public extension IotaBundle {
 				tt += IotaConverter.trytes(trits: timestampTrits)
 				tt += IotaConverter.trytes(trits: currentIndexTrits)
 				tt += IotaConverter.trytes(trits: lastIndexTrits)
-				_ = curl.absorb(trits: IotaConverter.trits(fromString: tt))
+				let ttTrits = IotaConverter.trits(fromString: tt)
+				_ = curl.absorb(trits: ttTrits)
 			}
 			
 			_ = curl.squeeze(trits: &hash)
 			hashInTrytes = IotaConverter.trytes(trits: hash)
 			let normalizedBundleValue = self.normalizedBundle(bundleHash: hashInTrytes)
-			
 			var foundValue = false
 			for aNormalizedBundleValue in normalizedBundleValue {
 				if aNormalizedBundleValue == 13 {
@@ -54,7 +54,6 @@ public extension IotaBundle {
 					obsoleteTagTrits = IotaConverter.trits(fromString: self.transactions[0].obsoleteTag)
 					IotaConverter.increment(trits: &obsoleteTagTrits, size: 81)
 					self.transactions[0].obsoleteTag = IotaConverter.trytes(trits: obsoleteTagTrits)
-					
 				}
 			}
 			valid = !foundValue
@@ -62,6 +61,28 @@ public extension IotaBundle {
 		
 		for i in 0..<self.transactions.count {
 			self.transactions[i].bundle = hashInTrytes
+		}
+	}
+	
+	internal mutating func addTrytes(signatureFragments: [String]) {
+		var emptySignatureFragment = ""
+		let emptyHash = IotaBundle.emptyHash
+		let emptyTimestamp: UInt = 999999999
+		
+		emptySignatureFragment.rightPad(count: 2187, character: "9")
+		
+		for i in 0..<self.transactions.count {
+			self.transactions[i].signatureFragments = (signatureFragments.count <= i || signatureFragments[i].isEmpty) ? emptySignatureFragment : signatureFragments[i]
+			self.transactions[i].trunkTransaction = emptyHash
+			self.transactions[i].branchTransaction = emptyHash
+			
+			self.transactions[i].attachmentTimestamp = emptyTimestamp
+			self.transactions[i].attachmentTimestampLowerBound = emptyTimestamp
+			self.transactions[i].attachmentTimestampUpperBound = emptyTimestamp
+			
+			var nonce = ""
+			nonce.rightPad(count: 27, character: "9")
+			self.transactions[i].nonce = nonce
 		}
 	}
 	
@@ -89,7 +110,7 @@ public extension IotaBundle {
 			}else {
 				while sum < 0 {
 					for j in 0..<27 {
-						if normalizedBundle[i*27+j] > 13 {
+						if normalizedBundle[i*27+j] < 13 {
 							normalizedBundle[i*27+j] += 1
 							break
 						}

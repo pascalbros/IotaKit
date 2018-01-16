@@ -19,7 +19,7 @@ extension String {
 	
 	mutating func rightPad(count: Int, character: Character) {
 		if self.count >= count { return }
-		for i in self.count..<count {
+		for _ in self.count..<count {
 			self.append(character)
 		}
 	}
