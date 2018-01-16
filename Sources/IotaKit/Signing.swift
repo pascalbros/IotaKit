@@ -32,7 +32,7 @@ class Signing {
 			}
 		}
 		
-		let kerl = Kerl()
+		let kerl = CurlMode.kerl.create()
 		_ = kerl.absorb(trits: seed, offset: 0, length: seed.count)
 		_ = kerl.squeeze(trits: &seed, offset: 0, length: seed.count)
 		kerl.reset()
@@ -59,7 +59,7 @@ class Signing {
 		var digests: [Int] = Array(repeating: 0, count: security * HASH_LENGTH)
 		var keyFragment: [Int] = Array(repeating: 0, count: KEY_LENGTH)
 		
-		let kerl = Kerl()
+		let kerl = CurlMode.kerl.create()
 		
 		for i in 0..<security {
 			arrayCopy(src: key, srcPos: i*KEY_LENGTH, dest: &keyFragment, destPos: 0, length: KEY_LENGTH)
@@ -79,7 +79,7 @@ class Signing {
 	
 	static func address(digests: [Int]) -> [Int] {
 		var address: [Int] = Array(repeating: 0, count: HASH_LENGTH)
-		let kerl = Kerl()
+		let kerl = CurlMode.kerl.create()
 		_ = kerl.absorb(trits: digests)
 		_ = kerl.squeeze(trits: &address)
 		return address

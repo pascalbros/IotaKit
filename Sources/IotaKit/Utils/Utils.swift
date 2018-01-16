@@ -16,6 +16,13 @@ extension String {
 		let end = index(start, offsetBy: to - from)
 		return String(self[start ..< end])
 	}
+	
+	mutating func rightPad(count: Int, character: Character) {
+		if self.count >= count { return }
+		for _ in self.count..<count {
+			self.append(character)
+		}
+	}
 }
 
 extension Array {

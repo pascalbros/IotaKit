@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Kerl {
+class Kerl: CurlSource {
+	
 	static let HASH_LENGTH = 243
 	fileprivate static let BIT_HASH_LENGTH = 384
 	fileprivate static let BYTE_HASH_LENGTH = BIT_HASH_LENGTH / 8
@@ -24,14 +25,18 @@ class Kerl {
 	fileprivate static let INT_LENGTH = BYTE_LENGTH / 4;
 	
 	init() {
-		self.reset()
+		self.reset(false)
 	}
 	
 	deinit {
 		self.keccak.close()
 	}
 	
-	func reset(_ onlyKeccak: Bool = false) {
+	func reset() {
+		self.reset(true)
+	}
+	
+	func reset(_ onlyKeccak: Bool) {
 		self.keccak = PASHA3()
 		if (!onlyKeccak) {
 			self.byte_state = Array(repeating: 0, count: Kerl.BYTE_HASH_LENGTH)
@@ -39,7 +44,7 @@ class Kerl {
 		}
 	}
 	
-	func absorb(trits: [Int], offset: Int, length: Int) -> Kerl {
+	func absorb(trits: [Int], offset: Int, length: Int) -> CurlSource {
 		var off = offset
 		var l = length
 		if l % 243 != 0 {
@@ -58,7 +63,7 @@ class Kerl {
 		return self
 	}
 	
-	func absorb(trits: [Int]) -> Kerl {
+	func absorb(trits: [Int]) -> CurlSource {
 		return self.absorb(trits: trits, offset: 0, length: trits.count)
 	}
 	

@@ -9,8 +9,15 @@
 import Foundation
 
 public class IotaConverter {
-	static var trytesAlphabet = Array("9ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-	static var alphabetTrits: [String: [Int]] = [
+	
+	static let radix = 3
+	static let maxTritValue = (IotaConverter.radix - 1)/2
+	static let minTritValue = -IotaConverter.maxTritValue
+	
+	static let highLongBits: UInt64 = 0xFFFFFFFFFFFFFFFF
+	
+	static let trytesAlphabet = Array("9ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	static let alphabetTrits: [String: [Int]] = [
 		"9": [ 0,  0,  0],
 		"A": [ 1,  0,  0],
 		"B": [-1,  1,  0],
@@ -40,7 +47,7 @@ public class IotaConverter {
 		"Z": [-1,  0,  0]
 	]
 	
-	static var tritsAlphabet: [String: String] = [
+	static let tritsAlphabet: [String: String] = [
 		"000": "9",
 		"100": "A",
 		"-110": "B",
@@ -69,7 +76,7 @@ public class IotaConverter {
 		"1-10": "Y",
 		"-100": "Z"
 	]
-	static var trytesTrits: [[Int]] = [
+	static let trytesTrits: [[Int]] = [
 		[ 0,  0,  0],
 		[ 1,  0,  0],
 		[-1,  1,  0],
@@ -98,6 +105,9 @@ public class IotaConverter {
 		[ 1, -1,  0],
 		[-1,  0,  0]
 	]
+	
+	static let tritsInATryte = 3
+	static let tritsInAByte = 5
 	
 	public static func string(fromTrits trits: [Int]) -> String {
 		var result = ""
@@ -129,7 +139,16 @@ public class IotaConverter {
 		return trits
 	}
 	
-	static func trits(trytes: Int) -> [Int]? {
+	static func trits(trytes: Int, length: Int) -> [Int] {
+		var trits = self.trits(trytes: trytes)
+		if trits.count < length {
+			trits.append(contentsOf: Array(repeating: 0, count: length-trits.count))
+			return trits
+		}
+		return trits.slice(from: 0, to: length)
+	}
+	
+	static func trits(trytes: Int) -> [Int] {
 		var trits: [Int] = []
 		var absoluteValue = trytes < 0 ? -trytes : trytes;
 		
@@ -157,6 +176,23 @@ public class IotaConverter {
 		return trits
 	}
 	
+	static func trytes(trits: [Int]) -> String {
+		return trytes(trits: trits, offset: 0, size: trits.count)
+	}
+	
+	static func trytes(trits: [Int], offset: Int, size: Int) -> String {
+		var trytes = ""
+		let max = (size + tritsInATryte - 1) / tritsInATryte
+		for i in stride(from: 0, to: max, by: 1) {
+			var j = trits[offset + i * 3] + trits[offset + i * 3 + 1] * 3 + trits[offset + i * 3 + 2] * 9
+			if j < 0 {
+				j += trytesAlphabet.count
+			}
+			trytes += String(trytesAlphabet[j])
+		}
+		return trytes
+	}
+	
 	static func longValue(_ trits: [Int]) -> Int {
 		var value: Int = 0;
 	
@@ -166,21 +202,14 @@ public class IotaConverter {
 		return value;
 	}
 	
-	//TODO
-	static func transactionObject(trytes: String) -> IotaTransaction {
-		var transaction = IotaTransaction()
-		let transactionTrits = self.trits(fromString: trytes)
-		//var hash: [Int] = Array(repeating: 0, count: 243)
-		//let kerl = Kerl()
-		//_ = kerl.absorb(trits: transactionTrits)
-		//_ = kerl.squeeze(trits: &hash, offset: 0, length: hash.count)
-		let address = trytes.substring(from: 2187, to: 2268)
-		let tag = trytes.substring(from: 2592, to: 2619)
-		let value = longValue(transactionTrits.slice(from: 6804, to: 6837))
-		
-		transaction.tag = tag
-		transaction.value = value
-		transaction.address = address
-		return transaction
+	static func increment(trits: inout [Int], size: Int) {
+		for i in 0..<size {
+			trits[i] += 1
+			if trits[i] > IotaConverter.maxTritValue {
+				trits[i] = IotaConverter.minTritValue
+			}else{
+				break
+			}
+		}
 	}
 }
