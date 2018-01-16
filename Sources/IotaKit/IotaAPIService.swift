@@ -82,7 +82,7 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
-	static func trytes(nodeAddress: String, hashes: [String], _ success: @escaping (_ trytes: [String: String]) -> Void, _ error: @escaping (Error) -> Void) {
+	static func trytes(nodeAddress: String, hashes: [String], _ success: @escaping (_ trytes: [IotaTransaction]) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		var data = command(withString: "getTrytes")
 		data["hashes"] = hashes
@@ -95,9 +95,9 @@ class IotaAPIService: IotaAPIServices {
 				error(IotaAPIError("Error retrieving hashes"))
 				return
 			}
-			var result: [String: String] = [:]
-			for i in 0..<hashes.count {
-				result[hashes[i]] = trytes[i]
+			var result: [IotaTransaction] = []
+			for i in 0..<trytes.count {
+				result.append(IotaTransaction(trytes: trytes[i]))
 			}
 			success(result)
 		}) { (e) in

@@ -5,7 +5,7 @@ import PlaygroundSupport
 import IotaKit
 
 let useTestNet = true
-var nodeAddress = "http://localhost:14265"
+var nodeAddress = "http://iotanode.party:14265"
 
 if useTestNet {
 	nodeAddress = "https://testnet140.tangle.works"

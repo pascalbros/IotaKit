@@ -18,5 +18,5 @@ protocol IotaAPIServices {
 	
 	static func findTransactions(nodeAddress: String, addresses: [String], _ success: @escaping (_ hashes: [String]) -> Void, _ error: @escaping (Error) -> Void)
 	
-	static func trytes(nodeAddress: String, hashes: [String], _ success: @escaping (_ trytes: [String: String]) -> Void, _ error: @escaping (Error) -> Void)
+	static func trytes(nodeAddress: String, hashes: [String], _ success: @escaping (_ trytes: [IotaTransaction]) -> Void, _ error: @escaping (Error) -> Void)
 }

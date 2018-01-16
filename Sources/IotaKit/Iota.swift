@@ -13,7 +13,6 @@ public class Iota {
 	public var debug = false
 	
 	public init(prefersHTTPS: Bool = false, _ onReady: @escaping (Iota?) -> Void) {
-		
 		IotaNodeSelector.bestNode({ (nodes) in
 			var add = nodes.first!.fullAddress
 			if prefersHTTPS {
@@ -52,7 +51,7 @@ public class Iota {
 		IotaAPIService.findTransactions(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 	
-	public func trytes(hashes: [String], _ success: @escaping (_ trytes: [String: String]) -> Void, error: @escaping (Error) -> Void) {
+	public func trytes(hashes: [String], _ success: @escaping (_ trytes: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		IotaAPIService.trytes(nodeAddress: self.address, hashes: hashes, success, error)
 	}
 	
@@ -96,7 +95,58 @@ public class Iota {
 	}
 	
 	public func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String, inputs: [String]?, validateInputs: Bool) -> [String]? {
+		var bundle = IotaBundle()
+		var signatureFragment: [String] = []
+		var totalValue: UInt = 0
+		var tag = ""
 		
+		for var transfer in transfers {
+			if IotaChecksum.isValidChecksum(address: transfer.address) {
+				transfer.address = IotaChecksum.removeChecksum(address: transfer.address)!
+			}
+			
+			var signatureMessageLength = 1
+			
+			if transfer.message.count > IotaConstants.messageLength {
+				signatureMessageLength += transfer.message.count / IotaConstants.messageLength
+				
+				var msgCopy = transfer.message
+				
+				while !msgCopy.isEmpty {
+					var fragment = msgCopy.substring(from: 0, to: IotaConstants.messageLength)
+					msgCopy = msgCopy.substring(from: IotaConstants.messageLength, to: msgCopy.count)
+					fragment.rightPad(count: IotaConstants.messageLength, character: "9")
+					signatureFragment.append(fragment)
+				}
+			}else {
+				var fragment = transfer.message
+				fragment.rightPad(count: IotaConstants.messageLength, character: "9")
+				signatureFragment.append(fragment)
+			}
+			
+			tag = transfer.tag
+			tag.rightPad(count: IotaConstants.tagLength, character: "9")
+			
+			let timestamp = Date().timeIntervalSince1970
+			bundle.addEntry(signatureMessageLength: signatureMessageLength, address: transfer.address, value: transfer.value, tag: tag, timestamp: UInt64(timestamp))
+			totalValue += transfer.value
+		}
+		
+		if totalValue != 0 {
+			//TODO
+		}else{
+			bundle.finalize(customCurl: nil)
+			//bundle.addTrytes
+			
+			let trxb = bundle.transactions
+			var bundleTrytes: [String] = []
+			
+			for trx in trxb {
+				bundleTrytes.append(trx.trytes)
+			}
+			bundleTrytes.reverse()
+			return bundleTrytes
+		}
 		return nil
 	}
 	
