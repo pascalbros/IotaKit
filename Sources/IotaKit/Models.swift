@@ -37,6 +37,7 @@ public struct IotaTransaction {
 	init(value: UInt, address: String, tag: String, timestamp: UInt) {
 		self.value = value
 		self.address = address
+		self.tag = tag
 		self.obsoleteTag = tag
 		self.timestamp = timestamp
 	}
