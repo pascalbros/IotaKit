@@ -4,33 +4,6 @@
 
 import Foundation
 
-
-/// MD5Digest represents a 16 byte digest value, created from hashing arbitrary data.
-///
-/// MD5Digest is an immutable value type—just like the two `UInt64` values used for
-/// internal storage.
-///
-/// It conforms to ...
-///
-/// * `Equatable`, to make comparison to other values easy.
-/// * `Hashable`, so it can be used as a key in dictionaries.
-/// * `RawRepresentable` to convert to and from string representations
-/// * `CustomStringConvertible` to make printing easy
-/// * `Codable` to enable JSON and Plist coding of types containing a digest property
-///
-/// ## Example:
-///
-/// Compute the md5 of a string's UTF-8 representation and compare to a reference value
-///
-///     let digest = "The quick brown fox jumps over the lazy dog".utf8.md5
-///     assert(MD5Digest("9e107d9d372bb6826bd81d3542a419d6") == digest)
-///
-/// - Copyright: Copyright (c) 2017 Nikolai Ruhe.
-
-
-
-
-
 /*
 
 THIS IS A TEMPORARY FILE THAT HAS BEEN USED FOR DEBUG PURPOSES, IT SHOULD NOT BE INCLUDED IN THE LIBRARY WITHOUT A REASON (md5)

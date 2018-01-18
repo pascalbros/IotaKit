@@ -32,6 +32,7 @@ let testBits8: UInt64 = 0b000000000011111111111111111111111111111111111111111111
 
 class PearlDiver {
 	fileprivate var state: PearlDiverState = .idle
+	fileprivate var transactionTrits: [Int] = []
 	private let queue = DispatchQueue(label: "iota-pow", qos: .userInteractive, attributes: .concurrent)
 	
 	func cancel() {
@@ -40,8 +41,9 @@ class PearlDiver {
 		}
 	}
 	
-	func search(transactionTrits: inout [Int], minWeightMagnitude: Int, numberOfThreads: Int) {
+	func search(transactionTrits: [Int], minWeightMagnitude: Int, numberOfThreads: Int) -> [Int] {
 		
+		self.transactionTrits = transactionTrits.map { $0 }
 		queue.sync(flags: .barrier) {
 			self.state = .running
 		}
@@ -101,8 +103,23 @@ class PearlDiver {
 			midCurlStateHigh[162 + 3] = testBits8
 		}
 		
-		var test = 0
-		let threadIndex = 0
+		var numOfThreads = numberOfThreads
+		while numOfThreads > 0 {
+			numOfThreads -= 1
+			let t = numOfThreads
+			DispatchQueue.global(qos: .userInitiated).async {
+				self.powThread(threadIndex: t, minWeightMagnitude: minWeightMagnitude, midCurlStateLow: midCurlStateLow, midCurlStateHigh: midCurlStateHigh)
+			}
+		}
+		
+		while self.state != .completed {
+			Thread.sleep(forTimeInterval: 0.1)
+		}
+		return self.transactionTrits
+	}
+	
+	
+	fileprivate func powThread(threadIndex: Int, minWeightMagnitude: Int, midCurlStateLow: [UInt64], midCurlStateHigh: [UInt64]) {
 		var midCurlStateCopyLow: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		var midCurlStateCopyHigh: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		
@@ -112,7 +129,7 @@ class PearlDiver {
 		for _ in stride(from: threadIndex, to: 0, by: -1) {
 			PearlDiver.increment(midCurlStateCopyLow: &midCurlStateCopyLow, midCurlStateCopyHigh: &midCurlStateCopyHigh, fromIndex: 162+curlHashLength/9, toIndex: 162 + (curlHashLength / 9) * 2)
 		}
-		
+
 		var curlStateLow: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		var curlStateHigh: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		var curlScratchpadLow: [UInt64] = Array(repeating: 0, count: curlStateLength)
@@ -123,17 +140,16 @@ class PearlDiver {
 		
 		while self.state == .running {
 			PearlDiver.increment(midCurlStateCopyLow: &midCurlStateCopyLow, midCurlStateCopyHigh: &midCurlStateCopyHigh, fromIndex: 162 + (curlHashLength / 9) * 2, toIndex: curlHashLength)
-			
 			arrayCopy(src: midCurlStateCopyLow, srcPos: 0, dest: &curlStateLow, destPos: 0, length: curlStateLength)
 			arrayCopy(src: midCurlStateCopyHigh, srcPos: 0, dest: &curlStateHigh, destPos: 0, length: curlStateLength)
 			PearlDiver.transform(&curlStateLow, &curlStateHigh, &curlScratchpadLow, &curlScratchpadHigh)
 			mask = highBits
-			for i in stride(from: minWeightMagnitude, to: 0, by: -1) {
+			for i in stride(from: minWeightMagnitude-1, to: -1, by: -1) {
 				mask &= ~(curlStateLow[curlHashLength - 1 - i] ^ curlStateHigh[
 					curlHashLength - 1 - i])
 				if mask == 0 { break }
 			}
-			test += 1
+			if self.state == .completed { return }
 			if mask == 0 { continue }
 			
 			if self.state == .running {
@@ -142,7 +158,7 @@ class PearlDiver {
 					outMask <<= 1
 				}
 				for i in 0..<curlHashLength {
-					transactionTrits[transactionLength - curlHashLength + i] =
+					self.transactionTrits[transactionLength - curlHashLength + i] =
 						(midCurlStateCopyLow[i] & outMask) == 0 ? 1
 						: (midCurlStateCopyHigh[i] & outMask) == 0 ? -1 : 0
 				}
@@ -150,20 +166,6 @@ class PearlDiver {
 			break
 		}
 	}
-	
-//	fileprivate func debugArray(_ array: [UInt64]) {
-//		print(array.reduce("", { (result, val) -> String in
-//			let v = val == 0 ? "0" : "1"
-//			return result+v
-//		}))
-//	}
-//	fileprivate func arrayString(_ array: [UInt64]) -> String{
-//		let val =  array.reduce("", { (result, val) -> String in
-//			let v = String(val, radix: 16)
-//			return result+v+" "
-//		}).utf8.md5
-//		return "\(val.description)"
-//	}
 	
 	fileprivate static func transform(_ curlStateLow: inout [UInt64], _ curlStateHigh: inout [UInt64], _ curlScratchpadLow: inout [UInt64], _ curlScratchpadHigh: inout [UInt64]) {
 		
@@ -208,4 +210,11 @@ class PearlDiver {
 		}
 	}
 
+	//	fileprivate func arrayString(_ array: [UInt64]) -> String{
+	//		let val =  array.reduce("", { (result, val) -> String in
+	//			let v = String(val, radix: 16)
+	//			return result+v+" "
+	//		}).utf8.md5
+	//		return "\(val.description)"
+	//	}
 }

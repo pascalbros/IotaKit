@@ -12,9 +12,9 @@ class PearlDiverLocalPoW: IotaLocalPoW {
 	fileprivate let pearlDiver = PearlDiver()
 	
 	func performPoW(trytes: String, minWeightMagnitude: Int) -> String {
-		var trits = IotaConverter.trits(fromString: trytes)
-		pearlDiver.search(transactionTrits: &trits, minWeightMagnitude: minWeightMagnitude, numberOfThreads: 1)
-		return IotaConverter.trytes(trits: trits)
+		let trits = IotaConverter.trits(fromString: trytes)
+		let tritsResult = pearlDiver.search(transactionTrits: trits, minWeightMagnitude: minWeightMagnitude, numberOfThreads: 1)
+		return IotaConverter.trytes(trits: tritsResult)
 	}
 	
 	func performPoW(trytes: String, minWeightMagnitude: Int, result: @escaping (String) -> ()) {
@@ -23,6 +23,4 @@ class PearlDiverLocalPoW: IotaLocalPoW {
 			result(r)
 		}
 	}
-	
-	
 }
