@@ -11,8 +11,7 @@ public struct IotaAccount {
 	public internal(set) var balance: Int = 0
 	public internal(set) var addresses: [String] = []
 	
-	public init() {
-	}
+	internal init() {}
 }
 
 public struct IotaTransaction {
@@ -37,6 +36,7 @@ public struct IotaTransaction {
 	init(value: UInt, address: String, tag: String, timestamp: UInt) {
 		self.value = value
 		self.address = address
+		self.tag = tag
 		self.obsoleteTag = tag
 		self.timestamp = timestamp
 	}
@@ -57,8 +57,8 @@ public struct IotaTransfer {
 		self.hash = hash
 		self.persistence = persistence
 		self.value = value
-		self.message = message
-		self.tag = tag
+		self.message = message.rightPadded(count: 27, character: "9")
+		self.tag = tag.rightPadded(count: 27, character: "9")
 	}
 }
 

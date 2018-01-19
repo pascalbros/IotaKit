@@ -23,11 +23,13 @@ class IotaAPIService: IotaAPIServices {
 		return ["command": command]
 	}
 	
+	fileprivate static let defaultTimeout = 60
+	
 	static func nodeInfo(nodeAddress: String, _ success: @escaping ([String: Any]) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		let data = command(withString: "getNodeInfo")
 	
-		service.POST(data: data, destination: nodeAddress, successHandler: { (r) in
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
 				return
@@ -43,7 +45,7 @@ class IotaAPIService: IotaAPIServices {
 		var data = command(withString: "getBalances")
 		data["addresses"] = addresses
 		data["threshold"] = 100
-		service.POST(data: data, destination: nodeAddress, successHandler: { (r) in
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
 				return
@@ -67,7 +69,7 @@ class IotaAPIService: IotaAPIServices {
 		
 		var data = command(withString: "findTransactions")
 		data["addresses"] = addresses
-		service.POST(data: data, destination: nodeAddress, successHandler: { (r) in
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
 				return
@@ -86,7 +88,7 @@ class IotaAPIService: IotaAPIServices {
 		
 		var data = command(withString: "getTrytes")
 		data["hashes"] = hashes
-		service.POST(data: data, destination: nodeAddress, successHandler: { (r) in
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
 				return
@@ -104,4 +106,99 @@ class IotaAPIService: IotaAPIServices {
 			error(e)
 		}
 	}
+	
+	static func attachToTangle(nodeAddress: String, trunkTx: String, branchTx: String, minWeightMagnitude: Int = 14, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "attachToTangle")
+		data["trunkTransaction"] = trunkTx
+		data["branchTransaction"] = branchTx
+		data["minWeightMagnitude"] = minWeightMagnitude
+		data["trytes"] = trytes
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			guard let trytes = dict["trytes"] as? [String] else {
+				error(IotaAPIError("Error retrieving hashes"))
+				return
+			}
+			success(trytes)
+		}) { (e) in
+			error(e)
+		}
+	}
+	
+	static func transactionsToApprove(nodeAddress: String, depth: Int = 10, _ success: @escaping (_ txs: (trunkTx: String, branchTx: String)) -> Void, _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "getTransactionsToApprove")
+		data["depth"] = depth
+		service.POST(data: data, destination: nodeAddress, timeout: 3600, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			guard let trunkTx = dict["trunkTransaction"] as? String else {
+				error(IotaAPIError("Error retrieving trunkTransaction"))
+				return
+			}
+			guard let branchTx = dict["branchTransaction"] as? String else {
+				error(IotaAPIError("Error retrieving branchTransaction"))
+				return
+			}
+			success((trunkTx, branchTx))
+		}) { (e) in
+			error(e)
+		}
+	}
+	
+	static func broadcastTransactions(nodeAddress: String, trytes: [String], _ success: @escaping (() -> Void), _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "broadcastTransactions")
+		data["trytes"] = trytes
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			
+			if let e = dict["error"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			if let e = dict["exception"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			success()
+			
+		}) { (e) in
+			error(e)
+		}
+	}
+	
+	static func storeTransactions(nodeAddress: String, trytes: [String], _ success: @escaping (() -> Void), _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "storeTransactions")
+		data["trytes"] = trytes
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			if let e = dict["error"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			if let e = dict["exception"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			success()
+		}) { (e) in
+			error(e)
+		}
+	}
+	
+	
 }

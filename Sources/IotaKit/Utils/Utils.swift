@@ -23,6 +23,15 @@ extension String {
 			self.append(character)
 		}
 	}
+	
+	func rightPadded(count: Int, character: Character) -> String {
+		var str = self
+		if str.count >= count { return str }
+		for _ in self.count..<count {
+			str.append(character)
+		}
+		return str
+	}
 }
 
 extension Array {
