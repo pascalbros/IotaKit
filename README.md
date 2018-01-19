@@ -2,7 +2,17 @@
 
 The IOTA Swift API Library
 
-It's a work-in-progress project, right now there is full support for address generation (with Keccak written in C) and basic commands to a full-node.
+**Please, be careful, it's a work-in-progress project**
+
+- [x] Full support for address generation (with Keccak written in C)
+- [x] Basic commands to a full-node
+- [x] One-func account retrieval
+- [x] Automatic node selector
+- [x] Local PoW
+- [x] Attach to tangle (0i tx)
+- [ ] Transfer (>0i tx)
+- [ ] Promote
+- [ ] Multisignature Support
 
 ## Compatibility
 

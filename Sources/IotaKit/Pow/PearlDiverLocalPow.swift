@@ -13,7 +13,7 @@ class PearlDiverLocalPoW: IotaLocalPoW {
 	
 	func performPoW(trytes: String, minWeightMagnitude: Int) -> String {
 		let trits = IotaConverter.trits(fromString: trytes)
-		let tritsResult = pearlDiver.search(transactionTrits: trits, minWeightMagnitude: minWeightMagnitude, numberOfThreads: 1)
+		let tritsResult = pearlDiver.search(transactionTrits: trits, minWeightMagnitude: minWeightMagnitude, numberOfThreads: ProcessInfo.processInfo.processorCount)
 		return IotaConverter.trytes(trits: tritsResult)
 	}
 	

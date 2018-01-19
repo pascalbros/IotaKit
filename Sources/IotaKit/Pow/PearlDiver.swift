@@ -137,7 +137,7 @@ class PearlDiver {
 		
 		var mask: UInt64 = 1
 		var outMask: UInt64 = 1
-		
+		//var index = 0
 		while self.state == .running {
 			PearlDiver.increment(midCurlStateCopyLow: &midCurlStateCopyLow, midCurlStateCopyHigh: &midCurlStateCopyHigh, fromIndex: 162 + (curlHashLength / 9) * 2, toIndex: curlHashLength)
 			arrayCopy(src: midCurlStateCopyLow, srcPos: 0, dest: &curlStateLow, destPos: 0, length: curlStateLength)
@@ -149,6 +149,8 @@ class PearlDiver {
 					curlHashLength - 1 - i])
 				if mask == 0 { break }
 			}
+			//index += 1
+			//print("\(threadIndex) \(index)")
 			if self.state == .completed { return }
 			if mask == 0 { continue }
 			
