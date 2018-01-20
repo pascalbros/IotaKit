@@ -11,14 +11,26 @@ struct PAWSRequest: WebServices {
 	fileprivate static let defaultTimeout = 60
 	fileprivate init() { }
 	
-	static func GET(data: Dictionary<String, Any>, destination: String, timeout: Int = defaultTimeout, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: NSError) -> Void) {
+	static func GET(destination: String, timeout: Int = defaultTimeout, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void) {
 		
-		self.request(type: "GET", data: data, destination: destination, timeout: timeout, successHandler: successHandler, errorHandler: errorHandler)
+		self.getRequest(destination: destination, successHandler: successHandler, errorHandler: errorHandler)
 	}
 	
 	static func POST(data: Dictionary<String, Any>, destination: String, timeout: Int = defaultTimeout, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: NSError) -> Void) {
 		
 		self.request(type: "POST", data: data, destination: destination, timeout: timeout, successHandler: successHandler, errorHandler: errorHandler)
+	}
+	
+	static func getRequest(destination: String, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void) {
+		guard let url = URL(string: destination) else { errorHandler(IotaAPIError("Malformed URL")); return }
+		URLSession.shared.dataTask(with: url) { (data, response, error) in
+			if error != nil {
+				errorHandler(IotaAPIError(error!.localizedDescription))
+			}
+			
+			guard let data = data else { return }
+			successHandler(String(data: data, encoding: .utf8)!)
+		}.resume()
 	}
 	
 	

@@ -15,18 +15,9 @@ public class Iota {
 	fileprivate let APIServices: IotaAPIServices.Type = IotaAPIService.self
 	
 	public init(prefersHTTPS: Bool = false, _ onReady: @escaping (Iota?) -> Void) {
-		IotaNodeSelector.bestNode({ (nodes) in
-			var add = nodes.first!.fullAddress
-			if prefersHTTPS {
-				for n in nodes {
-					if !n.address.hasPrefix("https") {
-						continue
-					}
-					add = n.fullAddress
-					break
-				}
-			}
-			self.address = add
+		IotaNodeSelector.bestNode(prefersHTTPS: prefersHTTPS, { (node) in
+			self.address = node.fullAddress
+			print(self.address)
 			onReady(self)
 		}) { (error) in
 			onReady(nil)
