@@ -24,7 +24,7 @@ public extension IotaTransaction {
 		self.hash = IotaConverter.trytes(trits: hash)
 		self.address = trytes.substring(from: 2187, to: 2268)
 		self.tag = trytes.substring(from: 2592, to: 2619)
-		self.value = UInt(IotaConverter.longValue(transactionTrits.slice(from: 6804, to: 6837)))
+		self.value = IotaConverter.longValue(transactionTrits.slice(from: 6804, to: 6837))
 		self.signatureFragments = trytes.substring(from: 0, to: 2187)
 		self.obsoleteTag = trytes.substring(from: 2295, to: 2322)
 		self.timestamp = UInt(IotaConverter.longValue(transactionTrits.slice(from: 6966, to: 6993)))
