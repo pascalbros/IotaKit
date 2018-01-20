@@ -15,18 +15,8 @@ public class Iota {
 	fileprivate let APIServices: IotaAPIServices.Type = IotaAPIService.self
 	
 	public init(prefersHTTPS: Bool = false, _ onReady: @escaping (Iota?) -> Void) {
-		IotaNodeSelector.bestNode({ (nodes) in
-			var add = nodes.first!.fullAddress
-			if prefersHTTPS {
-				for n in nodes {
-					if !n.address.hasPrefix("https") {
-						continue
-					}
-					add = n.fullAddress
-					break
-				}
-			}
-			self.address = add
+		IotaNodeSelector.bestNode(prefersHTTPS: prefersHTTPS, { (node) in
+			self.address = node.fullAddress
 			onReady(self)
 		}) { (error) in
 			onReady(nil)
@@ -110,6 +100,140 @@ public class Iota {
 		IotaDebug("Sending trytes")
 		self.sendTrytes(trytes: trytes, { (trxs) in
 			success(trxs)
+		}, error: error)
+	}
+	
+	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int = 14, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+		
+		func sendTrytes(bundleTrytes: [String]) {
+			self.sendTrytes(trytes: bundleTrytes, { (trxs) in
+				success(trxs)
+			}, error: error)
+		}
+		
+		var bundleTrytes: [String] = []
+		
+		self.bundle(tx: tx, { (txs) in
+			let bundle = IotaBundle(transactions: txs, length: txs.count)
+			for trx in bundle.transactions {
+				bundleTrytes.append(trx.trytes)
+			}
+			bundleTrytes.reverse()
+			sendTrytes(bundleTrytes: bundleTrytes)
+		}, error: error)
+	}
+	
+	public func bundle(tx: String, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+		
+		func continueWithBundle(bundle b: IotaBundle) {
+			var bundle = b
+			var totalSum: Int = 0
+			let bundleHash = bundle.transactions.first!.bundle
+			
+			let curl = CurlMode.kerl.create()
+			curl.reset()
+			
+			var signaturesToValidate: [IotaSignature] = []
+			
+			for i in 0..<bundle.transactions.count {
+				let trx = bundle.transactions[i]
+				let bundleValue = trx.value
+				totalSum += bundleValue
+				
+				if i != trx.currentIndex {
+					error(IotaAPIError("Invalid bundle"))
+					return
+				}
+				
+				let trxTrytes = trx.trytes.substring(from: 2187, to: 2187+162)
+				
+				_ = curl.absorb(trits: IotaConverter.trits(fromString: trxTrytes))
+				if bundleValue < 0 {
+					let address = trx.address
+					var signature = IotaSignature(address: address, signatureFragments: [trx.signatureFragments])
+					for y in i+1..<bundle.transactions.count {
+						let newBundleTx = bundle.transactions[y]
+						
+						if newBundleTx.address == address && newBundleTx.value == 0 {
+							if signature.signatureFragments.index(of: newBundleTx.signatureFragments) == nil {
+								signature.signatureFragments.append(newBundleTx.signatureFragments)
+							}
+						}
+					}
+					signaturesToValidate.append(signature)
+				}
+			}
+			
+			if totalSum != 0 {
+				error(IotaAPIError("Invalid bundle sum"))
+				return
+			}
+			var bundleFromTrxs: [Int] = Array(repeating: 0, count: 243)
+			_ = curl.squeeze(trits: &bundleFromTrxs)
+			let bundleFromTxString = IotaConverter.trytes(trits: bundleFromTrxs)
+			
+			if bundleFromTxString != bundleHash {
+				error(IotaAPIError("Invalid bundle hash"))
+				return
+			}
+			bundle.length = bundle.transactions.count
+			if bundle.transactions.last!.currentIndex != bundle.transactions.last!.lastIndex {
+				error(IotaAPIError("Invalid bundle"))
+				return
+			}
+			
+			for aSignaturesToValidate in signaturesToValidate {
+				let signatureFragments = aSignaturesToValidate.signatureFragments
+				let address = aSignaturesToValidate.address
+				let isValidSignature = true
+				
+				if !isValidSignature {
+					error(IotaAPIError("Invalid signature"))
+					return
+				}
+			}
+			
+			success(bundle.transactions)
+		}
+		
+		if !IotaInputValidator.isHash(hash: tx) {
+			return
+		}
+		
+		self.traverseBundle(trunkTx: tx, bundleHash: nil, bundle: IotaBundle(), { (bundle) in
+			continueWithBundle(bundle: bundle)
+		}, error: error)
+	}
+	
+	internal func traverseBundle(trunkTx: String, bundleHash: String?, bundle: IotaBundle, _ success: @escaping (_ transfer: IotaBundle) -> Void, error: @escaping (Error) -> Void) {
+		var bh = bundleHash
+		var tt = trunkTx
+		var theBundle = IotaBundle(transactions: bundle.transactions, length: bundle.length)
+		self.trytes(hashes: [trunkTx], { (txs) in
+			guard let trx = txs.first else { error(IotaAPIError("Invalid response")); return }
+			guard trx.trytes.count > 0 else { error(IotaAPIError("Invalid bundle")); return }
+			guard !trx.bundle.isEmpty else { error(IotaAPIError("Invalid bundle")); return }
+			
+			if bh == nil {
+				bh = trx.bundle
+			}
+			
+			if bh! != trx.bundle {
+				success(bundle)
+				return
+			}
+			
+			if trx.lastIndex == 0 && trx.currentIndex == 0 {
+				success(IotaBundle(transactions: [trx], length: 1))
+				return
+			}
+			
+			tt = trx.trunkTransaction
+			theBundle.transactions.append(trx)
+			DispatchQueue.global(qos: .userInitiated).async {
+				self.traverseBundle(trunkTx: tt, bundleHash: bh, bundle: theBundle, success, error: error)
+			}
+			
 		}, error: error)
 	}
 	
@@ -201,7 +325,7 @@ public class Iota {
 			tag.rightPad(count: IotaConstants.tagLength, character: "9")
 			
 			let timestamp = floor(Date().timeIntervalSince1970)
-			bundle.addEntry(signatureMessageLength: signatureMessageLength, address: transfer.address, value: transfer.value, tag: tag, timestamp: UInt(timestamp))
+			bundle.addEntry(signatureMessageLength: signatureMessageLength, address: transfer.address, value: Int(transfer.value), tag: tag, timestamp: UInt(timestamp))
 			totalValue += transfer.value
 		}
 		

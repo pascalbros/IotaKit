@@ -10,6 +10,7 @@ The IOTA Swift API Library
 - [x] Automatic node selector
 - [x] Local PoW
 - [x] Attach to tangle (0i tx)
+- [x] Replay Bundle
 - [ ] Transfer (>0i tx)
 - [ ] Promote
 - [ ] Multisignature Support

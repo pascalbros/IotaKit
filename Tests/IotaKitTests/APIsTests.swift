@@ -64,11 +64,27 @@ class APIsTests: XCTestCase {
 		wait(for: [expectation], timeout: 1200.0)
 	}
 	
+	func testReplayBundle() {
+		let expectation = XCTestExpectation(description: "testReplayBundle test")
+		
+		iota.replayBundle(tx: "BKBALUPMEECOGEYQU9OHXTFTHV9OKEVUGHAUNNQCNETAQWIRJIKDGWSWXY9RSIMZJBPIPEIQEFEIA9999", { (txs) in
+			print(txs)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
 	
 	static var allTests = [
 		("testSendTrytes", testSendTrytes),
 		("testAttachToTangle", testAttachToTangle),
-		("testAccountData", testAccountData)
+		("testAccountData", testAccountData),
+		("testReplayBundle", testReplayBundle)
 	]
 }
 

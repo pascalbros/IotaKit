@@ -15,7 +15,7 @@ public struct IotaAccount {
 }
 
 public struct IotaTransaction {
-	public internal(set) var value: UInt = 0
+	public internal(set) var value: Int = 0
 	public internal(set) var address = ""
 	public internal(set) var tag = ""
 	public internal(set) var hash: String = ""
@@ -33,7 +33,7 @@ public struct IotaTransaction {
 	public internal(set) var attachmentTimestampLowerBound: UInt = 0
 	public internal(set) var attachmentTimestampUpperBound: UInt = 0
 	
-	init(value: UInt, address: String, tag: String, timestamp: UInt) {
+	init(value: Int, address: String, tag: String, timestamp: UInt) {
 		self.value = value
 		self.address = address
 		self.tag = tag
@@ -66,4 +66,9 @@ public struct IotaBundle {
 	internal static let emptyHash = "999999999999999999999999999999999999999999999999999999999999999999999999999999999"
 	public internal(set) var transactions: [IotaTransaction] = []
 	public internal(set) var length = 0
+}
+
+public struct IotaSignature {
+	public internal(set) var address: String = ""
+	public internal(set) var signatureFragments: [String] = []
 }

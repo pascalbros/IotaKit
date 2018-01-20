@@ -9,7 +9,7 @@ import Foundation
 
 public extension IotaBundle {
 	
-	public mutating func addEntry(signatureMessageLength: Int, address: String, value: UInt, tag: String, timestamp: UInt) {
+	public mutating func addEntry(signatureMessageLength: Int, address: String, value: Int, tag: String, timestamp: UInt) {
 		for i in 0..<signatureMessageLength {
 
 			let trx = IotaTransaction(value: i == 0 ? value : 0, address: address, tag: tag, timestamp: timestamp)

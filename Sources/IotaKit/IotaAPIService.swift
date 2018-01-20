@@ -29,7 +29,7 @@ class IotaAPIService: IotaAPIServices {
 		
 		let data = command(withString: "getNodeInfo")
 	
-		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+		service.POST(data: data, destination: nodeAddress, timeout: 3, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
 				return

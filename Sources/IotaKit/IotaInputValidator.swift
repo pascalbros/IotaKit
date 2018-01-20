@@ -22,4 +22,8 @@ struct IotaInputValidator {
 		}
 		return true
 	}
+	
+	static func isHash(hash: String) -> Bool {
+		return isTrytes(trytes: hash) && hash.count == 81
+	}
 }
