@@ -72,3 +72,10 @@ public struct IotaSignature {
 	public internal(set) var address: String = ""
 	public internal(set) var signatureFragments: [String] = []
 }
+
+public struct IotaInput {
+	public internal(set) var address: String
+	public internal(set) var balance: Int
+	public internal(set) var keyIndex: Int
+	public internal(set) var security: Int
+}

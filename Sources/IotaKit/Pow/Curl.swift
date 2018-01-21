@@ -73,6 +73,10 @@ class Curl: CurlSource {
 		return self
 	}
 	
+	func clone() -> CurlSource {
+		return Curl(numberOfRounds: numberOfRounds)
+	}
+	
 	func reset() {
 		if self.state == nil {
 			return

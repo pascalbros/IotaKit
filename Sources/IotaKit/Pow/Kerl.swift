@@ -32,6 +32,10 @@ class Kerl: CurlSource {
 		self.keccak.close()
 	}
 	
+	func clone() -> CurlSource {
+		return CurlMode.kerl.create()
+	}
+	
 	func reset() {
 		self.reset(true)
 	}

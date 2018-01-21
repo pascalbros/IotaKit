@@ -10,10 +10,10 @@ import Foundation
 struct IotaChecksum {
 	
 	static func calculateChecksum(address: String) -> String {
-		let kerl = CurlMode.kerl.create()
-		_ = kerl.absorb(trits: IotaConverter.trits(fromString: address))
+		let curl: CurlSource = CurlMode.kerl.create()
+		_ = curl.absorb(trits: IotaConverter.trits(fromString: address))
 		var checksumTrits: [Int] = Array(repeating: 0, count: Kerl.HASH_LENGTH)
-		_ = kerl.squeeze(trits: &checksumTrits)
+		_ = curl.squeeze(trits: &checksumTrits)
 		let checksum = IotaConverter.string(fromTrits: checksumTrits)
 		
 		let start = checksum.index(checksum.startIndex, offsetBy: 72)

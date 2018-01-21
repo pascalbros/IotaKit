@@ -13,6 +13,7 @@ protocol CurlSource {
 	func squeeze(trits: inout [Int], offset: Int, length: Int) -> [Int]
 	func squeeze(trits: inout [Int]) -> [Int]
 	func reset()
+	func clone() -> CurlSource
 }
 
 enum CurlMode {
