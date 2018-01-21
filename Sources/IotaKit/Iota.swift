@@ -49,20 +49,49 @@ public class Iota {
 		APIServices.trytes(nodeAddress: self.address, hashes: hashes, success, error)
 	}
 	
-	public func accountData(seed: String, security: Int = 2, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void) {
+	public func accountData(seed: String, security: Int = 2, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void) {
 		
 		var account = IotaAccount()
 		var index = 0
 		var lastAddress = ""
 		
+		func completeBalances() {
+			let balance = account.addresses.reduce(0, { (r, a) -> Int in
+				return r+a.balance!
+			})
+			account.balance = balance
+			success(account)
+		}
+		
+		func getInclusions() {
+			let hashes = account.addresses[index].transactions!.map { $0.hash }
+			self.latestInclusionStates(hashes: hashes, { (inclusions) in
+				for i in 0..<account.addresses[index].transactions!.count {
+					account.addresses[index].transactions![i].persistence = inclusions[i]
+				}
+				index += 1
+				if index >= account.addresses.count {
+					completeBalances()
+				}else{
+					getInclusions()
+				}
+			}, error)
+		}
+		
 		func findBalances() {
 			IotaDebug("Getting balances")
-			self.balances(addresses: account.addresses, { (balances) in
-				self.IotaDebug("Got balances \(balances.count)")
-				account.balance = balances.reduce(0, { (r, e) -> Int in return r+e.value })
-				success(account)
-			}) { (e) in
-				error(e)
+			if requestTransactions {
+				index = 0
+				getInclusions()
+			}else{
+				let addresses = account.addresses.map { $0.hash }
+				self.balances(addresses: addresses, { (balances) in
+					self.IotaDebug("Got balances \(balances.count)")
+					account.balance = balances.reduce(0, { (r, e) -> Int in return r+e.value })
+					success(account)
+				}) { (e) in
+					error(e)
+				}
 			}
 		}
 		
@@ -74,10 +103,23 @@ public class Iota {
 				if hashes.count == 0 {
 					findBalances()
 				}else{
-					account.addresses.append(address)
-					DispatchQueue.main.async {
-						index += 1
-						findTransactions()
+					if requestTransactions {
+						self.IotaDebug("Getting trytes")
+						self.addressFromHash(address: address, { (resultAddress) in
+							self.IotaDebug("Got trytes")
+							account.addresses.append(resultAddress)
+							DispatchQueue.main.async {
+								index += 1
+								findTransactions()
+							}
+						}, error: error)
+					}else{
+						let iotaAddress = IotaAddress(hash: address, transactions: nil)
+						account.addresses.append(iotaAddress)
+						DispatchQueue.main.async {
+							index += 1
+							findTransactions()
+						}
 					}
 				}
 			}) { (e) in
@@ -203,6 +245,30 @@ public class Iota {
 			continueWithBundle(bundle: bundle)
 		}, error: error)
 	}
+	
+	public func transactionsFromAddress(address: String, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+		func getTrytes(hashes: [String]) {
+			self.trytes(hashes: hashes, { (txs) in
+				success(txs)
+			}, error: error)
+		}
+		
+		self.findTransactions(addresses: [address], { (hashes) in
+			getTrytes(hashes: hashes)
+		}, error: error)
+	}
+	
+	public func addressFromHash(address: String, _ success: @escaping (_ transactions: IotaAddress) -> Void, error: @escaping (Error) -> Void) {
+		self.transactionsFromAddress(address: address, { (txs) in
+			let result = IotaAddress(hash: address, transactions: txs)
+			success(result)
+		}, error: error)
+	}
+	
+	public func latestInclusionStates(hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
+		APIServices.latestInclusionStates(nodeAddress: self.address, hashes: hashes, success, error)
+	}
+	//public func inputs(seed: String, security: Int = 2)
 }
 
 
@@ -348,6 +414,7 @@ extension Iota {
 		
 		if totalValue != 0 {
 			guard let theInputs = inputs else {
+				
 				return nil
 			}
 			guard !theInputs.isEmpty else { return nil }
@@ -417,9 +484,9 @@ extension Iota {
 		
 		self.accountData(seed: seed, security: security, { (account) in
 			if !returnAll {
-				allAddresses = [account.addresses.last!]
+				allAddresses = [account.addresses.last!.hash]
 			}
-			success(account.addresses)
+			success(account.addresses.map { $0.hash })
 		}, error: error)
 	}
 	

@@ -11,7 +11,7 @@ import IotaKit
 class APIsTests: XCTestCase {
 	
 	let iota = Iota(node: "http://iotanode.party:14265")
-	private let TEST_SEED1 = "KRRFGGJXUGCMJILWECFVW9XKWIFDBDRKFCPLZEGJVTZDDJWJZ9VBLGGKPGLQJWK99TVPXBISKAMCBCQEK";
+	private let TEST_SEED1 = "XDSCF9LACCU9EMAMWLZUTYLDSRP9BCBYJEDWERJPADUZQFCCPWUMFUYMJLHLJHJ9NGZXMCKGCHBFCUPAL";
 	//private static final String TEST_ADDRESS_WITHOUT_CHECKSUM_SECURITY_LEVEL_2 = "LXQHWNY9CQOHPNMKFJFIJHGEPAENAOVFRDIBF99PPHDTWJDCGHLYETXT9NPUVSNKT9XDTDYNJKJCPQMZC";
 	private let TEST_ADDRESS_WITHOUT_CHECKSUM_SECURITY_LEVEL_2 = "ADQYBMQBOCGWQTAVXI9HYKPMMYKHTRHXMQOJFVGYTY9CZUZVQXAIFVZXZXLSOOOQKVORXZITSNGHCDJYD";
 	private let TEST_MESSAGE = "";
@@ -27,6 +27,20 @@ class APIsTests: XCTestCase {
 		let expectation = XCTestExpectation(description: "testAccountData test")
 		
 		iota.accountData(seed: TEST_SEED1, { (account) in
+			print(account)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		wait(for: [expectation], timeout: 120.0)
+	}
+	
+	func testAccountDataRequestingTransactions() {
+		let expectation = XCTestExpectation(description: "testAccountData test")
+		
+		iota.accountData(seed: TEST_SEED1, requestTransactions: true, { (account) in
 			print(account)
 			expectation.fulfill()
 		}) { (error) in
@@ -64,11 +78,71 @@ class APIsTests: XCTestCase {
 		wait(for: [expectation], timeout: 1200.0)
 	}
 	
+	func testFindTransactions() {
+		let expectation = XCTestExpectation(description: "testFindTransactions test")
+		
+		iota.findTransactions(addresses: ["UVXUINMAODVNSZHZTFZLBVPHMEBCCUHXUZMPLEFNJGEDFU9ARH9N9RPCUIIORTGNUKRNWECFQF9PACHTX"], { (hashes) in
+			print(hashes)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
+	func testGetTransactionTrytes() {
+		let expectation = XCTestExpectation(description: "testFindTransactions test")
+		
+		iota.trytes(hashes: ["PTKBSAQULPCOCJBUUCLBLASHPAZVOYQGHOKEBOELLCAAZTMNJZJPHBREXLORXWWARTMVIFQ9HNOT99999", "REJJFSYOARFQAJLTUDGI9PKRUZFUO9KVAM9YFWTQELJSGPBMS9QQPECLSS9MZH9PPDO9EWHRLJRDZ9999", "EYL9DPXYUAPGCVQHMYCLSAMOOFJZARRUYZFGHLIBGTRFXGS9NORUVQBULWBXTRJBSQHYPBXYFMNBZ9999", "KWXLWQNSMLMCY9JUDWMKJ9ZH9EYACWPPDTLVATDTGSUCGRSWNMYKCNSXA9GM9QUHBNRINSRBFDPPZ9999", "IKXZNIAFTYSABDABTAASBUO9KBRKIMKIBHWJBODP9BZVDZFKDHEWQHMBVJFYNJSHHHOALXQYHDSJZ9999", "FQEWOKJEQSBTVVKXCMEJLQLHPMJURJBHKYVWYGWADGTTLNOJULB9GNLPURDFUGYIKFLYRVUHUPOCZ9999", "SYKAHYBU9CJMXNYAWNKIGYMBXHLCDGTYMB9LJBJSORPFI9FIVJUIPONPGIAS9LKCYOFTJZMGYIOFA9999", "MMQRX9UNVXZHHYRWDUGLOQWLPBQAR9JDKS9TWVTJDXPGPKJMZZVKKZHC9NEWMCBL9ZMBXGSVFUSVA9999", "OHYQVWPFLMTCTAODXGRZUKFBTKFSCRXGRZHRQVDOFZSUOTLFAQTVDPCANAIAHFJKPYYCWQREYXQW99999", "GSYVJVVPTKGQPX9UFTWIMGUMIDWSCQMKTFJBMCMXWNARCUOMTENEZZTUJKXIBVZETBUSPWFFAVIFA9999"], { (transactions) in
+			print(transactions)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
+	func testTransactionsFromAddress() {
+		let expectation = XCTestExpectation(description: "testReplayBundle test")
+		
+		iota.transactionsFromAddress(address: "WUXXDPJTYVJ9LP9UAKLUACKPKZSCZKBPIZYKIRALGXRIDPUVFJOVGNKYCOFJBACIZGJWTSRZLLMOUPIQZ", { (txs) in
+			print(txs)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
 	func testReplayBundle() {
 		let expectation = XCTestExpectation(description: "testReplayBundle test")
 		
 		iota.replayBundle(tx: "BKBALUPMEECOGEYQU9OHXTFTHV9OKEVUGHAUNNQCNETAQWIRJIKDGWSWXY9RSIMZJBPIPEIQEFEIA9999", { (txs) in
 			print(txs)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
+	func testLatestInclusionStates() {
+		let expectation = XCTestExpectation(description: "testReplayBundle test")
+		
+		iota.latestInclusionStates(hashes: ["PTKBSAQULPCOCJBUUCLBLASHPAZVOYQGHOKEBOELLCAAZTMNJZJPHBREXLORXWWARTMVIFQ9HNOT99999", "REJJFSYOARFQAJLTUDGI9PKRUZFUO9KVAM9YFWTQELJSGPBMS9QQPECLSS9MZH9PPDO9EWHRLJRDZ9999", "EYL9DPXYUAPGCVQHMYCLSAMOOFJZARRUYZFGHLIBGTRFXGS9NORUVQBULWBXTRJBSQHYPBXYFMNBZ9999", "KWXLWQNSMLMCY9JUDWMKJ9ZH9EYACWPPDTLVATDTGSUCGRSWNMYKCNSXA9GM9QUHBNRINSRBFDPPZ9999", "IKXZNIAFTYSABDABTAASBUO9KBRKIMKIBHWJBODP9BZVDZFKDHEWQHMBVJFYNJSHHHOALXQYHDSJZ9999", "FQEWOKJEQSBTVVKXCMEJLQLHPMJURJBHKYVWYGWADGTTLNOJULB9GNLPURDFUGYIKFLYRVUHUPOCZ9999", "SYKAHYBU9CJMXNYAWNKIGYMBXHLCDGTYMB9LJBJSORPFI9FIVJUIPONPGIAS9LKCYOFTJZMGYIOFA9999", "MMQRX9UNVXZHHYRWDUGLOQWLPBQAR9JDKS9TWVTJDXPGPKJMZZVKKZHC9NEWMCBL9ZMBXGSVFUSVA9999", "OHYQVWPFLMTCTAODXGRZUKFBTKFSCRXGRZHRQVDOFZSUOTLFAQTVDPCANAIAHFJKPYYCWQREYXQW99999", "GSYVJVVPTKGQPX9UFTWIMGUMIDWSCQMKTFJBMCMXWNARCUOMTENEZZTUJKXIBVZETBUSPWFFAVIFA9999"], { (result) in
+			print(result)
 			expectation.fulfill()
 		}) { (error) in
 			print(error)
