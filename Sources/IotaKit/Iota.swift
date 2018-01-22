@@ -135,15 +135,12 @@ public class Iota {
 		self.attachToTangle(seed: seed, address: address, security: security, success, error: error)
 	}
 	
-	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [String]?, remainderAddress: String, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
-		
-		guard let trytes = self.prepareTransfers(seed: seed, security: security, transfers: transfers, remainder: remainderAddress, inputs: inputs, validateInputs: false) else {
-			error(IotaAPIError("Error preparing transfers"))
-			return
-		}
-		IotaDebug("Sending trytes")
-		self.sendTrytes(trytes: trytes, { (trxs) in
-			success(trxs)
+	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+		self.prepareTransfers(seed: seed, security: security, transfers: transfers, remainder: remainderAddress, inputs: inputs, validateInputs: false, { (trytes) in
+			self.IotaDebug("Sending trytes")
+			self.sendTrytes(trytes: trytes, { (trxs) in
+				success(trxs)
+			}, error: error)
 		}, error: error)
 	}
 	
@@ -373,9 +370,9 @@ extension Iota {
 		}
 	}
 	
-	internal func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String?, inputs: [String]?, validateInputs: Bool) -> [String]? {
+	internal func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String?, inputs: [IotaInput]?, validateInputs: Bool, _ success: @escaping (_ transfers: [String]) -> Void, error: @escaping (Error) -> Void) {
 		var bundle = IotaBundle()
-		var signatureFragment: [String] = []
+		var signatureFragments: [String] = []
 		var totalValue: UInt = 0
 		var tag = ""
 		
@@ -396,12 +393,12 @@ extension Iota {
 					var fragment = msgCopy.substring(from: 0, to: IotaConstants.messageLength)
 					msgCopy = msgCopy.substring(from: IotaConstants.messageLength, to: msgCopy.count)
 					fragment.rightPad(count: IotaConstants.messageLength, character: "9")
-					signatureFragment.append(fragment)
+					signatureFragments.append(fragment)
 				}
 			}else {
 				var fragment = transfer.message
 				fragment.rightPad(count: IotaConstants.messageLength, character: "9")
-				signatureFragment.append(fragment)
+				signatureFragments.append(fragment)
 			}
 			
 			tag = transfer.tag
@@ -413,15 +410,25 @@ extension Iota {
 		}
 		
 		if totalValue != 0 {
-			guard let theInputs = inputs else {
-				
-				return nil
+			if inputs != nil && inputs!.isEmpty {
+				if !validateInputs {
+					self.addRemainder(seed: seed, security: security, inputs: inputs!, bundle: bundle, tag: tag, totalValue: Int(totalValue), remainderAddress: remainder, signatureFragment: signatureFragments, success, error: error)
+					return
+				}
+				//TODO Validate inputs
+			}else{
+				self.inputs(seed: seed, security: security, threshold: totalValue, { (resultInputs) in
+					var remainderAddress = remainder
+					if remainder == nil {
+						remainderAddress = IotaAPIUtils.newAddress(seed: seed, security: security, index: resultInputs.accountAddresses.count, checksum: false, curl: self.curl.clone())
+					}
+					self.addRemainder(seed: seed, security: security, inputs: resultInputs.inputs, bundle: bundle, tag: tag, totalValue: Int(totalValue), remainderAddress: remainderAddress, signatureFragment: signatureFragments, success, error: error)
+				}, error: error)
 			}
-			guard !theInputs.isEmpty else { return nil }
-			//Use inputs
+			return
 		}else{
 			bundle.finalize(customCurl: nil)
-			bundle.addTrytes(signatureFragments: signatureFragment)
+			bundle.addTrytes(signatureFragments: signatureFragments)
 			
 			let trxb = bundle.transactions
 			var bundleTrytes: [String] = []
@@ -430,9 +437,54 @@ extension Iota {
 				bundleTrytes.append(trx.trytes)
 			}
 			bundleTrytes.reverse()
-			return bundleTrytes
+			success(bundleTrytes)
+			return
 		}
-		return nil
+		error(IotaAPIError("Invalid inputs"))
+	}
+	
+	typealias InputsAndAddresses = (inputs: [IotaInput], accountAddresses: [IotaAddress])
+	internal func inputs(seed: String, security: Int, threshold: UInt, canDoubleSpend: Bool = false, _ success: @escaping (_ inputs: InputsAndAddresses) -> Void, error: @escaping (Error) -> Void) {
+		
+		self.accountData(seed: seed, security: security, requestTransactions: true, { (account) in
+			guard let filteredAddresses = self.filterAddresses(account.addresses, amountToReach: threshold, canDoubleSpend: canDoubleSpend) else {
+				error(IotaAPIError("Not enough balance"))
+				return
+			}
+			//success(filteredAddresses.addresses.map { $0.hash })
+			var inputs: [IotaInput] = []
+			for i in 0..<filteredAddresses.addresses.count {
+				let a = filteredAddresses.addresses[i]
+				let input = IotaInput(address: a.hash, balance: a.balance!, keyIndex: i, security: security)
+				inputs.append(input)
+			}
+			success((inputs: inputs, accountAddresses: account.addresses))
+		}, error: error)
+	}
+	
+	internal func filterAddresses(_ addresses: [IotaAddress], amountToReach: UInt, canDoubleSpend: Bool = false) -> (addresses: [IotaAddress], balance: UInt)? {
+		let filteredAddresses = addresses.filter { (a) -> Bool in
+			let balance = a.balance! > 0
+			let doubleSpend = canDoubleSpend ? true : a.canSpend!
+			return balance && doubleSpend
+		}
+		
+		var currentValue: UInt = 0
+		var resultAddresses: [IotaAddress] = []
+		for a in filteredAddresses {
+			currentValue += UInt(a.balance!)
+			resultAddresses.append(a)
+			if currentValue >= amountToReach {
+				break
+			}
+		}
+		
+		if currentValue >= amountToReach {
+			return (addresses: resultAddresses, balance:currentValue)
+		}else{
+			return nil
+		}
+		
 	}
 	
 	
@@ -483,16 +535,26 @@ extension Iota {
 		}
 		
 		self.accountData(seed: seed, security: security, { (account) in
+			let newAddress = IotaAPIUtils.newAddress(seed: seed, security: security, index: account.addresses.count, checksum: checksum, curl: self.curl.clone())
+			allAddresses = account.addresses.map { $0.hash }
+			allAddresses.append(newAddress)
 			if !returnAll {
-				allAddresses = [account.addresses.last!.hash]
+				allAddresses = [allAddresses.last!]
 			}
-			success(account.addresses.map { $0.hash })
+			success(allAddresses)
 		}, error: error)
 	}
 	
 	internal func addRemainder(seed: String, security: Int, inputs: [IotaInput], bundle b: IotaBundle, tag: String, totalValue: Int, remainderAddress: String?, signatureFragment: [String], _ success: @escaping (_ addresses: [String]) -> Void, error: @escaping (Error) -> Void) {
 		var bundle = b
 		var totalTransferValue = totalValue
+		
+		let inputsTotal = inputs.reduce(0) { (r, i) -> Int in return r+i.balance }
+		if inputsTotal < totalTransferValue {
+			error(IotaAPIError("Not enough balance"))
+			return
+		}
+		
 		for i in 0..<inputs.count {
 			let thisBalance = inputs[i].balance
 			let toSubtract = 0 - thisBalance
@@ -511,14 +573,13 @@ extension Iota {
 					self.newAddress(seed: seed, security: security, index: 0, checksum: false, total: 0, returnAll: false, { (addresses) in
 						bundle.addEntry(signatureMessageLength: 1, address: addresses.last!, value: remainder, tag: tag, timestamp: UInt(timestamp))
 						success(IotaAPIUtils.signInputs(seed: seed, inputs: inputs, bundle: bundle, signatureFragments: signatureFragment, curl: self.curl.clone()))
-						return
 					}, error: error)
+					break
 				}
 			}else {
 				totalTransferValue -= thisBalance
 			}
 		}
-		error(IotaAPIError("Not enough balance"))
 	}
 	
 	fileprivate func IotaDebug(_ items: Any, separator: String = " ", terminator: String = "\n") {

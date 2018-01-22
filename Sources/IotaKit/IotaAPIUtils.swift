@@ -38,6 +38,7 @@ public struct IotaAPIUtils {
 		bundle.addTrytes(signatureFragments: signatureFragments)
 		
 		for i in 0..<bundle.transactions.count {
+			if bundle.transactions[i].value >= 0 { continue }
 			let thisAddress = bundle.transactions[i].address
 			
 			var keyIndex = 0

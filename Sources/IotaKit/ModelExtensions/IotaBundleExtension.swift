@@ -27,16 +27,15 @@ public extension IotaBundle {
 		repeat {
 			curl.reset()
 			for i in 0..<self.transactions.count {
-				var t = self.transactions[i]
-				let valueTrits = IotaConverter.trits(trytes: Int(t.value), length: 81)
-				let timestampTrits = IotaConverter.trits(trytes: Int(t.timestamp), length: 27)
-				t.currentIndex = UInt(i)
-				let currentIndexTrits = IotaConverter.trits(trytes: Int(t.currentIndex), length: 27)
-				t.lastIndex = UInt(i)
-				let lastIndexTrits = IotaConverter.trits(trytes: Int(t.lastIndex), length: 27)
-				var tt = t.address
+				let valueTrits = IotaConverter.trits(trytes: Int(self.transactions[i].value), length: 81)
+				let timestampTrits = IotaConverter.trits(trytes: Int(self.transactions[i].timestamp), length: 27)
+				self.transactions[i].currentIndex = UInt(i)
+				let currentIndexTrits = IotaConverter.trits(trytes: Int(self.transactions[i].currentIndex), length: 27)
+				self.transactions[i].lastIndex = UInt(self.transactions.count-1)
+				let lastIndexTrits = IotaConverter.trits(trytes: Int(self.transactions[i].lastIndex), length: 27)
+				var tt = self.transactions[i].address
 				tt += IotaConverter.trytes(trits: valueTrits)
-				tt += t.obsoleteTag
+				tt += self.transactions[i].obsoleteTag
 				tt += IotaConverter.trytes(trits: timestampTrits)
 				tt += IotaConverter.trytes(trits: currentIndexTrits)
 				tt += IotaConverter.trytes(trits: lastIndexTrits)
