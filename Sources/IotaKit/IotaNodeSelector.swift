@@ -51,7 +51,7 @@ struct IotaNodeSelector {
 	static func bestNode(prefersHTTPS: Bool, _ success: @escaping (_ node: IotaNode) -> Void, error: @escaping (_ error: IotaAPIError) -> Void) {
 		
 		func testNode(n: [IotaNode], index: Int = 0) {
-			print("testing \(n[index].fullAddress)")
+			//print("testing \(n[index].fullAddress)")
 			let iota = Iota(node: n[index].fullAddress)
 			iota.nodeInfo({ (nodeInfo) in
 				success(n[index])

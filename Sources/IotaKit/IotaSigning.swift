@@ -136,6 +136,7 @@ class IotaSigning {
 		var signatureFragment = keyFragment.map { $0 }
 		for i in 0..<27 {
 			for _ in 0..<(13 - normalizedBundleFragment[i]) {
+				self.curl.reset()
 				_ = self.curl.absorb(trits: signatureFragment, offset: i*IotaSigning.HASH_LENGTH, length: IotaSigning.HASH_LENGTH)
 				_ = self.curl.squeeze(trits: &signatureFragment, offset: i*IotaSigning.HASH_LENGTH, length: IotaSigning.HASH_LENGTH)
 			}

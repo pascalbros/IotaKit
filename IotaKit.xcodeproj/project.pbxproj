@@ -36,6 +36,8 @@
 		504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C202006AF8A007C6C7E /* IotaAPIServiceProtocol.swift */; };
 		504C6C332006AF8A007C6C7E /* IotaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C232006AF8A007C6C7E /* IotaModels.swift */; };
 		504C6CA82006C2BC007C6C7E /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 504C6CA72006C2BC007C6C7E /* sha3.c */; };
+		508B78FC20169F2400F1B748 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317B2010137000DC6E5B /* Crypto.swift */; };
+		508B78FD20169F2700F1B748 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317B2010137000DC6E5B /* Crypto.swift */; };
 		50F1DF87200C26FE005D91C6 /* IotaBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DF86200C26FE005D91C6 /* IotaBundleExtension.swift */; };
 		50F1DF8C200C2C62005D91C6 /* IotaTransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DF8B200C2C62005D91C6 /* IotaTransactionExtension.swift */; };
 		50F1DF96200EE7AD005D91C6 /* IotaLocalPow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DF94200EE7AD005D91C6 /* IotaLocalPow.swift */; };
@@ -378,6 +380,7 @@
 				OBJ_27 /* IotaKitTests.swift in Sources */,
 				50F33170200FB6D200DC6E5B /* Iota.swift in Sources */,
 				50F33169200FB6CD00DC6E5B /* IotaTransactionExtension.swift in Sources */,
+				508B78FD20169F2700F1B748 /* Crypto.swift in Sources */,
 				50F331822010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */,
 				50F33176200FB6D900DC6E5B /* IotaAPIServiceProtocol.swift in Sources */,
 				50F33164200FB6C800DC6E5B /* Kerl.swift in Sources */,
@@ -415,6 +418,7 @@
 				504C6C2E2006AF8A007C6C7E /* IotaConverter.swift in Sources */,
 				504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */,
 				504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */,
+				508B78FC20169F2400F1B748 /* Crypto.swift in Sources */,
 				50F1DF96200EE7AD005D91C6 /* IotaLocalPow.swift in Sources */,
 				50F3315E200D73E300DC6E5B /* IotaInputValidator.swift in Sources */,
 				50F1DF97200EE7AD005D91C6 /* PearlDiver.swift in Sources */,

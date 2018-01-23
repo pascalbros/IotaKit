@@ -83,6 +83,7 @@ public struct IotaInput {
 public struct IotaAddress {
 	public internal(set) var hash: String
 	public internal(set) var transactions: [IotaTransaction]?
+	public internal(set) var index: Int?
 	public var balance: Int? {
 		guard let txs = self.transactions else { return nil }
 		return txs.reduce(0) { (r, t) -> Int in

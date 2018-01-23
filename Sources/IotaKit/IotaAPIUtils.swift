@@ -36,7 +36,7 @@ public struct IotaAPIUtils {
 		var bundle = b
 		bundle.finalize(customCurl: curl)
 		bundle.addTrytes(signatureFragments: signatureFragments)
-		
+
 		for i in 0..<bundle.transactions.count {
 			if bundle.transactions[i].value >= 0 { continue }
 			let thisAddress = bundle.transactions[i].address
@@ -69,8 +69,7 @@ public struct IotaAPIUtils {
 				if tx.address == thisAddress && tx.value == 0 {
 					let secondFragment = key.slice(from: 6561 * j, to: 6561 * (j + 1))
 					let secondBundleFragment = normalizedBundleHash.slice(from: 27 * j, to: 27 * (j + 1))
-					let secondSignedFragment = signing.signatureFragment(normalizedBundleFragment: secondBundleFragment, keyFragment: secondFragment)
-					
+					let secondSignedFragment = IotaSigning(curl: curl.clone()).signatureFragment(normalizedBundleFragment: secondBundleFragment, keyFragment: secondFragment)
 					bundle.transactions[i+j].signatureFragments = IotaConverter.trytes(trits: secondSignedFragment)
 				}
 			}

@@ -107,14 +107,16 @@ public class Iota {
 						self.IotaDebug("Getting trytes")
 						self.addressFromHash(address: address, { (resultAddress) in
 							self.IotaDebug("Got trytes")
-							account.addresses.append(resultAddress)
+							var tempAddress = resultAddress
+							tempAddress.index = index
+							account.addresses.append(tempAddress)
 							DispatchQueue.main.async {
 								index += 1
 								findTransactions()
 							}
 						}, error: error)
 					}else{
-						let iotaAddress = IotaAddress(hash: address, transactions: nil)
+						let iotaAddress = IotaAddress(hash: address, transactions: nil, index: index)
 						account.addresses.append(iotaAddress)
 						DispatchQueue.main.async {
 							index += 1
@@ -257,7 +259,7 @@ public class Iota {
 	
 	public func addressFromHash(address: String, _ success: @escaping (_ transactions: IotaAddress) -> Void, error: @escaping (Error) -> Void) {
 		self.transactionsFromAddress(address: address, { (txs) in
-			let result = IotaAddress(hash: address, transactions: txs)
+			let result = IotaAddress(hash: address, transactions: txs, index: nil)
 			success(result)
 		}, error: error)
 	}
@@ -408,7 +410,6 @@ extension Iota {
 			bundle.addEntry(signatureMessageLength: signatureMessageLength, address: transfer.address, value: Int(transfer.value), tag: tag, timestamp: UInt(timestamp))
 			totalValue += transfer.value
 		}
-		
 		if totalValue != 0 {
 			if inputs != nil && inputs!.isEmpty {
 				if !validateInputs {
@@ -451,11 +452,10 @@ extension Iota {
 				error(IotaAPIError("Not enough balance"))
 				return
 			}
-			//success(filteredAddresses.addresses.map { $0.hash })
 			var inputs: [IotaInput] = []
 			for i in 0..<filteredAddresses.addresses.count {
 				let a = filteredAddresses.addresses[i]
-				let input = IotaInput(address: a.hash, balance: a.balance!, keyIndex: i, security: security)
+				let input = IotaInput(address: a.hash, balance: a.balance!, keyIndex: a.index!, security: security)
 				inputs.append(input)
 			}
 			success((inputs: inputs, accountAddresses: account.addresses))
