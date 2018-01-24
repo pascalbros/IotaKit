@@ -2,6 +2,7 @@
 #define sha3_h
 
 #include <stdint.h>
+#include <unistd.h>
 
 /* 'Words' here refers to uint64_t */
 #define SHA3_KECCAK_SPONGE_WORDS \

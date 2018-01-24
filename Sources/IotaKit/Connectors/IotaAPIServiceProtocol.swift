@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WebServices {
-	static func POST(data: Dictionary<String, Any>, destination: String, timeout: Int, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: NSError) -> Void)
+	static func POST(data: Dictionary<String, Any>, destination: String, timeout: Int, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void)
 }
 
 protocol IotaAPIServices {

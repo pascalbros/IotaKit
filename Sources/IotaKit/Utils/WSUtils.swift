@@ -10,14 +10,14 @@ import Foundation
 extension Dictionary where Key == String {
 	func toJson() -> String? {
 		
-		var jsonData: NSData!
+		var jsonData: Data!
 		do {
-			jsonData = try JSONSerialization.data(withJSONObject: self, options: []) as NSData
+			jsonData = try JSONSerialization.data(withJSONObject: self, options: [])
 		}catch _ {
 			return nil
 		}
-		return NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as String?
 		
+		return String(data: jsonData, encoding: .utf8)
 	}
 }
 
@@ -25,7 +25,7 @@ extension String {
 	func jsonToObject() -> Any? {
 		var jsonData: Any?
 		do {
-			jsonData = try JSONSerialization.jsonObject(with: (self as NSString).data(using: String.Encoding.utf8.rawValue)!, options: [])
+			jsonData = try JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: [])
 		}catch _ {
 			return nil
 		}
