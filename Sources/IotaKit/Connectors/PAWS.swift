@@ -35,7 +35,7 @@ struct PAWSRequest: WebServices {
 	
 	
 	static func request(type: String, data: Dictionary<String, Any>, destination: String, timeout: Int, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void){
-		let request = NSMutableURLRequest(url: NSURL(string: destination as String)! as URL)
+		var request = URLRequest(url: URL(string: destination)!)
 		request.httpMethod = type
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		request.setValue("1.4.1", forHTTPHeaderField: "X-IOTA-API-Version")

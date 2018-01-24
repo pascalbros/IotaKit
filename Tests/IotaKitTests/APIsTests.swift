@@ -23,6 +23,20 @@ class APIsTests: XCTestCase {
 		iota.debug = true
 	}
 	
+	func testNodeInfo() {
+		let expectation = XCTestExpectation(description: "testAccountData test")
+		
+		iota.nodeInfo({ (node) in
+			print(node)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		wait(for: [expectation], timeout: 120.0)
+	}
+	
 	func testAccountData() {
 		let expectation = XCTestExpectation(description: "testAccountData test")
 		
