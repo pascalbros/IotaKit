@@ -41,3 +41,11 @@ extension Array {
 		return Array(self[start..<end])
 	}
 }
+
+//Debug
+//extension Date {
+//	var timeIntervalSince1970: TimeInterval {
+//		return self.timeIntervalSince1970
+//	}
+//}
+

@@ -6,6 +6,7 @@
 //	See https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/hash/PearlDiver.java
 
 import Foundation
+import Dispatch
 
 enum PearlDiverState {
 	case idle

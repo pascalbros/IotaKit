@@ -9,7 +9,7 @@ import Foundation
 
 public struct IotaAccount {
 	public internal(set) var balance: Int = 0
-	public internal(set) var addresses: [String] = []
+	public internal(set) var addresses: [IotaAddress] = []
 	
 	internal init() {}
 }
@@ -71,4 +71,32 @@ public struct IotaBundle {
 public struct IotaSignature {
 	public internal(set) var address: String = ""
 	public internal(set) var signatureFragments: [String] = []
+}
+
+public struct IotaInput {
+	public internal(set) var address: String
+	public internal(set) var balance: Int
+	public internal(set) var keyIndex: Int
+	public internal(set) var security: Int
+}
+
+public struct IotaAddress {
+	public internal(set) var hash: String
+	public internal(set) var transactions: [IotaTransaction]?
+	public internal(set) var index: Int?
+	public var balance: Int? {
+		guard let txs = self.transactions else { return nil }
+		return txs.reduce(0) { (r, t) -> Int in
+			let v = t.persistence ? t.value : 0
+			return r+v
+		}
+	}
+	
+	public var canSpend: Bool? {
+		guard let txs = self.transactions else { return nil }
+		for t in txs {
+			if t.value < 0 { return false }
+		}
+		return true
+	}
 }

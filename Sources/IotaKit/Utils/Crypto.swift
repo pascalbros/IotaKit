@@ -29,10 +29,10 @@ public struct MD5Digest : Hashable, RawRepresentable, CustomStringConvertible {
 	/// The string _must_ consist of exactly 32 hex digits. Otherwise the initializer
 	/// returns `nil`.
 	public init?(rawValue: String) {
-		let input = rawValue as NSString
-		guard input.length == 32 else { return nil }
-		guard let high = UInt64(input.substring(to: 16), radix: 16) else { return nil }
-		guard let low  = UInt64(input.substring(from: 16), radix: 16) else { return nil }
+		let input = rawValue
+		guard input.count == 32 else { return nil }
+		guard let high = UInt64(String(input.prefix(16)), radix: 16) else { return nil }
+		guard let low  = UInt64(String(input.suffix(16)), radix: 16) else { return nil }
 		_digest = (high.byteSwapped, low.byteSwapped)
 	}
 	

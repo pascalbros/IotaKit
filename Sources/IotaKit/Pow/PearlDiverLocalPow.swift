@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Dispatch
 
 class PearlDiverLocalPoW: IotaLocalPoW {
 	

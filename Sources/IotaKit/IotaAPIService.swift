@@ -200,5 +200,42 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
+	static func inclusionStates(nodeAddress: String, hashes: [String], tips: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "getInclusionStates")
+		data["transactions"] = hashes
+		data["tips"] = tips
+		
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			if let e = dict["error"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			if let e = dict["exception"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			
+			if let states = dict["states"] as? [Bool] {
+				success(states)
+				return
+			}
+			error(IotaAPIError("Malformed JSON"))
+		}) { (e) in
+			error(e)
+		}
+	}
 	
+	static func latestInclusionStates(nodeAddress: String, hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
+		
+		self.nodeInfo(nodeAddress: nodeAddress, { (nodeInfo) in
+			guard let milestone = nodeInfo["latestMilestone"] as? String else { error(IotaAPIError("Error getting latest milestone")); return }
+			
+			self.inclusionStates(nodeAddress: nodeAddress, hashes: hashes, tips: [milestone], success, error)
+		}, error)
+	}
 }
