@@ -31,6 +31,20 @@ public struct IotaAPIUtils {
 		return true
 	}
 	
+	public static func groupTxsByBundle(_ txs: [IotaTransaction]) -> [[IotaTransaction]] {
+		
+		var result: [String: [IotaTransaction]] = [:]
+		for tx in txs {
+			if result[tx.bundle] == nil {
+				result[tx.bundle] = [tx]
+			}else{
+				result[tx.bundle]!.append(tx)
+			}
+		}
+		
+		return Array(result.values)
+	}
+	
 	internal static func signInputs(seed: String, inputs: [IotaInput], bundle b: IotaBundle, signatureFragments: [String], curl: CurlSource) -> [String] {
 		
 		var bundle = b
