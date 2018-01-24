@@ -65,6 +65,10 @@ public class Iota {
 		}
 		
 		func getInclusions() {
+			if account.addresses.isEmpty {
+				completeBalances()
+				return
+			}
 			let hashes = account.addresses[index].transactions!.map { $0.hash }
 			self.latestInclusionStates(hashes: hashes, { (inclusions) in
 				for i in 0..<account.addresses[index].transactions!.count {
@@ -418,6 +422,8 @@ extension Iota {
 					return
 				}
 				//TODO Validate inputs
+				error(IotaAPIError("Not implemented yet"))
+				return
 			}else{
 				self.inputs(seed: seed, security: security, threshold: totalValue, { (resultInputs) in
 					var remainderAddress = remainder
@@ -442,7 +448,7 @@ extension Iota {
 			success(bundleTrytes)
 			return
 		}
-		error(IotaAPIError("Invalid inputs"))
+		//error(IotaAPIError("Invalid inputs"))
 	}
 	
 	typealias InputsAndAddresses = (inputs: [IotaInput], accountAddresses: [IotaAddress])

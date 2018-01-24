@@ -11,17 +11,29 @@ The IOTA Swift API Library
 - [x] Local PoW
 - [x] Attach to tangle (0i tx)
 - [x] Replay Bundle
-- [ ] Transfer (>0i tx)
+- [x] Transfer (>0i tx)
 - [ ] Promote
 - [ ] Multisignature Support
 
 ## Compatibility
 
-IotaKit should be compatible with all architectures, tested on iOS/MacOS.
+IotaKit is compatible with all architectures, tested on iOS/MacOS/Ubuntu.
 
 ## Dependencies
 
 `Foundation`
+`Dispatch`
+
+## Compile
+
+### MacOS
+
+Compile it directly from Xcode project or follow the Ubuntu instructions
+
+### Ubuntu
+
+`cd IotaKit`
+`swift build -Xcc -ISources/IotaKit/include/sha3`
 
 ## Example
 
