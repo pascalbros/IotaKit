@@ -230,6 +230,39 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
+	static func checkConsistency(nodeAddress: String, hashes: [String], _ success: @escaping ((Bool) -> Void), _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "checkConsistency")
+		data["tails"] = hashes
+		
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			if let e = dict["error"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			if let e = dict["exception"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			if let state = dict["state"] as? Int {
+				success(state == 1 ? true : false)
+				return
+			}
+			
+			if let state = dict["state"] as? Bool {
+				success(state)
+				return
+			}
+			error(IotaAPIError("Malformed JSON"))
+		}) { (e) in
+			error(e)
+		}
+	}
+	
 	static func latestInclusionStates(nodeAddress: String, hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
 		
 		self.nodeInfo(nodeAddress: nodeAddress, { (nodeInfo) in

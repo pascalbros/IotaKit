@@ -176,6 +176,17 @@ class APIsTests: XCTestCase {
 		wait(for: [expectation], timeout: 1200.0)
 	}
 	
+	func testCheckConsistency() {
+		let expectation = XCTestExpectation(description: "testFindTransactions test")
+
+		IotaAPIService.checkConsistency(nodeAddress: "http://iota-tangle.io:14265", hashes: ["YHDBPGHRSGHNKQECDPLTLXJBTRWIMYICNCOQCGTDNVIRXZICGMQTAECHQNVKQJYHHCDVGXZTCYLR99999"], { (result) in
+			print(result)
+		}) { (error) in
+			print(error)
+		}
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
 	func testGetTransactionTrytes() {
 		let expectation = XCTestExpectation(description: "testFindTransactions test")
 		
@@ -245,16 +256,12 @@ class APIsTests: XCTestCase {
 		let expectation = XCTestExpectation(description: "testAccountData test")
 		
 		iota.accountData(seed: TEST_SEED1, requestTransactions: true, { (account) in
-			let txs = account.addresses.map { $0.transactions! }.flatMap { $0 }
-			let result = IotaAPIUtils.groupTxsByBundle(txs)
-			
-			for r in result {
-				var value = 0
-				for rr in r {
-					value += rr.value
-				}
-				print(value)
+			//let txs = account.addresses.map { $0.transactions! }.flatMap { $0 }
+			let result = IotaAPIUtils.historyTransactions(addresses: account.addresses).reversed()
+			for tx in result {
+				print("Value:\(tx.value) Persistence:\(tx.persistence) Reattaches:\(tx.transactions.count) \(Date(timeIntervalSince1970: TimeInterval(tx.timestamp)) )")
 			}
+			
 			expectation.fulfill()
 		}) { (error) in
 			print(error)

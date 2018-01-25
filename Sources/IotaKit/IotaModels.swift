@@ -14,6 +14,16 @@ public struct IotaAccount {
 	internal init() {}
 }
 
+public struct IotaHistoryTransaction {
+	public internal(set) var value: Int = 0
+	public internal(set) var address = ""
+	public internal(set) var tag = ""
+	public internal(set) var persistence: Bool = false
+	public internal(set) var bundle: String = ""
+	public internal(set) var timestamp: UInt = 0
+	public internal(set) var transactions: [[IotaTransaction]] = []
+}
+
 public struct IotaTransaction {
 	public internal(set) var value: Int = 0
 	public internal(set) var address = ""

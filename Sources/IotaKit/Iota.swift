@@ -115,7 +115,7 @@ public class Iota {
 							var tempAddress = resultAddress
 							tempAddress.index = index
 							account.addresses.append(tempAddress)
-							DispatchQueue.main.async {
+							DispatchQueue.global(qos: .userInitiated).async {
 								index += 1
 								findTransactions()
 							}
@@ -123,15 +123,13 @@ public class Iota {
 					}else{
 						let iotaAddress = IotaAddress(hash: address, transactions: nil, index: index)
 						account.addresses.append(iotaAddress)
-						DispatchQueue.main.async {
+						DispatchQueue.global(qos: .userInitiated).async {
 							index += 1
 							findTransactions()
 						}
 					}
 				}
-			}) { (e) in
-				error(e)
-			}
+			}, error)
 		}
 		
 		findTransactions()
