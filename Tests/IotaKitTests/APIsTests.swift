@@ -43,11 +43,11 @@ class APIsTests: XCTestCase {
 		iota.accountData(seed: TEST_SEED1, { (account) in
 			print(account)
 			expectation.fulfill()
-		}) { (error) in
+		}, error: { (error) in
 			print(error)
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
-		}
+		})
 		wait(for: [expectation], timeout: 120.0)
 	}
 	
@@ -57,11 +57,11 @@ class APIsTests: XCTestCase {
 		iota.accountData(seed: TEST_SEED1, requestTransactions: true, { (account) in
 			print(account)
 			expectation.fulfill()
-		}) { (error) in
+		}, error: { (error) in
 			print(error)
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
-		}
+		})
 		wait(for: [expectation], timeout: 120.0)
 	}
 	
@@ -93,11 +93,11 @@ class APIsTests: XCTestCase {
 		
 		iota.accountData(seed: self.TEST_SEED1, { (account) in
 			attach(index: account.addresses.count)
-		}) { (error) in
+		}, error: { (error) in
 			print(error)
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
-		}
+		})
 		wait(for: [expectation], timeout: 1200.0)
 	}
 	
@@ -263,11 +263,11 @@ class APIsTests: XCTestCase {
 			}
 			
 			expectation.fulfill()
-		}) { (error) in
+		}, error: { (error) in
 			print(error)
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
-		}
+		})
 		wait(for: [expectation], timeout: 1200.0)
 	}
 	
