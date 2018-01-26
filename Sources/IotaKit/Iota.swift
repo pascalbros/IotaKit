@@ -10,7 +10,7 @@ import Dispatch
 
 public class Iota {
 	
-	fileprivate(set) var address: String = ""
+	public fileprivate(set) var address: String = ""
 	public var debug = false
 	fileprivate var localPoW: IotaLocalPoW? = PearlDiverLocalPoW()
 	fileprivate let APIServices: IotaAPIServices.Type = IotaAPIService.self
@@ -50,7 +50,7 @@ public class Iota {
 		APIServices.trytes(nodeAddress: self.address, hashes: hashes, success, error)
 	}
 	
-	public func accountData(seed: String, security: Int = 2, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void) {
+	public func accountData(seed: String, security: Int = 2, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void, log: ((_ log: IotaLog) -> Void)? = nil) {
 		
 		var account = IotaAccount()
 		var index = 0
@@ -85,6 +85,7 @@ public class Iota {
 		
 		func findBalances() {
 			IotaDebug("Getting balances")
+			log?(IotaLog(message: "Getting balances"))
 			if requestTransactions {
 				index = 0
 				getInclusions()
@@ -102,7 +103,9 @@ public class Iota {
 		
 		func findTransactions() {
 			let address = IotaAPIUtils.newAddress(seed: seed, security: security, index: index, checksum: false, curl: self.curl.clone())
+			
 			IotaDebug("Getting transactions")
+			log?(IotaLog(message: "Getting transactions from address \(index)"))
 			APIServices.findTransactions(nodeAddress: self.address, addresses: [address], { (hashes) in
 				self.IotaDebug("Got transactions \(hashes.count)")
 				if hashes.count == 0 {

@@ -268,7 +268,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: 1200.0)
 	}
 	
 	

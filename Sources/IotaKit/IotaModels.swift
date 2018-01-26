@@ -110,3 +110,7 @@ public struct IotaAddress {
 		return true
 	}
 }
+
+public struct IotaLog {
+	public internal(set) var message: String = ""
+}

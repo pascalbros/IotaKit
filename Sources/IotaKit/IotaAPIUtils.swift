@@ -74,41 +74,22 @@ public struct IotaAPIUtils {
 	}
 	
 	public static func historyTransactions(addresses: [IotaAddress]) -> [IotaHistoryTransaction]{
-		let txs = addresses.flatMap { $0.transactions! }.sorted { (t1, t2) -> Bool in
-			return t1.timestamp < t2.timestamp
-		}
-		let addressHashes = addresses.map { $0.hash }
-		var bundles = self.groupTxsByBundle(txs)
+		let tempTxs = addresses.flatMap { $0.transactions! }
+		let bundles = self.groupTxsByBundle(tempTxs)
 		var result: [[[IotaTransaction]]] = []
-		//Split bundles in subbundles grouping with branch and trunk (reattached and confirmed tx)
-		for i in 0..<bundles.count {
-			var stringsInCommon: [String: Int] = [:]
-			for tx in bundles[i] {
-				let trunk = tx.trunkTransaction
-				let branch = tx.branchTransaction
-				stringsInCommon[trunk] = stringsInCommon[trunk] != nil ? stringsInCommon[trunk]! + 1 : 1
-				stringsInCommon[branch] = stringsInCommon[branch] != nil ? stringsInCommon[branch]! + 1 : 1
-			}
-			let max = stringsInCommon.values.reduce(0, { (r, v) -> Int in
-				return r >= v ? r : v
-			})
-			let filteredBundleHashes = stringsInCommon.filter({ (k, v) -> Bool in
-				return v == max
-			})
-			
-			var subBundles: [String: [IotaTransaction]] = [:]
-			for k in filteredBundleHashes.keys { subBundles[k] = [] }
-			for tx in bundles[i] {
-				if filteredBundleHashes[tx.branchTransaction] != nil {
-					subBundles[tx.branchTransaction]!.append(tx)
-				}else if filteredBundleHashes[tx.trunkTransaction] != nil {
-					subBundles[tx.trunkTransaction]!.append(tx)
-				}else{ print("Should never reach here") }
-			}
-			subBundles = subBundles.filter { !$0.value.isEmpty }
-			result.append(Array(subBundles.values))
-		}
 
+		for bundle in bundles {
+			let txs = bundle.sorted { $0.attachmentTimestamp < $1.attachmentTimestamp }
+			let first = txs.first!.currentIndex
+			let numOfBundles = txs.reduce(0) { $1.currentIndex == first ? $0+1 : $0 }
+			var tempResult: [[IotaTransaction]] = []
+			let numberOfTxs = txs.count / numOfBundles
+			for i in 0..<numOfBundles {
+				let slice = txs.slice(from: i*numberOfTxs, to: i*numberOfTxs + numberOfTxs).sorted { $0.currentIndex < $1.currentIndex }
+				tempResult.append(slice)
+			}
+			result.append(tempResult)
+		}
 		return result.map { valueFromBundle($0) }.sorted { $0.timestamp < $1.timestamp }
 	}
 	
