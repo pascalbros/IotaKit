@@ -69,3 +69,25 @@ public extension IotaTransaction {
 	}
 }
 
+extension IotaTransaction: Equatable {
+	public static func ==(lhs: IotaTransaction, rhs: IotaTransaction) -> Bool {
+		if lhs.hash != rhs.hash { return false }
+		if lhs.address != rhs.address { return false }
+		if lhs.tag != rhs.tag { return false }
+		if lhs.value != rhs.value { return false }
+		if lhs.signatureFragments != rhs.signatureFragments { return false }
+		if lhs.obsoleteTag != rhs.obsoleteTag { return false }
+		if lhs.timestamp != rhs.timestamp { return false }
+		if lhs.currentIndex != rhs.currentIndex { return false }
+		if lhs.lastIndex != rhs.lastIndex { return false }
+		if lhs.bundle != rhs.bundle { return false }
+		if lhs.trunkTransaction != rhs.trunkTransaction { return false }
+		if lhs.branchTransaction != rhs.branchTransaction { return false }
+		if lhs.attachmentTimestamp != rhs.attachmentTimestamp { return false }
+		if lhs.attachmentTimestampLowerBound != rhs.attachmentTimestampLowerBound { return false }
+		if lhs.attachmentTimestampUpperBound != rhs.attachmentTimestampUpperBound { return false }
+		if lhs.nonce != rhs.nonce { return false }
+		return true
+	}
+}
+

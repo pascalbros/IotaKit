@@ -65,10 +65,10 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
-	static func findTransactions(nodeAddress: String, addresses: [String], _ success: @escaping (_ hashes: [String]) -> Void, _ error: @escaping (Error) -> Void) {
+	static func findTransactions(nodeAddress: String, type: IotaFindTxType, query: [String], _ success: @escaping (_ hashes: [String]) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		var data = command(withString: "findTransactions")
-		data["addresses"] = addresses
+		data[type.rawValue] = query
 		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))
@@ -129,10 +129,13 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
-	static func transactionsToApprove(nodeAddress: String, depth: Int = 10, _ success: @escaping (_ txs: (trunkTx: String, branchTx: String)) -> Void, _ error: @escaping (Error) -> Void) {
+	static func transactionsToApprove(nodeAddress: String, depth: Int = 10, reference: String? = nil, _ success: @escaping (_ txs: (trunkTx: String, branchTx: String)) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		var data = command(withString: "getTransactionsToApprove")
 		data["depth"] = depth
+		if let r = reference {
+			data["reference"] = r
+		}
 		service.POST(data: data, destination: nodeAddress, timeout: 3600, successHandler: { (r) in
 			guard let dict = r.jsonToObject() as? [String: Any] else {
 				error(IotaAPIError("Error converting JSON"))

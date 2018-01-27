@@ -45,7 +45,11 @@ public class Iota {
 	}
 	
 	public func findTransactions(addresses: [String], _ success: @escaping (_ hashes: [String]) -> Void, error: @escaping (Error) -> Void) {
-		APIServices.findTransactions(nodeAddress: self.address, addresses: addresses, success, error)
+		APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: addresses, success, error)
+	}
+	
+	public func findTransactions(bundles: [String], _ success: @escaping (_ hashes: [String]) -> Void, error: @escaping (Error) -> Void) {
+		APIServices.findTransactions(nodeAddress: self.address, type: .bundles, query: bundles, success, error)
 	}
 	
 	public func trytes(hashes: [String], _ success: @escaping (_ trytes: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
@@ -108,7 +112,7 @@ public class Iota {
 			
 			IotaDebug("Getting transactions")
 			log?(IotaLog(message: "Getting transactions from address \(index)"))
-			APIServices.findTransactions(nodeAddress: self.address, addresses: [address], { (hashes) in
+			APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: [address], { (hashes) in
 				self.IotaDebug("Got transactions \(hashes.count)")
 				if hashes.count == 0 {
 					findBalances()
@@ -145,10 +149,10 @@ public class Iota {
 		self.attachToTangle(seed: seed, address: address, security: security, success, error: error)
 	}
 	
-	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		self.prepareTransfers(seed: seed, security: security, transfers: transfers, remainder: remainderAddress, inputs: inputs, validateInputs: false, { (trytes) in
 			self.IotaDebug("Sending trytes")
-			self.sendTrytes(trytes: trytes, { (trxs) in
+			self.sendTrytes(trytes: trytes, reference: reference, { (trxs) in
 				success(trxs)
 			}, error: error)
 		}, error: error)
@@ -265,6 +269,25 @@ public class Iota {
 		}, error: error)
 	}
 	
+	public func tailFromTransaction(tx: IotaTransaction, _ success: @escaping (_ tail: IotaTransaction) -> Void, error: @escaping (Error) -> Void) {
+		
+		
+		self.findTransactions(bundles: [tx.bundle], { (bundle) in
+			self.trytes(hashes: bundle, { (txs) in
+				let groups = IotaAPIUtils.groupTxsByBundle(txs)
+				for group in groups {
+					for t in group {
+						if t == tx {
+							success(group.sorted { $0.currentIndex < $1.currentIndex }.first!)
+							return
+						}
+					}
+				}
+				error(IotaAPIError("Bundle not found"))
+			}, error: error)
+		}, error: error)
+	}
+	
 	public func addressFromHash(address: String, _ success: @escaping (_ transactions: IotaAddress) -> Void, error: @escaping (Error) -> Void) {
 		self.transactionsFromAddress(address: address, { (txs) in
 			let result = IotaAddress(hash: address, transactions: txs, index: nil)
@@ -278,7 +301,29 @@ public class Iota {
 	
 	public func isPromotable(tail: String, _ success: @escaping ((Bool) -> Void), _ error: @escaping (Error) -> Void) {
 		if !IotaInputValidator.isHash(hash: tail) { success(false); return }
+		IotaDebug("Checking consistency")
 		APIServices.checkConsistency(nodeAddress: self.address, hashes: [tail], success, error)
+	}
+	
+	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+		
+		self.trytes(hashes: [hash], { (txs) in
+			self.promoteTransaction(txs.first!, success, error: error)
+		}, error: error)
+	}
+	
+	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+		
+		func promote(theTX: IotaTransaction) {
+			self.promote(tail: theTX.hash, success, error: error)
+		}
+		if tx.currentIndex == 0 {
+			promote(theTX: tx)
+		}else{
+			self.tailFromTransaction(tx: tx, { (tail) in
+				promote(theTX: tail)
+			}, error: error)
+		}
 	}
 	
 	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
@@ -315,7 +360,9 @@ extension Iota {
 			success(tail)
 			return
 		}
-		self.sendTransfers(seed: Iota.spamSeed, security: 2, depth: depth, minWeightMagnitude: minWeightMagnitude, transfers: [Iota.spamTranfer], inputs: nil, remainderAddress: nil, { (tx) in
+		IotaDebug("Promoting \(index+1)/\(numberOfPromotes)")
+		self.sendTransfers(seed: Iota.spamSeed, security: 2, depth: depth, minWeightMagnitude: minWeightMagnitude, transfers: [Iota.spamTranfer], inputs: nil, remainderAddress: nil, reference: tail, { (tx) in
+			self.IotaDebug("Promoted, tx:\(tx.first?.hash ?? "")")
 			self._promote(tail: tail, index: index + 1, numberOfPromotes: numberOfPromotes, success, error: error)
 		}, error: error)
 	}
@@ -363,7 +410,7 @@ extension Iota {
 		}, error: error)
 	}
 	
-	internal func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	internal func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		//4
 		func toTxs(trytes t: [String]) {
@@ -398,7 +445,7 @@ extension Iota {
 		
 		//0
 		IotaDebug("Getting TXs to approve")
-		APIServices.transactionsToApprove(nodeAddress: self.address, depth: depth, { (txs) in
+		APIServices.transactionsToApprove(nodeAddress: self.address, depth: depth, reference: reference, { (txs) in
 			attach(trunkTx: txs.trunkTx, branchTx: txs.branchTx)
 		}) { (e) in
 			error(e)

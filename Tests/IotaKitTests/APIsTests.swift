@@ -217,6 +217,56 @@ class APIsTests: XCTestCase {
 		wait(for: [expectation], timeout: 1200.0)
 	}
 	
+	func testTailFromTransaction() {
+		let expectation = XCTestExpectation(description: "testTailFromTransaction test")
+		
+		iota.trytes(hashes: ["GIEIXIEDBXCHQCELAZTCHP9NXWBAXVTRHYTOP9ANPDIXGAVKOXLFYROUENQBCZBW9AQNMPJTRNWWA9999"], { (transactions) in
+			self.iota.tailFromTransaction(tx: transactions.first!, { (tx) in
+				print(tx)
+				expectation.fulfill()
+			}, error: { (error) in
+				print(error)
+				assertionFailure((error as! IotaAPIError).message)
+				expectation.fulfill()
+			})
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
+	func testIsPromotable() {
+		let expectation = XCTestExpectation(description: "testIsPromotable test")
+		
+		iota.isPromotable(tail: "GIEIXIEDBXCHQCELAZTCHP9NXWBAXVTRHYTOP9ANPDIXGAVKOXLFYROUENQBCZBW9AQNMPJTRNWWA9999", { (result) in
+			print(result)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
+	func testPromote() {
+		let expectation = XCTestExpectation(description: "testPromote test")
+		
+		iota.promoteTransaction(hash: "NMEUFVSIMVXXXRGAQMPYYXNJHZIJDWUIMZHQVYZAJVUBJXD9SQAADOORRLWBEGDGBBPPMSIGYSI9A9999", { (result) in
+			print(result)
+			expectation.fulfill()
+		}) { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		}
+		wait(for: [expectation], timeout: 1200.0)
+	}
+	
 	func testReplayBundle() {
 		let expectation = XCTestExpectation(description: "testReplayBundle test")
 		
