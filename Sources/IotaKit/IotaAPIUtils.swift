@@ -93,6 +93,13 @@ public struct IotaAPIUtils {
 		return result.map { valueFromBundle($0) }.sorted { $0.timestamp < $1.timestamp }
 	}
 	
+	public static func checksumForSeed(_ seed: String) -> String {
+		return String(IotaChecksum.calculateChecksum(address: seed).suffix(3))
+	}
+	
+	
+	
+	
 	internal static func valueFromBundle(_ bundleTxs: [[IotaTransaction]]) -> IotaHistoryTransaction{
 		var tx = IotaHistoryTransaction()
 		tx.transactions = bundleTxs
