@@ -12,7 +12,7 @@ The IOTA Swift API Library
 - [x] Attach to tangle (0i tx)
 - [x] Replay Bundle
 - [x] Transfer (>0i tx)
-- [ ] Promote
+- [x] Promote
 - [ ] Multisignature Support
 
 ## Compatibility
