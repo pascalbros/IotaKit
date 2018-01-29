@@ -269,7 +269,7 @@ class IotaAPIService: IotaAPIServices {
 	static func latestInclusionStates(nodeAddress: String, hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
 		
 		self.nodeInfo(nodeAddress: nodeAddress, { (nodeInfo) in
-			guard let milestone = nodeInfo["latestMilestone"] as? String else { error(IotaAPIError("Error getting latest milestone")); return }
+			guard let milestone = nodeInfo["latestSolidSubtangleMilestone"] as? String else { error(IotaAPIError("Error getting latest milestone")); return }
 			
 			self.inclusionStates(nodeAddress: nodeAddress, hashes: hashes, tips: [milestone], success, error)
 		}, error)

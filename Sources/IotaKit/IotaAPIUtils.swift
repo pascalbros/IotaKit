@@ -9,6 +9,11 @@ import Foundation
 
 public struct IotaAPIUtils {
 	
+	public static func newAddress(seed: String, index: Int, checksum: Bool, security: Int = 2) -> String {
+		let curl = CurlMode.kerl.create()
+		return self.newAddress(seed: seed, security: security, index: index, checksum: checksum, curl: curl)
+	}
+	
 	static func newAddress(seed: String, security: Int, index: Int, checksum: Bool, curl: CurlSource) -> String {
 		let signing = IotaSigning(curl: curl.clone())
 		let seedTrits = IotaConverter.trits(fromString: seed)
