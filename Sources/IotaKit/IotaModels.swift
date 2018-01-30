@@ -106,6 +106,17 @@ public struct IotaAddress {
 		}
 	}
 	
+	private var _canSpend: Bool? = nil
+	public var canSpend: Bool? {
+		get {
+			guard let c = _canSpend else { return calculateCanSpend }
+			return c
+		}
+		set(newValue) {
+			self._canSpend = newValue
+		}
+	}
+	
 	init(hash: String, transactions: [IotaTransaction]?, index: Int?, balance: Int?) {
 		self.hash = hash
 		self.transactions = transactions
@@ -121,7 +132,7 @@ public struct IotaAddress {
 		}
 	}
 	
-	public var canSpend: Bool? {
+	private var calculateCanSpend: Bool? {
 		guard let txs = self.transactions else { return nil }
 		for t in txs {
 			if t.value < 0 { return false }
