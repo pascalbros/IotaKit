@@ -63,11 +63,6 @@ public class Iota {
 		var lastAddress = ""
 		
 		func completeBalances() {
-//			let balance = account.addresses.reduce(0, { (r, a) -> Int in
-//				return r+a.balance!
-//			})
-//			account.balance = balance
-//			success(account)
 			findBalances(false)
 		}
 		
@@ -111,6 +106,18 @@ public class Iota {
 			}
 		}
 		
+		func wereSpent() {
+			IotaDebug("Getting spent status")
+			log?(IotaLog(message: "Getting spent status"))
+			let addresses = account.addresses.map { $0.hash }
+			APIServices.wereAddressesSpentFrom(nodeAddress: self.address, addresses: addresses, { (result) in
+				for i in 0..<account.addresses.count {
+					account.addresses[i].canSpend = !result[i]
+				}
+				findBalances(requestTransactions)
+			}, error)
+		}
+		
 		func findTransactions() {
 			let address = IotaAPIUtils.newAddress(seed: seed, security: security, index: index, checksum: false, curl: self.curl.clone())
 			
@@ -119,7 +126,7 @@ public class Iota {
 			APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: [address], { (hashes) in
 				self.IotaDebug("Got transactions \(hashes.count)")
 				if hashes.count == 0 {
-					findBalances(requestTransactions)
+					wereSpent()
 				}else{
 					if requestTransactions {
 						self.IotaDebug("Getting trytes")
@@ -301,6 +308,10 @@ public class Iota {
 	
 	public func latestInclusionStates(hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
 		APIServices.latestInclusionStates(nodeAddress: self.address, hashes: hashes, success, error)
+	}
+	
+	public func wereAddressesSpentFrom(addresses: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
+		APIServices.wereAddressesSpentFrom(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 	
 	public func isPromotable(tail: String, _ success: @escaping ((Bool) -> Void), _ error: @escaping (Error) -> Void) {
