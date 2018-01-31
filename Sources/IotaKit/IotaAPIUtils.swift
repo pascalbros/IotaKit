@@ -36,6 +36,18 @@ public struct IotaAPIUtils {
 		return true
 	}
 	
+	public static func isAddress(_ string: String) -> Bool {
+		guard string.count == 81 || string.count == 90 else { return false }
+		for c in string {
+			guard IotaConverter.trytesAlphabet.index(of: c) != nil else { return false }
+		}
+		
+		if string.count == 90 {
+			return IotaChecksum.isValidChecksum(address: string)
+		}
+		return true
+	}
+	
 	public static func groupTxsByBundle(_ txs: [IotaTransaction]) -> [[IotaTransaction]] {
 		
 		var result: [String: [IotaTransaction]] = [:]
