@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct IotaChecksum {
+public struct IotaChecksum {
 	
-	static func calculateChecksum(address: String) -> String {
+	public static func calculateChecksum(address: String) -> String {
 		let curl: CurlSource = CurlMode.kerl.create()
 		_ = curl.absorb(trits: IotaConverter.trits(fromString: address))
 		var checksumTrits: [Int] = Array(repeating: 0, count: Kerl.HASH_LENGTH)
@@ -22,7 +22,7 @@ struct IotaChecksum {
 		return String(checksum[start..<end])
 	}
 	
-	static func removeChecksum(address: String) -> String? {
+	public static func removeChecksum(address: String) -> String? {
 		if self.isAddressWithChecksum(address: address) {
 			return self.removeChecksumFromAddress(address)
 		}else if self.isAddressWithoutChecksum(address: address) {
@@ -31,21 +31,21 @@ struct IotaChecksum {
 		return nil
 	}
 	
-	static func removeChecksumFromAddress(_ address: String) -> String {
+	public static func removeChecksumFromAddress(_ address: String) -> String {
 		return address.substring(from: 0, to: IotaConstants.addressLengthWithoutChecksum)
 	}
 	
-	static func isValidChecksum(address: String) -> Bool {
+	public static func isValidChecksum(address: String) -> Bool {
 		guard let addressWithoutChecksum = self.removeChecksum(address: address) else { return false }
 		let addressWithRecalculateChecksum = addressWithoutChecksum + self.calculateChecksum(address: addressWithoutChecksum)
 		return addressWithRecalculateChecksum == address
 	}
 	
-	static func isAddressWithChecksum(address: String) -> Bool {
+	public static func isAddressWithChecksum(address: String) -> Bool {
 		return IotaInputValidator.isAddress(address:address) && address.count == IotaConstants.addressLengthWithChecksum
 	}
 	
-	static func isAddressWithoutChecksum(address: String) -> Bool {
+	public static func isAddressWithoutChecksum(address: String) -> Bool {
 		return IotaInputValidator.isAddress(address:address) && address.count == IotaConstants.addressLengthWithoutChecksum
 	}
 }
