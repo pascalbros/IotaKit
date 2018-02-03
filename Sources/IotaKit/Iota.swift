@@ -63,11 +63,7 @@ public class Iota {
 		var lastAddress = ""
 		
 		func completeBalances() {
-			let balance = account.addresses.reduce(0, { (r, a) -> Int in
-				return r+a.balance!
-			})
-			account.balance = balance
-			success(account)
+			findBalances(false)
 		}
 		
 		func getInclusions() {
@@ -89,15 +85,18 @@ public class Iota {
 			}, error)
 		}
 		
-		func findBalances() {
+		func findBalances(_ requestTxs: Bool) {
 			IotaDebug("Getting balances")
 			log?(IotaLog(message: "Getting balances"))
-			if requestTransactions {
+			if requestTxs {
 				index = 0
 				getInclusions()
 			}else{
 				let addresses = account.addresses.map { $0.hash }
 				self.balances(addresses: addresses, { (balances) in
+					for i in 0..<account.addresses.count {
+						account.addresses[i].balance = balances[account.addresses[i].hash]
+					}
 					self.IotaDebug("Got balances \(balances.count)")
 					account.balance = balances.reduce(0, { (r, e) -> Int in return r+e.value })
 					success(account)
@@ -105,6 +104,18 @@ public class Iota {
 					error(e)
 				}
 			}
+		}
+		
+		func wereSpent() {
+			IotaDebug("Getting spent status")
+			log?(IotaLog(message: "Getting spent status"))
+			let addresses = account.addresses.map { $0.hash }
+			APIServices.wereAddressesSpentFrom(nodeAddress: self.address, addresses: addresses, { (result) in
+				for i in 0..<account.addresses.count {
+					account.addresses[i].canSpend = !result[i]
+				}
+				findBalances(requestTransactions)
+			}, error)
 		}
 		
 		func findTransactions() {
@@ -115,7 +126,7 @@ public class Iota {
 			APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: [address], { (hashes) in
 				self.IotaDebug("Got transactions \(hashes.count)")
 				if hashes.count == 0 {
-					findBalances()
+					wereSpent()
 				}else{
 					if requestTransactions {
 						self.IotaDebug("Getting trytes")
@@ -130,7 +141,7 @@ public class Iota {
 							}
 						}, error: error)
 					}else{
-						let iotaAddress = IotaAddress(hash: address, transactions: nil, index: index)
+						let iotaAddress = IotaAddress(hash: address, transactions: nil, index: index, balance: nil)
 						account.addresses.append(iotaAddress)
 						DispatchQueue.global(qos: .userInitiated).async {
 							index += 1
@@ -290,13 +301,17 @@ public class Iota {
 	
 	public func addressFromHash(address: String, _ success: @escaping (_ transactions: IotaAddress) -> Void, error: @escaping (Error) -> Void) {
 		self.transactionsFromAddress(address: address, { (txs) in
-			let result = IotaAddress(hash: address, transactions: txs, index: nil)
+			let result = IotaAddress(hash: address, transactions: txs, index: nil, balance: nil)
 			success(result)
 		}, error: error)
 	}
 	
 	public func latestInclusionStates(hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
 		APIServices.latestInclusionStates(nodeAddress: self.address, hashes: hashes, success, error)
+	}
+	
+	public func wereAddressesSpentFrom(addresses: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
+		APIServices.wereAddressesSpentFrom(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 	
 	public func isPromotable(tail: String, _ success: @escaping ((Bool) -> Void), _ error: @escaping (Error) -> Void) {

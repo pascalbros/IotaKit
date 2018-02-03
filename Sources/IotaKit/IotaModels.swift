@@ -94,7 +94,37 @@ public struct IotaAddress {
 	public internal(set) var hash: String
 	public internal(set) var transactions: [IotaTransaction]?
 	public internal(set) var index: Int?
+	
+	private var _balance: Int? = nil
 	public var balance: Int? {
+		get {
+			guard let b = _balance else { return calculatedBalance }
+			return b
+		}
+		set(newValue) {
+			self._balance = newValue
+		}
+	}
+	
+	private var _canSpend: Bool? = nil
+	public var canSpend: Bool? {
+		get {
+			guard let c = _canSpend else { return calculateCanSpend }
+			return c
+		}
+		set(newValue) {
+			self._canSpend = newValue
+		}
+	}
+	
+	init(hash: String, transactions: [IotaTransaction]?, index: Int?, balance: Int?) {
+		self.hash = hash
+		self.transactions = transactions
+		self.index = index
+		self.balance = balance
+	}
+	
+	private var calculatedBalance: Int? {
 		guard let txs = self.transactions else { return nil }
 		return txs.reduce(0) { (r, t) -> Int in
 			let v = t.persistence ? t.value : 0
@@ -102,7 +132,7 @@ public struct IotaAddress {
 		}
 	}
 	
-	public var canSpend: Bool? {
+	private var calculateCanSpend: Bool? {
 		guard let txs = self.transactions else { return nil }
 		for t in txs {
 			if t.value < 0 { return false }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol IotaLocalPoW {
+public protocol IotaLocalPoW {
 	func performPoW(trytes: String, minWeightMagnitude: Int) -> String
 	func performPoW(trytes: String, minWeightMagnitude: Int, result: @escaping (String)->())
 }

@@ -9,8 +9,8 @@ import Foundation
 
 public struct IotaAPIError: Error {
 	
-	let message: String
-	init(_ message: String) {
+	public let message: String
+	public init(_ message: String) {
 		self.message = message
 	}
 }
@@ -273,5 +273,34 @@ class IotaAPIService: IotaAPIServices {
 			
 			self.inclusionStates(nodeAddress: nodeAddress, hashes: hashes, tips: [milestone], success, error)
 		}, error)
+	}
+	
+	static func wereAddressesSpentFrom(nodeAddress: String, addresses: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
+		
+		var data = command(withString: "wereAddressesSpentFrom")
+		data["addresses"] = addresses
+		
+		service.POST(data: data, destination: nodeAddress, timeout: defaultTimeout, successHandler: { (r) in
+			guard let dict = r.jsonToObject() as? [String: Any] else {
+				error(IotaAPIError("Error converting JSON"))
+				return
+			}
+			if let e = dict["error"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			if let e = dict["exception"] as? String {
+				error(IotaAPIError(e))
+				return
+			}
+			
+			if let states = dict["states"] as? [Bool] {
+				success(states)
+				return
+			}
+			error(IotaAPIError("Malformed JSON"))
+		}) { (e) in
+			error(e)
+		}
 	}
 }
