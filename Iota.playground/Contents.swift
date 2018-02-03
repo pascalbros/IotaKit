@@ -18,9 +18,9 @@ iota.debug = true
 func accountData(iota: Iota, seed: String) {
 	iota.accountData(seed: seed, { (account) in
 		print(account)
-	}) { (error) in
+    }, error: { (error) in
 		print(error)
-	}
+	})
 }
 
 accountData(iota: iota, seed: seed)
