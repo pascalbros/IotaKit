@@ -56,7 +56,7 @@ public class Iota {
 		APIServices.trytes(nodeAddress: self.address, hashes: hashes, success, error)
 	}
 	
-	public func accountData(seed: String, security: Int = 2, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void, log: ((_ log: IotaLog) -> Void)? = nil) {
+	public func accountData(seed: String, minimumNumberOfAddresses: Int = 0, security: Int = 2, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void, log: ((_ log: IotaLog) -> Void)? = nil) {
 		
 		var account = IotaAccount()
 		var index = 0
@@ -140,7 +140,7 @@ public class Iota {
 								findTransactions()
 							}
 						}, error: error)
-					}else{
+					}else{ //Should never reach here
 						let iotaAddress = IotaAddress(hash: address, transactions: nil, index: index, balance: nil)
 						account.addresses.append(iotaAddress)
 						DispatchQueue.global(qos: .userInitiated).async {
@@ -152,7 +152,43 @@ public class Iota {
 			}, error)
 		}
 		
-		findTransactions()
+		func findTransactions(addresses: [String]) {
+			IotaDebug("Getting transactions")
+			log?(IotaLog(message: "Getting transactions from address \(index)"))
+			APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: addresses, { (hashes) in
+				self.IotaDebug("Got transactions \(hashes.count)")
+				let tempAddresses = addresses.map { IotaAddress(hash: $0, transactions: nil, index: index, balance: nil) }
+				if requestTransactions {
+					self.IotaDebug("Getting trytes")
+					self.APIServices.trytes(nodeAddress: self.address, hashes: hashes, { (txs) in
+						self.IotaDebug("Got trytes")
+						account.addresses = IotaAPIUtils.mergeAddressesAndTransactions(addresses: tempAddresses, txs: txs)
+						if account.addresses.last!.transactions == nil {
+							account.addresses.removeLast()
+							DispatchQueue.global(qos: .userInitiated).async { wereSpent() }
+						}else{
+							index = account.addresses.count
+							DispatchQueue.global(qos: .userInitiated).async { findTransactions() }
+						}
+					}, error)
+				}else{
+					account.addresses = tempAddresses
+					DispatchQueue.global(qos: .userInitiated).async {
+						wereSpent()
+					}
+				}
+			}, error)
+		}
+		
+		if minimumNumberOfAddresses > 1 && requestTransactions {
+			DispatchQueue.global(qos: .userInitiated).async {
+				var addresses: [String] = []
+				for i in 0...minimumNumberOfAddresses { addresses.append(IotaAPIUtils.newAddress(seed: seed, index: i, checksum: false)) }
+				findTransactions(addresses: addresses)
+			}
+		}else{
+			findTransactions()
+		}
 	}
 	
 	public func attachToTangle(seed: String, index: Int, security: Int = 2, _ success: @escaping (_ transfer: IotaTransaction) -> Void, error: @escaping (Error) -> Void) {
