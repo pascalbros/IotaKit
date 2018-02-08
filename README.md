@@ -22,6 +22,7 @@ IotaKit is compatible with all architectures, tested on iOS/MacOS/Ubuntu.
 ## Dependencies
 
 `Foundation`
+
 `Dispatch`
 
 ## Compile
@@ -33,6 +34,7 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 ### Ubuntu
 
 `cd IotaKit`
+
 `swift build -Xcc -ISources/IotaKit/include/sha3`
 
 ## Example
