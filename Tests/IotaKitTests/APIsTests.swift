@@ -10,7 +10,7 @@ import IotaKit
 
 class APIsTests: XCTestCase {
 	
-	let iota = Iota(node: "http://iota-tangle.io:14265")
+	let iota = Iota(node: "http://iotanode.party:14265")
 	private let TEST_SEED1 = "XDSCF9LACCU9EMAMWLZUTYLDSRP9BCBYJEDWERJPADUZQFCCPWUMFUYMJLHLJHJ9NGZXMCKGCHBFCUPAL";
 	private let TEST_ADDRESS_WITHOUT_CHECKSUM_SECURITY_LEVEL_2 = "ADVFOBBFMSHUTBLHESNRFIZYFVZNDOJV9QSSABSXEYLHKVCEGGWOZGLMLQLYKJNGSBIEYDW9YFJFAMBWA";
 	private let TEST_ADDRESS_WITH_CHECKSUM_SECURITY_LEVEL_2 = "ADVFOBBFMSHUTBLHESNRFIZYFVZNDOJV9QSSABSXEYLHKVCEGGWOZGLMLQLYKJNGSBIEYDW9YFJFAMBWACBBTKTGRB";
@@ -41,6 +41,48 @@ class APIsTests: XCTestCase {
 		let expectation = XCTestExpectation(description: "testAccountData test")
 		
 		iota.accountData(seed: TEST_SEED1, { (account) in
+			print(account)
+			expectation.fulfill()
+		}, error: { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		})
+		wait(for: [expectation], timeout: 120.0)
+	}
+	
+	func testAccountDataWithAddresses() {
+		let expectation = XCTestExpectation(description: "testAccountData test")
+		
+		iota.accountData(seed: TEST_SEED1, minimumNumberOfAddresses: 3, { (account) in
+			print(account)
+			expectation.fulfill()
+		}, error: { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		})
+		wait(for: [expectation], timeout: 120.0)
+	}
+	
+	func testAccountDataWithTxs() {
+		let expectation = XCTestExpectation(description: "testAccountData test")
+		
+		iota.accountData(seed: TEST_SEED1, requestTransactions: true, { (account) in
+			print(account)
+			expectation.fulfill()
+		}, error: { (error) in
+			print(error)
+			assertionFailure((error as! IotaAPIError).message)
+			expectation.fulfill()
+		})
+		wait(for: [expectation], timeout: 120.0)
+	}
+	
+	func testAccountDataWithAddressesAndTxs() {
+		let expectation = XCTestExpectation(description: "testAccountData test")
+		
+		iota.accountData(seed: TEST_SEED1, minimumNumberOfAddresses: 8, requestTransactions: true, { (account) in
 			print(account)
 			expectation.fulfill()
 		}, error: { (error) in

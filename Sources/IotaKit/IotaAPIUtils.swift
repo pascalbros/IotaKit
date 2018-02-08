@@ -190,4 +190,29 @@ public struct IotaAPIUtils {
 		bundleTrytes.reverse()
 		return bundleTrytes
 	}
+	
+	internal static func mergeAddressesAndTransactions(addresses: [IotaAddress], txs: [IotaTransaction]) -> [IotaAddress] {
+
+		var addressesDict: [String: IotaAddress] = [:]
+		for a in addresses { addressesDict[a.hash] = a }
+
+		for tx in txs {
+			let key = tx.address
+			if addressesDict[key] != nil {
+				if addressesDict[key]?.transactions != nil {
+					addressesDict[key]!.transactions!.append(tx)
+				}else{
+					addressesDict[key]!.transactions = [tx]
+				}
+			}
+		}
+		
+		var result = addresses.map { $0 }
+		for i in 0..<result.count {
+			let key = result[i].hash
+			result[i].transactions = addressesDict[key]!.transactions
+		}
+		
+		return result
+	}
 }
