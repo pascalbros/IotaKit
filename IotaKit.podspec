@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IotaKit"
-  s.version      = "0.5.1"
+  s.version      = "0.5.2"
   s.summary      = "The IOTA Swift API Library"
 
   # This description is used to generate tags and improve search results.
@@ -38,9 +38,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "11.0"
   s.osx.deployment_target = "10.10"
 
-  s.source       = { :git => "https://github.com/pascalbros/IotaKit.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/pascalbros/IotaKit.git", :tag => "v#{s.version}" }
 
-  s.source_files  = "Sources", "Sources/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "Sources", "Sources/**/*.swift"
+  #s.exclude_files = "Classes/Exclude"
+  s.preserve_paths = 'Sources/IotaKit/include/sha3/module.modulemap'
 
 end
