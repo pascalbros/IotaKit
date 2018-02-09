@@ -647,7 +647,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/IotaKit/include/sha3";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IotaKit;
@@ -674,7 +674,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/IotaKit/include/sha3";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IotaKit;
 			};

@@ -8,15 +8,9 @@
 
 Pod::Spec.new do |s|
 
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  These will help people to find your library, and whilst it
-  #  can feel like a chore to fill in it's definitely to your advantage. The
-  #  summary should be tweet-length, and the description more in depth.
-  #
   s.swift_version = '4.0'
   s.name         = "IotaKit"
-  s.version      = "0.5.4"
+  s.version      = "0.5.5"
   s.summary      = "The IOTA Swift API Library"
 
   # This description is used to generate tags and improve search results.
@@ -39,16 +33,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.requires_arc = true
 
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
-
-  s.source_files = 'Sources/IotaKit/**/*.{swift}', 'Sources/IotaKit/include/sha3/*.{c,h}'
-  #s.public_header_files = 'Sources/IotaKit/include/sha3/*.h'
-  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/**','LIBRARY_SEARCH_PATHS' => '$(SRCROOT)/'}
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  #s.libraries = 'z'
+  s.source_files = 'Sources/IotaKit/**/*.{swift,c,h}'
+  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/IotaKit/Sources/IotaKit/include/sha3','LIBRARY_SEARCH_PATHS' => '$(SRCROOT)/IotaKit/Sources/IotaKit', 'SWIFT_VERSION' => '4.0'}
   s.exclude_files = 'Sources/IotaKit/Utils/Crypto.swift'
   s.preserve_paths  = 'Sources/IotaKit/include/sha3/module.modulemap'
 end
-
-
-#Sources/IotaKit/include/sha3/module.modulemap
