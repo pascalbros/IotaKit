@@ -37,6 +37,12 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 
 `swift build -Xcc -ISources/IotaKit/include/sha3`
 
+## Install
+
+### CocoaPods
+
+pod 'IotaKit', '~> 0.5.5'
+
 ## Example
 
 The usage should be straightforward, it is very similar to the [official JS lib](https://github.com/iotaledger/iota.lib.js)
