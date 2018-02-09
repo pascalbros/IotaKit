@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
   #  can feel like a chore to fill in it's definitely to your advantage. The
   #  summary should be tweet-length, and the description more in depth.
   #
-
+  s.swift_version = '4.0'
   s.name         = "IotaKit"
-  s.version      = "0.5.2"
+  s.version      = "0.5.3"
   s.summary      = "The IOTA Swift API Library"
 
   # This description is used to generate tags and improve search results.
@@ -40,8 +40,9 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/pascalbros/IotaKit.git", :tag => "v#{s.version}" }
 
-  s.source_files  = "Sources", "Sources/**/*.swift"
+  s.source_files  = "Sources", "Sources/**/*.{h, swift}"
   #s.exclude_files = "Classes/Exclude"
   s.preserve_paths = 'Sources/IotaKit/include/sha3/module.modulemap'
-
+  #s.module_map = 'Sources/IotaKit/include/sha3/module.modulemap'
+  s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/IotaKit/Sources/IotaKit/include/sha3/' }
 end
