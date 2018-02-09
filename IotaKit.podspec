@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
   s.swift_version = '4.0'
   s.name         = "IotaKit"
-  s.version      = "0.5.3"
+  s.version      = "0.5.4"
   s.summary      = "The IOTA Swift API Library"
 
   # This description is used to generate tags and improve search results.
@@ -32,17 +32,23 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/pascalbros/IotaKit"
 
   s.license      = "MIT (Copyright (c) 2018 Pasquale Ambrosini)"
-
+  s.source       = { :git => "https://github.com/pascalbros/IotaKit.git", :tag => "v#{s.version}" }
   s.author             = { "Pasquale Ambrosini" => "pasquale.ambrosini@gmail.com" }
 
   s.ios.deployment_target = "11.0"
   s.osx.deployment_target = "10.10"
+  s.requires_arc = true
 
-  s.source       = { :git => "https://github.com/pascalbros/IotaKit.git", :tag => "v#{s.version}" }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
-  s.source_files  = "Sources", "Sources/**/*.{h, swift}"
-  #s.exclude_files = "Classes/Exclude"
-  s.preserve_paths = 'Sources/IotaKit/include/sha3/module.modulemap'
-  #s.module_map = 'Sources/IotaKit/include/sha3/module.modulemap'
-  s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/IotaKit/Sources/IotaKit/include/sha3/' }
+  s.source_files = 'Sources/IotaKit/**/*.{swift}', 'Sources/IotaKit/include/sha3/*.{c,h}'
+  #s.public_header_files = 'Sources/IotaKit/include/sha3/*.h'
+  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/**','LIBRARY_SEARCH_PATHS' => '$(SRCROOT)/'}
+  # s.public_header_files = 'Pod/Classes/**/*.h'
+  #s.libraries = 'z'
+  s.exclude_files = 'Sources/IotaKit/Utils/Crypto.swift'
+  s.preserve_paths  = 'Sources/IotaKit/include/sha3/module.modulemap'
 end
+
+
+#Sources/IotaKit/include/sha3/module.modulemap
