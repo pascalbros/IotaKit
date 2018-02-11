@@ -20,7 +20,7 @@ protocol WebServices {
 protocol IotaAPIServices {
 	static func nodeInfo(nodeAddress: String, _ success: @escaping (_ result: [String: Any])->Void, _ error: @escaping (_ error: Error)->Void)
 	
-	static func balances(nodeAddress: String, addresses: [String], _ success: @escaping (_ balances: [String: Int]) -> Void, _ error: @escaping (Error) -> Void)
+	static func balances(nodeAddress: String, addresses: [String], _ success: @escaping (_ balances: [String: Int64]) -> Void, _ error: @escaping (Error) -> Void)
 	
 	static func findTransactions(nodeAddress: String, type: IotaFindTxType, query: [String], _ success: @escaping (_ hashes: [String]) -> Void, _ error: @escaping (Error) -> Void)
 	

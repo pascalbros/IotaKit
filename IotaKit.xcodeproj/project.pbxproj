@@ -46,8 +46,6 @@
 		504C6C312006AF8A007C6C7E /* PAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C1F2006AF8A007C6C7E /* PAWS.swift */; };
 		504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C202006AF8A007C6C7E /* IotaAPIServiceProtocol.swift */; };
 		504C6C332006AF8A007C6C7E /* IotaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C232006AF8A007C6C7E /* IotaModels.swift */; };
-		508B78FC20169F2400F1B748 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317B2010137000DC6E5B /* Crypto.swift */; };
-		508B78FD20169F2700F1B748 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317B2010137000DC6E5B /* Crypto.swift */; };
 		50D9165A2018339A000BEC42 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D916592018339A000BEC42 /* sha3.c */; };
 		50D9165B2018339A000BEC42 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D916592018339A000BEC42 /* sha3.c */; };
 		50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E32CEC2020FCE9001017D6 /* IotaUnits.swift */; };
@@ -429,7 +427,6 @@
 				50F33170200FB6D200DC6E5B /* Iota.swift in Sources */,
 				50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */,
 				50F33169200FB6CD00DC6E5B /* IotaTransactionExtension.swift in Sources */,
-				508B78FD20169F2700F1B748 /* Crypto.swift in Sources */,
 				50F331822010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */,
 				50F33176200FB6D900DC6E5B /* IotaAPIServiceProtocol.swift in Sources */,
 				50F33164200FB6C800DC6E5B /* Kerl.swift in Sources */,
@@ -469,7 +466,6 @@
 				504C6C2E2006AF8A007C6C7E /* IotaConverter.swift in Sources */,
 				504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */,
 				504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */,
-				508B78FC20169F2400F1B748 /* Crypto.swift in Sources */,
 				50F1DF96200EE7AD005D91C6 /* IotaLocalPow.swift in Sources */,
 				50F3315E200D73E300DC6E5B /* IotaInputValidator.swift in Sources */,
 				50F1DF97200EE7AD005D91C6 /* PearlDiver.swift in Sources */,
@@ -528,6 +524,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
@@ -538,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
@@ -640,6 +638,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = IotaKit.xcodeproj/IotaKit_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -666,6 +665,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = IotaKit.xcodeproj/IotaKit_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";

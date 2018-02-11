@@ -9,7 +9,7 @@ import Foundation
 
 public extension IotaBundle {
 	
-	public mutating func addEntry(signatureMessageLength: Int, address: String, value: Int, tag: String, timestamp: UInt) {
+	public mutating func addEntry(signatureMessageLength: Int, address: String, value: Int64, tag: String, timestamp: UInt64) {
 		for i in 0..<signatureMessageLength {
 
 			let trx = IotaTransaction(value: i == 0 ? value : 0, address: address, tag: tag, timestamp: timestamp)
@@ -66,7 +66,7 @@ public extension IotaBundle {
 	internal mutating func addTrytes(signatureFragments: [String]) {
 		var emptySignatureFragment = ""
 		let emptyHash = IotaBundle.emptyHash
-		let emptyTimestamp: UInt = 999999999
+		let emptyTimestamp: UInt64 = 999999999
 		
 		emptySignatureFragment.rightPad(count: 2187, character: "9")
 		
@@ -92,7 +92,7 @@ public extension IotaBundle {
 			var sum: Int = 0
 			for j in 0..<27 {
 				let char = bundleHash.substring(from: i*27 + j, to: i*27 + j + 1)
-				normalizedBundle[i*27 + j] = IotaConverter.longValue(IotaConverter.trits(fromString: char))
+				normalizedBundle[i*27 + j] = Int(IotaConverter.longValue(IotaConverter.trits(fromString: char)))
 				sum += normalizedBundle[i*27 + j]
 			}
 			

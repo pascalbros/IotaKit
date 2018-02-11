@@ -40,7 +40,7 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
-	static func balances(nodeAddress: String, addresses: [String], _ success: @escaping (_ balances: [String: Int]) -> Void, _ error: @escaping (Error) -> Void) {
+	static func balances(nodeAddress: String, addresses: [String], _ success: @escaping (_ balances: [String: Int64]) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		var data = command(withString: "getBalances")
 		data["addresses"] = addresses
@@ -55,9 +55,9 @@ class IotaAPIService: IotaAPIServices {
 				return
 			}
 			
-			var result: [String: Int] = [:]
+			var result: [String: Int64] = [:]
 			for i in 0..<balances.count {
-				result[addresses[i]] = Int(balances[i])!
+				result[addresses[i]] = Int64(balances[i])!
 			}
 			success(result)
 		}) { (e) in

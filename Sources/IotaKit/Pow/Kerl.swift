@@ -14,13 +14,13 @@ class Kerl: CurlSource {
 	fileprivate static let BIT_HASH_LENGTH = 384
 	fileprivate static let BYTE_HASH_LENGTH = BIT_HASH_LENGTH / 8
 	
-	fileprivate static let RADIX = 3
-	fileprivate static let MAX_TRIT_VALUE = (RADIX - 1) / 2, MIN_TRIT_VALUE = -MAX_TRIT_VALUE
+	fileprivate static let RADIX: Int64 = 3
+	fileprivate static let MAX_TRIT_VALUE: Int64 = (RADIX - 1) / 2, MIN_TRIT_VALUE = -MAX_TRIT_VALUE
 	fileprivate var keccak: PASHA3!
 	fileprivate var byte_state: [UInt8] = []
 	fileprivate var trit_state: [Int] = []
 	
-	fileprivate static let HALF_3: [Int] = [0xa5ce8964, 0x9f007669, 0x1484504f, 0x3ade00d9, 0x0c24486e, 0x50979d57, 0x79a4c702, 0x48bbae36, 0xa9f6808b, 0xaa06a805, 0xa87fabdf, 0x5e69ebef]
+	fileprivate static let HALF_3: [Int64] = [0xa5ce8964, 0x9f007669, 0x1484504f, 0x3ade00d9, 0x0c24486e, 0x50979d57, 0x79a4c702, 0x48bbae36, 0xa9f6808b, 0xaa06a805, 0xa87fabdf, 0x5e69ebef]
 	fileprivate static let BYTE_LENGTH = 48;
 	fileprivate static let INT_LENGTH = BYTE_LENGTH / 4;
 	
@@ -99,7 +99,7 @@ class Kerl: CurlSource {
 		return self.squeeze(trits: &trits, offset: 0, length: trits.count)
 	}
 	
-	private static func toUnsignedLong(_ i: Int) -> UInt64 {
+	private static func toUnsignedLong(_ i: Int64) -> UInt64 {
 		return UInt64(i & 0xFFFFFFFF);
 	}
 	
@@ -107,21 +107,21 @@ class Kerl: CurlSource {
 		return x & 0xff;
 	}
 	
-	fileprivate static func bigint_not(base: [Int]) -> [Int] {
-		var result: [Int] = []
+	fileprivate static func bigint_not(base: [Int64]) -> [Int64] {
+		var result: [Int64] = []
 		for i in 0..<base.count {
 			result.append(~base[i])
 		}
 		return result
 	}
 	
-	private static func sum(toSum: [Int]) -> Int {
+	private static func sum(toSum: [Int64]) -> Int64 {
 		return toSum.reduce(0, +)
 	}
 	
-	private static func bigint_add(base: [Int], rh: Int) -> ([Int], Int){
+	private static func bigint_add(base: [Int64], rh: Int64) -> ([Int64], Int64){
 		var result = base.map{$0}
-		var res: (Int, Bool) = full_add(ia: result[0], ib: rh, carry: false);
+		var res: (Int64, Bool) = full_add(ia: result[0], ib: rh, carry: false);
 		
 		result[0] = res.0
 		var j = 1;
@@ -131,13 +131,13 @@ class Kerl: CurlSource {
 			j += 1;
 		}
 		
-		return (result, j)
+		return (result, Int64(j))
 	}
 	
-	private static func bigint_add(lh: [Int], rh: [Int]) -> [Int]? {
-		var out: [Int] = Array(repeating: 0, count: INT_LENGTH)
+	private static func bigint_add(lh: [Int64], rh: [Int64]) -> [Int64]? {
+		var out: [Int64] = Array(repeating: 0, count: INT_LENGTH)
 		var carry = false
-		var ret: (Int, Bool)!
+		var ret: (Int64, Bool)!
 		for i in 0..<INT_LENGTH {
 			ret = full_add(ia: lh[i], ib: rh[i], carry: carry);
 			out[i] = ret.0
@@ -150,7 +150,7 @@ class Kerl: CurlSource {
 		return out
 	}
 	
-	fileprivate static func bigint_cmp(lh: [Int], rh: [Int]) -> Int {
+	fileprivate static func bigint_cmp(lh: [Int64], rh: [Int64]) -> Int64 {
 		for i in stride(from: INT_LENGTH - 1, to: 0, by: -1) {
 			let l = toUnsignedLong(lh[i])
 			let r = toUnsignedLong(rh[i])
@@ -161,10 +161,10 @@ class Kerl: CurlSource {
 		return 0
 	}
 	
-	fileprivate static func bigint_sub(lh: [Int], rh: [Int]) -> [Int]? {
-		var out: [Int] = Array(repeating: 0, count: INT_LENGTH)
+	fileprivate static func bigint_sub(lh: [Int64], rh: [Int64]) -> [Int64]? {
+		var out: [Int64] = Array(repeating: 0, count: INT_LENGTH)
 		var noborrow = true
-		var ret: (Int, Bool)!
+		var ret: (Int64, Bool)!
 		for i in 0..<INT_LENGTH {
 			ret = full_add(ia: lh[i], ib: ~rh[i], carry: noborrow)
 			out[i] = ret.0
@@ -178,7 +178,7 @@ class Kerl: CurlSource {
 		return out
 	}
 	
-	fileprivate static func full_add(ia: Int, ib: Int, carry: Bool) -> (Int, Bool) {
+	fileprivate static func full_add(ia: Int64, ib: Int64, carry: Bool) -> (Int64, Bool) {
 		let a = toUnsignedLong(ia)
 		let b = toUnsignedLong(ib)
 		
@@ -190,11 +190,11 @@ class Kerl: CurlSource {
 		if carry { v = r+1 }
 		
 		l = (v >> 32) & 0xFFFFFFFF
-		r = toUnsignedLong(Int(v) & 0xFFFFFFFF)
+		r = toUnsignedLong(Int64(v & 0xFFFFFFFF))
 		
 		let carry2 = l != 0
 		
-		return (Int(r), carry1 || carry2)
+		return (Int64(r), carry1 || carry2)
 	}
 	
 	
@@ -203,7 +203,7 @@ class Kerl: CurlSource {
 			return nil
 		}
 		
-		var base: [Int] = Array(repeating: 0, count: INT_LENGTH)
+		var base: [Int64] = Array(repeating: 0, count: INT_LENGTH)
 		
 		var setUniqueNumbers: [Int: Bool] = [:]
 		for x in trits {
@@ -215,16 +215,16 @@ class Kerl: CurlSource {
 			base = bigint_not(base: base);
 			base = bigint_add(base: base, rh: 1).0;
 		}else{
-			var size = INT_LENGTH
+			var size = Int64(INT_LENGTH)
 			for i in stride(from: HASH_LENGTH - 2, to: -1, by: -1) {
-				let sz = size
-				var carry = 0
+				let sz = Int(size)
+				var carry: Int64 = 0
 				
 				for j in 0..<sz {
 					let v: UInt64 = toUnsignedLong(base[j]) * toUnsignedLong(RADIX) + toUnsignedLong(carry)
 					let vv = (v >> 32)
-					carry = Int(vv & UInt64(0xFFFFFFFF))
-					base[j] = Int(v) & 0xFFFFFFFF
+					carry = Int64(vv & 0xFFFFFFFF)
+					base[j] = Int64(v) & 0xFFFFFFFF
 				}
 				if carry > 0 {
 					base[sz] = carry
@@ -232,7 +232,7 @@ class Kerl: CurlSource {
 				}
 				
 				let ins = trits[i] + 1;
-				let tempSz = bigint_add(base: base, rh: ins)
+				let tempSz = bigint_add(base: base, rh: Int64(ins))
 				
 				base = tempSz.0
 				if (tempSz.1 > size) {
@@ -263,7 +263,7 @@ class Kerl: CurlSource {
 	}
 	
 	static func convertBytesToTrits(_ bytes: [UInt8]) -> [Int]? {
-		var base: [Int] = Array(repeating: 0, count: INT_LENGTH)
+		var base: [Int64] = Array(repeating: 0, count: INT_LENGTH)
 		var out: [Int] = Array(repeating: 0, count: HASH_LENGTH)
 		out[HASH_LENGTH - 1] = 0
 		
@@ -272,10 +272,10 @@ class Kerl: CurlSource {
 		}
 		
 		for i in 0..<INT_LENGTH {
-			base[INT_LENGTH - 1 - i] = Int(toUnsignedLong(Int(bytes[i*4])) << 24)
-			base[INT_LENGTH - 1 - i] |= Int(toUnsignedLong(Int(bytes[i*4+1])) << 16)
-			base[INT_LENGTH - 1 - i] |= Int(toUnsignedLong(Int(bytes[i*4+2])) << 8)
-			base[INT_LENGTH - 1 - i] |= Int(bytes[i*4+3])
+			base[INT_LENGTH - 1 - i] = Int64(toUnsignedLong(Int64(bytes[i*4])) << 24)
+			base[INT_LENGTH - 1 - i] |= Int64(toUnsignedLong(Int64(bytes[i*4+1])) << 16)
+			base[INT_LENGTH - 1 - i] |= Int64(toUnsignedLong(Int64(bytes[i*4+2])) << 8)
+			base[INT_LENGTH - 1 - i] |= Int64(bytes[i*4+3])
 		}
 		
 		if bigint_cmp(lh: base, rh: HALF_3) == 0 {
@@ -306,7 +306,7 @@ class Kerl: CurlSource {
 			
 			let size = INT_LENGTH
 			
-			var remainder = 0
+			var remainder: Int64 = 0
 			for i in 0..<HASH_LENGTH-1 {
 				remainder = 0
 				
@@ -314,12 +314,12 @@ class Kerl: CurlSource {
 					let lhs = (toUnsignedLong(remainder) << 32) | toUnsignedLong(base[j])
 					let rhs = toUnsignedLong(RADIX)
 					
-					let q = Int(lhs / rhs)
+					let q = Int64(lhs / rhs)
 					let r = lhs % rhs
 					base[j] = q
-					remainder = Int(r)
+					remainder = Int64(r)
 				}
-				out[i] = remainder - 1
+				out[i] = Int(remainder - 1)
 			}
 			
 			if flipTrits {

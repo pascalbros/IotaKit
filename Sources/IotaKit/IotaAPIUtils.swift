@@ -9,16 +9,16 @@ import Foundation
 
 public struct IotaAPIUtils {
 	
-	public static func newAddress(seed: String, index: Int, checksum: Bool, security: Int = 2) -> String {
+	public static func newAddress(seed: String, index: Int, checksum: Bool, security: Int = 2, multithreaded: Bool = false) -> String {
 		let curl = CurlMode.kerl.create()
-		return self.newAddress(seed: seed, security: security, index: index, checksum: checksum, curl: curl)
+		return self.newAddress(seed: seed, security: security, index: index, checksum: checksum, multithreaded: multithreaded, curl: curl)
 	}
 	
-	static func newAddress(seed: String, security: Int, index: Int, checksum: Bool, curl: CurlSource) -> String {
+	static func newAddress(seed: String, security: Int, index: Int, checksum: Bool, multithreaded: Bool = false, curl: CurlSource) -> String {
 		let signing = IotaSigning(curl: curl.clone())
 		let seedTrits = IotaConverter.trits(fromString: seed)
 		let key = signing.key(inSeed: seedTrits, index: index, security: security)
-		let digests = signing.digest(key: key)
+		let digests = signing.digest(key: key, multithreaded: multithreaded)
 		
 		let addressTrits = signing.address(digests: digests)
 		let address = IotaConverter.string(fromTrits: addressTrits)
