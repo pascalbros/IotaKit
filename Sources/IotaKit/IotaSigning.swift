@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Dispatch
 
 class IotaSigning {
 	
@@ -61,7 +61,10 @@ class IotaSigning {
 	
 	
 	func digest(key: [Int], multithreaded: Bool = false) -> [Int] {
-		if !multithreaded {
+		let security = key.count/IotaSigning.KEY_LENGTH
+		let threadsCount = ProcessInfo.processInfo.activeProcessorCount
+		let canUseMultithread = threadsCount >= security
+		if !multithreaded || threadsCount == 1 || security == 1 || !canUseMultithread {
 			return _digest(key: key)
 		}else{
 			return _digestMultithreaded(key: key)
