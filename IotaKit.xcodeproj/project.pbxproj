@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		502827F020326A230035B084 /* Docs */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 502827F320326A230035B084 /* Build configuration list for PBXAggregateTarget "Docs" */;
+			buildPhases = (
+				502827F420326A290035B084 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Docs;
+			productName = Docs;
+		};
 		50FB5802202658B2007A36CF /* Universal */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 50FB5805202658B2007A36CF /* Build configuration list for PBXAggregateTarget "Universal" */;
@@ -46,8 +57,6 @@
 		504C6C312006AF8A007C6C7E /* PAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C1F2006AF8A007C6C7E /* PAWS.swift */; };
 		504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C202006AF8A007C6C7E /* IotaAPIServiceProtocol.swift */; };
 		504C6C332006AF8A007C6C7E /* IotaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C232006AF8A007C6C7E /* IotaModels.swift */; };
-		508B78FC20169F2400F1B748 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317B2010137000DC6E5B /* Crypto.swift */; };
-		508B78FD20169F2700F1B748 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317B2010137000DC6E5B /* Crypto.swift */; };
 		50D9165A2018339A000BEC42 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D916592018339A000BEC42 /* sha3.c */; };
 		50D9165B2018339A000BEC42 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D916592018339A000BEC42 /* sha3.c */; };
 		50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E32CEC2020FCE9001017D6 /* IotaUnits.swift */; };
@@ -355,13 +364,19 @@
 			attributes = {
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
-					50FB5802202658B2007A36CF = {
+					502827F020326A230035B084 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = NRSZN92M5X;
 						ProvisioningStyle = Automatic;
 					};
+					50FB5802202658B2007A36CF = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = NRSZN92M5X;
+						ProvisioningStyle = Manual;
+					};
 					"IotaKit::IotaKit" = {
 						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -382,6 +397,7 @@
 				"IotaKit::IotaKit" /* IotaKit */,
 				"IotaKit::IotaKitPackageTests::ProductTarget" /* IotaKitPackageTests */,
 				50FB5802202658B2007A36CF /* Universal */,
+				502827F020326A230035B084 /* Docs */,
 			);
 		};
 /* End PBXProject section */
@@ -397,6 +413,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		502827F420326A290035B084 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT}/Scripts\n./gendocs.sh";
+		};
 		50FB5806202658F1007A36CF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_NAME=\"IotaKit\"\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${LIB_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${LIB_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${LIB_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${LIB_NAME}.framework/Modules/${LIB_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}.framework/Modules/${LIB_NAME}.swiftmodule\"\nfi\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}.framework/${LIB_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${LIB_NAME}.framework/${LIB_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${LIB_NAME}.framework/${LIB_NAME}\"\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${LIB_NAME}.framework\" \"${PROJECT_DIR}\"\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
+			shellScript = "cd ${SRCROOT}/Scripts\n./gen_universal_ios.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -429,7 +458,6 @@
 				50F33170200FB6D200DC6E5B /* Iota.swift in Sources */,
 				50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */,
 				50F33169200FB6CD00DC6E5B /* IotaTransactionExtension.swift in Sources */,
-				508B78FD20169F2700F1B748 /* Crypto.swift in Sources */,
 				50F331822010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */,
 				50F33176200FB6D900DC6E5B /* IotaAPIServiceProtocol.swift in Sources */,
 				50F33164200FB6C800DC6E5B /* Kerl.swift in Sources */,
@@ -469,7 +497,6 @@
 				504C6C2E2006AF8A007C6C7E /* IotaConverter.swift in Sources */,
 				504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */,
 				504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */,
-				508B78FC20169F2400F1B748 /* Crypto.swift in Sources */,
 				50F1DF96200EE7AD005D91C6 /* IotaLocalPow.swift in Sources */,
 				50F3315E200D73E300DC6E5B /* IotaInputValidator.swift in Sources */,
 				50F1DF97200EE7AD005D91C6 /* PearlDiver.swift in Sources */,
@@ -506,7 +533,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		50FB5803202658B2007A36CF /* Debug */ = {
+		502827F120326A230035B084 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -515,7 +542,7 @@
 			};
 			name = Debug;
 		};
-		50FB5804202658B2007A36CF /* Release */ = {
+		502827F220326A230035B084 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -524,10 +551,29 @@
 			};
 			name = Release;
 		};
+		50FB5803202658B2007A36CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50FB5804202658B2007A36CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		OBJ_18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
@@ -538,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
@@ -632,6 +679,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -640,6 +689,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = IotaKit.xcodeproj/IotaKit_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -658,6 +708,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -666,6 +718,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = IotaKit.xcodeproj/IotaKit_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -738,6 +791,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		502827F320326A230035B084 /* Build configuration list for PBXAggregateTarget "Docs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				502827F120326A230035B084 /* Debug */,
+				502827F220326A230035B084 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		50FB5805202658B2007A36CF /* Build configuration list for PBXAggregateTarget "Universal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

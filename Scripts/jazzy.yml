@@ -1,0 +1,29 @@
+module: IotaKit
+author: Bluepath
+author_url: https://pascalbros.github.io
+xcodebuild-arguments: '-scheme=IotaKit'
+output: '~/Desktop/Docs/IotaKit'
+copyright: '© 2018 IotaKit'
+
+
+theme: fullwidth
+
+xcodebuild_arguments:
+    - "-project"
+    - "IotaKit.xcodeproj"
+    - "-scheme"
+    - "IotaKit-Package"
+
+custom_categories:
+
+  - name: Models
+    children:
+    - IotaAccount
+    - IotaHistoryTransaction
+    - IotaTransaction
+    - IotaTransfer
+    - IotaBundle
+    - IotaSignature
+    - IotaInput
+    - IotaAddress
+    - IotaLog

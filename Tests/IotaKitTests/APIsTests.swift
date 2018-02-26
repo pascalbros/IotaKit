@@ -37,6 +37,22 @@ class APIsTests: XCTestCase {
 		wait(for: [expectation], timeout: 120.0)
 	}
 	
+	func testAddress() {
+		self.measure {
+			let address = IotaAPIUtils.newAddress(seed: TEST_SEED1, index: 0, checksum: false)
+			print(address)
+		}
+		//9STCQJBVTQOVZNDRRDJFDKWLEDJZZHOWYCYNXDIIGKTTDSWXDL9WHTVKENCVIXBHYOXMFULNPOLFNKDIY
+	}
+	
+	func testAddressMultithreaded() {
+		self.measure {
+			let address = IotaAPIUtils.newAddress(seed: TEST_SEED1, index: 0, checksum: false, multithreaded: true)
+			print(address)
+		}
+		//9STCQJBVTQOVZNDRRDJFDKWLEDJZZHOWYCYNXDIIGKTTDSWXDL9WHTVKENCVIXBHYOXMFULNPOLFNKDIY
+	}
+	
 	func testAccountData() {
 		let expectation = XCTestExpectation(description: "testAccountData test")
 		

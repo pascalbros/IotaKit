@@ -193,11 +193,11 @@ public class IotaConverter {
 		return trytes
 	}
 	
-	static func longValue(_ trits: [Int]) -> Int {
-		var value: Int = 0;
+	static func longValue(_ trits: [Int]) -> Int64 {
+		var value: Int64 = 0;
 	
 		for i in stride(from: trits.count - 1, to: -1, by: -1) {
-			value = value*3 + trits[i]
+			value = value*3 + Int64(trits[i])
 		}
 		return value;
 	}
