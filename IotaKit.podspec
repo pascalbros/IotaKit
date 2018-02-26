@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.0'
   s.name         = "IotaKit"
-  s.version      = "0.5.5"
+  s.version      = "0.5.6"
   s.summary      = "The IOTA Swift API Library"
 
   # This description is used to generate tags and improve search results.
