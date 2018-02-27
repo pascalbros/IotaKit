@@ -16,7 +16,7 @@ public class Iota {
 	fileprivate let APIServices: IotaAPIServices.Type = IotaAPIService.self
 	
 	fileprivate let curl: CurlSource = CurlMode.kerl.create()
-	public static let spamTranfer = IotaTransfer(address: "".rightPadded(count: 81, character: "9"))
+	public static let spamTransfer = IotaTransfer(address: "".rightPadded(count: 81, character: "9"))
 	public static let spamSeed = "".rightPadded(count: 81, character: "9")
 
 	public init(prefersHTTPS: Bool = false, _ onReady: @escaping (Iota?) -> Void) {
@@ -356,14 +356,14 @@ public class Iota {
 		APIServices.checkConsistency(nodeAddress: self.address, hashes: [tail], success, error)
 	}
 	
-	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
 		self.trytes(hashes: [hash], { (txs) in
 			self.promoteTransaction(txs.first!, success, error: error)
 		}, error: error)
 	}
 	
-	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
 		func promote(theTX: IotaTransaction) {
 			self.promote(tail: theTX.hash, success, error: error)
@@ -377,7 +377,7 @@ public class Iota {
 		}
 	}
 	
-	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		self.isPromotable(tail: tail, { (result) in
 			if result {
 				self._promote(tail: tail, numberOfPromotes: numberOfPromotes, success, error: error)
@@ -406,13 +406,13 @@ public class Iota {
 //Internal functions
 extension Iota {
 	
-	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTranfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		if index == numberOfPromotes {
 			success(tail)
 			return
 		}
 		IotaDebug("Promoting \(index+1)/\(numberOfPromotes)")
-		self.sendTransfers(seed: Iota.spamSeed, security: 2, depth: depth, minWeightMagnitude: minWeightMagnitude, transfers: [Iota.spamTranfer], inputs: nil, remainderAddress: nil, reference: tail, { (tx) in
+		self.sendTransfers(seed: Iota.spamSeed, security: 2, depth: depth, minWeightMagnitude: minWeightMagnitude, transfers: [Iota.spamTransfer], inputs: nil, remainderAddress: nil, reference: tail, { (tx) in
 			self.IotaDebug("Promoted, tx:\(tx.first?.hash ?? "")")
 			self._promote(tail: tail, index: index + 1, numberOfPromotes: numberOfPromotes, success, error: error)
 		}, error: error)
