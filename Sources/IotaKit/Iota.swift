@@ -623,6 +623,12 @@ extension Iota {
 	
 	
 	public func attachToTangle(trunkTx: String, branchTx: String, minWeightMagnitude: Int, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, error: @escaping (Error) -> Void) {
+		
+		guard IotaInputValidator.isHash(hash: trunkTx) && IotaInputValidator.isHash(hash: branchTx) else {
+			error(IotaAPIError("Invalid inputs"))
+			return
+		}
+		
 		if let localPow = self.localPoW {
 			var resultTrytes: [String] = []
 			var previousTransaction: String! = nil
