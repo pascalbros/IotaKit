@@ -622,7 +622,7 @@ extension Iota {
 	
 	
 	
-	internal func attachToTangle(trunkTx: String, branchTx: String, minWeightMagnitude: Int, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, error: @escaping (Error) -> Void) {
+	public func attachToTangle(trunkTx: String, branchTx: String, minWeightMagnitude: Int, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, error: @escaping (Error) -> Void) {
 		if let localPow = self.localPoW {
 			var resultTrytes: [String] = []
 			var previousTransaction: String! = nil
