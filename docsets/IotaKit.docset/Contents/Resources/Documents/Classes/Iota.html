@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Iota Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/Iota" class="dashAnchor"></a>
+
+    <a title="Iota Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          IotaKit Docs
+        </a>
+         (0% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">IotaKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Iota Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAccount.html">IotaAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaHistoryTransaction.html">IotaHistoryTransaction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaTransaction.html">IotaTransaction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaTransfer.html">IotaTransfer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaBundle.html">IotaBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaSignature.html">IotaSignature</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaInput.html">IotaInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAddress.html">IotaAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaLog.html">IotaLog</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IotaConverter.html">IotaConverter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/IotaFindTxType.html">IotaFindTxType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/IotaUnits.html">IotaUnits</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAPIError.html">IotaAPIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Iota</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Iota</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C7addressSSv"></a>
+                    <a name="//apple_ref/swift/Property/address" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C7addressSSv">address</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="k">var</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C5debugSbv"></a>
+                    <a name="//apple_ref/swift/Property/debug" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C5debugSbv">debug</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debug</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C12spamTransferAA0aD0VvZ"></a>
+                    <a name="//apple_ref/swift/Variable/spamTransfer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spamTransfer</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="s">""</span><span class="o">.</span><span class="nf">rightPadded</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nv">character</span><span class="p">:</span> <span class="s">"9"</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C8spamSeedSSvZ"></a>
+                    <a name="//apple_ref/swift/Variable/spamSeed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C8spamSeedSSvZ">spamSeed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spamSeed</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="nf">rightPadded</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nv">character</span><span class="p">:</span> <span class="s">"9"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0CACSb12prefersHTTPS_yACSgctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(prefersHTTPS:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0CACSb12prefersHTTPS_yACSgctcfc">init(prefersHTTPS:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">prefersHTTPS</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">onReady</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Iota</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0CACSS4node_Su4porttcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(node:port:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0CACSS4node_Su4porttcfc">init(node:port:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0CACSS4node_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(node:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0CACSS4node_tcfc">init(node:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C8nodeInfoyys10DictionaryVySSypGc_ys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/nodeInfo(_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C8nodeInfoyys10DictionaryVySSypGc_ys5Error_pc5errortF">nodeInfo(_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">nodeInfo</span><span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C8balancesySaySSG9addresses_ys10DictionaryVySSs5Int64VGcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/balances(addresses:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C8balancesySaySSG9addresses_ys10DictionaryVySSs5Int64VGcys5Error_pc5errortF">balances(addresses:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">balances</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">balances</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Int64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C16findTransactionsySaySSG9addresses_yAEcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/findTransactions(addresses:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C16findTransactionsySaySSG9addresses_yAEcys5Error_pc5errortF">findTransactions(addresses:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findTransactions</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C16findTransactionsySaySSG7bundles_yAEcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/findTransactions(bundles:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C16findTransactionsySaySSG7bundles_yAEcys5Error_pc5errortF">findTransactions(bundles:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findTransactions</span><span class="p">(</span><span class="nv">bundles</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C6trytesySaySSG6hashes_ySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/trytes(hashes:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C6trytesySaySSG6hashes_ySayAA0A11TransactionVGcys5Error_pc5errortF">trytes(hashes:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trytes</span><span class="p">(</span><span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C11accountDataySS4seed_Si24minimumNumberOfAddressesSi8securitySb19requestTransactionsyAA0A7AccountVcys5Error_pc5erroryAA0A3LogVcSg3logtF"></a>
+                    <a name="//apple_ref/swift/Method/accountData(seed:minimumNumberOfAddresses:security:requestTransactions:_:error:log:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C11accountDataySS4seed_Si24minimumNumberOfAddressesSi8securitySb19requestTransactionsyAA0A7AccountVcys5Error_pc5erroryAA0A3LogVcSg3logtF">accountData(seed:minimumNumberOfAddresses:security:requestTransactions:_:error:log:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">accountData</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minimumNumberOfAddresses</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">requestTransactions</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">account</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAccount.html">IotaAccount</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">log</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">log</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaLog.html">IotaLog</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C14attachToTangleySS4seed_Si5indexSi8securityyAA0A11TransactionVcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/attachToTangle(seed:index:security:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C14attachToTangleySS4seed_Si5indexSi8securityyAA0A11TransactionVcys5Error_pc5errortF">attachToTangle(seed:index:security:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">attachToTangle</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transfer</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C13sendTransfersySS4seed_Si8securitySi5depthSi18minWeightMagnitudeSayAA0A8TransferVG9transfersSayAA0A5InputVGSg6inputsSSSg16remainderAddressAR9referenceySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/sendTransfers(seed:security:depth:minWeightMagnitude:transfers:inputs:remainderAddress:reference:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C13sendTransfersySS4seed_Si8securitySi5depthSi18minWeightMagnitudeSayAA0A8TransferVG9transfersSayAA0A5InputVGSg6inputsSSSg16remainderAddressAR9referenceySayAA0A11TransactionVGcys5Error_pc5errortF">sendTransfers(seed:security:depth:minWeightMagnitude:transfers:inputs:remainderAddress:reference:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendTransfers</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">transfers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">],</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaInput.html">IotaInput</a></span><span class="p">]?,</span> <span class="nv">remainderAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C12replayBundleySS2tx_Si5depthSi18minWeightMagnitudeySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/replayBundle(tx:depth:minWeightMagnitude:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C12replayBundleySS2tx_Si5depthSi18minWeightMagnitudeySayAA0A11TransactionVGcys5Error_pc5errortF">replayBundle(tx:depth:minWeightMagnitude:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replayBundle</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C6bundleySS2tx_ySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/bundle(tx:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C6bundleySS2tx_ySayAA0A11TransactionVGcys5Error_pc5errortF">bundle(tx:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bundle</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C23transactionsFromAddressySS7address_ySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/transactionsFromAddress(address:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C23transactionsFromAddressySS7address_ySayAA0A11TransactionVGcys5Error_pc5errortF">transactionsFromAddress(address:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">transactionsFromAddress</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C19tailFromTransactionyAA0aE0V2tx_yAFcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/tailFromTransaction(tx:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C19tailFromTransactionyAA0aE0V2tx_yAFcys5Error_pc5errortF">tailFromTransaction(tx:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tailFromTransaction</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C15addressFromHashySS0C0_yAA0A7AddressVcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/addressFromHash(address:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C15addressFromHashySS0C0_yAA0A7AddressVcys5Error_pc5errortF">addressFromHash(address:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addressFromHash</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAddress.html">IotaAddress</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C21latestInclusionStatesySaySSG6hashes_ySaySbGcys5Error_pctF"></a>
+                    <a name="//apple_ref/swift/Method/latestInclusionStates(hashes:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C21latestInclusionStatesySaySSG6hashes_ySaySbGcys5Error_pctF">latestInclusionStates(hashes:_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">latestInclusionStates</span><span class="p">(</span><span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(([</span><span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C22wereAddressesSpentFromySaySSG9addresses_ySaySbGcys5Error_pctF"></a>
+                    <a name="//apple_ref/swift/Method/wereAddressesSpentFrom(addresses:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C22wereAddressesSpentFromySaySSG9addresses_ySaySbGcys5Error_pctF">wereAddressesSpentFrom(addresses:_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">wereAddressesSpentFrom</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(([</span><span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C12isPromotableySS4tail_ySbcys5Error_pctF"></a>
+                    <a name="//apple_ref/swift/Method/isPromotable(tail:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C12isPromotableySS4tail_ySbcys5Error_pctF">isPromotable(tail:_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isPromotable</span><span class="p">(</span><span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C18promoteTransactionySS4hash_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/promoteTransaction(hash:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C18promoteTransactionySS4hash_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF">promoteTransaction(hash:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promoteTransaction</span><span class="p">(</span><span class="nv">hash</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C18promoteTransactionyAA0aD0V_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/promoteTransaction(_:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C18promoteTransactionyAA0aD0V_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF">promoteTransaction(_:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promoteTransaction</span><span class="p">(</span><span class="n">_</span> <span class="nv">tx</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C7promoteySS4tail_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/promote(tail:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C7promoteySS4tail_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF">promote(tail:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promote</span><span class="p">(</span><span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit0A0C14attachToTangleySS7trunkTx_SS06branchG0Si18minWeightMagnitudeSaySSG6trytesyAHcys5Error_pc5errortF"></a>
+                    <a name="//apple_ref/swift/Method/attachToTangle(trunkTx:branchTx:minWeightMagnitude:trytes:_:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A0C14attachToTangleySS7trunkTx_SS06branchG0Si18minWeightMagnitudeSaySSG6trytesyAHcys5Error_pc5errortF">attachToTangle(trunkTx:branchTx:minWeightMagnitude:trytes:_:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">attachToTangle</span><span class="p">(</span><span class="nv">trunkTx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">branchTx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>© 2018 IotaKit</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

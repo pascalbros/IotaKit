@@ -1,0 +1,992 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Connectors/IotaAPIServiceProtocol.swift",
+      "line": 10,
+      "symbol": "IotaFindTxType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Connectors/IotaAPIServiceProtocol.swift",
+      "line": 11,
+      "symbol": "IotaFindTxType.addresses",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Connectors/IotaAPIServiceProtocol.swift",
+      "line": 12,
+      "symbol": "IotaFindTxType.bundles",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": null,
+      "symbol": "Iota",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 11,
+      "symbol": "Iota",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 13,
+      "symbol": "Iota.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 14,
+      "symbol": "Iota.debug",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 19,
+      "symbol": "Iota.spamTransfer",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 20,
+      "symbol": "Iota.spamSeed",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 22,
+      "symbol": "Iota.init(prefersHTTPS:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 31,
+      "symbol": "Iota.init(node:port:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 35,
+      "symbol": "Iota.init(node:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 39,
+      "symbol": "Iota.nodeInfo(_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 43,
+      "symbol": "Iota.balances(addresses:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 47,
+      "symbol": "Iota.findTransactions(addresses:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 51,
+      "symbol": "Iota.findTransactions(bundles:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 55,
+      "symbol": "Iota.trytes(hashes:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 59,
+      "symbol": "Iota.accountData(seed:minimumNumberOfAddresses:security:requestTransactions:_:error:log:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 194,
+      "symbol": "Iota.attachToTangle(seed:index:security:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 199,
+      "symbol": "Iota.sendTransfers(seed:security:depth:minWeightMagnitude:transfers:inputs:remainderAddress:reference:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 208,
+      "symbol": "Iota.replayBundle(tx:depth:minWeightMagnitude:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 228,
+      "symbol": "Iota.bundle(tx:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 307,
+      "symbol": "Iota.transactionsFromAddress(address:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 319,
+      "symbol": "Iota.tailFromTransaction(tx:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 338,
+      "symbol": "Iota.addressFromHash(address:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 345,
+      "symbol": "Iota.latestInclusionStates(hashes:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 349,
+      "symbol": "Iota.wereAddressesSpentFrom(addresses:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 353,
+      "symbol": "Iota.isPromotable(tail:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 359,
+      "symbol": "Iota.promoteTransaction(hash:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 366,
+      "symbol": "Iota.promoteTransaction(_:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 380,
+      "symbol": "Iota.promote(tail:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Iota.swift",
+      "line": 625,
+      "symbol": "Iota.attachToTangle(trunkTx:branchTx:minWeightMagnitude:trytes:_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIService.swift",
+      "line": 10,
+      "symbol": "IotaAPIError",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIService.swift",
+      "line": 12,
+      "symbol": "IotaAPIError.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIService.swift",
+      "line": 13,
+      "symbol": "IotaAPIError.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 10,
+      "symbol": "IotaAPIUtils",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 12,
+      "symbol": "IotaAPIUtils.newAddress(seed:index:checksum:security:multithreaded:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 31,
+      "symbol": "IotaAPIUtils.isSeed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 39,
+      "symbol": "IotaAPIUtils.isAddress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 51,
+      "symbol": "IotaAPIUtils.groupTxsByBundle(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 64,
+      "symbol": "IotaAPIUtils.categorizeTransfers(addresses:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 70,
+      "symbol": "IotaAPIUtils.categorizeTransfers(bundles:addresses:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 93,
+      "symbol": "IotaAPIUtils.historyTransactions(addresses:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaAPIUtils.swift",
+      "line": 113,
+      "symbol": "IotaAPIUtils.checksumForSeed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 10,
+      "symbol": "IotaChecksum",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 12,
+      "symbol": "IotaChecksum.calculateChecksum(address:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 25,
+      "symbol": "IotaChecksum.removeChecksum(address:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 34,
+      "symbol": "IotaChecksum.removeChecksumFromAddress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 38,
+      "symbol": "IotaChecksum.isValidChecksum(address:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 44,
+      "symbol": "IotaChecksum.isAddressWithChecksum(address:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaChecksum.swift",
+      "line": 48,
+      "symbol": "IotaChecksum.isAddressWithoutChecksum(address:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaConverter.swift",
+      "line": 11,
+      "symbol": "IotaConverter",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaConverter.swift",
+      "line": 112,
+      "symbol": "IotaConverter.string(fromTrits:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaConverter.swift",
+      "line": 121,
+      "symbol": "IotaConverter.trits(fromString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": null,
+      "symbol": "IotaBundle",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": null,
+      "symbol": "IotaTransaction",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": null,
+      "symbol": "IotaTransaction",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 10,
+      "symbol": "IotaAccount",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 11,
+      "symbol": "IotaAccount.balance",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 12,
+      "symbol": "IotaAccount.addresses",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 17,
+      "symbol": "IotaHistoryTransaction",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 18,
+      "symbol": "IotaHistoryTransaction.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 19,
+      "symbol": "IotaHistoryTransaction.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 20,
+      "symbol": "IotaHistoryTransaction.tag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 21,
+      "symbol": "IotaHistoryTransaction.persistence",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 22,
+      "symbol": "IotaHistoryTransaction.bundle",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 23,
+      "symbol": "IotaHistoryTransaction.timestamp",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 24,
+      "symbol": "IotaHistoryTransaction.transactions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 27,
+      "symbol": "IotaTransaction",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 28,
+      "symbol": "IotaTransaction.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 29,
+      "symbol": "IotaTransaction.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 30,
+      "symbol": "IotaTransaction.tag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 31,
+      "symbol": "IotaTransaction.hash",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 32,
+      "symbol": "IotaTransaction.signatureFragments",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 33,
+      "symbol": "IotaTransaction.obsoleteTag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 34,
+      "symbol": "IotaTransaction.timestamp",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 35,
+      "symbol": "IotaTransaction.currentIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 36,
+      "symbol": "IotaTransaction.lastIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 37,
+      "symbol": "IotaTransaction.bundle",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 38,
+      "symbol": "IotaTransaction.trunkTransaction",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 39,
+      "symbol": "IotaTransaction.branchTransaction",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 40,
+      "symbol": "IotaTransaction.nonce",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 41,
+      "symbol": "IotaTransaction.persistence",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 42,
+      "symbol": "IotaTransaction.attachmentTimestamp",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 43,
+      "symbol": "IotaTransaction.attachmentTimestampLowerBound",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 44,
+      "symbol": "IotaTransaction.attachmentTimestampUpperBound",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 55,
+      "symbol": "IotaTransfer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 56,
+      "symbol": "IotaTransfer.timestamp",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 57,
+      "symbol": "IotaTransfer.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 58,
+      "symbol": "IotaTransfer.hash",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 59,
+      "symbol": "IotaTransfer.persistence",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 60,
+      "symbol": "IotaTransfer.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 61,
+      "symbol": "IotaTransfer.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 62,
+      "symbol": "IotaTransfer.tag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 64,
+      "symbol": "IotaTransfer.init(address:value:timestamp:hash:persistence:message:tag:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 75,
+      "symbol": "IotaBundle",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 77,
+      "symbol": "IotaBundle.transactions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 78,
+      "symbol": "IotaBundle.length",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 81,
+      "symbol": "IotaSignature",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 82,
+      "symbol": "IotaSignature.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 83,
+      "symbol": "IotaSignature.signatureFragments",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 86,
+      "symbol": "IotaInput",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 87,
+      "symbol": "IotaInput.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 88,
+      "symbol": "IotaInput.balance",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 89,
+      "symbol": "IotaInput.keyIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 90,
+      "symbol": "IotaInput.security",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 93,
+      "symbol": "IotaAddress",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 94,
+      "symbol": "IotaAddress.hash",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 95,
+      "symbol": "IotaAddress.transactions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 96,
+      "symbol": "IotaAddress.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 99,
+      "symbol": "IotaAddress.balance",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 110,
+      "symbol": "IotaAddress.canSpend",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 144,
+      "symbol": "IotaLog",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaModels.swift",
+      "line": 145,
+      "symbol": "IotaLog.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 10,
+      "symbol": "IotaUnits",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 11,
+      "symbol": "IotaUnits.i",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 12,
+      "symbol": "IotaUnits.Ki",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 13,
+      "symbol": "IotaUnits.Mi",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 14,
+      "symbol": "IotaUnits.Gi",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 15,
+      "symbol": "IotaUnits.Ti",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 16,
+      "symbol": "IotaUnits.Pi",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 18,
+      "symbol": "IotaUnits.init(amount:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 23,
+      "symbol": "IotaUnits.init(amount:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 36,
+      "symbol": "IotaUnits.string",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 48,
+      "symbol": "IotaUnitsConverter",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 51,
+      "symbol": "IotaUnitsConverter.convert(amount:toUnit:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 55,
+      "symbol": "IotaUnitsConverter.convert(amount:fromUnit:toUnit:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 60,
+      "symbol": "IotaUnitsConverter.iotaToString(amount:extended:forceUnit:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 78,
+      "symbol": "IotaUnitsConverter.createAmountWithUnitDisplayText(amount:unit:extended:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/IotaUnits.swift",
+      "line": 82,
+      "symbol": "IotaUnitsConverter.createAmountDisplayText(amount:unit:extended:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/ModelExtensions/IotaBundleExtension.swift",
+      "line": 12,
+      "symbol": "IotaBundle.addEntry(signatureMessageLength:address:value:tag:timestamp:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/ModelExtensions/IotaTransactionExtension.swift",
+      "line": 12,
+      "symbol": "IotaTransaction.init(trytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/ModelExtensions/IotaTransactionExtension.swift",
+      "line": 16,
+      "symbol": "IotaTransaction.transactionObject(trytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/ModelExtensions/IotaTransactionExtension.swift",
+      "line": 42,
+      "symbol": "IotaTransaction.trytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/IotaLocalPow.swift",
+      "line": 10,
+      "symbol": "IotaLocalPoW",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/IotaLocalPow.swift",
+      "line": 11,
+      "symbol": "IotaLocalPoW.performPoW(trytes:minWeightMagnitude:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/IotaLocalPow.swift",
+      "line": 12,
+      "symbol": "IotaLocalPoW.performPoW(trytes:minWeightMagnitude:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/PearlDiverLocalPow.swift",
+      "line": 11,
+      "symbol": "PearlDiverLocalPoW",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/PearlDiverLocalPow.swift",
+      "line": 15,
+      "symbol": "PearlDiverLocalPoW.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/PearlDiverLocalPow.swift",
+      "line": 17,
+      "symbol": "PearlDiverLocalPoW.performPoW(trytes:minWeightMagnitude:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pascal/Projects/IotaKit/Sources/IotaKit/Pow/PearlDiverLocalPow.swift",
+      "line": 27,
+      "symbol": "PearlDiverLocalPoW.performPoW(trytes:minWeightMagnitude:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/pascal/Projects/IotaKit"
+}

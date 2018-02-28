@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IotaKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="IotaKit  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          IotaKit Docs
+        </a>
+         (0% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">IotaKit Reference</a>
+      <img class="carat" src="img/carat.png" />
+      IotaKit  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaAccount.html">IotaAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaHistoryTransaction.html">IotaHistoryTransaction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaTransaction.html">IotaTransaction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaTransfer.html">IotaTransfer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaBundle.html">IotaBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaSignature.html">IotaSignature</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaInput.html">IotaInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaAddress.html">IotaAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaLog.html">IotaLog</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Iota.html">Iota</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IotaConverter.html">IotaConverter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IotaFindTxType.html">IotaFindTxType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IotaUnits.html">IotaUnits</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaAPIError.html">IotaAPIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaAPIUtils.html">IotaAPIUtils</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaChecksum.html">IotaChecksum</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <h1 id='iotakit' class='heading'>IotaKit</h1>
+
+<p>The IOTA Swift API Library</p>
+
+<p><strong>Please, be careful, it&rsquo;s a work-in-progress project</strong></p>
+
+<ul>
+<li>[x] Full support for address generation (with Keccak written in C)</li>
+<li>[x] Basic commands to a full-node</li>
+<li>[x] One-func account retrieval</li>
+<li>[x] Automatic node selector</li>
+<li>[x] Local PoW</li>
+<li>[x] Attach to tangle (0i tx)</li>
+<li>[x] Replay Bundle</li>
+<li>[x] Transfer (&gt;0i tx)</li>
+<li>[x] Promote</li>
+<li>[ ] Multisignature Support</li>
+</ul>
+<h2 id='compatibility' class='heading'>Compatibility</h2>
+
+<p>IotaKit is compatible with all architectures, tested on iOS/MacOS/Ubuntu.</p>
+<h2 id='dependencies' class='heading'>Dependencies</h2>
+
+<p><code>Foundation</code></p>
+
+<p><code>Dispatch</code></p>
+<h2 id='compile' class='heading'>Compile</h2>
+<h3 id='macos' class='heading'>MacOS</h3>
+
+<p>Compile it directly from Xcode project or follow the Ubuntu instructions</p>
+<h3 id='ubuntu' class='heading'>Ubuntu</h3>
+
+<p><code>cd IotaKit</code></p>
+
+<p><code>swift build -Xcc -ISources/IotaKit/include/sha3</code></p>
+<h2 id='install' class='heading'>Install</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>pod &lsquo;IotaKit&rsquo;, &lsquo;~&gt; 0.5.8&rsquo;</p>
+<h2 id='example' class='heading'>Example</h2>
+
+<p>The usage should be straightforward, it is very similar to the <a href="https://github.com/iotaledger/iota.lib.js">official JS lib</a></p>
+<pre class="highlight plaintext"><code>let iota = Iota(node: "http://localhost", port: 14265)
+
+iota.nodeInfo({ (result) in
+    print(result)
+}) { (error) in
+    print(error)
+}
+</code></pre>
+<h2 id='author' class='heading'>Author</h2>
+
+<p>IotaKit is maintained by <a href="https://pascalbros.github.io">Pasquale Ambrosini</a></p>
+
+<p>You can follow me on Twitter at <a href="http://twitter.com/PascalAmbro">@PascalAmbro</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>IotaKit is licensed under the terms of the MIT License. Please see the LICENSE file for full details.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>© 2018 IotaKit</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
