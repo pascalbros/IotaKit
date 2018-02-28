@@ -623,35 +623,37 @@ extension Iota {
 	
 	
 	internal func attachToTangle(trunkTx: String, branchTx: String, minWeightMagnitude: Int, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, error: @escaping (Error) -> Void) {
-		if let localPow = self.localPoW {
-			var resultTrytes: [String] = []
-			var previousTransaction: String! = nil
-			
-			DispatchQueue.global(qos: .userInitiated).async {
-				for t in trytes {
-					var txn = IotaTransaction(trytes: t)
-					txn.trunkTransaction = previousTransaction == nil ? trunkTx : previousTransaction
-					txn.branchTransaction = previousTransaction == nil ? branchTx : trunkTx
-					if txn.tag.isEmpty /*|| Set(txn.tag).isSubset(of: ["9"])*/ {
-						//txn.tag = txn.obsoleteTag
-						txn.tag = "".rightPadded(count: 27, character: "9")
-					}
-					txn.attachmentTimestamp = UInt64(Date().timeIntervalSince1970*1000)
-					txn.attachmentTimestampLowerBound = 0
-					txn.attachmentTimestampUpperBound = 3_812_798_742_493
-					resultTrytes.append(localPow.performPoW(trytes: txn.trytes, minWeightMagnitude: minWeightMagnitude))
-					previousTransaction = IotaTransaction(trytes: resultTrytes.last!).hash
-				}
-				success(resultTrytes)
-			}
-		}else{
-			APIServices.attachToTangle(nodeAddress: self.address, trunkTx: trunkTx, branchTx: branchTx, minWeightMagnitude: minWeightMagnitude, trytes: trytes, { (resultTrytes) in
-				success(resultTrytes)
-			}, { (e) in
-				error(e)
-			})
-		}
-	}
+        if(IotaInputValidator.isHash(hash: trunkTx) && IotaInputValidator.isHash(hash: branchTx)) {
+            if let localPow = self.localPoW {
+                var resultTrytes: [String] = []
+                var previousTransaction: String! = nil
+                
+                DispatchQueue.global(qos: .userInitiated).async {
+                    for t in trytes {
+                        var txn = IotaTransaction(trytes: t)
+                        txn.trunkTransaction = previousTransaction == nil ? trunkTx : previousTransaction
+                        txn.branchTransaction = previousTransaction == nil ? branchTx : trunkTx
+                        if txn.tag.isEmpty /*|| Set(txn.tag).isSubset(of: ["9"])*/ {
+                            //txn.tag = txn.obsoleteTag
+                            txn.tag = "".rightPadded(count: 27, character: "9")
+                        }
+                        txn.attachmentTimestamp = UInt64(Date().timeIntervalSince1970*1000)
+                        txn.attachmentTimestampLowerBound = 0
+                        txn.attachmentTimestampUpperBound = 3_812_798_742_493
+                        resultTrytes.append(localPow.performPoW(trytes: txn.trytes, minWeightMagnitude: minWeightMagnitude))
+                        previousTransaction = IotaTransaction(trytes: resultTrytes.last!).hash
+                    }
+                    success(resultTrytes)
+                }
+            }else{
+                APIServices.attachToTangle(nodeAddress: self.address, trunkTx: trunkTx, branchTx: branchTx, minWeightMagnitude: minWeightMagnitude, trytes: trytes, { (resultTrytes) in
+                    success(resultTrytes)
+                }, { (e) in
+                    error(e)
+                })
+            }
+        }
+    }
 	
 	internal func newAddress(seed: String, security: Int, index: Int, checksum: Bool, total: Int, returnAll: Bool, _ success: @escaping (_ addresses: [String]) -> Void, error: @escaping (Error) -> Void) {
 		
