@@ -95,6 +95,10 @@
 		50F331812010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317F2010182800DC6E5B /* PearlDiverLocalPow.swift */; };
 		50F331822010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3317F2010182800DC6E5B /* PearlDiverLocalPow.swift */; };
 		50F3318620110CB600DC6E5B /* APIsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3318520110CB600DC6E5B /* APIsTests.swift */; };
+		50F60D2C2050916200112585 /* IotaMultisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F60D2B2050916200112585 /* IotaMultisig.swift */; };
+		50F60D2D2050916200112585 /* IotaMultisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F60D2B2050916200112585 /* IotaMultisig.swift */; };
+		50F60D2E2050916200112585 /* IotaMultisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F60D2B2050916200112585 /* IotaMultisig.swift */; };
+		50F60D3020509C6E00112585 /* IotaMultisigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F60D2F20509C6E00112585 /* IotaMultisigTests.swift */; };
 		OBJ_21 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_27 /* IotaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* IotaKitTests.swift */; };
 		OBJ_29 /* IotaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "IotaKit::IotaKit::Product" /* IotaKit.framework */; };
@@ -149,6 +153,8 @@
 		50F3317B2010137000DC6E5B /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		50F3317F2010182800DC6E5B /* PearlDiverLocalPow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearlDiverLocalPow.swift; sourceTree = "<group>"; };
 		50F3318520110CB600DC6E5B /* APIsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIsTests.swift; sourceTree = "<group>"; };
+		50F60D2B2050916200112585 /* IotaMultisig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaMultisig.swift; sourceTree = "<group>"; };
+		50F60D2F20509C6E00112585 /* IotaMultisigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaMultisigTests.swift; sourceTree = "<group>"; };
 		"IotaKit::IotaKit::Product" /* IotaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IotaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"IotaKit::IotaKitTests::Product" /* IotaKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = IotaKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* IotaKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaKitTests.swift; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 				OBJ_12 /* IotaKitTests.swift */,
 				50F3318520110CB600DC6E5B /* APIsTests.swift */,
 				50E32CEF20210BE7001017D6 /* IotaUnitsTests.swift */,
+				50F60D2F20509C6E00112585 /* IotaMultisigTests.swift */,
 			);
 			name = IotaKitTests;
 			path = Tests/IotaKitTests;
@@ -300,6 +307,7 @@
 				504C6C232006AF8A007C6C7E /* IotaModels.swift */,
 				504C6C182006AF89007C6C7E /* IotaSigning.swift */,
 				50E32CEC2020FCE9001017D6 /* IotaUnits.swift */,
+				50F60D2B2050916200112585 /* IotaMultisig.swift */,
 			);
 			name = IotaKit;
 			path = Sources/IotaKit;
@@ -372,11 +380,15 @@
 					50FB5802202658B2007A36CF = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = NRSZN92M5X;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 					};
 					"IotaKit::IotaKit" = {
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+					};
+					"IotaKit::IotaKitPackageTests::ProductTarget" = {
+						LastSwiftMigration = 0920;
 					};
 				};
 			};
@@ -446,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				50F60D2C2050916200112585 /* IotaMultisig.swift in Sources */,
 				OBJ_21 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +469,7 @@
 			files = (
 				OBJ_27 /* IotaKitTests.swift in Sources */,
 				50F33170200FB6D200DC6E5B /* Iota.swift in Sources */,
+				50F60D2D2050916200112585 /* IotaMultisig.swift in Sources */,
 				50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */,
 				50F33169200FB6CD00DC6E5B /* IotaTransactionExtension.swift in Sources */,
 				50F331822010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */,
@@ -471,6 +485,7 @@
 				50F3318620110CB600DC6E5B /* APIsTests.swift in Sources */,
 				50F33171200FB6D200DC6E5B /* IotaAPIService.swift in Sources */,
 				50F3316E200FB6D200DC6E5B /* IotaConverter.swift in Sources */,
+				50F60D3020509C6E00112585 /* IotaMultisigTests.swift in Sources */,
 				50F33168200FB6CD00DC6E5B /* IotaBundleExtension.swift in Sources */,
 				50F33163200FB6C300DC6E5B /* PearlDiver.swift in Sources */,
 				50F33178200FB6DD00DC6E5B /* Utils.swift in Sources */,
@@ -493,6 +508,7 @@
 				504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */,
 				50F1DF87200C26FE005D91C6 /* IotaBundleExtension.swift in Sources */,
 				503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */,
+				50F60D2E2050916200112585 /* IotaMultisig.swift in Sources */,
 				50F3315F200D744800DC6E5B /* IotaConstants.swift in Sources */,
 				504C6C2E2006AF8A007C6C7E /* IotaConverter.swift in Sources */,
 				504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */,
@@ -554,18 +570,25 @@
 		50FB5803202658B2007A36CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		50FB5804202658B2007A36CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -779,12 +802,19 @@
 		OBJ_40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		OBJ_41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
