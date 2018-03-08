@@ -5,7 +5,7 @@
 //  Created by Pasquale Ambrosini on 07/03/18.
 //
 
-import UIKit
+import Foundation
 
 public class IotaMultisig {
 	fileprivate let curl: CurlSource = CurlMode.kerl.create()

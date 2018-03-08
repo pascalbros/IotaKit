@@ -12,6 +12,8 @@ public struct IotaAPIUtils {
 	
 	public static func newAddress(seed: String, index: Int, checksum: Bool, security: Int = 2, multithreaded: Bool = false) -> String {
 		
+		//return newAddress(seed: seed, security: security, index: index, checksum: checksum, multithreaded: multithreaded, curl: CurlMode.kerl.create())
+		
 		let address = UnsafeMutablePointer<UInt8>.allocate(capacity: 81)
 		let seedBytes = UnsafeMutablePointer<UInt8>.allocate(capacity: 48)
 		let result = UnsafeMutablePointer<Int8>.allocate(capacity: 81)
@@ -111,7 +113,7 @@ public struct IotaAPIUtils {
 	}
 	
 	public static func historyTransactions(addresses: [IotaAddress]) -> [IotaHistoryTransaction]{
-		let tempTxs = addresses.flatMap { $0.transactions! }
+		let tempTxs = addresses.flatMap { $0.transactions ?? [] }
 		let bundles = self.groupTxsByBundle(tempTxs)
 		var result: [[[IotaTransaction]]] = []
 

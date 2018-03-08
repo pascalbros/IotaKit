@@ -71,6 +71,18 @@ public class Iota {
 				completeBalances()
 				return
 			}
+			
+			guard account.addresses[index].transactions != nil else {
+				DispatchQueue.main.async {
+					index += 1
+					if index >= account.addresses.count {
+						completeBalances()
+					}else{
+						getInclusions()
+					}
+				}
+				return
+			}
 			let hashes = account.addresses[index].transactions!.map { $0.hash }
 			self.latestInclusionStates(hashes: hashes, { (inclusions) in
 				for i in 0..<account.addresses[index].transactions!.count {

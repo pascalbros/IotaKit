@@ -43,7 +43,6 @@ void kerl_squeeze_chunk(cx_sha3_t *sha3, unsigned char* bytes);
  *  This funtion should be called, if no further squeeze are performed on this
  *  context, as it avoid unnecessary reinitializations.
  *  @param sha3 the SHA context used for hashing
- *  @param bytes result byte array
  */
 void kerl_squeeze_final_chunk(cx_sha3_t *sha3, unsigned char *bytes_out);
 

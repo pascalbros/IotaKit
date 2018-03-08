@@ -33,8 +33,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.requires_arc = true
 
+  s.module_map = 'IotaKit.modulemap'
   s.source_files = 'Sources/IotaKit/**/*.{swift,c,h}'
-  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/IotaKit/Sources/IotaKit/include/**','LIBRARY_SEARCH_PATHS' => '$(SRCROOT)/IotaKit/Sources/IotaKit', 'SWIFT_VERSION' => '4.0'}
+  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/IotaKit/include/sha3 $(PODS_TARGET_SRCROOT)/Sources/IotaKit/include/address','LIBRARY_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/IotaKit', 'SWIFT_VERSION' => '4.0'}
   s.exclude_files = 'Sources/IotaKit/Utils/Crypto.swift'
   s.preserve_paths  = 'Sources/IotaKit/include/address/module.modulemap', 'Sources/IotaKit/include/sha3/module.modulemap'
 end
