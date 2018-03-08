@@ -6,12 +6,32 @@
 //
 
 import Foundation
+import IotaC
 
 public struct IotaAPIUtils {
 	
 	public static func newAddress(seed: String, index: Int, checksum: Bool, security: Int = 2, multithreaded: Bool = false) -> String {
-		let curl = CurlMode.kerl.create()
-		return self.newAddress(seed: seed, security: security, index: index, checksum: checksum, multithreaded: multithreaded, curl: curl)
+		
+		let address = UnsafeMutablePointer<UInt8>.allocate(capacity: 81)
+		let seedBytes = UnsafeMutablePointer<UInt8>.allocate(capacity: 48)
+		let result = UnsafeMutablePointer<Int8>.allocate(capacity: 81)
+		
+		defer {
+			address.deallocate(capacity: 81)
+			seedBytes.deallocate(capacity: 48)
+			result.deallocate(capacity: 81)
+		}
+		
+		chars_to_bytes(seed, seedBytes, 81)
+		get_public_addr(seedBytes, UInt32(index), UInt8(security), address)
+		bytes_to_chars(address, result, 48);
+		let str = String(cString: result)
+		
+		if checksum {
+			return str+IotaChecksum.calculateChecksum(address: str)
+		}
+		
+		return str
 	}
 	
 	static func newAddress(seed: String, security: Int, index: Int, checksum: Bool, multithreaded: Bool = false, curl: CurlSource) -> String {

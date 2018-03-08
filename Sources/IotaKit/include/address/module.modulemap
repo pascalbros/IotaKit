@@ -1,0 +1,4 @@
+module IotaC [system][extern_c]{
+    header "iota_address.h"
+    export *
+}
