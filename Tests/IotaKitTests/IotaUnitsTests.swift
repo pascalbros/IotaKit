@@ -31,7 +31,7 @@ class IotaUnitsTests: XCTestCase {
 	
 	func testValueKiToMi() {
 		let value = IotaUnitsConverter.convert(amount: 100000, fromUnit: .Ki, toUnit: .i)
-		XCTAssertEqual(value, 350)
+		XCTAssertEqual(value, 100000000)
 	}
 	
 	func testValues() {

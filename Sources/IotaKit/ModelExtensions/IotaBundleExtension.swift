@@ -19,7 +19,7 @@ public extension IotaBundle {
 	
 	internal mutating func finalize(customCurl: CurlSource!) {
 		//var normalizedBundleValue: [Int]
-		var hash: [Int] = Array(repeating: 0, count: 243)
+		var hash: [Int] = Array(repeating: 0, count: Curl.hashLength)
 		var obsoleteTagTrits: [Int] = Array(repeating: 0, count: 81)
 		var valid = true
 		let curl = customCurl == nil ? CurlMode.kerl.create() : customCurl!

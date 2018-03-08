@@ -13,7 +13,7 @@ The IOTA Swift API Library
 - [x] Replay Bundle
 - [x] Transfer (>0i tx)
 - [x] Promote
-- [ ] Multisignature Support
+- [x] Multisignature Support
 
 ## Compatibility
 
@@ -35,13 +35,13 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 
 `cd IotaKit`
 
-`swift build -Xcc -ISources/IotaKit/include/sha3`
+`swift build`
 
 ## Install
 
 ### CocoaPods
 
-pod 'IotaKit', '~> 0.5.8'
+pod 'IotaKit', '~> 0.5.9'
 
 ## Example
 
