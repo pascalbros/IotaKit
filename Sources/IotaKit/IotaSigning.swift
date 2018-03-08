@@ -12,7 +12,7 @@ import Dispatch
 class IotaSigning {
 	
 	static let KEY_LENGTH = 6561
-	static let HASH_LENGTH = 243
+	static let HASH_LENGTH = Curl.hashLength
 	
 	fileprivate let curl: CurlSource
 	

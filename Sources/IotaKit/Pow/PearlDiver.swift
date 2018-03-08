@@ -16,7 +16,7 @@ enum PearlDiverState {
 }
 
 fileprivate let transactionLength = 8019
-fileprivate let curlHashLength = 243
+fileprivate let curlHashLength = Curl.hashLength
 fileprivate let curlStateLength = curlHashLength*3
 
 fileprivate let highBits: UInt64 = 0b11111111_11111111_11111111_11111111_11111111_11111111_11111111_11111111

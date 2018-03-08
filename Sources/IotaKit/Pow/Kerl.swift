@@ -51,7 +51,7 @@ class Kerl: CurlSource {
 	func absorb(trits: [Int], offset: Int, length: Int) -> CurlSource {
 		var off = offset
 		var l = length
-		if l % 243 != 0 {
+		if l % Curl.hashLength != 0 {
 			fatalError("Invalid length")
 		}
 		
@@ -74,7 +74,7 @@ class Kerl: CurlSource {
 	func squeeze(trits: inout [Int], offset: Int, length: Int) -> [Int] {
 		var off = offset
 		var l = length
-		if l % 243 != 0 {
+		if l % Curl.hashLength != 0 {
 			fatalError("Invalid length")
 		}
 		repeat {

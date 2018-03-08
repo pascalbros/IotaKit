@@ -5,17 +5,18 @@
 //  Created by Pasquale Ambrosini on 07/03/18.
 //
 
-import UIKit
+import Foundation
 
 public class IotaMultisig {
 	fileprivate let curl: CurlSource = CurlMode.kerl.create()
 	fileprivate var signing: IotaSigning
+	
 	public init() {
 		 self.signing = IotaSigning(curl: curl.clone())
 	}
 	
 	public func digest(seed: String, security: Int, index: Int) -> String {
-		let key = self.signing.key(inSeed: IotaConverter.trits(trytes: seed, length: 243), index: index, security: security)
+		let key = self.signing.key(inSeed: IotaConverter.trits(trytes: seed, length: Curl.hashLength), index: index, security: security)
 		return IotaConverter.trytes(trits: self.signing.digest(key: key))
 	}
 	
@@ -43,7 +44,7 @@ public class IotaMultisig {
 			_ = self.curl.absorb(trits: keyDigest)
 		}
 		
-		var addressTrits: [Int] = Array(repeating: 0, count: 243)
+		var addressTrits: [Int] = Array(repeating: 0, count: Curl.hashLength)
 		_ = self.curl.squeeze(trits: &addressTrits)
 		
 		return IotaConverter.trytes(trits: addressTrits) == address

@@ -15,7 +15,7 @@ public extension IotaTransaction {
 	
 	mutating func transactionObject(trytes: String) {
 		let transactionTrits = IotaConverter.trits(fromString: trytes)
-		var hash: [Int] = Array(repeating: 0, count: 243)
+		var hash: [Int] = Array(repeating: 0, count: Curl.hashLength)
 		let curl = CurlMode.curlP81.create()
 		curl.reset()
 		_ = curl.absorb(trits: transactionTrits)

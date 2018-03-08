@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.0'
   s.name         = "IotaKit"
-  s.version      = "0.5.8"
+  s.version      = "0.5.9"
   s.summary      = "The IOTA Swift API Library"
 
   # This description is used to generate tags and improve search results.
@@ -33,8 +33,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.requires_arc = true
 
-  s.source_files = 'Sources/IotaKit/**/*.{swift,c,h}'
-  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/IotaKit/Sources/IotaKit/include/sha3','LIBRARY_SEARCH_PATHS' => '$(SRCROOT)/IotaKit/Sources/IotaKit', 'SWIFT_VERSION' => '4.0'}
+  s.module_map = 'IotaKit.modulemap'
+  s.source_files = 'Sources/**/*.{swift,c,h}'
+  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/sha3/**','LIBRARY_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/', 'SWIFT_VERSION' => '4.0'}
   s.exclude_files = 'Sources/IotaKit/Utils/Crypto.swift'
-  s.preserve_paths  = 'Sources/IotaKit/include/sha3/module.modulemap'
+  s.preserve_paths  = 'Sources/sha3/include/module.modulemap'
 end

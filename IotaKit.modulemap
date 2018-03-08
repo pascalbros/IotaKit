@@ -1,0 +1,11 @@
+framework module IotaKit {
+  umbrella header "IotaKit-umbrella.h"
+
+  export *
+  module * { export * }
+  
+  module sha3 [system][extern_c]{
+	  header "sha3.h"
+	  export *
+  }
+}

@@ -9,7 +9,7 @@ import XCTest
 import IotaKit
 
 class APIsTests: XCTestCase {
-	
+	let timeout = 10.0
 	let iota = Iota(node: "http://iotanode.party:14265")
 	private let TEST_SEED1 = "XDSCF9LACCU9EMAMWLZUTYLDSRP9BCBYJEDWERJPADUZQFCCPWUMFUYMJLHLJHJ9NGZXMCKGCHBFCUPAL";
 	private let TEST_ADDRESS_WITHOUT_CHECKSUM_SECURITY_LEVEL_2 = "ADVFOBBFMSHUTBLHESNRFIZYFVZNDOJV9QSSABSXEYLHKVCEGGWOZGLMLQLYKJNGSBIEYDW9YFJFAMBWA";
@@ -34,7 +34,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testAddress() {
@@ -64,7 +64,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testAccountDataWithAddresses() {
@@ -78,7 +78,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testAccountDataWithTxs() {
@@ -92,7 +92,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testAccountDataWithAddressesAndTxs() {
@@ -106,7 +106,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testAccountDataRequestingTransactions() {
@@ -120,7 +120,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 120.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testAttachToTangle() {
@@ -133,7 +133,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: 120)
 	}
 	
 	func testAttachToTangleWithNewAddress() {
@@ -156,7 +156,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testSendTrytes() {
@@ -171,7 +171,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: 120)
 	}
 	
 	func testPrepareTransfers() {
@@ -186,7 +186,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testPrepareTransfersWithValue() {
@@ -201,7 +201,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testSendTransferWithValue() {
@@ -216,7 +216,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: 120)
 	}
 	
 	func testFindTransactions() {
@@ -231,18 +231,20 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testCheckConsistency() {
 		let expectation = XCTestExpectation(description: "testFindTransactions test")
 
-		IotaAPIService.checkConsistency(nodeAddress: "http://iota-tangle.io:14265", hashes: ["YHDBPGHRSGHNKQECDPLTLXJBTRWIMYICNCOQCGTDNVIRXZICGMQTAECHQNVKQJYHHCDVGXZTCYLR99999"], { (result) in
+		IotaAPIService.checkConsistency(nodeAddress: self.iota.address, hashes: ["IBTTCZXHQGDBJJKYTYYOEEMAVRKMHWTFVJYZEZUXLQFZZVZPSFFAODJVLTFYSK9NYTNRFCGJPF9DA9999"], { (result) in
 			print(result)
+			expectation.fulfill()
 		}) { (error) in
 			print(error)
+			assertionFailure((error as! IotaAPIError).message)
 		}
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testGetTransactionTrytes() {
@@ -257,7 +259,7 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testTransactionsFromAddress() {
@@ -272,7 +274,7 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testTailFromTransaction() {
@@ -293,7 +295,7 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testIsPromotable() {
@@ -308,7 +310,7 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testPromote() {
@@ -322,7 +324,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		}
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testReplayBundle() {
@@ -337,7 +339,7 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testLatestInclusionStates() {
@@ -352,7 +354,7 @@ class APIsTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	func testMe() {
@@ -376,7 +378,7 @@ class APIsTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 			expectation.fulfill()
 		})
-		wait(for: [expectation], timeout: 1200.0)
+		wait(for: [expectation], timeout: timeout)
 	}
 	
 	

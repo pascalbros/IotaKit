@@ -43,6 +43,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		50211AF12051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
+		50211AF22051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
+		50211AF32051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
 		503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */; };
 		504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C0E2006AF89007C6C7E /* Kerl.swift */; };
 		504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C102006AF89007C6C7E /* WSUtils.swift */; };
@@ -57,8 +60,6 @@
 		504C6C312006AF8A007C6C7E /* PAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C1F2006AF8A007C6C7E /* PAWS.swift */; };
 		504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C202006AF8A007C6C7E /* IotaAPIServiceProtocol.swift */; };
 		504C6C332006AF8A007C6C7E /* IotaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C232006AF8A007C6C7E /* IotaModels.swift */; };
-		50D9165A2018339A000BEC42 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D916592018339A000BEC42 /* sha3.c */; };
-		50D9165B2018339A000BEC42 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D916592018339A000BEC42 /* sha3.c */; };
 		50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E32CEC2020FCE9001017D6 /* IotaUnits.swift */; };
 		50E32CEE2020FCE9001017D6 /* IotaUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E32CEC2020FCE9001017D6 /* IotaUnits.swift */; };
 		50E32CF020210BE7001017D6 /* IotaUnitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E32CEF20210BE7001017D6 /* IotaUnitsTests.swift */; };
@@ -122,6 +123,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50211AEE2051EAD300685CE5 /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha3.h; sourceTree = "<group>"; };
+		50211AF02051EAD300685CE5 /* sha3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
+		50211AF42051EB5D00685CE5 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaNodeSelector.swift; sourceTree = "<group>"; };
 		504C6C0E2006AF89007C6C7E /* Kerl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kerl.swift; sourceTree = "<group>"; };
 		504C6C102006AF89007C6C7E /* WSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSUtils.swift; sourceTree = "<group>"; };
@@ -136,10 +140,6 @@
 		504C6C1F2006AF8A007C6C7E /* PAWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PAWS.swift; sourceTree = "<group>"; };
 		504C6C202006AF8A007C6C7E /* IotaAPIServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IotaAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		504C6C232006AF8A007C6C7E /* IotaModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IotaModels.swift; sourceTree = "<group>"; };
-		504C6CF22006D963007C6C7E /* Iota.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Iota.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		50D916572018339A000BEC42 /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha3.h; sourceTree = "<group>"; };
-		50D916582018339A000BEC42 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		50D916592018339A000BEC42 /* sha3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 		50E32CEC2020FCE9001017D6 /* IotaUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaUnits.swift; sourceTree = "<group>"; };
 		50E32CEF20210BE7001017D6 /* IotaUnitsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaUnitsTests.swift; sourceTree = "<group>"; };
 		50F1DF86200C26FE005D91C6 /* IotaBundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaBundleExtension.swift; sourceTree = "<group>"; };
@@ -180,6 +180,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50211AEC2051EAD300685CE5 /* sha3 */ = {
+			isa = PBXGroup;
+			children = (
+				50211AED2051EAD300685CE5 /* include */,
+				50211AF02051EAD300685CE5 /* sha3.c */,
+			);
+			name = sha3;
+			path = Sources/sha3;
+			sourceTree = "<group>";
+		};
+		50211AED2051EAD300685CE5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				50211AF42051EB5D00685CE5 /* module.modulemap */,
+				50211AEE2051EAD300685CE5 /* sha3.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		504C6C0F2006AF89007C6C7E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,24 +216,6 @@
 				504C6C202006AF8A007C6C7E /* IotaAPIServiceProtocol.swift */,
 			);
 			path = Connectors;
-			sourceTree = "<group>";
-		};
-		50D916552018339A000BEC42 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				50D916562018339A000BEC42 /* sha3 */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		50D916562018339A000BEC42 /* sha3 */ = {
-			isa = PBXGroup;
-			children = (
-				50D916572018339A000BEC42 /* sha3.h */,
-				50D916582018339A000BEC42 /* module.modulemap */,
-				50D916592018339A000BEC42 /* sha3.c */,
-			);
-			path = sha3;
 			sourceTree = "<group>";
 		};
 		50F1DF8A200C29F3005D91C6 /* ModelExtensions */ = {
@@ -271,7 +272,6 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				504C6CF22006D963007C6C7E /* Iota.playground */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_10 /* Tests */,
@@ -282,6 +282,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				50211AEC2051EAD300685CE5 /* sha3 */,
 				OBJ_8 /* IotaKit */,
 			);
 			name = Sources;
@@ -290,7 +291,6 @@
 		OBJ_8 /* IotaKit */ = {
 			isa = PBXGroup;
 			children = (
-				50D916552018339A000BEC42 /* include */,
 				50F33153200D304B00DC6E5B /* Pow */,
 				504C6C1E2006AF8A007C6C7E /* Connectors */,
 				504C6C0F2006AF89007C6C7E /* Utils */,
@@ -459,6 +459,7 @@
 			buildActionMask = 0;
 			files = (
 				50F60D2C2050916200112585 /* IotaMultisig.swift in Sources */,
+				50211AF12051EAD300685CE5 /* sha3.c in Sources */,
 				OBJ_21 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,11 +478,11 @@
 				50F33164200FB6C800DC6E5B /* Kerl.swift in Sources */,
 				50F33175200FB6D900DC6E5B /* PAWS.swift in Sources */,
 				50F33174200FB6D200DC6E5B /* IotaSigning.swift in Sources */,
+				50211AF22051EAD300685CE5 /* sha3.c in Sources */,
 				50F33177200FB6DD00DC6E5B /* WSUtils.swift in Sources */,
 				50F33165200FB6C800DC6E5B /* CurlSource.swift in Sources */,
 				50F3316C200FB6D200DC6E5B /* IotaNodeSelector.swift in Sources */,
 				50F3316A200FB6D200DC6E5B /* Sha3.swift in Sources */,
-				50D9165A2018339A000BEC42 /* sha3.c in Sources */,
 				50F3318620110CB600DC6E5B /* APIsTests.swift in Sources */,
 				50F33171200FB6D200DC6E5B /* IotaAPIService.swift in Sources */,
 				50F3316E200FB6D200DC6E5B /* IotaConverter.swift in Sources */,
@@ -504,7 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				50D9165B2018339A000BEC42 /* sha3.c in Sources */,
+				50211AF32051EAD300685CE5 /* sha3.c in Sources */,
 				504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */,
 				50F1DF87200C26FE005D91C6 /* IotaBundleExtension.swift in Sources */,
 				503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */,
@@ -720,7 +721,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/IotaKit/include/sha3";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/sha3/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IotaKit;
@@ -750,7 +751,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/IotaKit/include/sha3";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/sha3/**";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IotaKit;
 			};

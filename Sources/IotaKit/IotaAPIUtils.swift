@@ -91,7 +91,7 @@ public struct IotaAPIUtils {
 	}
 	
 	public static func historyTransactions(addresses: [IotaAddress]) -> [IotaHistoryTransaction]{
-		let tempTxs = addresses.flatMap { $0.transactions! }
+		let tempTxs = addresses.flatMap { $0.transactions ?? [] }
 		let bundles = self.groupTxsByBundle(tempTxs)
 		var result: [[[IotaTransaction]]] = []
 
