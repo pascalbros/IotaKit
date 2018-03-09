@@ -42,6 +42,19 @@ extension Array {
 	}
 }
 
+extension String {
+	func index(at offset: Int, from start: Index? = nil) -> Index? {
+		return index(start ?? startIndex, offsetBy: offset, limitedBy: endIndex)
+	}
+	
+	func character(at offset: Int) -> String? {
+		precondition(offset >= 0, "offset can't be negative")
+		guard let index = index(at: offset) else { return nil }
+		return String(self[index])
+	}
+}
+
+
 //Debug
 //extension Date {
 //	var timeIntervalSince1970: TimeInterval {

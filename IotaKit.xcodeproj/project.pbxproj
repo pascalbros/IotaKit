@@ -46,6 +46,7 @@
 		50211AF12051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
 		50211AF22051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
 		50211AF32051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
+		50211AFF2053108500685CE5 /* ConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50211AFE2053108500685CE5 /* ConversionTests.swift */; };
 		503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */; };
 		504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C0E2006AF89007C6C7E /* Kerl.swift */; };
 		504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6C102006AF89007C6C7E /* WSUtils.swift */; };
@@ -126,6 +127,7 @@
 		50211AEE2051EAD300685CE5 /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha3.h; sourceTree = "<group>"; };
 		50211AF02051EAD300685CE5 /* sha3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 		50211AF42051EB5D00685CE5 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		50211AFE2053108500685CE5 /* ConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionTests.swift; sourceTree = "<group>"; };
 		503F6335200B66B700CE0F6F /* IotaNodeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IotaNodeSelector.swift; sourceTree = "<group>"; };
 		504C6C0E2006AF89007C6C7E /* Kerl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kerl.swift; sourceTree = "<group>"; };
 		504C6C102006AF89007C6C7E /* WSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSUtils.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				50F3318520110CB600DC6E5B /* APIsTests.swift */,
 				50E32CEF20210BE7001017D6 /* IotaUnitsTests.swift */,
 				50F60D2F20509C6E00112585 /* IotaMultisigTests.swift */,
+				50211AFE2053108500685CE5 /* ConversionTests.swift */,
 			);
 			name = IotaKitTests;
 			path = Tests/IotaKitTests;
@@ -484,6 +487,7 @@
 				50F3316C200FB6D200DC6E5B /* IotaNodeSelector.swift in Sources */,
 				50F3316A200FB6D200DC6E5B /* Sha3.swift in Sources */,
 				50F3318620110CB600DC6E5B /* APIsTests.swift in Sources */,
+				50211AFF2053108500685CE5 /* ConversionTests.swift in Sources */,
 				50F33171200FB6D200DC6E5B /* IotaAPIService.swift in Sources */,
 				50F3316E200FB6D200DC6E5B /* IotaConverter.swift in Sources */,
 				50F60D3020509C6E00112585 /* IotaMultisigTests.swift in Sources */,

@@ -19,16 +19,18 @@ class ConversionTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAsciiToTrytes() {
+		let input = "Hello world!"
+		let result = IotaConverter.trytes(fromAsciiString: input)
+		XCTAssertNotNil(result)
+		XCTAssertEqual(result!, "RBTC9D9DCDEAKDCDFD9DSCFA")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+	
+	func testTrytesToAscii() {
+		let input = "RBTC9D9DCDEAKDCDFD9DSCFA"
+		let result = IotaConverter.asciiString(fromTrytes: input)
+		XCTAssertNotNil(result)
+		XCTAssertEqual(result!, "Hello world!")
+	}
     
 }
