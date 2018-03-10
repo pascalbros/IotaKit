@@ -8,7 +8,7 @@
 import Foundation
 import Dispatch
 
-public class Iota {
+public class Iota: IotaDebuggable {
 	
 	public fileprivate(set) var address: String = ""
 	public var debug = false
@@ -633,8 +633,6 @@ extension Iota {
 		
 	}
 	
-	
-	
 	public func attachToTangle(trunkTx: String, branchTx: String, minWeightMagnitude: Int, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, error: @escaping (Error) -> Void) {
 		
 		guard IotaInputValidator.isHash(hash: trunkTx) && IotaInputValidator.isHash(hash: branchTx) else {
@@ -732,9 +730,5 @@ extension Iota {
 				totalTransferValue -= thisBalance
 			}
 		}
-	}
-	
-	fileprivate func IotaDebug(_ items: Any, separator: String = " ", terminator: String = "\n") {
-		if self.debug { print("[IotaKit] \(items)", separator: separator, terminator: terminator) }
 	}
 }

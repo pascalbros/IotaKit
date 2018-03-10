@@ -188,6 +188,23 @@ class IotaSigning {
 		
 	}
 	
+	func validateSignature(signedBundle: IotaBundle, inputAddress: String) -> Bool {
+		var bundleHash = ""
+		var signatureFragments: [String] = []
+		
+		for trx in signedBundle.transactions {
+			guard trx.address == inputAddress else { continue }
+			bundleHash = trx.bundle
+			
+			let signatureFragment = trx.signatureFragments
+			if IotaInputValidator.isNinesTrytes(trytes: signatureFragment) {
+				break
+			}
+			signatureFragments.append(signatureFragment)
+		}
+		return validateSignature(expectedAddress: inputAddress, signatureFragments: signatureFragments, bundleHash: bundleHash)
+	}
+	
 	func address(digests: [Int]) -> [Int] {
 		curl.reset()
 		var address: [Int] = Array(repeating: 0, count: IotaSigning.HASH_LENGTH)
