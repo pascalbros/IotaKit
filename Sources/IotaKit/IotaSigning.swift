@@ -96,11 +96,28 @@ class IotaSigning {
 	func _digestMultithreaded(key: [Int]) -> [Int] {
 		
 		curl.reset()
+		let threadQueue = DispatchQueue(label: "threadQueue", attributes: .concurrent)
+		let concurrentQueue = DispatchQueue(label: "barrierQueue", attributes: .concurrent)
 		let security = key.count/IotaSigning.KEY_LENGTH
 		var digests: [Int] = Array(repeating: 0, count: security * IotaSigning.HASH_LENGTH)
 		var reachedSecurity = 0
 		
+		func copyDigest(array: [Int], index: Int) {
+			concurrentQueue.sync(flags: .barrier) {
+				arrayCopy(src: array, srcPos: 0, dest: &digests, destPos: index*IotaSigning.HASH_LENGTH, length: array.count)
+			}
+		}
+		func getDigest() -> [Int] {
+			var result: [Int]!
+			concurrentQueue.sync {
+				result = digests
+			}
+			return result
+		}
+		
 		func onDigest(index i: Int) {
+			
+			var digest: [Int] = Array(repeating: 0, count: IotaSigning.HASH_LENGTH)
 			var keyFragment: [Int] = Array(repeating: 0, count: IotaSigning.KEY_LENGTH)
 			let c = self.curl.clone()
 			c.reset()
@@ -113,20 +130,21 @@ class IotaSigning {
 				}
 			}
 			_ = c.absorb(trits: keyFragment, offset: 0, length: keyFragment.count)
-			_ = c.squeeze(trits: &digests, offset: i*IotaSigning.HASH_LENGTH, length: IotaSigning.HASH_LENGTH)
+			_ = c.squeeze(trits: &digest, offset: 0, length: IotaSigning.HASH_LENGTH)
 			c.reset()
+			copyDigest(array: digest, index: i)
 			reachedSecurity += 1
 		}
 		
 		for i in 0..<security {
-			DispatchQueue.global(qos: .userInitiated).async {
+			threadQueue.async {
 				onDigest(index: i)
 			}
 		}
-		while reachedSecurity < security-1 {
+		while reachedSecurity < security {
 			Thread.sleep(forTimeInterval: 0.01)
 		}
-		return digests
+		return getDigest()
 	}
 	
 	func digest(normalizedBundleFragment: [Int], signatureFragment: [Int]) -> [Int] {
