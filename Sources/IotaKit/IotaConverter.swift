@@ -17,6 +17,7 @@ public class IotaConverter {
 	static let highLongBits: UInt64 = 0xFFFFFFFFFFFFFFFF
 	
 	static let trytesAlphabet = Array("9ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
 	static let alphabetTrits: [String: [Int]] = [
 		"9": [ 0,  0,  0],
 		"A": [ 1,  0,  0],
@@ -108,6 +109,42 @@ public class IotaConverter {
 	
 	static let tritsInATryte = 3
 	static let tritsInAByte = 5
+	
+	
+	public static func trytes(fromAsciiString input: String) -> String? {
+		var trytes = ""
+		
+		for char in input {
+			guard let unicode = char.unicodeScalars.first else { return nil }
+			guard unicode.isASCII else { return nil }
+			
+			let firstValue = Int(unicode.value % 27)
+			let secondValue = (Int(unicode.value) - firstValue) / 27
+			let trytesValue = String(trytesAlphabet[firstValue]) + String(trytesAlphabet[secondValue])
+			trytes += trytesValue
+		}
+		return trytes
+	}
+	
+	public static func asciiString(fromTrytes inputTrytes: String) -> String? {
+		guard IotaInputValidator.isTrytes(trytes: inputTrytes) else { return nil }
+		guard inputTrytes.count % 2 == 0 else { return nil }
+		
+		var result = ""
+		
+		for i in stride(from: 0, to: inputTrytes.count, by: 2) {
+			let charOne = inputTrytes.character(at: i)!
+			let charTwo = inputTrytes.character(at: i+1)!
+			
+			guard let valueOne = trytesAlphabet.index(of: Character(charOne)) else { return nil }
+			guard let valueTwo = trytesAlphabet.index(of: Character(charTwo)) else { return nil }
+			
+			let decimalValue = UInt8(valueOne + valueTwo * 27)
+			result += String(UnicodeScalar(decimalValue))
+		}
+		
+		return result
+	}
 	
 	public static func string(fromTrits trits: [Int]) -> String {
 		var result = ""

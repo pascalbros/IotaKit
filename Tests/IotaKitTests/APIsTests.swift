@@ -41,6 +41,7 @@ class APIsTests: XCTestCase {
 		self.measure {
 			let address = IotaAPIUtils.newAddress(seed: TEST_SEED1, index: 0, checksum: false)
 			print(address)
+			XCTAssertEqual(address, "9STCQJBVTQOVZNDRRDJFDKWLEDJZZHOWYCYNXDIIGKTTDSWXDL9WHTVKENCVIXBHYOXMFULNPOLFNKDIY")
 		}
 		//9STCQJBVTQOVZNDRRDJFDKWLEDJZZHOWYCYNXDIIGKTTDSWXDL9WHTVKENCVIXBHYOXMFULNPOLFNKDIY
 	}
@@ -49,8 +50,16 @@ class APIsTests: XCTestCase {
 		self.measure {
 			let address = IotaAPIUtils.newAddress(seed: TEST_SEED1, index: 0, checksum: false, multithreaded: true)
 			print(address)
+			XCTAssertEqual(address, "9STCQJBVTQOVZNDRRDJFDKWLEDJZZHOWYCYNXDIIGKTTDSWXDL9WHTVKENCVIXBHYOXMFULNPOLFNKDIY")
 		}
 		//9STCQJBVTQOVZNDRRDJFDKWLEDJZZHOWYCYNXDIIGKTTDSWXDL9WHTVKENCVIXBHYOXMFULNPOLFNKDIY
+	}
+	
+	func testAddressMultithreaded2() {
+		for _ in 0..<100 {
+			let add = IotaAPIUtils.newAddress(seed: "JHDSJDJDJBDBJSDBVDSUUUYUYVVYVUYVYYGHFFGSHJDGGJFGJHDFGFDDUFFSIUDSUUFGIUSDIDUIBSDJH", index: 0, checksum: false, security: 2, multithreaded: true)
+			XCTAssertEqual(add, "VIHJQKPCKAKOXKDEWUOYECZPTVPNRJONMCJMEMJQELNXU9XSWDRMMVRZQXRYUISOEGLWMVWGRJPQWYWQW")
+		}
 	}
 	
 	func testAccountData() {
