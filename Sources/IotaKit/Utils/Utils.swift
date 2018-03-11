@@ -54,6 +54,15 @@ extension String {
 	}
 }
 
+public protocol IotaDebuggable {
+	var debug: Bool { get set }
+}
+
+extension IotaDebuggable {
+	func IotaDebug(_ items: Any, separator: String = " ", terminator: String = "\n") {
+		if self.debug { print("[IotaKit] \(items)", separator: separator, terminator: terminator) }
+	}
+}
 
 //Debug
 //extension Date {
