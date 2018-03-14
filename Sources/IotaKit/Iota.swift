@@ -399,6 +399,48 @@ public class Iota: IotaDebuggable {
 			}
 		}, error)
 	}
+	
+	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+		
+		//4
+		func toTxs(trytes t: [String]) {
+			IotaDebug("Converting to transactions")
+			let trx = t.map { IotaTransaction(trytes: $0) }
+			success(trx)
+		}
+		
+		//3
+		func store(trytes t: [String]) {
+			IotaDebug("Storing trytes")
+			APIServices.storeTransactions(nodeAddress: self.address, trytes: t, {
+				toTxs(trytes: t)
+			}, error)
+		}
+		
+		//2
+		func broadcast(trytes t: [String]) {
+			IotaDebug("Broadcasting trytes")
+			APIServices.broadcastTransactions(nodeAddress: self.address, trytes: t, {
+				store(trytes: t)
+			}, error)
+		}
+		
+		//1
+		func attach(trunkTx: String, branchTx: String) {
+			IotaDebug("Attaching to tangle (PoW)")
+			self.attachToTangle(trunkTx: trunkTx, branchTx: branchTx, minWeightMagnitude: minWeightMagnitude, trytes: trytes, { (t) in
+				broadcast(trytes: t)
+			}, error: error)
+		}
+		
+		//0
+		IotaDebug("Getting TXs to approve")
+		APIServices.transactionsToApprove(nodeAddress: self.address, depth: depth, reference: reference, { (txs) in
+			attach(trunkTx: txs.trunkTx, branchTx: txs.branchTx)
+		}) { (e) in
+			error(e)
+		}
+	}
 }
 
 
@@ -472,48 +514,6 @@ extension Iota {
 			}
 			success(tx1)
 		}, error: error)
-	}
-	
-	internal func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
-		
-		//4
-		func toTxs(trytes t: [String]) {
-			IotaDebug("Converting to transactions")
-			let trx = t.map { IotaTransaction(trytes: $0) }
-			success(trx)
-		}
-		
-		//3
-		func store(trytes t: [String]) {
-			IotaDebug("Storing trytes")
-			APIServices.storeTransactions(nodeAddress: self.address, trytes: t, {
-				toTxs(trytes: t)
-			}, error)
-		}
-		
-		//2
-		func broadcast(trytes t: [String]) {
-			IotaDebug("Broadcasting trytes")
-			APIServices.broadcastTransactions(nodeAddress: self.address, trytes: t, {
-				store(trytes: t)
-			}, error)
-		}
-		
-		//1
-		func attach(trunkTx: String, branchTx: String) {
-			IotaDebug("Attaching to tangle (PoW)")
-			self.attachToTangle(trunkTx: trunkTx, branchTx: branchTx, minWeightMagnitude: minWeightMagnitude, trytes: trytes, { (t) in
-				broadcast(trytes: t)
-			}, error: error)
-		}
-		
-		//0
-		IotaDebug("Getting TXs to approve")
-		APIServices.transactionsToApprove(nodeAddress: self.address, depth: depth, reference: reference, { (txs) in
-			attach(trunkTx: txs.trunkTx, branchTx: txs.branchTx)
-		}) { (e) in
-			error(e)
-		}
 	}
 	
 	internal func prepareTransfers(seed: String, security: Int, transfers: [IotaTransfer], remainder: String?, inputs: [IotaInput]?, validateInputs: Bool, _ success: @escaping (_ transfers: [String]) -> Void, error: @escaping (Error) -> Void) {
