@@ -209,7 +209,8 @@ public class Iota: IotaDebuggable {
 		self.attachToTangle(seed: seed, address: address, security: security, success, error: error)
 	}
 	
-	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int? = nil, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
 		self.prepareTransfers(seed: seed, security: security, transfers: transfers, remainder: remainderAddress, inputs: inputs, validateInputs: false, { (trytes) in
 			self.IotaDebug("Sending trytes")
 			self.sendTrytes(trytes: trytes, reference: reference, { (trxs) in
@@ -218,8 +219,10 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
-	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int = 14, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
+        
 		func sendTrytes(bundleTrytes: [String]) {
 			self.sendTrytes(trytes: bundleTrytes, { (trxs) in
 				success(trxs)
@@ -369,14 +372,18 @@ public class Iota: IotaDebuggable {
 		APIServices.checkConsistency(nodeAddress: self.address, hashes: [tail], success, error)
 	}
 	
-	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int? = nil, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
+        
 		self.trytes(hashes: [hash], { (txs) in
 			self.promoteTransaction(txs.first!, success, error: error)
 		}, error: error)
 	}
 	
-	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int? = nil, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+        
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
 		
 		func promote(theTX: IotaTransaction) {
 			self.promote(tail: theTX.hash, success, error: error)
@@ -390,7 +397,10 @@ public class Iota: IotaDebuggable {
 		}
 	}
 	
-	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int? = nil, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+        
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
+        
 		self.isPromotable(tail: tail, { (result) in
 			if result {
 				self._promote(tail: tail, numberOfPromotes: numberOfPromotes, success, error: error)
@@ -400,7 +410,9 @@ public class Iota: IotaDebuggable {
 		}, error)
 	}
 	
-	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int? = nil, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+        
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
 		
 		//4
 		func toTxs(trytes t: [String]) {
@@ -461,7 +473,10 @@ public class Iota: IotaDebuggable {
 //Internal functions
 extension Iota {
 	
-	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int? = nil, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+        
+        let minWeightMagnitude = minWeightMagnitude ?? IotaConstants.defaultMWM
+    
 		if index == numberOfPromotes {
 			success(tail)
 			return
