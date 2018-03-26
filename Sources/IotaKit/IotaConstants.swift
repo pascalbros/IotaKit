@@ -12,5 +12,6 @@ struct IotaConstants {
 	static let addressLengthWithChecksum = 90
 	static let messageLength = 2187
 	static let tagLength = 27
+    static let defaultMWM = 14
 	fileprivate init() { }
 }
