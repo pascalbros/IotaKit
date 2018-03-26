@@ -292,7 +292,7 @@ public class Iota: IotaDebuggable {
 	///   - reference: Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past, leave it as default.
 	///   - success: Success block.
 	///   - error: Error block.
-	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		self.prepareTransfers(seed: seed, security: security, transfers: transfers, remainder: remainderAddress, inputs: inputs, validateInputs: false, { (trytes) in
 			self.IotaDebug("Sending trytes")
 			self.sendTrytes(trytes: trytes, reference: reference, { (trxs) in
@@ -309,7 +309,7 @@ public class Iota: IotaDebuggable {
 	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
 	///   - success: Success block.
 	///   - error: Error block.
-	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int = 14, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		func sendTrytes(bundleTrytes: [String]) {
 			self.sendTrytes(trytes: bundleTrytes, { (trxs) in
@@ -513,7 +513,7 @@ public class Iota: IotaDebuggable {
 	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
 	///   - success: Success block.
 	///   - error: Error block.
-	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
 		self.trytes(hashes: [hash], { (txs) in
 			self.promoteTransaction(txs.first!, success, error: error)
@@ -531,7 +531,7 @@ public class Iota: IotaDebuggable {
 	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
 	///   - success: Success block.
 	///   - error: Error block.
-	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
 		func promote(theTX: IotaTransaction) {
 			self.promote(tail: theTX.hash, success, error: error)
@@ -556,7 +556,7 @@ public class Iota: IotaDebuggable {
 	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
 	///   - success: Success block.
 	///   - error: Error block.
-	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		self.isPromotable(tail: tail, { (result) in
 			if result {
 				self._promote(tail: tail, numberOfPromotes: numberOfPromotes, success, error: error)
@@ -575,7 +575,7 @@ public class Iota: IotaDebuggable {
 	///   - reference: Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past, leave it as default.
 	///   - success: Success block.
 	///   - error: Error block.
-	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		//4
 		func toTxs(trytes t: [String]) {
@@ -636,7 +636,7 @@ public class Iota: IotaDebuggable {
 //Internal functions
 extension Iota {
 	
-	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		if index == numberOfPromotes {
 			success(tail)
 			return
