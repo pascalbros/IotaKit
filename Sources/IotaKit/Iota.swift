@@ -550,7 +550,7 @@ public class Iota: IotaDebuggable {
 	/// - Parameters:
 	///   - tail: The tail transaction hash.
 	///   - transactions: List of transfers.
-	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - depth: Number of bundles to go back to determine. the transactions for approval, leave it as default.
 	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
 	///   - delayInSeconds: Delay in seconds between spams.
 	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).

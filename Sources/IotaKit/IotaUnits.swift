@@ -7,6 +7,14 @@
 
 import Foundation
 
+/// Iota units.
+///
+/// - i: Iota.
+/// - Ki: iE^3.
+/// - Mi: iE^6.
+/// - Gi: iE^9.
+/// - Ti: iE^12.
+/// - Pi: iE^15.
 public enum IotaUnits: Int {
 	case i = 0
 	case Ki = 3
@@ -15,11 +23,18 @@ public enum IotaUnits: Int {
 	case Ti = 12
 	case Pi = 15
 	
+	/// Initializer for IotaUnits.
+	///
+	/// - Parameter amount: The amount in Iota.
 	public init(amount: Int) {
 		var v = amount
 		if amount < 0 { v = -v }
 		self.init(amount: UInt64(v))
 	}
+	
+	/// Initializer for IotaUnits.
+	///
+	/// - Parameter amount: The amount in Iota.
 	public init(amount: UInt64) {
 		let length = "\(amount)".count
 		switch length {
@@ -33,6 +48,7 @@ public enum IotaUnits: Int {
 		}
 	}
 	
+	/// Converts the unit to string.
 	public var string: String {
 		switch self {
 		case .i: return "i"
@@ -45,18 +61,39 @@ public enum IotaUnits: Int {
 	}
 }
 
+/// Utils for unit conversion.
 public struct IotaUnitsConverter {
 	private init() { }
 	
+	/// Converts from Iota to the specified unit.
+	///
+	/// - Parameters:
+	///   - amount: The amount in Iota.
+	///   - unit: The final unit.
+	/// - Returns: The value in the specified unit.
 	public static func convert(amount: UInt64, toUnit unit: IotaUnits) -> Float {
 		return Float(amount) / powf(10, Float(unit.rawValue))
 	}
 	
+	/// Converts from arbitrary unit to the specified unit.
+	///
+	/// - Parameters:
+	///   - amount: The amount.
+	///   - fromUnit: The arbitrary unit.
+	///   - toUnit: The final unit.
+	/// - Returns: The value in the specified unit.
 	public static func convert(amount: Float, fromUnit: IotaUnits, toUnit: IotaUnits) -> Float {
 		let amountInSource = UInt64(amount * powf(10, Float(fromUnit.rawValue)))
 		return convert(amount: amountInSource, toUnit: toUnit)
 	}
 	
+	/// Converts Iota amount to human readable string.
+	///
+	/// - Parameters:
+	///   - amount: The amount.
+	///   - extended: If `true`, will return the extended string.
+	///   - forceUnit: An arbitrary unit.
+	/// - Returns: The string that represents the value and unit.
 	public static func iotaToString(amount: UInt64, extended: Bool = false, forceUnit: IotaUnits? = nil) -> String {
 		let unit = forceUnit != nil ? forceUnit! : IotaUnits(amount: amount)
 		let value = convert(amount: Float(amount), fromUnit: .i, toUnit: unit)
@@ -75,6 +112,12 @@ public struct IotaUnitsConverter {
 		return "\(v) \(unit.string)"
 	}
 	
+	/// Converts Iota amount to human readable string.
+	///
+	/// - Parameters:
+	///   - amount: The amount.
+	///   - unit: The unit.
+	///   - extended: If `true`, will return the extended string.
 	public static func createAmountWithUnitDisplayText(amount: UInt64, unit: IotaUnits, extended: Bool) {
 		
 	}
