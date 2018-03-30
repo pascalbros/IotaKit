@@ -41,7 +41,11 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 
 ### CocoaPods
 
-`pod 'IotaKit', '~> 0.6.3'`
+`pod 'IotaKit', '~> 0.6.4'`
+
+## Class Reference
+
+The class reference (Work in Progress) is available [here](https://pascalbros.github.io/IotaKit/)
 
 ## Example
 
