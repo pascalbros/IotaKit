@@ -8,17 +8,32 @@
 import Foundation
 import Dispatch
 
+/// Iota Class Instance.
 public class Iota: IotaDebuggable {
 	
-	public fileprivate(set) var address: String = ""
-	public var debug = false
-	fileprivate var localPoW: IotaLocalPoW? = PearlDiverLocalPoW()
 	fileprivate let APIServices: IotaAPIServices.Type = IotaAPIService.self
-	
 	fileprivate let curl: CurlSource = CurlMode.kerl.create()
+	
+	/// Spam address used for promote.
 	public static let spamTransfer = IotaTransfer(address: "".rightPadded(count: 81, character: "9"))
+	
+	/// Spam Seed used for promote.
 	public static let spamSeed = "".rightPadded(count: 81, character: "9")
+	
+	/// Address of the host.
+	public fileprivate(set) var address: String = ""
+	
+	/// Debug variable, setting it to `true`, will enable the debug logging. Default `false`.
+	public var debug = false
+	
+	/// Local PoW instance, setting it to `nil` will delegate the PoW to the node.
+	public var localPoW: IotaLocalPoW? = PearlDiverLocalPoW()
 
+	/// Initializer for Iota class with automatic node selection.
+	///
+	/// - Parameters:
+	///   - prefersHTTPS: Setting it to `true`, HTTPS nodes will be preferred.
+	///   - onReady: On ready block.
 	public init(prefersHTTPS: Bool = false, _ onReady: @escaping (Iota?) -> Void) {
 		IotaNodeSelector.bestNode(prefersHTTPS: prefersHTTPS, { (node) in
 			self.address = node.fullAddress
@@ -28,34 +43,81 @@ public class Iota: IotaDebuggable {
 		}
 	}
 	
+	/// Initializer for Iota class.
+	///
+	/// - Parameters:
+	///   - node: Node address without port.
+	///   - port: Port for the specified node address
 	public init(node: String, port: UInt) {
 		self.address = node.appending(":").appending(String(port))
 	}
 	
+	/// Initializer for Iota class
+	///
+	/// - Parameter node: Full node address Ex:`http://localhost:14700`
 	public init(node: String) {
 		self.address = node
 	}
 	
+	/// Returns information about the connected node.
+	///
+	/// - Parameters:
+	///   - success: Success block.
+	///   - error: Error block.
 	public func nodeInfo(_ success: @escaping ([String: Any]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.nodeInfo(nodeAddress: self.address, success, error)
 	}
 	
+	/// Returns the confirmed balance of the requested addresses.
+	///
+	/// - Parameters:
+	///   - addresses: List of addresses.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func balances(addresses: [String], _ success: @escaping (_ balances: [String: Int64]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.balances(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 	
+	/// Find the transactions which match the specified addresses.
+	///
+	/// - Parameters:
+	///   - addresses: List of addresses.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func findTransactions(addresses: [String], _ success: @escaping (_ hashes: [String]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: addresses, success, error)
 	}
 	
+	/// Find the transactions which match the specified bundles.
+	///
+	/// - Parameters:
+	///   - bundles: List of bundles.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func findTransactions(bundles: [String], _ success: @escaping (_ hashes: [String]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.findTransactions(nodeAddress: self.address, type: .bundles, query: bundles, success, error)
 	}
 	
+	/// Returns the raw transaction data (trytes) of a specific transaction. These trytes can then be easily converted into the actual transaction object. See IotaTransaction.
+	///
+	/// - Parameters:
+	///   - hashes: List of transaction hashes.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func trytes(hashes: [String], _ success: @escaping (_ trytes: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.trytes(nodeAddress: self.address, hashes: hashes, success, error)
 	}
 	
+	/// returns the addresses, transfers, inputs and balance that are associated and have been used with your account (seed). This function is useful in getting all the relevant information of your account.
+	///
+	/// - Parameters:
+	///   - seed: The Seed.
+	///   - minimumNumberOfAddresses: The minimum number of addresses associated to the seed, setting it to `true` will be useful in order to speed up the process, by requesting all the addresses balance and transactions in batch.
+	///   - security: The security level (1-3).
+	///   - requestTransactions: Setting it to `true`, all the transactions associated to the addresses will be requested and returned. If you don't need it, set it to `false`.
+	///   - success: Success block.
+	///   - error: Error block.
+	///   - log: Log block.
 	public func accountData(seed: String, minimumNumberOfAddresses: Int = 0, security: Int = 2, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void, log: ((_ log: IotaLog) -> Void)? = nil) {
 		
 		var account = IotaAccount()
@@ -204,12 +266,33 @@ public class Iota: IotaDebuggable {
 		}
 	}
 	
+	/// Attaches the specified address to the Tangle by doing Proof of Work.
+	///
+	/// - Parameters:
+	///   - seed: The Seed.
+	///   - index: The index of the address.
+	///   - security: The security level.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func attachToTangle(seed: String, index: Int, security: Int = 2, _ success: @escaping (_ transfer: IotaTransaction) -> Void, error: @escaping (Error) -> Void) {
 		let address = IotaAPIUtils.newAddress(seed: seed, security: security, index: index, checksum: false, curl: self.curl.clone())
 		self.attachToTangle(seed: seed, address: address, security: security, success, error: error)
 	}
 	
-	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = 14, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	/// Wrapper function that basically does prepareTransfers, as well as attachToTangle and finally, it broadcasts and stores the transactions locally.
+	///
+	/// - Parameters:
+	///   - seed: The Seed.
+	///   - security: The security level.
+	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
+	///   - transfers: List of IotaTransfers.
+	///   - inputs: List of IotaInputs, by setting it to null, the proper inputs will be taken automatically.
+	///   - remainderAddress: The remainder address, by setting it to `null`, a new address will be generated and used as remainder.
+	///   - reference: Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past, leave it as default.
+	///   - success: Success block.
+	///   - error: Error block.
+	public func sendTransfers(seed: String, security: Int = 2, depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, transfers: [IotaTransfer], inputs: [IotaInput]?, remainderAddress: String?, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		self.prepareTransfers(seed: seed, security: security, transfers: transfers, remainder: remainderAddress, inputs: inputs, validateInputs: false, { (trytes) in
 			self.IotaDebug("Sending trytes")
 			self.sendTrytes(trytes: trytes, reference: reference, { (trxs) in
@@ -218,7 +301,15 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
-	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int = 14, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	/// Takes a tail transaction hash as input, gets the bundle associated with the transaction and then replays the bundle by attaching it to the tangle.
+	///
+	/// - Parameters:
+	///   - tx: Transaction hash, has to be tail.
+	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
+	///   - success: Success block.
+	///   - error: Error block.
+	public func replayBundle(tx: String, depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		func sendTrytes(bundleTrytes: [String]) {
 			self.sendTrytes(trytes: bundleTrytes, { (trxs) in
@@ -238,6 +329,12 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
+	/// Returns the bundle with the specified where the specified tx hash belongs to.
+	///
+	/// - Parameters:
+	///   - tx: The transaction hash, has to be the tail.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func bundle(tx: String, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		func continueWithBundle(bundle b: IotaBundle) {
@@ -317,6 +414,12 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
+	/// Returns all the transactions associated to the specified address.
+	///
+	/// - Parameters:
+	///   - address: The address hash.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func transactionsFromAddress(address: String, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		func getTrytes(hashes: [String]) {
 			self.trytes(hashes: hashes, { (txs) in
@@ -329,6 +432,12 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
+	/// Returns the tail transaction from a transaction.
+	///
+	/// - Parameters:
+	///   - tx: The requested tail transaction.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func tailFromTransaction(tx: IotaTransaction, _ success: @escaping (_ tail: IotaTransaction) -> Void, error: @escaping (Error) -> Void) {
 		
 		
@@ -348,6 +457,12 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
+	/// Returns an IotaAddress instance, filled with all the transactions.
+	///
+	/// - Parameters:
+	///   - address: The address hash.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func addressFromHash(address: String, _ success: @escaping (_ transactions: IotaAddress) -> Void, error: @escaping (Error) -> Void) {
 		self.transactionsFromAddress(address: address, { (txs) in
 			let result = IotaAddress(hash: address, transactions: txs, index: nil, balance: nil)
@@ -355,28 +470,68 @@ public class Iota: IotaDebuggable {
 		}, error: error)
 	}
 	
+	/// Get the inclusion states of a set of transactions. This is for determining if a transaction was accepted and confirmed by the network or not.
+	///
+	/// - Parameters:
+	///   - hashes: List of transactions hashes you want to get the inclusion state for.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func latestInclusionStates(hashes: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
 		APIServices.latestInclusionStates(nodeAddress: self.address, hashes: hashes, success, error)
 	}
 	
+	/// Check if a list of addresses was ever spent from, in the current epoch, or in previous epochs.
+	///
+	/// - Parameters:
+	///   - addresses: List of addresses to check if they were ever spent from.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func wereAddressesSpentFrom(addresses: [String], _ success: @escaping (([Bool]) -> Void), _ error: @escaping (Error) -> Void) {
 		APIServices.wereAddressesSpentFrom(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 	
+	/// Checks if a bundle is promotable by checking the tx tail of the bundle.
+	///
+	/// - Parameters:
+	///   - tail: The tail transaction hash.
+	///   - success: Success block.
+	///   - error: Error block.
 	public func isPromotable(tail: String, _ success: @escaping ((Bool) -> Void), _ error: @escaping (Error) -> Void) {
 		if !IotaInputValidator.isHash(hash: tail) { success(false); return }
 		IotaDebug("Checking consistency")
 		APIServices.checkConsistency(nodeAddress: self.address, hashes: [tail], success, error)
 	}
 	
-	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	/// Promotes a transaction by spamming the network (convenience method).
+	///
+	/// - Parameters:
+	///   - hash: Transaction hash, has to be tail.
+	///   - transactions: List of transfers.
+	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
+	///   - delayInSeconds: Delay in seconds between spams.
+	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
+	///   - success: Success block.
+	///   - error: Error block.
+	public func promoteTransaction(hash: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
 		self.trytes(hashes: [hash], { (txs) in
 			self.promoteTransaction(txs.first!, success, error: error)
 		}, error: error)
 	}
 	
-	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	/// Promotes a transaction by spamming the network.
+	///
+	/// - Parameters:
+	///   - tx: The transaction.
+	///   - transactions: List of transfers.
+	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
+	///   - delayInSeconds: Delay in seconds between spams.
+	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
+	///   - success: Success block.
+	///   - error: Error block.
+	public func promoteTransaction(_ tx: IotaTransaction, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		
 		func promote(theTX: IotaTransaction) {
 			self.promote(tail: theTX.hash, success, error: error)
@@ -390,7 +545,18 @@ public class Iota: IotaDebuggable {
 		}
 	}
 	
-	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	/// Promotes a transaction by spamming the network (convenience method).
+	///
+	/// - Parameters:
+	///   - tail: The tail transaction hash.
+	///   - transactions: List of transfers.
+	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
+	///   - delayInSeconds: Delay in seconds between spams.
+	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
+	///   - success: Success block.
+	///   - error: Error block.
+	public func promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, numberOfPromotes: Int = 4, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		self.isPromotable(tail: tail, { (result) in
 			if result {
 				self._promote(tail: tail, numberOfPromotes: numberOfPromotes, success, error: error)
@@ -400,7 +566,16 @@ public class Iota: IotaDebuggable {
 		}, error)
 	}
 	
-	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = 14, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
+	/// Wrapper function that does attachToTangle and finally, it broadcasts and stores the transactions.
+	///
+	/// - Parameters:
+	///   - trytes: List of trytes.
+	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
+	///   - reference: Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past, leave it as default.
+	///   - success: Success block.
+	///   - error: Error block.
+	public func sendTrytes(trytes: [String], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, reference: String? = nil, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		//4
 		func toTxs(trytes t: [String]) {
@@ -461,7 +636,7 @@ public class Iota: IotaDebuggable {
 //Internal functions
 extension Iota {
 	
-	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = 14, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
+	internal func _promote(tail: String, transactions: [IotaTransfer] = [Iota.spamTransfer], depth: Int = 10, minWeightMagnitude: Int = IotaConstants.mwm, delayInSeconds: UInt = 0, index: Int = 0, numberOfPromotes: Int, _ success: @escaping (_ tail: String) -> Void, error: @escaping (Error) -> Void) {
 		if index == numberOfPromotes {
 			success(tail)
 			return

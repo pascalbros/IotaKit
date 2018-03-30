@@ -107,7 +107,7 @@ class IotaAPIService: IotaAPIServices {
 		}
 	}
 	
-	static func attachToTangle(nodeAddress: String, trunkTx: String, branchTx: String, minWeightMagnitude: Int = 14, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, _ error: @escaping (Error) -> Void) {
+	static func attachToTangle(nodeAddress: String, trunkTx: String, branchTx: String, minWeightMagnitude: Int = IotaConstants.mwm, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, _ error: @escaping (Error) -> Void) {
 		
 		var data = command(withString: "attachToTangle")
 		data["trunkTransaction"] = trunkTx
