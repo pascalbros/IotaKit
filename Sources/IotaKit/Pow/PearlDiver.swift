@@ -124,8 +124,8 @@ class PearlDiver {
 		var midCurlStateCopyLow: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		var midCurlStateCopyHigh: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		
-		arrayCopy(src: midCurlStateLow, srcPos: 0, dest: &midCurlStateCopyLow, destPos: 0, length: curlStateLength)
-		arrayCopy(src: midCurlStateHigh, srcPos: 0, dest: &midCurlStateCopyHigh, destPos: 0, length: curlStateLength)
+		midCurlStateCopyLow = midCurlStateLow
+		midCurlStateCopyHigh = midCurlStateHigh
 		
 		for _ in stride(from: threadIndex, to: 0, by: -1) {
 			PearlDiver.increment(midCurlStateCopyLow: &midCurlStateCopyLow, midCurlStateCopyHigh: &midCurlStateCopyHigh, fromIndex: 162+curlHashLength/9, toIndex: 162 + (curlHashLength / 9) * 2)
@@ -141,8 +141,9 @@ class PearlDiver {
 		//var index = 0
 		while self.state == .running {
 			PearlDiver.increment(midCurlStateCopyLow: &midCurlStateCopyLow, midCurlStateCopyHigh: &midCurlStateCopyHigh, fromIndex: 162 + (curlHashLength / 9) * 2, toIndex: curlHashLength)
-			arrayCopy(src: midCurlStateCopyLow, srcPos: 0, dest: &curlStateLow, destPos: 0, length: curlStateLength)
-			arrayCopy(src: midCurlStateCopyHigh, srcPos: 0, dest: &curlStateHigh, destPos: 0, length: curlStateLength)
+			curlStateLow = midCurlStateCopyLow
+			curlStateHigh = midCurlStateCopyHigh
+			
 			PearlDiver.transform(&curlStateLow, &curlStateHigh, &curlScratchpadLow, &curlScratchpadHigh)
 			mask = highBits
 			for i in stride(from: minWeightMagnitude-1, to: -1, by: -1) {
@@ -174,8 +175,8 @@ class PearlDiver {
 		
 		var curlScratchpadIndex = 0
 		for _ in 0..<Curl.numOfRoundsP81 {
-			arrayCopy(src: curlStateLow, srcPos: 0, dest: &curlScratchpadLow, destPos: 0, length: curlStateLength)
-			arrayCopy(src: curlStateHigh, srcPos: 0, dest: &curlScratchpadHigh, destPos: 0, length: curlStateLength)
+			curlScratchpadLow = curlStateLow
+			curlScratchpadHigh = curlStateHigh
 			
 			for curlStateIndex in 0..<curlStateLength {
 				let alpha = curlScratchpadLow[curlScratchpadIndex]

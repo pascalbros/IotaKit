@@ -7,9 +7,15 @@
 
 import Foundation
 
+/// Carries an error message.
 public struct IotaAPIError: Error {
 	
+	/// The error message.
 	public let message: String
+	
+	/// The initializer for IotaAPIError.
+	///
+	/// - Parameter message: The error message.
 	public init(_ message: String) {
 		self.message = message
 	}

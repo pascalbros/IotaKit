@@ -550,7 +550,7 @@ public class Iota: IotaDebuggable {
 	/// - Parameters:
 	///   - tail: The tail transaction hash.
 	///   - transactions: List of transfers.
-	///   - depth: Number of bundles to go back to determine the transactions for approval, leave it as default.
+	///   - depth: Number of bundles to go back to determine. the transactions for approval, leave it as default.
 	///   - minWeightMagnitude: Minimum weight magnitude, leave it as default.
 	///   - delayInSeconds: Delay in seconds between spams.
 	///   - numberOfPromotes: Number of spams to add on top of the transaction (default 4).
@@ -739,7 +739,7 @@ extension Iota {
 				error(IotaAPIError("Not implemented yet"))
 				return
 			}else{
-				self.inputs(seed: seed, security: security, threshold: totalValue, { (resultInputs) in
+				self.inputs(seed: seed, security: security, threshold: totalValue, canDoubleSpend: false, { (resultInputs) in
 					var remainderAddress = remainder
 					if remainder == nil {
 						remainderAddress = IotaAPIUtils.newAddress(seed: seed, security: security, index: resultInputs.accountAddresses.count, checksum: false, curl: self.curl.clone())
@@ -892,15 +892,18 @@ extension Iota {
 				if remainder > 0 && remainderAddress != nil {
 					bundle.addEntry(signatureMessageLength: 1, address: remainderAddress!, value: remainder, tag: tag, timestamp: UInt64(timestamp))
 					success(IotaAPIUtils.signInputs(seed: seed, inputs: inputs, bundle: bundle, signatureFragments: signatureFragment, curl: self.curl.clone()))
-					return
 				}else if remainder > 0 {
 					
 					self.newAddress(seed: seed, security: security, index: 0, checksum: false, total: 0, returnAll: false, { (addresses) in
 						bundle.addEntry(signatureMessageLength: 1, address: addresses.last!, value: remainder, tag: tag, timestamp: UInt64(timestamp))
 						success(IotaAPIUtils.signInputs(seed: seed, inputs: inputs, bundle: bundle, signatureFragments: signatureFragment, curl: self.curl.clone()))
 					}, error: error)
-					break
+				}else if remainder == 0 {
+					success(IotaAPIUtils.signInputs(seed: seed, inputs: inputs, bundle: bundle, signatureFragments: signatureFragment, curl: self.curl.clone()))
+				}else {
+					error(IotaAPIError("Invalid remainder address"))
 				}
+				return
 			}else {
 				totalTransferValue -= thisBalance
 			}

@@ -7,8 +7,18 @@
 
 import Foundation
 
+/// Utils class for Iota
 public struct IotaAPIUtils {
 	
+	/// Generates a new address from a seed and a given index.
+	///
+	/// - Parameters:
+	///   - seed: The seed.
+	///   - index: An Index (0...∞).
+	///   - checksum: Determines if the checksum should be included or not.
+	///   - security: The security level, default 2.
+	///   - multithreaded: If true, the work will be split to multiple threads.
+	/// - Returns: The generated address.
 	public static func newAddress(seed: String, index: Int, checksum: Bool, security: Int = 2, multithreaded: Bool = false) -> String {
 		let curl = CurlMode.kerl.create()
 		return self.newAddress(seed: seed, security: security, index: index, checksum: checksum, multithreaded: multithreaded, curl: curl)
@@ -28,26 +38,10 @@ public struct IotaAPIUtils {
 		return address
 	}
 	
-	public static func isSeed(_ string: String) -> Bool {
-		guard string.count > 1 && string.count <= 81 else { return false }
-		for c in string {
-			guard IotaConverter.trytesAlphabet.index(of: c) != nil else { return false }
-		}
-		return true
-	}
-	
-	public static func isAddress(_ string: String) -> Bool {
-		guard string.count == 81 || string.count == 90 else { return false }
-		for c in string {
-			guard IotaConverter.trytesAlphabet.index(of: c) != nil else { return false }
-		}
-		
-		if string.count == 90 {
-			return IotaChecksum.isValidChecksum(address: string)
-		}
-		return true
-	}
-	
+	/// Groups a list of transactions by bundle.
+	///
+	/// - Parameter txs: The transactions list.
+	/// - Returns: A list of grouped transactions.
 	public static func groupTxsByBundle(_ txs: [IotaTransaction]) -> [[IotaTransaction]] {
 		
 		var result: [String: [IotaTransaction]] = [:]
@@ -61,12 +55,23 @@ public struct IotaAPIUtils {
 		
 		return Array(result.values)
 	}
+	
+	/// Categorizes the transfers into sent and received.
+	///
+	/// - Parameter addresses: The addresses list.
+	/// - Returns: Sent and received transactions.
 	public static func categorizeTransfers(addresses: [IotaAddress]) -> (sent: [[IotaTransaction]], received: [[IotaTransaction]]) {
 		let txs = addresses.flatMap { $0.transactions! }
 		let bundles = self.groupTxsByBundle(txs)
 		return self.categorizeTransfers(bundles: bundles, addresses: addresses.map { $0.hash })
 	}
 	
+	/// Categorizes the transfers into sent and received.
+	///
+	/// - Parameters:
+	///   - bundles: The bundles to categorize.
+	///   - addresses: Addresses that belong to the user.
+	/// - Returns: Sent and received transactions.
 	public static func categorizeTransfers(bundles: [[IotaTransaction]], addresses: [String]) -> (sent: [[IotaTransaction]], received: [[IotaTransaction]]){
 		var sent: [[IotaTransaction]] = []
 		var received: [[IotaTransaction]] = []
@@ -90,6 +95,10 @@ public struct IotaAPIUtils {
 		return (sent: sent, received: received)
 	}
 	
+	/// Creates a transactions history from the addresses.
+	///
+	/// - Parameter addresses: The addresses list.
+	/// - Returns: Transactions list.
 	public static func historyTransactions(addresses: [IotaAddress]) -> [IotaHistoryTransaction]{
 		let tempTxs = addresses.flatMap { $0.transactions ?? [] }
 		let bundles = self.groupTxsByBundle(tempTxs)
@@ -110,6 +119,10 @@ public struct IotaAPIUtils {
 		return result.map { valueFromBundle($0) }.sorted { $0.timestamp < $1.timestamp }
 	}
 	
+	/// Calculates the checksum for a seed.
+	///
+	/// - Parameter seed: The seed.
+	/// - Returns: The checksum
 	public static func checksumForSeed(_ seed: String) -> String {
 		return String(IotaChecksum.calculateChecksum(address: seed).suffix(3))
 	}
