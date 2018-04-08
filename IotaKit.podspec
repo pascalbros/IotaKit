@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.0'
   s.name         = "IotaKit"
-  s.version      = "0.6.4"
+  s.version      = "0.6.5"
   s.summary      = "The IOTA Swift API Library"
 
   s.description  = <<-DESC
