@@ -200,9 +200,8 @@ public class Iota: IotaDebuggable {
 			log?(IotaLog(message: "Getting transactions from address \(index)"))
 			APIServices.findTransactions(nodeAddress: self.address, type: .addresses, query: [address], { (hashes) in
 				self.IotaDebug("Got transactions \(hashes.count)")
-				if hashes.count == 0 {
-					wereSpent()
-				}else{
+				
+				func continueWithRequest() {
 					if requestTransactions {
 						self.IotaDebug("Getting trytes")
 						self.addressFromHash(address: address, { (resultAddress) in
@@ -223,6 +222,21 @@ public class Iota: IotaDebuggable {
 							findTransactions()
 						}
 					}
+				}
+				
+				//Let's iterate one last time on the next address to see if it has been spent
+				if hashes.count == 0 {
+					self.APIServices.wereAddressesSpentFrom(nodeAddress: self.address, addresses: [address], { (spent) in
+						if spent.first! {
+							continueWithRequest()
+						}else{
+							wereSpent()
+						}
+						
+					}, error)
+					return
+				}else {
+					continueWithRequest()
 				}
 			}, error)
 		}
