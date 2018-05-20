@@ -33,7 +33,7 @@ class PASHA3 {
 	
 	func reset() {
 		if self.context != nil {
-			self.context.deallocate(capacity: 1)
+			self.context.deallocate()
 		}
 		self.context = UnsafeMutablePointer<sha3_context>.allocate(capacity: 1)
 		sha3_Init384(&context.pointee);
@@ -41,7 +41,7 @@ class PASHA3 {
 	
 	func close() {
 		if self.context != nil {
-			self.context.deallocate(capacity: 1)
+			self.context.deallocate()
 			self.context = nil
 		}
 	}

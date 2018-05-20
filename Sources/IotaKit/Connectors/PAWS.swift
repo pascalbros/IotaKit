@@ -64,7 +64,7 @@ struct PAWSRequest: WebServices {
 					}
 				}
 				
-				successHandler(responseString as String!);
+				successHandler(responseString!);
 			}
 		}
 		
