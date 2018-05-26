@@ -19,7 +19,7 @@ const trit_t TRYTE_TO_TRITS_MAPPINGS[TRYTE_SPACE][NUMBER_OF_TRITS_IN_A_TRYTE] =
 
 void trits_to_trytes(trit_t *trits, tryte_t *trytes, size_t length) {
   int j = 0,
-      end = length < NUMBER_OF_TRITS_IN_A_TRYTE ? length
+      end = length < NUMBER_OF_TRITS_IN_A_TRYTE ? (int)length
                                                 : NUMBER_OF_TRITS_IN_A_TRYTE,
       i = end;
   for (; i-- > 0;) {

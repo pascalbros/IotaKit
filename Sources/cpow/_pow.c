@@ -13,7 +13,7 @@ char* do_pow(Curl* curl, const char* trits_in, size_t trits_len, uint8_t mwm) {
     tryte_t* nonce_trits =
             (tryte_t*)calloc(NONCE_LENGTH + 1, sizeof(tryte_t));
 
-    curl_absorb(curl, trits_in, trits_len - HASH_LENGTH);
+    curl_absorb(curl, (trit_t*)trits_in, trits_len - HASH_LENGTH);
     memcpy(curl->state, trits_in + trits_len - HASH_LENGTH, HASH_LENGTH);
 
     // FIXME(th0br0) deal with result value of `hashcash` call
