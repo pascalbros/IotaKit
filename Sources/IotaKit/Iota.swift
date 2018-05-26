@@ -27,7 +27,7 @@ public class Iota: IotaDebuggable {
 	public var debug = false
 	
 	/// Local PoW instance, setting it to `nil` will delegate the PoW to the node.
-	public var localPoW: IotaLocalPoW? = PearlDiverLocalPoW()
+	public var localPoW: IotaLocalPoW? = CPearlDiver()
 
 	/// Initializer for Iota class with automatic node selection.
 	///

@@ -20,8 +20,8 @@ public extension IotaTransaction {
 		curl.reset()
 		_ = curl.absorb(trits: transactionTrits)
 		_ = curl.squeeze(trits: &hash, offset: 0, length: hash.count)
-		
-		self.hash = IotaConverter.trytes(trits: hash)
+
+        self.hash = IotaConverter.trytes(trits: hash)
 		self.address = trytes.substring(from: 2187, to: 2268)
 		self.tag = trytes.substring(from: 2592, to: 2619)
 		self.value = IotaConverter.longValue(transactionTrits.slice(from: 6804, to: 6837))
