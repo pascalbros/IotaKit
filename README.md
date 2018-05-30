@@ -41,7 +41,7 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 
 ### CocoaPods
 
-`pod 'IotaKit', '~> 0.6.6'`
+`pod 'IotaKit', '~> 0.7.0'`
 
 ## Class Reference
 
@@ -67,6 +67,9 @@ IotaKit is maintained by [Pasquale Ambrosini](https://pascalbros.github.io)
 
 You can follow me on Twitter at [@PascalAmbro](http://twitter.com/PascalAmbro).
 
+## Thanks
+
+Iota Foundation for `Entangled` C code for Proof-of-Work.
 
 ## License
 IotaKit is licensed under the terms of the MIT License. Please see the LICENSE file for full details.
