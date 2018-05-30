@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
 
   s.module_map = 'IotaKit.modulemap'
   s.source_files = 'Sources/**/*.{swift,c,h}'
-  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/sha3/**','LIBRARY_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/', 'SWIFT_VERSION' => '4.0'}
+  s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/sha3/** $(PODS_TARGET_SRCROOT)/Sources/cpow','LIBRARY_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/', 'SWIFT_VERSION' => '4.0'}
   s.exclude_files = 'Sources/IotaKit/Utils/Crypto.swift'
-  s.preserve_paths  = 'Sources/sha3/include/module.modulemap'
+  s.preserve_paths  = 'Sources/sha3/include/module.modulemap Sources/cpow/include/module.modulemap'
 end
