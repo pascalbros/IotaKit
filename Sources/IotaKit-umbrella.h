@@ -11,6 +11,6 @@
 #endif
 
 #import "sha3.h"
-
+#import "pow.h"
 FOUNDATION_EXPORT double IotaKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char IotaKitVersionString[];

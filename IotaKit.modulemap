@@ -8,4 +8,9 @@ framework module IotaKit {
 	  header "sha3.h"
 	  export *
   }
+
+  module cpow [system][extern_c]{
+	  header "pow.h"
+	  export *
+  }
 }
