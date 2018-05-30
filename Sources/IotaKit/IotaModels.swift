@@ -147,7 +147,7 @@ public struct IotaTransfer {
 		self.hash = hash
 		self.persistence = persistence
 		self.value = value
-		self.message = message.rightPadded(count: 27, character: "9")
+		self.message = message.rightPadded(count: IotaConstants.messageLength, character: "9")
 		self.tag = tag.rightPadded(count: 27, character: "9")
 	}
 }
