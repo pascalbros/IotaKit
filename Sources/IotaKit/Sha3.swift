@@ -17,7 +17,11 @@ limitations under the License.
 
 
 import Foundation
+#if COCOAPODS
+import IotaKit.sha3
+#else
 import sha3
+#endif
 
 class PASHA3 {
 	

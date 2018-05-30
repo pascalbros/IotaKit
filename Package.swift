@@ -15,9 +15,10 @@ let package = Package(
     ],
     targets: [
 		.target(name: "sha3", dependencies: []),
+        .target(name: "cpow", dependencies: []),
         .target(
             name: "IotaKit",
-            dependencies: ["sha3"]),
+            dependencies: ["sha3", "cpow"]),
         .testTarget(
             name: "IotaKitTests",
             dependencies: ["IotaKit"]),

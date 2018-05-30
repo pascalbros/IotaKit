@@ -1,0 +1,4 @@
+module cpow [system][extern_c]{
+    header "pow.h"
+    export *
+}

@@ -43,6 +43,36 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		472A935420B8D11D00BA091C /* CPow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4749509920B8C648005CA71B /* CPow.swift */; };
+		472A935520B8D11E00BA091C /* CPow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4749509920B8C648005CA71B /* CPow.swift */; };
+		472A935620B8D11E00BA091C /* CPow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4749509920B8C648005CA71B /* CPow.swift */; };
+		4749506C20B8B587005CA71B /* hashcash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749505D20B8B587005CA71B /* hashcash.c */; };
+		4749506D20B8B587005CA71B /* hashcash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749505D20B8B587005CA71B /* hashcash.c */; };
+		4749506E20B8B587005CA71B /* hashcash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749505D20B8B587005CA71B /* hashcash.c */; };
+		4749506F20B8B587005CA71B /* pearl_diver.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506920B8B587005CA71B /* pearl_diver.c */; };
+		4749507020B8B587005CA71B /* pearl_diver.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506920B8B587005CA71B /* pearl_diver.c */; };
+		4749507120B8B587005CA71B /* pearl_diver.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506920B8B587005CA71B /* pearl_diver.c */; };
+		4749507220B8B587005CA71B /* _pow.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506A20B8B587005CA71B /* _pow.c */; };
+		4749507320B8B587005CA71B /* _pow.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506A20B8B587005CA71B /* _pow.c */; };
+		4749507420B8B587005CA71B /* _pow.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506A20B8B587005CA71B /* _pow.c */; };
+		4749507520B8B587005CA71B /* trit_tryte.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506B20B8B587005CA71B /* trit_tryte.c */; };
+		4749507620B8B587005CA71B /* trit_tryte.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506B20B8B587005CA71B /* trit_tryte.c */; };
+		4749507720B8B587005CA71B /* trit_tryte.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749506B20B8B587005CA71B /* trit_tryte.c */; };
+		4749507B20B8B78D005CA71B /* ptrit_incr.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749507A20B8B78D005CA71B /* ptrit_incr.c */; };
+		4749507C20B8B78D005CA71B /* ptrit_incr.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749507A20B8B78D005CA71B /* ptrit_incr.c */; };
+		4749507D20B8B78D005CA71B /* ptrit_incr.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749507A20B8B78D005CA71B /* ptrit_incr.c */; };
+		4749508020B8B7C3005CA71B /* trit_ptrit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749507F20B8B7C3005CA71B /* trit_ptrit.c */; };
+		4749508120B8B7C3005CA71B /* trit_ptrit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749507F20B8B7C3005CA71B /* trit_ptrit.c */; };
+		4749508220B8B7C3005CA71B /* trit_ptrit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749507F20B8B7C3005CA71B /* trit_ptrit.c */; };
+		4749508620B8B99B005CA71B /* pow.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749508520B8B99B005CA71B /* pow.c */; };
+		4749508720B8B99B005CA71B /* pow.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749508520B8B99B005CA71B /* pow.c */; };
+		4749508820B8B99B005CA71B /* pow.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749508520B8B99B005CA71B /* pow.c */; };
+		4749508A20B8BA78005CA71B /* curl_p_ptrit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749508920B8BA78005CA71B /* curl_p_ptrit.c */; };
+		4749508B20B8BA78005CA71B /* curl_p_ptrit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749508920B8BA78005CA71B /* curl_p_ptrit.c */; };
+		4749508C20B8BA78005CA71B /* curl_p_ptrit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749508920B8BA78005CA71B /* curl_p_ptrit.c */; };
+		4749509620B8BD10005CA71B /* curl_p.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749509520B8BD10005CA71B /* curl_p.c */; };
+		4749509720B8BD10005CA71B /* curl_p.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749509520B8BD10005CA71B /* curl_p.c */; };
+		4749509820B8BD10005CA71B /* curl_p.c in Sources */ = {isa = PBXBuildFile; fileRef = 4749509520B8BD10005CA71B /* curl_p.c */; };
 		50211AF12051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
 		50211AF22051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
 		50211AF32051EAD300685CE5 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 50211AF02051EAD300685CE5 /* sha3.c */; };
@@ -124,6 +154,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		472A935120B8CDBA00BA091C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		4749505D20B8B587005CA71B /* hashcash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hashcash.c; sourceTree = "<group>"; };
+		4749505F20B8B587005CA71B /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
+		4749506020B8B587005CA71B /* hashcash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashcash.h; sourceTree = "<group>"; };
+		4749506120B8B587005CA71B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		4749506220B8B587005CA71B /* pearl_diver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pearl_diver.h; sourceTree = "<group>"; };
+		4749506320B8B587005CA71B /* _pow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _pow.h; sourceTree = "<group>"; };
+		4749506420B8B587005CA71B /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
+		4749506520B8B587005CA71B /* trit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trit.h; sourceTree = "<group>"; };
+		4749506620B8B587005CA71B /* trit_tryte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trit_tryte.h; sourceTree = "<group>"; };
+		4749506720B8B587005CA71B /* trits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trits.h; sourceTree = "<group>"; };
+		4749506820B8B587005CA71B /* tryte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tryte.h; sourceTree = "<group>"; };
+		4749506920B8B587005CA71B /* pearl_diver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pearl_diver.c; sourceTree = "<group>"; };
+		4749506A20B8B587005CA71B /* _pow.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _pow.c; sourceTree = "<group>"; };
+		4749506B20B8B587005CA71B /* trit_tryte.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trit_tryte.c; sourceTree = "<group>"; };
+		4749507820B8B5C9005CA71B /* ptrit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ptrit.h; sourceTree = "<group>"; };
+		4749507920B8B784005CA71B /* ptrit_incr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ptrit_incr.h; sourceTree = "<group>"; };
+		4749507A20B8B78D005CA71B /* ptrit_incr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ptrit_incr.c; sourceTree = "<group>"; };
+		4749507E20B8B7A7005CA71B /* trit_ptrit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = trit_ptrit.h; sourceTree = "<group>"; };
+		4749507F20B8B7C3005CA71B /* trit_ptrit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trit_ptrit.c; sourceTree = "<group>"; };
+		4749508320B8B8AF005CA71B /* pcurl_ptrit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pcurl_ptrit.h; sourceTree = "<group>"; };
+		4749508420B8B993005CA71B /* pow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pow.h; sourceTree = "<group>"; };
+		4749508520B8B99B005CA71B /* pow.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pow.c; sourceTree = "<group>"; };
+		4749508920B8BA78005CA71B /* curl_p_ptrit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curl_p_ptrit.c; sourceTree = "<group>"; };
+		4749508D20B8BA8E005CA71B /* indices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = indices.h; sourceTree = "<group>"; };
+		4749508E20B8BB76005CA71B /* curl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		4749509320B8BBDE005CA71B /* hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		4749509420B8BBF3005CA71B /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		4749509520B8BD10005CA71B /* curl_p.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curl_p.c; sourceTree = "<group>"; };
+		4749509920B8C648005CA71B /* CPow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPow.swift; sourceTree = "<group>"; };
 		50211AEE2051EAD300685CE5 /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha3.h; sourceTree = "<group>"; };
 		50211AF02051EAD300685CE5 /* sha3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 		50211AF42051EB5D00685CE5 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -182,6 +242,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		472A935020B8CDBA00BA091C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				472A935120B8CDBA00BA091C /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4749505C20B8B587005CA71B /* cpow */ = {
+			isa = PBXGroup;
+			children = (
+				4749505E20B8B587005CA71B /* include */,
+				4749509520B8BD10005CA71B /* curl_p.c */,
+				4749505D20B8B587005CA71B /* hashcash.c */,
+				4749508520B8B99B005CA71B /* pow.c */,
+				4749508920B8BA78005CA71B /* curl_p_ptrit.c */,
+				4749506920B8B587005CA71B /* pearl_diver.c */,
+				4749506A20B8B587005CA71B /* _pow.c */,
+				4749506B20B8B587005CA71B /* trit_tryte.c */,
+				4749507A20B8B78D005CA71B /* ptrit_incr.c */,
+				4749507F20B8B7C3005CA71B /* trit_ptrit.c */,
+			);
+			name = cpow;
+			path = Sources/cpow;
+			sourceTree = "<group>";
+		};
+		4749505E20B8B587005CA71B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4749509420B8BBF3005CA71B /* constants.h */,
+				4749508D20B8BA8E005CA71B /* indices.h */,
+				4749507E20B8B7A7005CA71B /* trit_ptrit.h */,
+				4749507920B8B784005CA71B /* ptrit_incr.h */,
+				4749508320B8B8AF005CA71B /* pcurl_ptrit.h */,
+				4749507820B8B5C9005CA71B /* ptrit.h */,
+				4749505F20B8B587005CA71B /* const.h */,
+				4749506020B8B587005CA71B /* hashcash.h */,
+				4749506120B8B587005CA71B /* module.modulemap */,
+				4749506220B8B587005CA71B /* pearl_diver.h */,
+				4749506320B8B587005CA71B /* _pow.h */,
+				4749506420B8B587005CA71B /* stdint.h */,
+				4749506520B8B587005CA71B /* trit.h */,
+				4749506620B8B587005CA71B /* trit_tryte.h */,
+				4749506720B8B587005CA71B /* trits.h */,
+				4749506820B8B587005CA71B /* tryte.h */,
+				4749508420B8B993005CA71B /* pow.h */,
+				4749508E20B8BB76005CA71B /* curl.h */,
+				4749509320B8BBDE005CA71B /* hash.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		50211AEC2051EAD300685CE5 /* sha3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +350,7 @@
 				50F1DF94200EE7AD005D91C6 /* IotaLocalPow.swift */,
 				50F1DF95200EE7AD005D91C6 /* PearlDiver.swift */,
 				50F3317F2010182800DC6E5B /* PearlDiverLocalPow.swift */,
+				4749509920B8C648005CA71B /* CPow.swift */,
 			);
 			path = Pow;
 			sourceTree = "<group>";
@@ -279,12 +392,14 @@
 				OBJ_7 /* Sources */,
 				OBJ_10 /* Tests */,
 				OBJ_13 /* Products */,
+				472A935020B8CDBA00BA091C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4749505C20B8B587005CA71B /* cpow */,
 				50211AEC2051EAD300685CE5 /* sha3 */,
 				OBJ_8 /* IotaKit */,
 			);
@@ -461,9 +576,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				472A935420B8D11D00BA091C /* CPow.swift in Sources */,
+				4749507220B8B587005CA71B /* _pow.c in Sources */,
+				4749508A20B8BA78005CA71B /* curl_p_ptrit.c in Sources */,
+				4749507520B8B587005CA71B /* trit_tryte.c in Sources */,
+				4749509620B8BD10005CA71B /* curl_p.c in Sources */,
 				50F60D2C2050916200112585 /* IotaMultisig.swift in Sources */,
+				4749507B20B8B78D005CA71B /* ptrit_incr.c in Sources */,
 				50211AF12051EAD300685CE5 /* sha3.c in Sources */,
+				4749506C20B8B587005CA71B /* hashcash.c in Sources */,
+				4749508620B8B99B005CA71B /* pow.c in Sources */,
+				4749506F20B8B587005CA71B /* pearl_diver.c in Sources */,
 				OBJ_21 /* Package.swift in Sources */,
+				4749508020B8B7C3005CA71B /* trit_ptrit.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,35 +597,45 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_27 /* IotaKitTests.swift in Sources */,
+				4749508B20B8BA78005CA71B /* curl_p_ptrit.c in Sources */,
 				50F33170200FB6D200DC6E5B /* Iota.swift in Sources */,
 				50F60D2D2050916200112585 /* IotaMultisig.swift in Sources */,
 				50E32CED2020FCE9001017D6 /* IotaUnits.swift in Sources */,
 				50F33169200FB6CD00DC6E5B /* IotaTransactionExtension.swift in Sources */,
 				50F331822010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */,
+				472A935520B8D11E00BA091C /* CPow.swift in Sources */,
 				50F33176200FB6D900DC6E5B /* IotaAPIServiceProtocol.swift in Sources */,
+				4749507C20B8B78D005CA71B /* ptrit_incr.c in Sources */,
 				50F33164200FB6C800DC6E5B /* Kerl.swift in Sources */,
 				50F33175200FB6D900DC6E5B /* PAWS.swift in Sources */,
 				50F33174200FB6D200DC6E5B /* IotaSigning.swift in Sources */,
 				50211AF22051EAD300685CE5 /* sha3.c in Sources */,
+				4749507020B8B587005CA71B /* pearl_diver.c in Sources */,
 				50F33177200FB6DD00DC6E5B /* WSUtils.swift in Sources */,
 				50F33165200FB6C800DC6E5B /* CurlSource.swift in Sources */,
+				4749509720B8BD10005CA71B /* curl_p.c in Sources */,
 				50F3316C200FB6D200DC6E5B /* IotaNodeSelector.swift in Sources */,
 				50F3316A200FB6D200DC6E5B /* Sha3.swift in Sources */,
 				50F3318620110CB600DC6E5B /* APIsTests.swift in Sources */,
+				4749508720B8B99B005CA71B /* pow.c in Sources */,
 				50211AFF2053108500685CE5 /* ConversionTests.swift in Sources */,
 				50F33171200FB6D200DC6E5B /* IotaAPIService.swift in Sources */,
 				50F3316E200FB6D200DC6E5B /* IotaConverter.swift in Sources */,
 				50F60D3020509C6E00112585 /* IotaMultisigTests.swift in Sources */,
 				50F33168200FB6CD00DC6E5B /* IotaBundleExtension.swift in Sources */,
+				4749507320B8B587005CA71B /* _pow.c in Sources */,
 				50F33163200FB6C300DC6E5B /* PearlDiver.swift in Sources */,
 				50F33178200FB6DD00DC6E5B /* Utils.swift in Sources */,
 				50E32CF020210BE7001017D6 /* IotaUnitsTests.swift in Sources */,
 				50F3316B200FB6D200DC6E5B /* IotaChecksum.swift in Sources */,
 				50F3316F200FB6D200DC6E5B /* IotaConstants.swift in Sources */,
 				50F33166200FB6C800DC6E5B /* Curl.swift in Sources */,
+				4749507620B8B587005CA71B /* trit_tryte.c in Sources */,
 				50F3316D200FB6D200DC6E5B /* IotaInputValidator.swift in Sources */,
 				50F33173200FB6D200DC6E5B /* IotaModels.swift in Sources */,
 				50F33167200FB6C800DC6E5B /* IotaLocalPow.swift in Sources */,
+				4749508120B8B7C3005CA71B /* trit_ptrit.c in Sources */,
+				4749506D20B8B587005CA71B /* hashcash.c in Sources */,
 				50F33172200FB6D200DC6E5B /* IotaAPIUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,32 +644,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				4749508820B8B99B005CA71B /* pow.c in Sources */,
 				50211AF32051EAD300685CE5 /* sha3.c in Sources */,
 				504C6C242006AF8A007C6C7E /* Kerl.swift in Sources */,
 				50F1DF87200C26FE005D91C6 /* IotaBundleExtension.swift in Sources */,
 				503F6336200B66B700CE0F6F /* IotaNodeSelector.swift in Sources */,
 				50F60D2E2050916200112585 /* IotaMultisig.swift in Sources */,
+				4749507D20B8B78D005CA71B /* ptrit_incr.c in Sources */,
 				50F3315F200D744800DC6E5B /* IotaConstants.swift in Sources */,
+				4749508C20B8BA78005CA71B /* curl_p_ptrit.c in Sources */,
 				504C6C2E2006AF8A007C6C7E /* IotaConverter.swift in Sources */,
 				504C6C322006AF8A007C6C7E /* IotaAPIServiceProtocol.swift in Sources */,
 				504C6C252006AF8A007C6C7E /* WSUtils.swift in Sources */,
 				50F1DF96200EE7AD005D91C6 /* IotaLocalPow.swift in Sources */,
 				50F3315E200D73E300DC6E5B /* IotaInputValidator.swift in Sources */,
 				50F1DF97200EE7AD005D91C6 /* PearlDiver.swift in Sources */,
+				4749506E20B8B587005CA71B /* hashcash.c in Sources */,
 				504C6C272006AF8A007C6C7E /* Iota.swift in Sources */,
 				504C6C282006AF8A007C6C7E /* IotaAPIUtils.swift in Sources */,
+				4749509820B8BD10005CA71B /* curl_p.c in Sources */,
 				504C6C2C2006AF8A007C6C7E /* Sha3.swift in Sources */,
 				50F1DF8C200C2C62005D91C6 /* IotaTransactionExtension.swift in Sources */,
+				4749508220B8B7C3005CA71B /* trit_ptrit.c in Sources */,
 				50E32CEE2020FCE9001017D6 /* IotaUnits.swift in Sources */,
 				504C6C262006AF8A007C6C7E /* Utils.swift in Sources */,
+				4749507720B8B587005CA71B /* trit_tryte.c in Sources */,
 				50F33157200D34E800DC6E5B /* Curl.swift in Sources */,
 				504C6C2F2006AF8A007C6C7E /* IotaAPIService.swift in Sources */,
+				4749507420B8B587005CA71B /* _pow.c in Sources */,
 				50F331812010185300DC6E5B /* PearlDiverLocalPow.swift in Sources */,
 				504C6C2D2006AF8A007C6C7E /* IotaChecksum.swift in Sources */,
+				472A935620B8D11E00BA091C /* CPow.swift in Sources */,
 				50F33155200D308200DC6E5B /* CurlSource.swift in Sources */,
 				504C6C332006AF8A007C6C7E /* IotaModels.swift in Sources */,
 				504C6C312006AF8A007C6C7E /* PAWS.swift in Sources */,
 				504C6C2B2006AF8A007C6C7E /* IotaSigning.swift in Sources */,
+				4749507120B8B587005CA71B /* pearl_diver.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -642,6 +788,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -727,7 +874,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/sha3/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/sha3/** ${SRCROOT}/Sources/cpow";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IotaKit;
@@ -756,8 +903,9 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/sha3/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Sources/sha3/** ${SRCROOT}/Sources/cpow";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IotaKit;
 			};
