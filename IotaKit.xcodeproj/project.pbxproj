@@ -180,7 +180,6 @@
 		4749508920B8BA78005CA71B /* curl_p_ptrit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curl_p_ptrit.c; sourceTree = "<group>"; };
 		4749508D20B8BA8E005CA71B /* indices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = indices.h; sourceTree = "<group>"; };
 		4749508E20B8BB76005CA71B /* curl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
-		4749508F20B8BB84005CA71B /* curl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curl.c; sourceTree = "<group>"; };
 		4749509320B8BBDE005CA71B /* hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
 		4749509420B8BBF3005CA71B /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		4749509520B8BD10005CA71B /* curl_p.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curl_p.c; sourceTree = "<group>"; };
@@ -255,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				4749505E20B8B587005CA71B /* include */,
-				4749508F20B8BB84005CA71B /* curl.c */,
 				4749509520B8BD10005CA71B /* curl_p.c */,
 				4749505D20B8B587005CA71B /* hashcash.c */,
 				4749508520B8B99B005CA71B /* pow.c */,

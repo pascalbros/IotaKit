@@ -6,7 +6,11 @@
 //
 
 import CoreFoundation
+#if COCOAPODS
+import IotaKit.cpow
+#else
 import cpow
+#endif
 public class CPearlDiver: IotaLocalPoW {
     
     public init() { }
