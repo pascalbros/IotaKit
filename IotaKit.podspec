@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.1'
   s.name         = "IotaKit"
-  s.version      = "0.7.0"
+  s.version      = "0.7.1"
   s.summary      = "The IOTA Swift API Library"
 
   s.description  = <<-DESC
@@ -25,5 +25,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/**/*.{swift,c,h}'
   s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/sha3/** $(PODS_TARGET_SRCROOT)/Sources/cpow','LIBRARY_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Sources/', 'SWIFT_VERSION' => '4.0'}
   s.exclude_files = 'Sources/IotaKit/Utils/Crypto.swift'
-  s.preserve_paths  = 'Sources/sha3/include/module.modulemap Sources/cpow/include/module.modulemap'
+  s.preserve_paths  = 'Sources/sha3/include/module.modulemap', 'Sources/cpow/include/module.modulemap'
 end

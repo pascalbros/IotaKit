@@ -1,7 +1,7 @@
 #ifndef __COMMON_TRINARY_TRIT_PTRIT_H_
 #define __COMMON_TRINARY_TRIT_PTRIT_H_
 
-#include "stdint.h"
+#include <stdint.h>
 #include "ptrit_incr.h"
 #include "trits.h"
 
