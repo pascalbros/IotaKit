@@ -14,7 +14,7 @@ class IotaMultisigTests: XCTestCase {
 	let RECEIVE_ADDRESS = "IJWHCMVMEHLRKNGJWJFBIXROGWXUYSNESUAGBOWDKFJLUFOLPMNHUQQNGISDDWNDMXYBXGXLFWLDNGAFBPQLVRGPHB"
 	let REMAINDER_ADDRESS = "QWMCMMRKDBSQSN9NHVFZYBVBNMABHZDFCLDCBBZUWMGLLZVEFFOCMZLFMVZZHXCMQAEPVCOMERQYOQNSB"
 	let TEST_TAG = "IOTAKIT"
-	let ADDRESS = "http://iotanode.party:14265"
+	let ADDRESS = "https://nodes.iota.cafe:443"
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
