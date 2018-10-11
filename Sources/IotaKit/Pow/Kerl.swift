@@ -15,7 +15,8 @@ class Kerl: CurlSource {
 	fileprivate static let BYTE_HASH_LENGTH = BIT_HASH_LENGTH / 8
 	
 	fileprivate static let RADIX: Int64 = 3
-	fileprivate static let MAX_TRIT_VALUE: Int64 = (RADIX - 1) / 2, MIN_TRIT_VALUE = -MAX_TRIT_VALUE
+	fileprivate static let MAX_TRIT_VALUE: Int64 = (RADIX - 1) / 2
+	fileprivate static let MIN_TRIT_VALUE: Int64 = -MAX_TRIT_VALUE
 	fileprivate var keccak: PASHA3!
 	fileprivate var byte_state: [UInt8] = []
 	fileprivate var trit_state: [Int] = []
