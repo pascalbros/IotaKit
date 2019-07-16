@@ -80,7 +80,7 @@ public struct IotaAPIUtils {
 			var spentAlreadyAdded = false
 			
 			for bundleEntry in bundle {
-				guard addresses.index(of: bundleEntry.hash) != nil else { continue }
+				guard addresses.firstIndex(of: bundleEntry.hash) != nil else { continue }
 				
 				let isRemainder = (bundleEntry.currentIndex == bundleEntry.lastIndex) && (bundleEntry.lastIndex != 0)
 				if bundleEntry.value < 0 && !spentAlreadyAdded && !isRemainder {

@@ -380,7 +380,7 @@ public class Iota: IotaDebuggable {
 						let newBundleTx = bundle.transactions[y]
 						
 						if newBundleTx.address == address && newBundleTx.value == 0 {
-							if signature.signatureFragments.index(of: newBundleTx.signatureFragments) == nil {
+							if signature.signatureFragments.firstIndex(of: newBundleTx.signatureFragments) == nil {
 								signature.signatureFragments.append(newBundleTx.signatureFragments)
 							}
 						}
