@@ -9,7 +9,7 @@ import Foundation
 
 public extension IotaTransaction {
 	
-	public init(trytes: String) {
+	init(trytes: String) {
 		self.transactionObject(trytes: trytes)
 	}
 	

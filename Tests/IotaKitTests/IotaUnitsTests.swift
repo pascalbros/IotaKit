@@ -35,7 +35,7 @@ class IotaUnitsTests: XCTestCase {
 	}
 	
 	func testValues() {
-		let values: [Float] = [1, 1000, 1000000, 1000000000, 1000000000000, 1000000000000000]
+		let values: [Double] = [1, 1000, 1000000, 1000000000, 1000000000000, 1000000000000000]
 		let units: [IotaUnits] = [.Pi, .Ti, .Gi, .Mi, .Ki, .i]
 		for i in 0..<values.count {
 			let value = IotaUnitsConverter.convert(amount: 1, fromUnit: .Pi, toUnit: units[i])
@@ -47,7 +47,7 @@ class IotaUnitsTests: XCTestCase {
 		let units: [IotaUnits] = [.Pi, .Ti, .Gi, .Mi, .Ki, .i]
 		let values = ["0.000000000001234 Pi", "0.000000001234 Ti", "0.000001234 Gi", "0.001234 Mi", "1.234 Ki", "1234 i"]
 		for i in 0..<units.count {
-			let result = IotaUnitsConverter.iotaToString(amount: 1234, forceUnit: units[i])
+			let result = IotaUnitsConverter.iotaToString(amount: 1234, extended: true, forceUnit: units[i])
 			XCTAssertEqual(result, values[i])
 		}
 	}
@@ -73,9 +73,9 @@ class IotaUnitsTests: XCTestCase {
 		result = IotaUnitsConverter.iotaToString(amount: 123123, extended: true)
 		XCTAssertEqual(result, "123.123 Ki")
 		result = IotaUnitsConverter.iotaToString(amount: 1234567, extended: true)
-		XCTAssertEqual(result, "1.23457 Mi")
+		XCTAssertEqual(result, "1.234567 Mi")
 		result = IotaUnitsConverter.iotaToString(amount: 1231234567, extended: true)
-		XCTAssertEqual(result, "1.23123 Gi")
+		XCTAssertEqual(result, "1.231234567 Gi")
 	}
 	
 

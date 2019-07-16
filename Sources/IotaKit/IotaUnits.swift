@@ -71,8 +71,8 @@ public struct IotaUnitsConverter {
 	///   - amount: The amount in Iota.
 	///   - unit: The final unit.
 	/// - Returns: The value in the specified unit.
-	public static func convert(amount: UInt64, toUnit unit: IotaUnits) -> Float {
-		return Float(amount) / powf(10, Float(unit.rawValue))
+	public static func convert(amount: UInt64, toUnit unit: IotaUnits) -> Double {
+		return Double(amount) / pow(10, Double(unit.rawValue))
 	}
 	
 	/// Converts from arbitrary unit to the specified unit.
@@ -82,8 +82,8 @@ public struct IotaUnitsConverter {
 	///   - fromUnit: The arbitrary unit.
 	///   - toUnit: The final unit.
 	/// - Returns: The value in the specified unit.
-	public static func convert(amount: Float, fromUnit: IotaUnits, toUnit: IotaUnits) -> Float {
-		let amountInSource = UInt64(amount * powf(10, Float(fromUnit.rawValue)))
+	public static func convert(amount: Double, fromUnit: IotaUnits, toUnit: IotaUnits) -> Double {
+		let amountInSource = UInt64(amount * pow(10, Double(fromUnit.rawValue)))
 		return convert(amount: amountInSource, toUnit: toUnit)
 	}
 	
@@ -96,7 +96,7 @@ public struct IotaUnitsConverter {
 	/// - Returns: The string that represents the value and unit.
 	public static func iotaToString(amount: UInt64, extended: Bool = false, forceUnit: IotaUnits? = nil) -> String {
 		let unit = forceUnit != nil ? forceUnit! : IotaUnits(amount: amount)
-		let value = convert(amount: Float(amount), fromUnit: .i, toUnit: unit)
+		let value = convert(amount: Double(amount), fromUnit: .i, toUnit: unit)
 		if unit == .i { return "\(amount) \(unit)" }
 		
 		var v = "\(NSDecimalNumber(string: "\(value)"))"

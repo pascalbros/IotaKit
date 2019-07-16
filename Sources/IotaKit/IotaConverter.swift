@@ -136,8 +136,8 @@ public class IotaConverter {
 			let charOne = inputTrytes.character(at: i)!
 			let charTwo = inputTrytes.character(at: i+1)!
 			
-			guard let valueOne = trytesAlphabet.index(of: Character(charOne)) else { return nil }
-			guard let valueTwo = trytesAlphabet.index(of: Character(charTwo)) else { return nil }
+			guard let valueOne = trytesAlphabet.firstIndex(of: Character(charOne)) else { return nil }
+			guard let valueTwo = trytesAlphabet.firstIndex(of: Character(charTwo)) else { return nil }
 			
 			let decimalValue = UInt8(valueOne + valueTwo * 27)
 			result += String(UnicodeScalar(decimalValue))
@@ -167,7 +167,7 @@ public class IotaConverter {
 		var trits: [Int] = Array(repeating: 0, count: trytes.count*3)
 		let input = Array(trytes)
 		for i in 0..<input.count {
-			guard let index = trytesAlphabet.index(of: input[i]) else { return nil }
+			guard let index = trytesAlphabet.firstIndex(of: input[i]) else { return nil }
 			trits[i * 3] = trytesTrits[index][0]
 			trits[i * 3 + 1] = trytesTrits[index][1]
 			trits[i * 3 + 2] = trytesTrits[index][2]
