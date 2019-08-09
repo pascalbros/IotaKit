@@ -8,19 +8,18 @@
 import Foundation
 
 /// Iota units.
-///
-/// - i: Iota.
-/// - Ki: iE^3.
-/// - Mi: iE^6.
-/// - Gi: iE^9.
-/// - Ti: iE^12.
-/// - Pi: iE^15.
 public enum IotaUnits: Int {
+	/// Iota.
 	case i = 0
+	/// iE^3.
 	case Ki = 3
+	/// iE^6.
 	case Mi = 6
+	/// iE^9.
 	case Gi = 9
+	/// iE^12.
 	case Ti = 12
+	/// iE^15.
 	case Pi = 15
 	
 	/// Initializer for IotaUnits.

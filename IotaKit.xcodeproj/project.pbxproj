@@ -554,7 +554,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT}/Scripts\n./gendocs.sh";
+			shellScript = "cd ${SRCROOT}/Scripts\n./gendocs.sh\n";
 		};
 		50FB5806202658F1007A36CF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
