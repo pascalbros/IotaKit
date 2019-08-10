@@ -110,18 +110,4 @@ public struct IotaUnitsConverter {
 		}
 		return "\(v) \(unit.string)"
 	}
-	
-	/// Converts Iota amount to human readable string.
-	///
-	/// - Parameters:
-	///   - amount: The amount.
-	///   - unit: The unit.
-	///   - extended: If `true`, will return the extended string.
-	public static func createAmountWithUnitDisplayText(amount: UInt64, unit: IotaUnits, extended: Bool) {
-		
-	}
-	
-	public static func createAmountDisplayText(amount: UInt64, unit: IotaUnits, extended: Bool) {
-		
-	}
 }

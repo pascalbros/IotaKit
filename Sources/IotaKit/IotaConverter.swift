@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// Iota Converter utils, used to convert trytes, trits to/from String and other kinds of conversion.
 public class IotaConverter {
+	
+	fileprivate init() { }
 	
 	static let radix = 3
 	static let maxTritValue = (IotaConverter.radix - 1)/2
@@ -110,7 +113,10 @@ public class IotaConverter {
 	static let tritsInATryte = 3
 	static let tritsInAByte = 5
 	
-	
+	/// Converts an ASCII string to Trytes.
+	///
+	/// - Parameter input: An ASCII String.
+	/// - Returns: Trytes as String if the input is valid, `nil` otherwise.
 	public static func trytes(fromAsciiString input: String) -> String? {
 		var trytes = ""
 		
@@ -126,6 +132,10 @@ public class IotaConverter {
 		return trytes
 	}
 	
+	/// Converts Trytes to ASCII string.
+	///
+	/// - Parameter inputTrytes: Trytes as String.
+	/// - Returns: ASCII String if the input is valid, `nil` otherwise.
 	public static func asciiString(fromTrytes inputTrytes: String) -> String? {
 		guard IotaInputValidator.isTrytes(trytes: inputTrytes) else { return nil }
 		guard inputTrytes.count % 2 == 0 else { return nil }
@@ -146,23 +156,39 @@ public class IotaConverter {
 		return result
 	}
 	
+	/// Converts an Array of Trits to String.
+	///
+	/// - Parameter trits: An Array of Trits.
+	/// - Returns: A String from Trits.
 	public static func string(fromTrits trits: [Int]) -> String {
 		var result = ""
 		for i in stride(from: 0, to: trits.count, by: 3) {
 			let str = "\(trits[i])\(trits[i+1])\(trits[i+2])"
-			result += tritsAlphabet[str]!
+			if let item = tritsAlphabet[str] {
+				result += item
+			}
 		}
 		return result
 	}
 	
+	/// Converts a String to an Array of Trits.
+	///
+	/// - Parameter string: A valid String, all the invalid characters will be skipped.
+	/// - Returns: An Array of Trits.
 	public static func trits(fromString string: String) -> [Int] {
 		var result: [Int] = []
 		for i in string {
-			result.append(contentsOf: alphabetTrits[String(i)]!)
+			if let item = alphabetTrits[String(i)] {
+				result.append(contentsOf: item)
+			}
 		}
 		return result
 	}
 	
+	/// Converts a valid String of Trytes to Trits.
+	///
+	/// - Parameter trytes: A valid Trytes String.
+	/// - Returns: An Array of Trits if the input is valid, `nil` otherwise.
 	static func trits(trytes: String) -> [Int]? {
 		var trits: [Int] = Array(repeating: 0, count: trytes.count*3)
 		let input = Array(trytes)
@@ -176,6 +202,12 @@ public class IotaConverter {
 		return trits
 	}
 	
+	/// Converts Trytes as Int to trits.
+	///
+	/// - Parameters:
+	///   - trytes: Trytes as Int.
+	///   - length: The desired length.
+	/// - Returns: An Array of Trits, appending 0s if the `length > trits.count`.
 	static func trits(trytes: Int, length: Int) -> [Int] {
 		var trits = self.trits(trytes: trytes)
 		if trits.count < length {
