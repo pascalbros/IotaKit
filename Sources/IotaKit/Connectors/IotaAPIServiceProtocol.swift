@@ -7,8 +7,14 @@
 
 import Foundation
 
+/// IOTA find TX Type.
+///
+/// - addresses: Addresses.
+/// - bundles: Bundles.
 public enum IotaFindTxType: String {
+	/// Addresses.
 	case addresses = "addresses"
+	/// Bundles.
 	case bundles = "bundles"
 
 }

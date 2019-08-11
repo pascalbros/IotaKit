@@ -253,5 +253,7 @@ public struct IotaAddress {
 
 /// Used to carry a log message.
 public struct IotaLog {
+	
+	/// The message.
 	public internal(set) var message: String = ""
 }
