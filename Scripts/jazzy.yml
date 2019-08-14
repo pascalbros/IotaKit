@@ -15,7 +15,10 @@ xcodebuild_arguments:
     - "IotaKit-Package"
 
 custom_categories:
-
+  - name: IOTA Clients
+    children:
+    - Iota
+    - IotaMultisig
   - name: Models
     children:
     - IotaAccount
@@ -27,3 +30,15 @@ custom_categories:
     - IotaInput
     - IotaAddress
     - IotaLog
+  - name: Proof of Work
+    children:
+    - IotaLocalPoW
+    - PearlDiverLocalPoW
+    - CPearlDiver
+  - name: Utilities
+    children:
+    - IotaAPIUtils
+    - IotaInputValidator
+    - IotaUnitsConverter
+    - IotaConverter
+    - IotaChecksum

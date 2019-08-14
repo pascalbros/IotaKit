@@ -18,7 +18,6 @@ public protocol IotaLocalPoW {
 	/// - Returns: Trytes as String
 	func performPoW(trytes: String, minWeightMagnitude: Int) -> String
 	
-	
 	/// Perform the PoW asynchronously.
 	///
 	/// - Parameters:

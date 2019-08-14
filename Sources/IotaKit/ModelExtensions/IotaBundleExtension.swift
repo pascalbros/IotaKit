@@ -9,6 +9,14 @@ import Foundation
 
 public extension IotaBundle {
 	
+	/// Adds an entry to the Iota Bundle.
+	///
+	/// - Parameters:
+	///   - signatureMessageLength: The length of the signature message.
+	///   - address: The address.
+	///   - value: The value in Iota.
+	///   - tag: The tag.
+	///   - timestamp: The timestamp.
 	mutating func addEntry(signatureMessageLength: Int, address: String, value: Int64, tag: String, timestamp: UInt64) {
 		for i in 0..<signatureMessageLength {
 
