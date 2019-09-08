@@ -54,7 +54,10 @@ extension String {
 	}
 }
 
+/// Used to enable/disable the debug IotaKit, enabling it, all the debug messages that come from IotaKit will start with `[IotaKit]` prefix.
 public protocol IotaDebuggable {
+	
+	/// Debug value, default value `false`
 	var debug: Bool { get set }
 }
 

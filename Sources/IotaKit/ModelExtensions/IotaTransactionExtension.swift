@@ -9,10 +9,16 @@ import Foundation
 
 public extension IotaTransaction {
 	
+	/// Constructor for IotaTransaction.
+	///
+	/// - Parameter trytes: The Trytes.
 	init(trytes: String) {
 		self.transactionObject(trytes: trytes)
 	}
 	
+	/// Converts a valid Trytes to a IotaTransaction object.
+	///
+	/// - Parameter trytes: The Trytes.
 	mutating func transactionObject(trytes: String) {
 		let transactionTrits = IotaConverter.trits(fromString: trytes)
 		var hash: [Int] = Array(repeating: 0, count: Curl.hashLength)
@@ -39,6 +45,7 @@ public extension IotaTransaction {
 		self.nonce = trytes.substring(from: 2646, to: 2673)
 	}
 	
+	/// Returns a String of Trytes from the current state.
 	var trytes: String {
 		let valueTrits = IotaConverter.trits(trytes: Int(self.value), length: 81)
 		let timestampTrits = IotaConverter.trits(trytes: Int(self.timestamp), length: 27)
@@ -70,6 +77,13 @@ public extension IotaTransaction {
 }
 
 extension IotaTransaction: Equatable {
+	
+	/// Implements the Equatable protocol for `IotaTransaction`.
+	///
+	/// - Parameters:
+	///   - lhs: A IotaTransaction.
+	///   - rhs: Another IotaTransaction.
+	/// - Returns: `true` if the two objects contain the same data, `false` otherwise.
 	public static func ==(lhs: IotaTransaction, rhs: IotaTransaction) -> Bool {
 		if lhs.hash != rhs.hash { return false }
 		if lhs.address != rhs.address { return false }

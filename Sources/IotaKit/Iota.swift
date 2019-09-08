@@ -822,6 +822,15 @@ extension Iota {
 		
 	}
 	
+	/// Attaches the specified address to the Tangle by doing Proof of Work.
+	///
+	/// - Parameters:
+	///   - trunkTx: The trunk transaction.
+	///   - branchTx: The branch transaction.
+	///   - minWeightMagnitude: The Minimum Weight Magnitude.
+	///   - trytes: An Array of Trytes.
+	///   - success: The success block.
+	///   - error: The error block.
 	public func attachToTangle(trunkTx: String, branchTx: String, minWeightMagnitude: Int, trytes: [String], _ success: @escaping (_ trytes: [String]) -> Void, error: @escaping (Error) -> Void) {
 		
 		guard IotaInputValidator.isHash(hash: trunkTx) && IotaInputValidator.isHash(hash: branchTx) else {

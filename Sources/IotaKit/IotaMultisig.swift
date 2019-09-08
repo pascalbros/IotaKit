@@ -7,25 +7,44 @@
 
 import Foundation
 
+/// Multisignature Iota Client.
 public class IotaMultisig: IotaDebuggable {
 	fileprivate let curl: CurlSource = CurlMode.kerl.create()
 	fileprivate var signing: IotaSigning = IotaSigning(curl: CurlMode.kerl.create())
 	fileprivate var iota: Iota
 	
+	/// Used to debug Iota messages, default `false`.
 	public var debug = false {
 		didSet {
 			self.iota.debug = self.debug
 		}
 	}
 	
+	/// Initializer for Iota Client.
+	///
+	/// - Parameters:
+	///   - node: A valid node URL.
+	///   - port: A valid port.
 	public init(node: String, port: UInt) {
 		self.iota = Iota(node: node, port: port)
 	}
 	
+	/// Initialized for Iota Client
+	///
+	/// - Parameter node: A valid node URL.
 	public init(node: String) {
 		self.iota = Iota(node: node)
 	}
 	
+	/// Gets the account data.
+	///
+	/// - Parameters:
+	///   - addresses: An Array of Iota Addresses.
+	///   - findLastAddress: Find last address, default `true`.
+	///   - requestTransactions: Request transactions, default `false`.
+	///   - success: Success block.
+	///   - error: Error block.
+	///   - log: Log block, used to receive messages from Iota Client and updated the UI with useful messages.
 	public func accountData(addresses: [String], findLastAddress: Bool = true, requestTransactions: Bool = false, _ success: @escaping (_ account: IotaAccount) -> Void, error: @escaping (Error) -> Void, log: ((_ log: IotaLog) -> Void)? = nil) {
 		
 		var account = IotaAccount()
@@ -172,11 +191,22 @@ public class IotaMultisig: IotaDebuggable {
 		}
 	}
 	
+	/// Create the digest from Seed.
+	///
+	/// - Parameters:
+	///   - seed: A valid Iota Seed
+	///   - security: The security value.
+	///   - index: The index.
+	/// - Returns: Trytes String representing the digest.
 	public func digest(seed: String, security: Int, index: Int) -> String {
 		let key = self.signing.key(inSeed: IotaConverter.trits(trytes: seed, length: Curl.hashLength), index: index, security: security)
 		return IotaConverter.trytes(trits: self.signing.digest(key: key))
 	}
 	
+	/// Create an address from the digests.
+	///
+	/// - Parameter digests: A valid array of digests.
+	/// - Returns: A valid IOTA Address.
 	public func address(fromDigests digests: [String]) -> String {
 		self.curl.reset()
 		for d in digests {
@@ -189,17 +219,36 @@ public class IotaMultisig: IotaDebuggable {
 		return IotaConverter.trytes(trits: addressTrits)
 	}
 	
+	/// Create a Key from the Seed.
+	///
+	/// - Parameters:
+	///   - seed: A valid Seed.
+	///   - security: A security value.
+	///   - index: A valid index value.
+	/// - Returns: A key as String.
 	public func key(seed: String, security: Int, index: Int) -> String {
 		let tritsSeed = IotaConverter.trits(trytes: seed, length: Curl.hashLength)
 		let key = self.signing.key(inSeed: tritsSeed, index: index, security: security)
 		return IotaConverter.trytes(trits: key)
 	}
 	
+	/// Validates an address using digests.
+	///
+	/// - Parameters:
+	///   - address: An address.
+	///   - digests: A valid Array of digests.
+	/// - Returns: `true` if the address is valid, `false` otherwise.
 	public func validate(address: String, digests: [String]) -> Bool {
 		let digestsTrits = digests.map { IotaConverter.trits(fromString: $0) }
 		return self.validate(address: address, digests: digestsTrits)
 	}
 	
+	/// Validates an address using digests as Trits.
+	///
+	/// - Parameters:
+	///   - address: An address.
+	///   - digests: A valid Array of digests as Trits.
+	/// - Returns: `true` if the address is valid, `false` otherwise.
 	public func validate(address: String, digests: [[Int]]) -> Bool {
 		self.curl.reset()
 		
@@ -213,10 +262,27 @@ public class IotaMultisig: IotaDebuggable {
 		return IotaConverter.trytes(trits: addressTrits) == address
 	}
 	
+	/// Validates the signature for a IOTA Bundle
+	///
+	/// - Parameters:
+	///   - signedBundle: A Iota Bundle.
+	///   - inputAddress: The input address.
+	/// - Returns: `true` if the address is valid, `false` otherwise.
 	public func validateSignature(signedBundle: IotaBundle, inputAddress: String) -> Bool {
 		return self.signing.validateSignature(signedBundle: signedBundle, inputAddress: inputAddress)
 	}
 	
+	/// Prepares the transfers.
+	///
+	/// - Parameters:
+	///   - securitySum: A security sum.
+	///   - inputAddress: The input address.
+	///   - remainderAddress: The remainder address.
+	///   - transfers: An Array of `IotaTransfer`.
+	///   - keys: An array of valid keys.
+	///   - skipChecks: Skip checks. Default `false`.
+	///   - success: The success block.
+	///   - error: The error block.
 	public func prepareTransfers(securitySum: Int, inputAddress: String, remainderAddress: String, transfers: [IotaTransfer], keys: [String], skipChecks: Bool = false, _ success: @escaping (_ bundle: IotaBundle) -> Void, error: @escaping (Error) -> Void) {
 		
 		self.initiateTransfers(securitySum: securitySum, inputAddress: inputAddress, remainderAddress: remainderAddress, transfers: transfers, skipChecks: skipChecks, { (bundle) in
@@ -233,6 +299,14 @@ public class IotaMultisig: IotaDebuggable {
 		}
 	}
 	
+	/// Attaches an address to Tangle.
+	///
+	/// - Parameters:
+	///   - securitySum: A security sum.
+	///   - address: A valid IOTA Address.
+	///   - keys: A valid Array of keys.
+	///   - success: The success block.
+	///   - error: The error block.
 	public func attachToTangle(securitySum: Int, address: String, keys: [String], _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		let transfers = [IotaTransfer(address: address, value: 0, timestamp: nil, hash: nil, persistence: false)]
@@ -253,6 +327,17 @@ public class IotaMultisig: IotaDebuggable {
 		}
 	}
 	
+	/// Sends transfers
+	///
+	/// - Parameters:
+	///   - securitySum: A security sum.
+	///   - inputAddress: The input address.
+	///   - remainderAddress: The remainder address.
+	///   - transfers: An Array of `IotaTransfer`.
+	///   - keys: An array of keys.
+	///   - skipChecks: Skip checks. Default `false`.
+	///   - success: The success block.
+	///   - error: The error block.
 	public func sendTransfers(securitySum: Int, inputAddress: String, remainderAddress: String, transfers: [IotaTransfer], keys: [String], skipChecks: Bool = false, _ success: @escaping (_ transactions: [IotaTransaction]) -> Void, error: @escaping (Error) -> Void) {
 		
 		self.prepareTransfers(securitySum: securitySum, inputAddress: inputAddress, remainderAddress: remainderAddress, transfers: transfers, keys: keys, skipChecks: skipChecks, { (bundle) in
@@ -271,6 +356,12 @@ public class IotaMultisig: IotaDebuggable {
 		}
 	}
 	
+	/// Adds the signature to a `IotaBundle`.
+	///
+	/// - Parameters:
+	///   - bundle: A `IotaBundle`, NB: as side effect, the `IotaBundle` object will be changed.
+	///   - inputAddress: The input address.
+	///   - keyTrytes: The Key Trites.
 	public func addSignature( bundle: inout IotaBundle, inputAddress: String, keyTrytes: String) {
 		let security = keyTrytes.count / IotaConstants.messageLength
 		let key = IotaConverter.trits(fromString: keyTrytes)
