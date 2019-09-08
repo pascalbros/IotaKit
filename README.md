@@ -41,11 +41,11 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 
 ### CocoaPods
 
-`pod 'IotaKit', '~> 0.7.1'`
+`pod 'IotaKit', '~> 0.8'`
 
 ## Class Reference
 
-The class reference (Work in Progress) is available [here](https://pascalbros.github.io/IotaKit/)
+The class reference is available [here](https://pascalbros.github.io/IotaKit/)
 
 ## Example
 
@@ -72,4 +72,5 @@ You can follow me on Twitter at [@PascalAmbro](http://twitter.com/PascalAmbro).
 Iota Foundation for `Entangled` C code for Proof-of-Work.
 
 ## License
+
 IotaKit is licensed under the terms of the MIT License. Please see the LICENSE file for full details.
