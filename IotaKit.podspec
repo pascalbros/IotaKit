@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.2'
   s.name         = "IotaKit"
-  s.version      = "0.7.3"
+  s.version      = "0.8.0"
   s.summary      = "The IOTA Swift API Library"
 
   s.description  = <<-DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/pascalbros/IotaKit"
 
-  s.license      = "MIT (Copyright (c) 2018 Pasquale Ambrosini)"
+  s.license      = "MIT 2019 Pasquale Ambrosini"
   s.source       = { :git => "https://github.com/pascalbros/IotaKit.git", :tag => "v#{s.version}" }
   s.author             = { "Pasquale Ambrosini" => "pasquale.ambrosini@gmail.com" }
 
