@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           IotaKit Docs
         </a>
-         (17% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -44,6 +44,17 @@
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../IOTA Clients.html">IOTA Clients</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IotaMultisig.html">IotaMultisig</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Models.html">Models</a>
             <ul class="nav-group-tasks">
@@ -77,24 +88,41 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Classes.html">Other Classes</a>
+            <a class="nav-group-name-link" href="../Proof of Work.html">Proof of Work</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CPearlDiver.html">CPearlDiver</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Utilities.html">Utilities</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaInputValidator.html">IotaInputValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/IotaConverter.html">IotaConverter</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/IotaMultisig.html">IotaMultisig</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Enums.html">Other Enums</a>
+            <a class="nav-group-name-link" href="../Other Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/IotaFindTxType.html">IotaFindTxType</a>
@@ -110,31 +138,16 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/IotaDebuggable.html">IotaDebuggable</a>
               </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Structs.html">Other Structs</a>
+            <a class="nav-group-name-link" href="../Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/IotaAPIError.html">IotaAPIError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/IotaConstants.html">IotaConstants</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaInputValidator.html">IotaInputValidator</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
               </li>
             </ul>
           </li>
@@ -145,7 +158,13 @@
         <section class="section">
           <div class="section-content">
             <h1>PearlDiverLocalPoW</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PearlDiverLocalPoW</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Pearl Diver Local PoW implementation.</p>
 
           </div>
         </section>
@@ -167,8 +186,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Constructor for PearlDiverLocalPoW.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -176,9 +203,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit18PearlDiverLocalPoWC07performF1WS2S6trytes_Si18minWeightMagnitudetF"></a>
+                    <a name="/s:7IotaKit18PearlDiverLocalPoWC07performF1W6trytes18minWeightMagnitudeS2S_SitF"></a>
                     <a name="//apple_ref/swift/Method/performPoW(trytes:minWeightMagnitude:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit18PearlDiverLocalPoWC07performF1WS2S6trytes_Si18minWeightMagnitudetF">performPoW(trytes:minWeightMagnitude:)</a>
+                    <a class="token" href="#/s:7IotaKit18PearlDiverLocalPoWC07performF1W6trytes18minWeightMagnitudeS2S_SitF">performPoW(trytes:minWeightMagnitude:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -186,8 +213,51 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Perform the PoW synchronously.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performPoW</span><span class="p">(</span><span class="nv">trytes</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trytes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Trytes as String.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum Weight Magnitude.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Trytes as String.</p>
                       </div>
                     </section>
                   </div>
@@ -195,9 +265,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit18PearlDiverLocalPoWC07performF1WySS6trytes_Si18minWeightMagnitudeySSc6resulttF"></a>
+                    <a name="/s:7IotaKit18PearlDiverLocalPoWC07performF1W6trytes18minWeightMagnitude6resultySS_SiySSctF"></a>
                     <a name="//apple_ref/swift/Method/performPoW(trytes:minWeightMagnitude:result:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit18PearlDiverLocalPoWC07performF1WySS6trytes_Si18minWeightMagnitudeySSc6resulttF">performPoW(trytes:minWeightMagnitude:result:)</a>
+                    <a class="token" href="#/s:7IotaKit18PearlDiverLocalPoWC07performF1W6trytes18minWeightMagnitude6resultySS_SiySSctF">performPoW(trytes:minWeightMagnitude:result:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -205,8 +275,59 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Perform the PoW asynchronously on <code>.userInitiated</code> queue.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performPoW</span><span class="p">(</span><span class="nv">trytes</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">result</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trytes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Trytes as String.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum Weight Magnitude.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>result</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Trytes as String.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -220,7 +341,7 @@
     </div>
     <section class="footer">
       <p>© 2018 IotaKit</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

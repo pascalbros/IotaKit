@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           IotaKit Docs
         </a>
-         (17% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -44,6 +44,17 @@
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../IOTA Clients.html">IOTA Clients</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IotaMultisig.html">IotaMultisig</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Models.html">Models</a>
             <ul class="nav-group-tasks">
@@ -77,24 +88,41 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Classes.html">Other Classes</a>
+            <a class="nav-group-name-link" href="../Proof of Work.html">Proof of Work</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CPearlDiver.html">CPearlDiver</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Utilities.html">Utilities</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaInputValidator.html">IotaInputValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/IotaConverter.html">IotaConverter</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/IotaMultisig.html">IotaMultisig</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Enums.html">Other Enums</a>
+            <a class="nav-group-name-link" href="../Other Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/IotaFindTxType.html">IotaFindTxType</a>
@@ -110,31 +138,16 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/IotaDebuggable.html">IotaDebuggable</a>
               </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Structs.html">Other Structs</a>
+            <a class="nav-group-name-link" href="../Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/IotaAPIError.html">IotaAPIError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/IotaConstants.html">IotaConstants</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaInputValidator.html">IotaInputValidator</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
               </li>
             </ul>
           </li>
@@ -145,7 +158,13 @@
         <section class="section">
           <div class="section-content">
             <h1>IotaMultisig</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">IotaMultisig</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaDebuggable.html">IotaDebuggable</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Multisignature Iota Client.</p>
 
           </div>
         </section>
@@ -157,9 +176,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC5debugSbv"></a>
+                    <a name="/s:7IotaKit0A8MultisigC5debugSbvp"></a>
                     <a name="//apple_ref/swift/Property/debug" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC5debugSbv">debug</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC5debugSbvp">debug</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -167,8 +186,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Used to debug Iota messages, default <code>false</code>.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debug</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -176,9 +203,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigCACSS4node_Su4porttcfc"></a>
+                    <a name="/s:7IotaKit0A8MultisigC4node4portACSS_Sutcfc"></a>
                     <a name="//apple_ref/swift/Method/init(node:port:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigCACSS4node_Su4porttcfc">init(node:port:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC4node4portACSS_Sutcfc">init(node:port:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -186,8 +213,47 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initializer for Iota Client.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>node</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid node URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>port</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid port.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -195,9 +261,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigCACSS4node_tcfc"></a>
+                    <a name="/s:7IotaKit0A8MultisigC4nodeACSS_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(node:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigCACSS4node_tcfc">init(node:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC4nodeACSS_tcfc">init(node:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -205,8 +271,35 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialized for Iota Client</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>node</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid node URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -214,9 +307,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC11accountDataySaySSG9addresses_Sb15findLastAddressSb19requestTransactionsyAA0A7AccountVcys5Error_pc5erroryAA0A3LogVcSg3logtF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC11accountData9addresses15findLastAddress19requestTransactions_5error3logySaySSG_S2byAA0A7AccountVcys5Error_pcyAA0A3LogVcSgtF"></a>
                     <a name="//apple_ref/swift/Method/accountData(addresses:findLastAddress:requestTransactions:_:error:log:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC11accountDataySaySSG9addresses_Sb15findLastAddressSb19requestTransactionsyAA0A7AccountVcys5Error_pc5erroryAA0A3LogVcSg3logtF">accountData(addresses:findLastAddress:requestTransactions:_:error:log:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC11accountData9addresses15findLastAddress19requestTransactions_5error3logySaySSG_S2byAA0A7AccountVcys5Error_pcyAA0A3LogVcSgtF">accountData(addresses:findLastAddress:requestTransactions:_:error:log:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -224,8 +317,95 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Gets the account data.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">accountData</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">findLastAddress</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">requestTransactions</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">account</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAccount.html">IotaAccount</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">log</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">log</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaLog.html">IotaLog</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>addresses</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An Array of Iota Addresses.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>findLastAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Find last address, default <code>true</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestTransactions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request transactions, default <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>log</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Log block, used to receive messages from Iota Client and updated the UI with useful messages.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -233,9 +413,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC6digestS2S4seed_Si8securitySi5indextF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC6digest4seed8security5indexS2S_S2itF"></a>
                     <a name="//apple_ref/swift/Method/digest(seed:security:index:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC6digestS2S4seed_Si8securitySi5indextF">digest(seed:security:index:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC6digest4seed8security5indexS2S_S2itF">digest(seed:security:index:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -243,8 +423,63 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create the digest from Seed.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">digest</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid Iota Seed</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>security</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Trytes String representing the digest.</p>
                       </div>
                     </section>
                   </div>
@@ -252,9 +487,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC7addressSSSaySSG11fromDigests_tF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC7address11fromDigestsSSSaySSG_tF"></a>
                     <a name="//apple_ref/swift/Method/address(fromDigests:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC7addressSSSaySSG11fromDigests_tF">address(fromDigests:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC7address11fromDigestsSSSaySSG_tF">address(fromDigests:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -262,8 +497,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create an address from the digests.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">address</span><span class="p">(</span><span class="n">fromDigests</span> <span class="nv">digests</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>digests</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid array of digests.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A valid IOTA Address.</p>
                       </div>
                     </section>
                   </div>
@@ -271,9 +537,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC3keyS2S4seed_Si8securitySi5indextF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC3key4seed8security5indexS2S_S2itF"></a>
                     <a name="//apple_ref/swift/Method/key(seed:security:index:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC3keyS2S4seed_Si8securitySi5indextF">key(seed:security:index:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC3key4seed8security5indexS2S_S2itF">key(seed:security:index:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -281,8 +547,63 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a Key from the Seed.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">key</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid Seed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>security</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A security value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid index value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A key as String.</p>
                       </div>
                     </section>
                   </div>
@@ -290,9 +611,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC8validateSbSS7address_SaySSG7digeststF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC8validate7address7digestsSbSS_SaySSGtF"></a>
                     <a name="//apple_ref/swift/Method/validate(address:digests:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC8validateSbSS7address_SaySSG7digeststF">validate(address:digests:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC8validate7address7digestsSbSS_SaySSGtF">validate(address:digests:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -300,8 +621,51 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Validates an address using digests.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">digests</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>address</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>digests</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid Array of digests.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the address is valid, <code>false</code> otherwise.</p>
                       </div>
                     </section>
                   </div>
@@ -309,9 +673,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC8validateSbSS7address_SaySaySiGG7digeststF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC8validate7address7digestsSbSS_SaySaySiGGtF"></a>
                     <a name="//apple_ref/swift/Method/validate(address:digests:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC8validateSbSS7address_SaySaySiGG7digeststF">validate(address:digests:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC8validate7address7digestsSbSS_SaySaySiGGtF">validate(address:digests:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -319,8 +683,51 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Validates an address using digests as Trits.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">digests</span><span class="p">:</span> <span class="p">[[</span><span class="kt">Int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>address</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>digests</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid Array of digests as Trits.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the address is valid, <code>false</code> otherwise.</p>
                       </div>
                     </section>
                   </div>
@@ -328,9 +735,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC17validateSignatureSbAA0A6BundleV06signedF0_SS12inputAddresstF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC17validateSignature12signedBundle12inputAddressSbAA0aG0V_SStF"></a>
                     <a name="//apple_ref/swift/Method/validateSignature(signedBundle:inputAddress:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC17validateSignatureSbAA0A6BundleV06signedF0_SS12inputAddresstF">validateSignature(signedBundle:inputAddress:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC17validateSignature12signedBundle12inputAddressSbAA0aG0V_SStF">validateSignature(signedBundle:inputAddress:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -338,8 +745,51 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Validates the signature for a IOTA Bundle</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validateSignature</span><span class="p">(</span><span class="nv">signedBundle</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaBundle.html">IotaBundle</a></span><span class="p">,</span> <span class="nv">inputAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>signedBundle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A Iota Bundle.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the address is valid, <code>false</code> otherwise.</p>
                       </div>
                     </section>
                   </div>
@@ -347,9 +797,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC16prepareTransfersySi11securitySum_SS12inputAddressSS09remainderI0SayAA0A8TransferVG9transfersSaySSG4keysSb10skipChecksyAA0A6BundleVcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC16prepareTransfers11securitySum12inputAddress09remainderI09transfers4keys10skipChecks_5errorySi_S2SSayAA0A8TransferVGSaySSGSbyAA0A6BundleVcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/prepareTransfers(securitySum:inputAddress:remainderAddress:transfers:keys:skipChecks:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC16prepareTransfersySi11securitySum_SS12inputAddressSS09remainderI0SayAA0A8TransferVG9transfersSaySSG4keysSb10skipChecksyAA0A6BundleVcys5Error_pc5errortF">prepareTransfers(securitySum:inputAddress:remainderAddress:transfers:keys:skipChecks:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC16prepareTransfers11securitySum12inputAddress09remainderI09transfers4keys10skipChecks_5errorySi_S2SSayAA0A8TransferVGSaySSGSbyAA0A6BundleVcys5Error_pctF">prepareTransfers(securitySum:inputAddress:remainderAddress:transfers:keys:skipChecks:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -357,8 +807,119 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Prepares the transfers.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">prepareTransfers</span><span class="p">(</span><span class="nv">securitySum</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">inputAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">remainderAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transfers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">],</span> <span class="nv">keys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">skipChecks</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaBundle.html">IotaBundle</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>securitySum</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A security sum.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>remainderAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The remainder address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transfers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An Array of <code><a href="../Structs/IotaTransfer.html">IotaTransfer</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keys</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of valid keys.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>skipChecks</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Skip checks. Default <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -366,9 +927,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC14attachToTangleySi11securitySum_SS7addressSaySSG4keysySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC14attachToTangle11securitySum7address4keys_5errorySi_SSSaySSGySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/attachToTangle(securitySum:address:keys:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC14attachToTangleySi11securitySum_SS7addressSaySSG4keysySayAA0A11TransactionVGcys5Error_pc5errortF">attachToTangle(securitySum:address:keys:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC14attachToTangle11securitySum7address4keys_5errorySi_SSSaySSGySayAA0A11TransactionVGcys5Error_pctF">attachToTangle(securitySum:address:keys:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -376,8 +937,83 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Attaches an address to Tangle.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">attachToTangle</span><span class="p">(</span><span class="nv">securitySum</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">keys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>securitySum</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A security sum.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>address</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid IOTA Address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keys</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid Array of keys.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -385,9 +1021,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC13sendTransfersySi11securitySum_SS12inputAddressSS09remainderI0SayAA0A8TransferVG9transfersSaySSG4keysSb10skipChecksySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC13sendTransfers11securitySum12inputAddress09remainderI09transfers4keys10skipChecks_5errorySi_S2SSayAA0A8TransferVGSaySSGSbySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/sendTransfers(securitySum:inputAddress:remainderAddress:transfers:keys:skipChecks:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC13sendTransfersySi11securitySum_SS12inputAddressSS09remainderI0SayAA0A8TransferVG9transfersSaySSG4keysSb10skipChecksySayAA0A11TransactionVGcys5Error_pc5errortF">sendTransfers(securitySum:inputAddress:remainderAddress:transfers:keys:skipChecks:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC13sendTransfers11securitySum12inputAddress09remainderI09transfers4keys10skipChecks_5errorySi_S2SSayAA0A8TransferVGSaySSGSbySayAA0A11TransactionVGcys5Error_pctF">sendTransfers(securitySum:inputAddress:remainderAddress:transfers:keys:skipChecks:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -395,8 +1031,119 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sends transfers</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendTransfers</span><span class="p">(</span><span class="nv">securitySum</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">inputAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">remainderAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transfers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">],</span> <span class="nv">keys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">skipChecks</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>securitySum</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A security sum.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>remainderAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The remainder address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transfers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An Array of <code><a href="../Structs/IotaTransfer.html">IotaTransfer</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keys</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of keys.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>skipChecks</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Skip checks. Default <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -404,9 +1151,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A8MultisigC12addSignatureyAA0A6BundleVz6bundle_SS12inputAddressSS9keyTrytestF"></a>
+                    <a name="/s:7IotaKit0A8MultisigC12addSignature6bundle12inputAddress9keyTrytesyAA0A6BundleVz_S2StF"></a>
                     <a name="//apple_ref/swift/Method/addSignature(bundle:inputAddress:keyTrytes:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A8MultisigC12addSignatureyAA0A6BundleVz6bundle_SS12inputAddressSS9keyTrytestF">addSignature(bundle:inputAddress:keyTrytes:)</a>
+                    <a class="token" href="#/s:7IotaKit0A8MultisigC12addSignature6bundle12inputAddress9keyTrytesyAA0A6BundleVz_S2StF">addSignature(bundle:inputAddress:keyTrytes:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -414,8 +1161,59 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Adds the signature to a <code><a href="../Structs/IotaBundle.html">IotaBundle</a></code>.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addSignature</span><span class="p">(</span> <span class="nv">bundle</span><span class="p">:</span> <span class="k">inout</span> <span class="kt"><a href="../Structs/IotaBundle.html">IotaBundle</a></span><span class="p">,</span> <span class="nv">inputAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">keyTrytes</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A <code><a href="../Structs/IotaBundle.html">IotaBundle</a></code>, NB: as side effect, the <code><a href="../Structs/IotaBundle.html">IotaBundle</a></code> object will be changed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyTrytes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Key Trites.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -429,7 +1227,7 @@
     </div>
     <section class="footer">
       <p>© 2018 IotaKit</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

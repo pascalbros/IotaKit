@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           IotaKit Docs
         </a>
-         (17% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -44,6 +44,17 @@
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../IOTA Clients.html">IOTA Clients</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IotaMultisig.html">IotaMultisig</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Models.html">Models</a>
             <ul class="nav-group-tasks">
@@ -77,24 +88,41 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Classes.html">Other Classes</a>
+            <a class="nav-group-name-link" href="../Proof of Work.html">Proof of Work</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/Iota.html">Iota</a>
+                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CPearlDiver.html">CPearlDiver</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Utilities.html">Utilities</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaInputValidator.html">IotaInputValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/IotaConverter.html">IotaConverter</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/IotaMultisig.html">IotaMultisig</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a>
+                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Enums.html">Other Enums</a>
+            <a class="nav-group-name-link" href="../Other Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/IotaFindTxType.html">IotaFindTxType</a>
@@ -110,31 +138,16 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/IotaDebuggable.html">IotaDebuggable</a>
               </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Structs.html">Other Structs</a>
+            <a class="nav-group-name-link" href="../Other Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/IotaAPIError.html">IotaAPIError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaAPIUtils.html">IotaAPIUtils</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaChecksum.html">IotaChecksum</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/IotaConstants.html">IotaConstants</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaInputValidator.html">IotaInputValidator</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/IotaUnitsConverter.html">IotaUnitsConverter</a>
               </li>
             </ul>
           </li>
@@ -147,7 +160,7 @@
             <h1>Iota</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Iota</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaDebuggable.html">IotaDebuggable</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Iota</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaDebuggable.html">IotaDebuggable</a></span></code></pre>
 
                 </div>
               </div>
@@ -163,9 +176,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C12spamTransferAA0aD0VvZ"></a>
+                    <a name="/s:7IotaKit0A0C12spamTransferAA0aD0VvpZ"></a>
                     <a name="//apple_ref/swift/Variable/spamTransfer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a>
+                    <a class="token" href="#/s:7IotaKit0A0C12spamTransferAA0aD0VvpZ">spamTransfer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -180,7 +193,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spamTransfer</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="s">""</span><span class="o">.</span><span class="nf">rightPadded</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nv">character</span><span class="p">:</span> <span class="s">"9"</span><span class="p">))</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spamTransfer</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="s">""</span><span class="o">.</span><span class="nf">rightPadded</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nv">character</span><span class="p">:</span> <span class="s">"9"</span><span class="p">))</span></code></pre>
 
                         </div>
                       </div>
@@ -190,9 +203,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C8spamSeedSSvZ"></a>
+                    <a name="/s:7IotaKit0A0C8spamSeedSSvpZ"></a>
                     <a name="//apple_ref/swift/Variable/spamSeed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C8spamSeedSSvZ">spamSeed</a>
+                    <a class="token" href="#/s:7IotaKit0A0C8spamSeedSSvpZ">spamSeed</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -207,7 +220,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spamSeed</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="nf">rightPadded</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nv">character</span><span class="p">:</span> <span class="s">"9"</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spamSeed</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="nf">rightPadded</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nv">character</span><span class="p">:</span> <span class="s">"9"</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -217,9 +230,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C7addressSSv"></a>
+                    <a name="/s:7IotaKit0A0C7addressSSvp"></a>
                     <a name="//apple_ref/swift/Property/address" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C7addressSSv">address</a>
+                    <a class="token" href="#/s:7IotaKit0A0C7addressSSvp">address</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -234,7 +247,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="k">var</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="k">var</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
 
                         </div>
                       </div>
@@ -244,9 +257,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C5debugSbv"></a>
+                    <a name="/s:7IotaKit0A0C5debugSbvp"></a>
                     <a name="//apple_ref/swift/Property/debug" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C5debugSbv">debug</a>
+                    <a class="token" href="#/s:7IotaKit0A0C5debugSbvp">debug</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -261,7 +274,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debug</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debug</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -271,9 +284,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C8localPoWAA0a5LocalD1W_pSgv"></a>
+                    <a name="/s:7IotaKit0A0C8localPoWAA0a5LocalD1W_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/localPoW" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C8localPoWAA0a5LocalD1W_pSgv">localPoW</a>
+                    <a class="token" href="#/s:7IotaKit0A0C8localPoWAA0a5LocalD1W_pSgvp">localPoW</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -288,7 +301,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">localPoW</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Classes/PearlDiverLocalPoW.html">PearlDiverLocalPoW</a></span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">localPoW</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaLocalPoW.html">IotaLocalPoW</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Classes/CPearlDiver.html">CPearlDiver</a></span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -298,9 +311,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0CACSb12prefersHTTPS_yACSgctcfc"></a>
+                    <a name="/s:7IotaKit0A0C12prefersHTTPS_ACSb_yACSgctcfc"></a>
                     <a name="//apple_ref/swift/Method/init(prefersHTTPS:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0CACSb12prefersHTTPS_yACSgctcfc">init(prefersHTTPS:_:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C12prefersHTTPS_ACSb_yACSgctcfc">init(prefersHTTPS:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -315,9 +328,40 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">prefersHTTPS</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">onReady</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Iota</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">prefersHTTPS</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">onReady</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Iota</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>prefersHTTPS</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Setting it to <code>true</code>, HTTPS nodes will be preferred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onReady</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>On ready block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -325,9 +369,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0CACSS4node_Su4porttcfc"></a>
+                    <a name="/s:7IotaKit0A0C4node4portACSS_Sutcfc"></a>
                     <a name="//apple_ref/swift/Method/init(node:port:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0CACSS4node_Su4porttcfc">init(node:port:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C4node4portACSS_Sutcfc">init(node:port:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -342,9 +386,40 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>node</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Node address without port.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>port</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Port for the specified node address</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -352,9 +427,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0CACSS4node_tcfc"></a>
+                    <a name="/s:7IotaKit0A0C4nodeACSS_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(node:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0CACSS4node_tcfc">init(node:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C4nodeACSS_tcfc">init(node:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -369,9 +444,28 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>node</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Full node address Ex:<code>http://localhost:14700</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -379,9 +473,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C8nodeInfoyys10DictionaryVySSypGc_ys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C8nodeInfo_5erroryySDySSypGc_ys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/nodeInfo(_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C8nodeInfoyys10DictionaryVySSypGc_ys5Error_pc5errortF">nodeInfo(_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C8nodeInfo_5erroryySDySSypGc_ys5Error_pctF">nodeInfo(_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -396,9 +490,40 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">nodeInfo</span><span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">nodeInfo</span><span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -406,9 +531,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C8balancesySaySSG9addresses_ys10DictionaryVySSs5Int64VGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C8balances9addresses_5errorySaySSG_ySDySSs5Int64VGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/balances(addresses:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C8balancesySaySSG9addresses_ys10DictionaryVySSs5Int64VGcys5Error_pc5errortF">balances(addresses:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C8balances9addresses_5errorySaySSG_ySDySSs5Int64VGcys5Error_pctF">balances(addresses:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -423,9 +548,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">balances</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">balances</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Int64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">balances</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">balances</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Int64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>addresses</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of addresses.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -433,9 +601,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C16findTransactionsySaySSG9addresses_yAEcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C16findTransactions9addresses_5errorySaySSG_yAGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/findTransactions(addresses:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C16findTransactionsySaySSG9addresses_yAEcys5Error_pc5errortF">findTransactions(addresses:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C16findTransactions9addresses_5errorySaySSG_yAGcys5Error_pctF">findTransactions(addresses:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -450,9 +618,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findTransactions</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findTransactions</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>addresses</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of addresses.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -460,9 +671,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C16findTransactionsySaySSG7bundles_yAEcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C16findTransactions7bundles_5errorySaySSG_yAGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/findTransactions(bundles:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C16findTransactionsySaySSG7bundles_yAEcys5Error_pc5errortF">findTransactions(bundles:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C16findTransactions7bundles_5errorySaySSG_yAGcys5Error_pctF">findTransactions(bundles:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -477,9 +688,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findTransactions</span><span class="p">(</span><span class="nv">bundles</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findTransactions</span><span class="p">(</span><span class="nv">bundles</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundles</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of bundles.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -487,9 +741,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C6trytesySaySSG6hashes_ySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C6trytes6hashes_5errorySaySSG_ySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/trytes(hashes:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C6trytesySaySSG6hashes_ySayAA0A11TransactionVGcys5Error_pc5errortF">trytes(hashes:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C6trytes6hashes_5errorySaySSG_ySayAA0A11TransactionVGcys5Error_pctF">trytes(hashes:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -504,9 +758,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trytes</span><span class="p">(</span><span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trytes</span><span class="p">(</span><span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hashes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of transaction hashes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -514,9 +811,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C11accountDataySS4seed_Si24minimumNumberOfAddressesSi8securitySb19requestTransactionsyAA0A7AccountVcys5Error_pc5erroryAA0A3LogVcSg3logtF"></a>
+                    <a name="/s:7IotaKit0A0C11accountData4seed24minimumNumberOfAddresses8security19requestTransactions_5error3logySS_S2iSbyAA0A7AccountVcys5Error_pcyAA0A3LogVcSgtF"></a>
                     <a name="//apple_ref/swift/Method/accountData(seed:minimumNumberOfAddresses:security:requestTransactions:_:error:log:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C11accountDataySS4seed_Si24minimumNumberOfAddressesSi8securitySb19requestTransactionsyAA0A7AccountVcys5Error_pc5erroryAA0A3LogVcSg3logtF">accountData(seed:minimumNumberOfAddresses:security:requestTransactions:_:error:log:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C11accountData4seed24minimumNumberOfAddresses8security19requestTransactions_5error3logySS_S2iSbyAA0A7AccountVcys5Error_pcyAA0A3LogVcSgtF">accountData(seed:minimumNumberOfAddresses:security:requestTransactions:_:error:log:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -531,9 +828,100 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">accountData</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minimumNumberOfAddresses</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">requestTransactions</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">account</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAccount.html">IotaAccount</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">log</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">log</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaLog.html">IotaLog</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">accountData</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minimumNumberOfAddresses</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">requestTransactions</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">account</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAccount.html">IotaAccount</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">log</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">log</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaLog.html">IotaLog</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Seed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minimumNumberOfAddresses</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The minimum number of addresses associated to the seed, setting it to <code>true</code> will be useful in order to speed up the process, by requesting all the addresses balance and transactions in batch.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>security</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security level (1-3).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestTransactions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Setting it to <code>true</code>, all the transactions associated to the addresses will be requested and returned. If you don&rsquo;t need it, set it to <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>log</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Log block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -541,9 +929,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C14attachToTangleySS4seed_Si5indexSi8securityyAA0A11TransactionVcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C14attachToTangle4seed5index8security_5errorySS_S2iyAA0A11TransactionVcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/attachToTangle(seed:index:security:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C14attachToTangleySS4seed_Si5indexSi8securityyAA0A11TransactionVcys5Error_pc5errortF">attachToTangle(seed:index:security:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C14attachToTangle4seed5index8security_5errorySS_S2iyAA0A11TransactionVcys5Error_pctF">attachToTangle(seed:index:security:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -558,9 +946,76 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">attachToTangle</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transfer</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">attachToTangle</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transfer</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Seed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>security</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security level.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -568,9 +1023,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C13sendTransfersySS4seed_Si8securitySi5depthSi18minWeightMagnitudeSayAA0A8TransferVG9transfersSayAA0A5InputVGSg6inputsSSSg16remainderAddressAR9referenceySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C13sendTransfers4seed8security5depth18minWeightMagnitude9transfers6inputs16remainderAddress9reference_5errorySS_S3iSayAA0A8TransferVGSayAA0A5InputVGSgSSSgAUySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/sendTransfers(seed:security:depth:minWeightMagnitude:transfers:inputs:remainderAddress:reference:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C13sendTransfersySS4seed_Si8securitySi5depthSi18minWeightMagnitudeSayAA0A8TransferVG9transfersSayAA0A5InputVGSg6inputsSSSg16remainderAddressAR9referenceySayAA0A11TransactionVGcys5Error_pc5errortF">sendTransfers(seed:security:depth:minWeightMagnitude:transfers:inputs:remainderAddress:reference:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C13sendTransfers4seed8security5depth18minWeightMagnitude9transfers6inputs16remainderAddress9reference_5errorySS_S3iSayAA0A8TransferVGSayAA0A5InputVGSgSSSgAUySayAA0A11TransactionVGcys5Error_pctF">sendTransfers(seed:security:depth:minWeightMagnitude:transfers:inputs:remainderAddress:reference:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -585,9 +1040,136 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendTransfers</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">transfers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">],</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaInput.html">IotaInput</a></span><span class="p">]?,</span> <span class="nv">remainderAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendTransfers</span><span class="p">(</span><span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">security</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">transfers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">],</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaInput.html">IotaInput</a></span><span class="p">]?,</span> <span class="nv">remainderAddress</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Seed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>security</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security level.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>depth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of bundles to go back to determine the transactions for approval, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum weight magnitude, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transfers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of IotaTransfers.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of IotaInputs, by setting it to null, the proper inputs will be taken automatically.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>remainderAddress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The remainder address, by setting it to <code>null</code>, a new address will be generated and used as remainder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reference</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -595,9 +1177,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C12replayBundleySS2tx_Si5depthSi18minWeightMagnitudeySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C12replayBundle2tx5depth18minWeightMagnitude_5errorySS_S2iySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/replayBundle(tx:depth:minWeightMagnitude:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C12replayBundleySS2tx_Si5depthSi18minWeightMagnitudeySayAA0A11TransactionVGcys5Error_pc5errortF">replayBundle(tx:depth:minWeightMagnitude:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C12replayBundle2tx5depth18minWeightMagnitude_5errorySS_S2iySayAA0A11TransactionVGcys5Error_pctF">replayBundle(tx:depth:minWeightMagnitude:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -612,9 +1194,76 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replayBundle</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replayBundle</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Transaction hash, has to be tail.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>depth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of bundles to go back to determine the transactions for approval, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum weight magnitude, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -622,9 +1271,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C6bundleySS2tx_ySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C6bundle2tx_5errorySS_ySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/bundle(tx:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C6bundleySS2tx_ySayAA0A11TransactionVGcys5Error_pc5errortF">bundle(tx:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C6bundle2tx_5errorySS_ySayAA0A11TransactionVGcys5Error_pctF">bundle(tx:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -639,9 +1288,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bundle</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bundle</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The transaction hash, has to be the tail.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -649,9 +1341,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C23transactionsFromAddressySS7address_ySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C23transactionsFromAddress7address_5errorySS_ySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/transactionsFromAddress(address:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C23transactionsFromAddressySS7address_ySayAA0A11TransactionVGcys5Error_pc5errortF">transactionsFromAddress(address:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C23transactionsFromAddress7address_5errorySS_ySayAA0A11TransactionVGcys5Error_pctF">transactionsFromAddress(address:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -666,9 +1358,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">transactionsFromAddress</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">transactionsFromAddress</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>address</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The address hash.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -676,9 +1411,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C19tailFromTransactionyAA0aE0V2tx_yAFcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C19tailFromTransaction2tx_5erroryAA0aE0V_yAHcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/tailFromTransaction(tx:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C19tailFromTransactionyAA0aE0V2tx_yAFcys5Error_pc5errortF">tailFromTransaction(tx:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C19tailFromTransaction2tx_5erroryAA0aE0V_yAHcys5Error_pctF">tailFromTransaction(tx:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -693,9 +1428,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tailFromTransaction</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tailFromTransaction</span><span class="p">(</span><span class="nv">tx</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The requested tail transaction.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -703,9 +1481,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C15addressFromHashySS0C0_yAA0A7AddressVcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C15addressFromHash0C0_5errorySS_yAA0A7AddressVcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/addressFromHash(address:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C15addressFromHashySS0C0_yAA0A7AddressVcys5Error_pc5errortF">addressFromHash(address:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C15addressFromHash0C0_5errorySS_yAA0A7AddressVcys5Error_pctF">addressFromHash(address:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -720,9 +1498,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addressFromHash</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAddress.html">IotaAddress</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addressFromHash</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaAddress.html">IotaAddress</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>address</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The address hash.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -730,9 +1551,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C21latestInclusionStatesySaySSG6hashes_ySaySbGcys5Error_pctF"></a>
+                    <a name="/s:7IotaKit0A0C21latestInclusionStates6hashes__ySaySSG_ySaySbGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/latestInclusionStates(hashes:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C21latestInclusionStatesySaySSG6hashes_ySaySbGcys5Error_pctF">latestInclusionStates(hashes:_:_:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C21latestInclusionStates6hashes__ySaySSG_ySaySbGcys5Error_pctF">latestInclusionStates(hashes:_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -747,9 +1568,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">latestInclusionStates</span><span class="p">(</span><span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(([</span><span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">latestInclusionStates</span><span class="p">(</span><span class="nv">hashes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(([</span><span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hashes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of transactions hashes you want to get the inclusion state for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -757,9 +1621,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C22wereAddressesSpentFromySaySSG9addresses_ySaySbGcys5Error_pctF"></a>
+                    <a name="/s:7IotaKit0A0C22wereAddressesSpentFrom9addresses__ySaySSG_ySaySbGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/wereAddressesSpentFrom(addresses:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C22wereAddressesSpentFromySaySSG9addresses_ySaySbGcys5Error_pctF">wereAddressesSpentFrom(addresses:_:_:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C22wereAddressesSpentFrom9addresses__ySaySSG_ySaySbGcys5Error_pctF">wereAddressesSpentFrom(addresses:_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -774,9 +1638,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">wereAddressesSpentFrom</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(([</span><span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">wereAddressesSpentFrom</span><span class="p">(</span><span class="nv">addresses</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(([</span><span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>addresses</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of addresses to check if they were ever spent from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -784,9 +1691,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C12isPromotableySS4tail_ySbcys5Error_pctF"></a>
+                    <a name="/s:7IotaKit0A0C12isPromotable4tail__ySS_ySbcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/isPromotable(tail:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C12isPromotableySS4tail_ySbcys5Error_pctF">isPromotable(tail:_:_:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C12isPromotable4tail__ySS_ySbcys5Error_pctF">isPromotable(tail:_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -801,9 +1708,52 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isPromotable</span><span class="p">(</span><span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isPromotable</span><span class="p">(</span><span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tail</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tail transaction hash.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -811,9 +1761,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C18promoteTransactionySS4hash_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C18promoteTransaction4hash12transactions5depth18minWeightMagnitude14delayInSeconds16numberOfPromotes_5errorySS_SayAA0A8TransferVGS2iSuSiySScys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/promoteTransaction(hash:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C18promoteTransactionySS4hash_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF">promoteTransaction(hash:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C18promoteTransaction4hash12transactions5depth18minWeightMagnitude14delayInSeconds16numberOfPromotes_5errorySS_SayAA0A8TransferVGS2iSuSiySScys5Error_pctF">promoteTransaction(hash:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -828,9 +1778,112 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promoteTransaction</span><span class="p">(</span><span class="nv">hash</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promoteTransaction</span><span class="p">(</span><span class="nv">hash</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvpZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hash</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Transaction hash, has to be tail.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transactions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of transfers.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>depth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of bundles to go back to determine the transactions for approval, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum weight magnitude, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delayInSeconds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Delay in seconds between spams.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfPromotes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of spams to add on top of the transaction (default 4).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -838,9 +1891,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C18promoteTransactionyAA0aD0V_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C18promoteTransaction_12transactions5depth18minWeightMagnitude14delayInSeconds16numberOfPromotes_5erroryAA0aD0V_SayAA0A8TransferVGS2iSuSiySScys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/promoteTransaction(_:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C18promoteTransactionyAA0aD0V_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF">promoteTransaction(_:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C18promoteTransaction_12transactions5depth18minWeightMagnitude14delayInSeconds16numberOfPromotes_5erroryAA0aD0V_SayAA0A8TransferVGS2iSuSiySScys5Error_pctF">promoteTransaction(_:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -855,9 +1908,112 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promoteTransaction</span><span class="p">(</span><span class="n">_</span> <span class="nv">tx</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promoteTransaction</span><span class="p">(</span><span class="n">_</span> <span class="nv">tx</span><span class="p">:</span> <span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvpZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The transaction.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transactions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of transfers.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>depth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of bundles to go back to determine the transactions for approval, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum weight magnitude, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delayInSeconds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Delay in seconds between spams.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfPromotes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of spams to add on top of the transaction (default 4).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -865,9 +2021,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C7promoteySS4tail_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C7promote4tail12transactions5depth18minWeightMagnitude14delayInSeconds16numberOfPromotes_5errorySS_SayAA0A8TransferVGS2iSuSiySScys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/promote(tail:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C7promoteySS4tail_SayAA0A8TransferVG12transactionsSi5depthSi18minWeightMagnitudeSu14delayInSecondsSi16numberOfPromotesySScys5Error_pc5errortF">promote(tail:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C7promote4tail12transactions5depth18minWeightMagnitude14delayInSeconds16numberOfPromotes_5errorySS_SayAA0A8TransferVGS2iSuSiySScys5Error_pctF">promote(tail:transactions:depth:minWeightMagnitude:delayInSeconds:numberOfPromotes:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -882,9 +2038,112 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promote</span><span class="p">(</span><span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">promote</span><span class="p">(</span><span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransfer.html">IotaTransfer</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Iota</span><span class="o">.</span><span class="n"><a href="../Classes/Iota.html#/s:7IotaKit0A0C12spamTransferAA0aD0VvpZ">spamTransfer</a></span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">delayInSeconds</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">numberOfPromotes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tail</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tail transaction hash.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transactions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of transfers.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>depth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of bundles to go back to determine. the transactions for approval, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum weight magnitude, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delayInSeconds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Delay in seconds between spams.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfPromotes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of spams to add on top of the transaction (default 4).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -892,9 +2151,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C10sendTrytesySaySSG6trytes_Si5depthSi18minWeightMagnitudeSSSg9referenceySayAA0A11TransactionVGcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C10sendTrytes6trytes5depth18minWeightMagnitude9reference_5errorySaySSG_S2iSSSgySayAA0A11TransactionVGcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/sendTrytes(trytes:depth:minWeightMagnitude:reference:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C10sendTrytesySaySSG6trytes_Si5depthSi18minWeightMagnitudeSSSg9referenceySayAA0A11TransactionVGcys5Error_pc5errortF">sendTrytes(trytes:depth:minWeightMagnitude:reference:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C10sendTrytes6trytes5depth18minWeightMagnitude9reference_5errorySaySSG_S2iSSSgySayAA0A11TransactionVGcys5Error_pctF">sendTrytes(trytes:depth:minWeightMagnitude:reference:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -909,9 +2168,88 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendTrytes</span><span class="p">(</span><span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendTrytes</span><span class="p">(</span><span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">depth</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt"><a href="../Structs/IotaConstants.html">IotaConstants</a></span><span class="o">.</span><span class="n">mwm</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">transactions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/IotaTransaction.html">IotaTransaction</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trytes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of trytes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>depth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Number of bundles to go back to determine the transactions for approval, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Minimum weight magnitude, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reference</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past, leave it as default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -923,9 +2261,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A0C14attachToTangleySS7trunkTx_SS06branchG0Si18minWeightMagnitudeSaySSG6trytesyAHcys5Error_pc5errortF"></a>
+                    <a name="/s:7IotaKit0A0C14attachToTangle7trunkTx06branchG018minWeightMagnitude6trytes_5errorySS_SSSiSaySSGyAJcys5Error_pctF"></a>
                     <a name="//apple_ref/swift/Method/attachToTangle(trunkTx:branchTx:minWeightMagnitude:trytes:_:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A0C14attachToTangleySS7trunkTx_SS06branchG0Si18minWeightMagnitudeSaySSG6trytesyAHcys5Error_pc5errortF">attachToTangle(trunkTx:branchTx:minWeightMagnitude:trytes:_:error:)</a>
+                    <a class="token" href="#/s:7IotaKit0A0C14attachToTangle7trunkTx06branchG018minWeightMagnitude6trytes_5errorySS_SSSiSaySSGyAJcys5Error_pctF">attachToTangle(trunkTx:branchTx:minWeightMagnitude:trytes:_:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -933,16 +2271,95 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Attaches the specified address to the Tangle by doing Proof of Work.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Iota</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IotaDebuggable.html">IotaDebuggable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">attachToTangle</span><span class="p">(</span><span class="nv">trunkTx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">branchTx</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">minWeightMagnitude</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">trytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trunkTx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The trunk transaction.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>branchTx</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The branch transaction.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minWeightMagnitude</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Minimum Weight Magnitude.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trytes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An Array of Trytes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The success block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error block.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -956,7 +2373,7 @@
     </div>
     <section class="footer">
       <p>© 2018 IotaKit</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

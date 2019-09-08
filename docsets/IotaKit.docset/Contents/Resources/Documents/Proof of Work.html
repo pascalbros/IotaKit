@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Other Enumerations  Reference</title>
+    <title>Proof of Work  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
   <body>
 
 
-    <a title="Other Enumerations  Reference"></a>
+    <a title="Proof of Work  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -37,7 +37,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">IotaKit Reference</a>
       <img class="carat" src="img/carat.png" />
-      Other Enumerations  Reference
+      Proof of Work  Reference
     </p>
 
     <div class="content-wrapper">
@@ -156,9 +156,8 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>Other Enumerations</h1>
-            <p>The following enumerations are available globally.</p>
-
+            <h1>Proof of Work</h1>
+            
           </div>
         </section>
 
@@ -169,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A10FindTxTypeO"></a>
-                    <a name="//apple_ref/swift/Enum/IotaFindTxType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A10FindTxTypeO">IotaFindTxType</a>
+                    <a name="/s:7IotaKit0A8LocalPoWP"></a>
+                    <a name="//apple_ref/swift/Protocol/IotaLocalPoW" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit0A8LocalPoWP">IotaLocalPoW</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -179,20 +178,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>IOTA find TX Type.</p>
+                        <p>Protocol for Iota Local Proof of Work, all the implementations for PoW can implement this protocol in order to be used in Iota client.</p>
 
-<ul>
-<li>addresses: Addresses.</li>
-<li>bundles: Bundles.</li>
-</ul>
-
-                        <a href="Enums/IotaFindTxType.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/IotaLocalPoW.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">IotaFindTxType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IotaLocalPoW</span></code></pre>
 
                         </div>
                       </div>
@@ -206,9 +200,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7IotaKit0A5UnitsO"></a>
-                    <a name="//apple_ref/swift/Enum/IotaUnits" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7IotaKit0A5UnitsO">IotaUnits</a>
+                    <a name="/s:7IotaKit18PearlDiverLocalPoWC"></a>
+                    <a name="//apple_ref/swift/Class/PearlDiverLocalPoW" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit18PearlDiverLocalPoWC">PearlDiverLocalPoW</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -216,15 +210,47 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Iota units.</p>
+                        <p>Pearl Diver Local PoW implementation.</p>
 
-                        <a href="Enums/IotaUnits.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/PearlDiverLocalPoW.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">IotaUnits</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PearlDiverLocalPoW</span><span class="p">:</span> <span class="kt"><a href="Protocols/IotaLocalPoW.html">IotaLocalPoW</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7IotaKit11CPearlDiverC"></a>
+                    <a name="//apple_ref/swift/Class/CPearlDiver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7IotaKit11CPearlDiverC">CPearlDiver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>C implementation of Pearl Diver (PoW).</p>
+
+                        <a href="Classes/CPearlDiver.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CPearlDiver</span><span class="p">:</span> <span class="kt"><a href="Protocols/IotaLocalPoW.html">IotaLocalPoW</a></span></code></pre>
 
                         </div>
                       </div>
