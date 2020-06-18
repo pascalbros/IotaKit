@@ -437,6 +437,7 @@
 				OBJ_35 /* Sources */,
 				OBJ_37 /* Frameworks */,
 				504C6C6A2006B78D007C6C7E /* Resources */,
+				476CBB05249C243B00D1E6E2 /* Linter */,
 			);
 			buildRules = (
 			);
@@ -543,6 +544,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		476CBB05249C243B00D1E6E2 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		502827F420326A290035B084 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
