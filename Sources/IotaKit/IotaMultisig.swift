@@ -49,7 +49,6 @@ public class IotaMultisig: IotaDebuggable {
 		
 		var account = IotaAccount()
 		var index = 0
-		var lastAddress = ""
 		
 		func completeBalances() {
 			findBalances(false)

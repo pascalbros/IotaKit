@@ -122,7 +122,6 @@ public class Iota: IotaDebuggable {
 		
 		var account = IotaAccount()
 		var index = 0
-		var lastAddress = ""
 		
 		func completeBalances() {
 			findBalances(false)
