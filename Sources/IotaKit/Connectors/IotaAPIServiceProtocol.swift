@@ -89,7 +89,7 @@ protocol IotaAPIServices {
 		hashes: [String],
 		_ success: @escaping ((Bool) -> Void),
 		_ error: @escaping (Error) -> Void)
-	
+
 	static func wereAddressesSpentFrom(
 		nodeAddress: String,
 		addresses: [String],
