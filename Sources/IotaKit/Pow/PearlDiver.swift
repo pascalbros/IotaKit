@@ -63,34 +63,14 @@ class PearlDiver {
 			var curlScratchpadHigh: [UInt64] = Array(repeating: 0, count: curlStateLength)
 			for _ in stride(from: (transactionLength-curlHashLength)/curlHashLength, to: 0, by: -1) {
 				for jIndex in 0..<curlHashLength {
-					switch transactionTrits[offset] {
-					case 0:
-						midCurlStateLow[jIndex] = highBits
-						midCurlStateHigh[jIndex] = highBits
-					case 1:
-						midCurlStateLow[jIndex] = lowBits
-						midCurlStateHigh[jIndex] = highBits
-					default:
-						midCurlStateLow[jIndex] = highBits
-						midCurlStateHigh[jIndex] = lowBits
-					}
+					evaluateState(state: transactionTrits[offset], jIndex: jIndex, midCurlStateLow: &midCurlStateLow, midCurlStateHigh: &midCurlStateHigh)
 					offset += 1
 				}
 				PearlDiver.transform(&midCurlStateLow, &midCurlStateHigh, &curlScratchpadLow, &curlScratchpadHigh)
 			}
 
-			for j in 0..<162 {
-				switch transactionTrits[offset] {
-				case 0:
-					midCurlStateLow[j] = highBits
-					midCurlStateHigh[j] = highBits
-				case 1:
-					midCurlStateLow[j] = lowBits
-					midCurlStateHigh[j] = highBits
-				default:
-					midCurlStateLow[j] = highBits
-					midCurlStateHigh[j] = lowBits
-				}
+			for jIndex in 0..<162 {
+				evaluateState(state: transactionTrits[offset], jIndex: jIndex, midCurlStateLow: &midCurlStateLow, midCurlStateHigh: &midCurlStateHigh)
 				offset += 1
 			}
 
@@ -121,13 +101,27 @@ class PearlDiver {
 		return self.transactionTrits
 	}
 
+	fileprivate func evaluateState(state: Int, jIndex: Int, midCurlStateLow: inout [UInt64], midCurlStateHigh: inout [UInt64]) {
+		switch state {
+		case 0:
+			midCurlStateLow[jIndex] = highBits
+			midCurlStateHigh[jIndex] = highBits
+		case 1:
+			midCurlStateLow[jIndex] = lowBits
+			midCurlStateHigh[jIndex] = highBits
+		default:
+			midCurlStateLow[jIndex] = highBits
+			midCurlStateHigh[jIndex] = lowBits
+		}
+	}
+
 	fileprivate func powThread(threadIndex: Int, minWeightMagnitude: Int, midCurlStateLow: [UInt64], midCurlStateHigh: [UInt64]) {
 		var midCurlStateCopyLow: [UInt64] = Array(repeating: 0, count: curlStateLength)
 		var midCurlStateCopyHigh: [UInt64] = Array(repeating: 0, count: curlStateLength)
 
 		midCurlStateCopyLow = midCurlStateLow
 		midCurlStateCopyHigh = midCurlStateHigh
-	
+
 		for _ in stride(from: threadIndex, to: 0, by: -1) {
 			PearlDiver.increment(midCurlStateCopyLow: &midCurlStateCopyLow,
 								 midCurlStateCopyHigh: &midCurlStateCopyHigh,
@@ -152,13 +146,11 @@ class PearlDiver {
 
 			PearlDiver.transform(&curlStateLow, &curlStateHigh, &curlScratchpadLow, &curlScratchpadHigh)
 			mask = highBits
-			for i in stride(from: minWeightMagnitude-1, to: -1, by: -1) {
-				mask &= ~(curlStateLow[curlHashLength - 1 - i] ^ curlStateHigh[
-					curlHashLength - 1 - i])
+			for iIndex in stride(from: minWeightMagnitude-1, to: -1, by: -1) {
+				mask &= ~(curlStateLow[curlHashLength - 1 - iIndex] ^ curlStateHigh[
+					curlHashLength - 1 - iIndex])
 				if mask == 0 { break }
 			}
-			//index += 1
-			//print("\(threadIndex) \(index)")
 			if self.state == .completed { return }
 			if mask == 0 { continue }
 			if self.state == .running {
