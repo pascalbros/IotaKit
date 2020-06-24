@@ -67,13 +67,13 @@ public struct IotaAPIUtils {
 		addresses: [String]) -> (sent: [[IotaTransaction]], received: [[IotaTransaction]]) {
 		var sent: [[IotaTransaction]] = []
 		var received: [[IotaTransaction]] = []
-		
+
 		for bundle in bundles {
 			var spentAlreadyAdded = false
-		
+
 			for bundleEntry in bundle {
 				guard addresses.firstIndex(of: bundleEntry.hash) != nil else { continue }
-			
+
 				let isRemainder = (bundleEntry.currentIndex == bundleEntry.lastIndex) && (bundleEntry.lastIndex != 0)
 				if bundleEntry.value < 0 && !spentAlreadyAdded && !isRemainder {
 					sent.append(bundle)

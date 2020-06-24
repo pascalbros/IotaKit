@@ -20,13 +20,12 @@ enum CurlMode {
 	case curlP81
 	case curlP27
 	case kerl
-	
+
 	func create() -> CurlSource {
 		switch self {
-			case .curlP81: return Curl(numberOfRounds: 81)
-			case .curlP27: return Curl(numberOfRounds: 27)
-			case .kerl: return Kerl()
+		case .curlP81: return Curl(numberOfRounds: 81)
+		case .curlP27: return Curl(numberOfRounds: 27)
+		case .kerl: return Kerl()
 		}
 	}
 }
-
