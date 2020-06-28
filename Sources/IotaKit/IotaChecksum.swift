@@ -17,7 +17,7 @@ public struct IotaChecksum {
 	public static func calculateChecksum(address: String) -> String {
 		let curl: CurlSource = CurlMode.kerl.create()
 		_ = curl.absorb(trits: IotaConverter.trits(fromString: address))
-		var checksumTrits: [Int] = Array(repeating: 0, count: Kerl.HASH_LENGTH)
+		var checksumTrits: [Int] = Array(repeating: 0, count: Kerl.hashLength)
 		_ = curl.squeeze(trits: &checksumTrits)
 		let checksum = IotaConverter.string(fromTrits: checksumTrits)
 		
