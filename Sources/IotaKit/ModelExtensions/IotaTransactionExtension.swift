@@ -8,14 +8,14 @@
 import Foundation
 
 public extension IotaTransaction {
-	
+
 	/// Constructor for IotaTransaction.
 	///
 	/// - Parameter trytes: The Trytes.
 	init(trytes: String) {
 		self.transactionObject(trytes: trytes)
 	}
-	
+
 	/// Converts a valid Trytes to a IotaTransaction object.
 	///
 	/// - Parameter trytes: The Trytes.
@@ -44,7 +44,6 @@ public extension IotaTransaction {
 		self.attachmentTimestampUpperBound = UInt64(IotaConverter.longValue(transactionTrits.slice(from: 7911, to: 7938)))
 		self.nonce = trytes.substring(from: 2646, to: 2673)
 	}
-	
 	/// Returns a String of Trytes from the current state.
 	var trytes: String {
 		let valueTrits = IotaConverter.trits(trytes: Int(self.value), length: 81)
@@ -77,7 +76,7 @@ public extension IotaTransaction {
 }
 
 extension IotaTransaction: Equatable {
-	
+
 	/// Implements the Equatable protocol for `IotaTransaction`.
 	///
 	/// - Parameters:
@@ -104,4 +103,3 @@ extension IotaTransaction: Equatable {
 		return true
 	}
 }
-

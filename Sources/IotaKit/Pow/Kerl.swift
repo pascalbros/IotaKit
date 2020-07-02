@@ -58,7 +58,6 @@ class Kerl: CurlSource {
 		if length % Curl.hashLength != 0 {
 			fatalError("Invalid length")
 		}
-		
 		repeat {
 			arrayCopy(src: trits, srcPos: off, dest: &tritState, destPos: 0, length: Kerl.hashLength)
 			self.tritState[Kerl.hashLength - 1] = 0
@@ -208,29 +207,8 @@ class Kerl: CurlSource {
 			base = bigintNot(base: base)
 			base = bigintAdd(base: base, rhValue: 1).0
 		} else {
-			var size = Int64(intLength)
-			for i in stride(from: hashLength - 2, to: -1, by: -1) {
-				let szValue = Int(size)
-				var carry: Int64 = 0
-				for j in 0..<szValue {
-					let vValue: UInt64 = toUnsignedLong(base[j]) * toUnsignedLong(radix) + toUnsignedLong(carry)
-					let vvValue = (vValue >> 32)
-					carry = Int64(vvValue & 0xFFFFFFFF)
-					base[j] = Int64(vValue) & 0xFFFFFFFF
-				}
-				if carry > 0 {
-					base[szValue] = carry
-					size += 1
-				}
-				let ins = trits[i] + 1
-				let tempSz = bigintAdd(base: base, rhValue: Int64(ins))
 
-				base = tempSz.0
-				if (tempSz.1 > size) {
-					size = tempSz.1
-				}
-			}
-			
+			convertTritsToBytesUtils(base: &base, trits: trits)
 			if sum(toSum: base) != 0 {
 				if (bigint_cmp(lh: half3, rh: base) <= 0) {
 					base = bigintSub(lhValue: base, rhValue: half3)!
@@ -242,7 +220,7 @@ class Kerl: CurlSource {
 			}
 		}
 		var out: [UInt8] = Array(repeating: 0, count: byteLength)
-		
+
 		for i in 0..<intLength {
 			out[i * 4 + 0] = UInt8((base[intLength - 1 - i] & 0xFF000000) >> 24)
 			out[i * 4 + 1] = UInt8((base[intLength - 1 - i] & 0x00FF0000) >> 16)
@@ -250,6 +228,31 @@ class Kerl: CurlSource {
 			out[i * 4 + 3] = UInt8((base[intLength - 1 - i] & 0x000000FF) >> 0)
 		}
 		return out
+	}
+
+	fileprivate static func convertTritsToBytesUtils(base: inout [Int64], trits: [Int]) {
+		var size = Int64(intLength)
+		for i in stride(from: hashLength - 2, to: -1, by: -1) {
+			let szValue = Int(size)
+			var carry: Int64 = 0
+			for j in 0..<szValue {
+				let vValue: UInt64 = toUnsignedLong(base[j]) * toUnsignedLong(radix) + toUnsignedLong(carry)
+				let vvValue = (vValue >> 32)
+				carry = Int64(vvValue & 0xFFFFFFFF)
+				base[j] = Int64(vValue) & 0xFFFFFFFF
+			}
+			if carry > 0 {
+				base[szValue] = carry
+				size += 1
+			}
+			let ins = trits[i] + 1
+			let tempSz = bigintAdd(base: base, rhValue: Int64(ins))
+
+			base = tempSz.0
+			if (tempSz.1 > size) {
+				size = tempSz.1
+			}
+		}
 	}
 
 	static func convertBytesToTrits(_ bytes: [UInt8]) -> [Int]? {
