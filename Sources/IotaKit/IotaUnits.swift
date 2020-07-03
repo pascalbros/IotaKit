@@ -8,6 +8,7 @@
 import Foundation
 
 /// Iota units.
+// swiftlint:disable identifier_name
 public enum IotaUnits: Int {
 	/// Iota.
 	case i = 0
@@ -21,7 +22,7 @@ public enum IotaUnits: Int {
 	case Ti = 12
 	/// iE^15.
 	case Pi = 15
-	
+
 	/// Initializer for IotaUnits.
 	///
 	/// - Parameter amount: The amount in Iota.
@@ -30,23 +31,23 @@ public enum IotaUnits: Int {
 		if amount < 0 { v = -v }
 		self.init(amount: UInt64(v))
 	}
-	
+
 	/// Initializer for IotaUnits.
 	///
 	/// - Parameter amount: The amount in Iota.
 	public init(amount: UInt64) {
 		let length = "\(amount)".count
 		switch length {
-			case 1...3: self = .i
-			case 4...6: self = .Ki
-			case 7...9: self = .Mi
-			case 10...12: self = .Gi
-			case 13...15: self = .Ti
-			case 16...18: self = .Pi
-			default: self = .i
+		case 1...3: self = .i
+		case 4...6: self = .Ki
+		case 7...9: self = .Mi
+		case 10...12: self = .Gi
+		case 13...15: self = .Ti
+		case 16...18: self = .Pi
+		default: self = .i
 		}
 	}
-	
+
 	/// Converts the unit to string.
 	public var string: String {
 		switch self {
@@ -63,7 +64,7 @@ public enum IotaUnits: Int {
 /// Utils for unit conversion.
 public struct IotaUnitsConverter {
 	private init() { }
-	
+
 	/// Converts from Iota to the specified unit.
 	///
 	/// - Parameters:
@@ -73,7 +74,7 @@ public struct IotaUnitsConverter {
 	public static func convert(amount: UInt64, toUnit unit: IotaUnits) -> Double {
 		return Double(amount) / pow(10, Double(unit.rawValue))
 	}
-	
+
 	/// Converts from arbitrary unit to the specified unit.
 	///
 	/// - Parameters:
@@ -85,7 +86,7 @@ public struct IotaUnitsConverter {
 		let amountInSource = UInt64(amount * pow(10, Double(fromUnit.rawValue)))
 		return convert(amount: amountInSource, toUnit: toUnit)
 	}
-	
+
 	/// Converts Iota amount to human readable string.
 	///
 	/// - Parameters:
@@ -97,7 +98,6 @@ public struct IotaUnitsConverter {
 		let unit = forceUnit != nil ? forceUnit! : IotaUnits(amount: amount)
 		let value = convert(amount: Double(amount), fromUnit: .i, toUnit: unit)
 		if unit == .i { return "\(amount) \(unit)" }
-		
 		var v = "\(NSDecimalNumber(string: "\(value)"))"
 		if !extended {
 			let values = v.split(separator: ".")
@@ -106,7 +106,7 @@ public struct IotaUnitsConverter {
 					v = "\(values.first!).\(values.last!.prefix(2))"
 				}
 			}
-			
+
 		}
 		return "\(v) \(unit.string)"
 	}

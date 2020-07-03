@@ -122,7 +122,7 @@ public class IotaConverter {
 		for char in input {
 			guard let unicode = char.unicodeScalars.first else { return nil }
 			guard unicode.isASCII else { return nil }
-	
+
 			let firstValue = Int(unicode.value % 27)
 			let secondValue = (Int(unicode.value) - firstValue) / 27
 			let trytesValue = String(trytesAlphabet[firstValue]) + String(trytesAlphabet[secondValue])
