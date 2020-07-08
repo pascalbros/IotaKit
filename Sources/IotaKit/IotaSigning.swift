@@ -15,7 +15,7 @@ class IotaSigning {
 	static let hashLength = Curl.hashLength
 
 	fileprivate let curl: CurlSource
-	
+
 	init(curl: CurlSource) {
 		self.curl = curl
 	}

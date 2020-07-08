@@ -9,19 +9,19 @@ import Foundation
 import Dispatch
 
 struct IotaNode: Codable {
-	
+
 	let health: Int = 0
 	let load: Int = 0
 	let fullAddress: String
 	let isOnline: Bool
-	
+
 	init(from decoder: Decoder) throws {
 		let additionalValues = try decoder.container(keyedBy: AdditionalInfoKeys.self)
-		
+
 		self.fullAddress = try additionalValues.decode(String.self, forKey: .host)
 		self.isOnline = Int(try additionalValues.decode(String.self, forKey: .online))! == 1 ? true : false
 	}
-	
+
 //	init(from decoder: Decoder) throws {
 //
 //		let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -38,7 +38,7 @@ struct IotaNode: Codable {
 //
 //		self.address = try additionalValues.decode(String.self, forKey: .address)
 //	}
-	
+
 	fileprivate enum AdditionalInfoKeys: String, CodingKey {
 		case address = "node"
 		case host = "host"
@@ -47,52 +47,48 @@ struct IotaNode: Codable {
 }
 
 struct IotaNodeSelector {
-	
+
 	static func bestNode(prefersHTTPS: Bool, _ success: @escaping (_ node: IotaNode) -> Void, error: @escaping (_ error: IotaAPIError) -> Void) {
-		
-		func testNode(n: [IotaNode], index: Int = 0) {
+
+		func testNode(nodes: [IotaNode], index: Int = 0) {
 			//print("testing \(n[index].fullAddress)")
-			let iota = Iota(node: n[index].fullAddress)
-			iota.nodeInfo({ (nodeInfo) in
-				success(n[index])
-			}) { (e) in
+			let iota = Iota(node: nodes[index].fullAddress)
+			iota.nodeInfo({ _ in
+				success(nodes[index])
+			}, error: { _ in
 				let next = index + 1
-				if next < n.count {
+				if next < nodes.count {
 					DispatchQueue.global(qos: .userInitiated).async {
-						testNode(n: n, index: next)
+						testNode(nodes: nodes, index: next)
 					}
 				}
-			}
+			})
 		}
-		
+
 		self.bestNodes(prefersHTTPS: prefersHTTPS, { (nodes) in
-			testNode(n: nodes)
+			testNode(nodes: nodes)
 		}, error: error)
 	}
-	
+
 	static func bestNodes(prefersHTTPS: Bool, _ success: @escaping (_ nodes: [IotaNode]) -> Void, error: @escaping (_ error: IotaAPIError) -> Void) {
-		
+
 		//let url = "https://iota.dance/data/node-stats"
 		let url = "https://iotanode.host/node_table.json"
-		
-		PAWSRequest.GET(destination: url, successHandler: { (r) in
 
-			if var a = try? JSONDecoder().decode([IotaNode].self, from: r.data(using: .utf8)!) {
-				a = a.filter({ (node) -> Bool in
-					return node.isOnline
-				})
+		PAWSRequest.GET(destination: url, successHandler: { result in
+
+			if var decoded = try? JSONDecoder().decode([IotaNode].self, from: result.data(using: .utf8)!) {
+				decoded = decoded.filter({ $0.isOnline })
 
 				if prefersHTTPS {
-					a = a.filter({ (node) -> Bool in
-						return node.fullAddress.hasPrefix("https")
-					})
+					decoded = decoded.filter({ $0.fullAddress.hasPrefix("https") })
 				}
-				success(a)
-			}else{
+				success(decoded)
+			} else {
 				error(IotaAPIError("Malformed JSON"))
 			}
-		}) { (e) in
-			error(e as! IotaAPIError)
-		}
+		}, errorHandler: { err in
+			error(err)
+		})
 	}
 }

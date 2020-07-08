@@ -258,11 +258,8 @@ class Kerl: CurlSource {
 	static func convertBytesToTrits(_ bytes: [UInt8]) -> [Int]? {
 		var base: [Int64] = Array(repeating: 0, count: intLength)
 		var out: [Int] = Array(repeating: 0, count: hashLength)
-		out[hashLength - 1] = 0
 
-		if bytes.count != byteLength {
-			return nil
-		}
+		if bytes.count != byteLength { return nil }
 
 		for i in 0..<intLength {
 			base[intLength - 1 - i] = Int64(toUnsignedLong(Int64(bytes[i*4])) << 24)
@@ -272,16 +269,8 @@ class Kerl: CurlSource {
 		}
 
 		if bigint_cmp(lh: base, rh: half3) == 0 {
-			var val = 0
-			if base[0] > 0 {
-				val = -1
-			} else if base[0] < 0 {
-				val = 1
-			}
-
-			for i in 0..<hashLength {
-				out[i] = val
-			}
+			let val = base[0] == 0 ? 0 : base[0] > 0 ? -1 : 1
+			for i in 0..<hashLength { out[i] = val }
 		} else {
 			var flipTrits = false
 			if toUnsignedLong(base[intLength - 1]) >> 31 != 0 {

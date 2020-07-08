@@ -51,7 +51,7 @@ public class Iota: IotaDebuggable {
 	public init(node: String, port: UInt) {
 		self.address = node.appending(":").appending(String(port))
 	}
-	
+
 	/// Initializer for Iota class
 	///
 	/// - Parameter node: Full node address Ex:`http://localhost:14700`

@@ -20,6 +20,7 @@ public class IotaConverter {
 	static let highLongBits: UInt64 = 0xFFFFFFFFFFFFFFFF
 
 	static let trytesAlphabet = Array("9ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	static let trytesAlphabetSet: Set<Character> = Set(trytesAlphabet.map({ $0 }))
 
 	static let alphabetTrits: [String: [Int]] = [
 		"9": [ 0,  0,  0],

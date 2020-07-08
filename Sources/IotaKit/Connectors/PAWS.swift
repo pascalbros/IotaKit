@@ -15,7 +15,7 @@ struct PAWSRequest: WebServices {
 		destination: String,
 		timeout: Int = defaultTimeout,
 		successHandler: @escaping (_ response: String) -> Void,
-		errorHandler: @escaping (_ error: Error) -> Void) {
+		errorHandler: @escaping (_ error: IotaAPIError) -> Void) {
 		self.getRequest(destination: destination, successHandler: successHandler, errorHandler: errorHandler)
 	}
 
@@ -30,7 +30,7 @@ struct PAWSRequest: WebServices {
 	static func getRequest(
 		destination: String,
 		successHandler: @escaping (_ response: String) -> Void,
-		errorHandler: @escaping (_ error: Error) -> Void) {
+		errorHandler: @escaping (_ error: IotaAPIError) -> Void) {
 		guard let url = URL(string: destination) else { errorHandler(IotaAPIError("Malformed URL")); return }
 		URLSession.shared.dataTask(with: url) { (data, _, error) in
 			if error != nil {

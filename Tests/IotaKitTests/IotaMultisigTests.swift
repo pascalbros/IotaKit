@@ -92,7 +92,7 @@ class IotaMultisigTests: XCTestCase {
 			assertionFailure((error as! IotaAPIError).message)
 		}
 		
-		wait(for: [expectation], timeout: 240)
+		wait(for: [expectation], timeout: 320)
 	}
 	
 	func testAttachToTangle() {
