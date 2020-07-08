@@ -9,7 +9,7 @@ import Foundation
 
 /// Input validator for IOTA client.
 public struct IotaInputValidator {
-	
+
 	/// Checks for a valid address.
 	///
 	/// - Parameter address: The address.
@@ -20,30 +20,27 @@ public struct IotaInputValidator {
 		let isTrytes = self.isTrytes(trytes: address)
 		return (isAddressWithChecksum || isAddressWithoutChecksum) && isTrytes
 	}
-	
+
 	/// Checks for a valid seed.
 	///
 	/// - Parameter string: A seed.
 	/// - Returns: `true` if is a valid seed, `false` otherwise.
 	public static func isSeed(seed string: String) -> Bool {
 		guard string.count > 1 && string.count <= 81 else { return false }
-		for c in string {
-			guard IotaConverter.trytesAlphabet.firstIndex(of: c) != nil else { return false }
-		}
-		return true
+		return isTrytes(trytes: string)
 	}
-	
+
 	/// Checks for a valid trytes string.
 	///
 	/// - Parameter trytes: Trytes.
 	/// - Returns: `true` if is a valid input, `false` otherwise.
 	public static func isTrytes(trytes: String) -> Bool {
-		for c in trytes {
-			guard IotaConverter.trytesAlphabet.firstIndex(of: c) != nil else { return false }
+		for value in trytes {
+			guard IotaConverter.trytesAlphabetSet.contains(value) else { return false }
 		}
 		return true
 	}
-	
+
 	/// Checks for a valid hash.
 	///
 	/// - Parameter hash: An hash string.
@@ -51,7 +48,7 @@ public struct IotaInputValidator {
 	public static func isHash(hash: String) -> Bool {
 		return isTrytes(trytes: hash) && hash.count == 81
 	}
-	
+
 	/// Checks if is an empty trytes
 	///
 	/// - Parameter trytes: Trytes.

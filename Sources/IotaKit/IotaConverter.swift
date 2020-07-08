@@ -10,16 +10,17 @@ import Foundation
 
 /// Iota Converter utils, used to convert trytes, trits to/from String and other kinds of conversion.
 public class IotaConverter {
-	
+
 	fileprivate init() { }
-	
+
 	static let radix = 3
 	static let maxTritValue = (IotaConverter.radix - 1)/2
 	static let minTritValue = -IotaConverter.maxTritValue
-	
+
 	static let highLongBits: UInt64 = 0xFFFFFFFFFFFFFFFF
-	
+
 	static let trytesAlphabet = Array("9ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	static let trytesAlphabetSet: Set<Character> = Set(trytesAlphabet.map({ $0 }))
 
 	static let alphabetTrits: [String: [Int]] = [
 		"9": [ 0,  0,  0],
@@ -50,7 +51,7 @@ public class IotaConverter {
 		"Y": [ 1, -1,  0],
 		"Z": [-1,  0,  0]
 	]
-	
+
 	static let tritsAlphabet: [String: String] = [
 		"000": "9",
 		"100": "A",
@@ -109,21 +110,20 @@ public class IotaConverter {
 		[ 1, -1,  0],
 		[-1,  0,  0]
 	]
-	
+
 	static let tritsInATryte = 3
 	static let tritsInAByte = 5
-	
+
 	/// Converts an ASCII string to Trytes.
 	///
 	/// - Parameter input: An ASCII String.
 	/// - Returns: Trytes as String if the input is valid, `nil` otherwise.
 	public static func trytes(fromAsciiString input: String) -> String? {
 		var trytes = ""
-		
 		for char in input {
 			guard let unicode = char.unicodeScalars.first else { return nil }
 			guard unicode.isASCII else { return nil }
-			
+
 			let firstValue = Int(unicode.value % 27)
 			let secondValue = (Int(unicode.value) - firstValue) / 27
 			let trytesValue = String(trytesAlphabet[firstValue]) + String(trytesAlphabet[secondValue])
@@ -131,7 +131,7 @@ public class IotaConverter {
 		}
 		return trytes
 	}
-	
+
 	/// Converts Trytes to ASCII string.
 	///
 	/// - Parameter inputTrytes: Trytes as String.
@@ -139,23 +139,21 @@ public class IotaConverter {
 	public static func asciiString(fromTrytes inputTrytes: String) -> String? {
 		guard IotaInputValidator.isTrytes(trytes: inputTrytes) else { return nil }
 		guard inputTrytes.count % 2 == 0 else { return nil }
-		
+
 		var result = ""
-		
+
 		for i in stride(from: 0, to: inputTrytes.count, by: 2) {
 			let charOne = inputTrytes.character(at: i)!
 			let charTwo = inputTrytes.character(at: i+1)!
-			
 			guard let valueOne = trytesAlphabet.firstIndex(of: Character(charOne)) else { return nil }
 			guard let valueTwo = trytesAlphabet.firstIndex(of: Character(charTwo)) else { return nil }
-			
 			let decimalValue = UInt8(valueOne + valueTwo * 27)
 			result += String(UnicodeScalar(decimalValue))
 		}
-		
+
 		return result
 	}
-	
+
 	/// Converts an Array of Trits to String.
 	///
 	/// - Parameter trits: An Array of Trits.
@@ -170,7 +168,7 @@ public class IotaConverter {
 		}
 		return result
 	}
-	
+
 	/// Converts a String to an Array of Trits.
 	///
 	/// - Parameter string: A valid String, all the invalid characters will be skipped.
@@ -184,7 +182,7 @@ public class IotaConverter {
 		}
 		return result
 	}
-	
+
 	/// Converts a valid String of Trytes to Trits.
 	///
 	/// - Parameter trytes: A valid Trytes String.
@@ -198,10 +196,10 @@ public class IotaConverter {
 			trits[i * 3 + 1] = trytesTrits[index][1]
 			trits[i * 3 + 2] = trytesTrits[index][2]
 		}
-		
+
 		return trits
 	}
-	
+
 	/// Converts Trytes as Int to trits.
 	///
 	/// - Parameters:
@@ -216,7 +214,7 @@ public class IotaConverter {
 		}
 		return trits.slice(from: 0, to: length)
 	}
-	
+
 	static func trits(trytes: String, length: Int) -> [Int] {
 		let trits = self.trits(fromString: trytes)
 		var result = Array(trits.prefix(length))
@@ -225,39 +223,33 @@ public class IotaConverter {
 		}
 		return result
 	}
-	
+
 	static func trits(trytes: Int) -> [Int] {
 		var trits: [Int] = []
-		var absoluteValue = trytes < 0 ? -trytes : trytes;
-		
+		var absoluteValue = trytes < 0 ? -trytes : trytes
 		var position: Int = 0
-		
 		while absoluteValue > 0 {
-			
-			var remainder = absoluteValue % 3;
-			absoluteValue = absoluteValue / 3;
-
+			var remainder = absoluteValue % 3
+			absoluteValue /= 3
 			if (remainder > 1) {
-				remainder = -1;
-				absoluteValue += 1;
+				remainder = -1
+				absoluteValue += 1
 			}
-
-			trits.insert(remainder, at: position);
+			trits.insert(remainder, at: position)
 			position += 1
 		}
 		if (trytes < 0) {
-
 			for i in 0..<trits.count {
-				trits[i] = -trits[i];
+				trits[i] = -trits[i]
 			}
 		}
 		return trits
 	}
-	
+
 	static func trytes(trits: [Int]) -> String {
 		return trytes(trits: trits, offset: 0, size: trits.count)
 	}
-	
+
 	static func trytes(trits: [Int], offset: Int, size: Int) -> String {
 		var trytes = ""
 		let max = (size + tritsInATryte - 1) / tritsInATryte
@@ -270,24 +262,21 @@ public class IotaConverter {
 		}
 		return trytes
 	}
-	
+
 	static func longValue(_ trits: [Int]) -> Int64 {
-		var value: Int64 = 0;
-	
+		var value: Int64 = 0
 		for i in stride(from: trits.count - 1, to: -1, by: -1) {
 			value = value*3 + Int64(trits[i])
 		}
-		return value;
+		return value
 	}
-	
+
 	static func increment(trits: inout [Int], size: Int) {
 		for i in 0..<size {
 			trits[i] += 1
 			if trits[i] > IotaConverter.maxTritValue {
 				trits[i] = IotaConverter.minTritValue
-			}else{
-				break
-			}
+			} else { break }
 		}
 	}
 }

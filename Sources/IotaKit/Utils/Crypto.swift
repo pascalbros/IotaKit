@@ -9,16 +9,11 @@ import Foundation
 THIS IS A TEMPORARY FILE THAT HAS BEEN USED FOR DEBUG PURPOSES, IT SHOULD NOT BE INCLUDED IN THE LIBRARY WITHOUT A REASON (md5)
 
 */
-
-
-
-
-
-
+// swiftlint:disable all
 public struct MD5Digest : Hashable, RawRepresentable, CustomStringConvertible {
 	
 	private let _digest: (UInt64, UInt64)
-	
+
 	/// Perform hashing of the supplied data.
 	public init(from input: Data) {
 		_digest = MD5State(input).digest
@@ -35,30 +30,30 @@ public struct MD5Digest : Hashable, RawRepresentable, CustomStringConvertible {
 		guard let low  = UInt64(String(input.suffix(16)), radix: 16) else { return nil }
 		_digest = (high.byteSwapped, low.byteSwapped)
 	}
-	
+
 	public var rawValue: String { return self.description }
-	
+
 	public var description: String {
 		return String(format: "%016lx%016lx",
 					  _digest.0.byteSwapped,
 					  _digest.1.byteSwapped)
 	}
-	
+
 	public var hashValue: Int {
 		return Int(_digest.0 ^ _digest.1)
 	}
-	
-	public static func ==(lhs: MD5Digest, rhs: MD5Digest) -> Bool {
+
+	public static func == (lhs: MD5Digest, rhs: MD5Digest) -> Bool {
 		return lhs._digest.0 == rhs._digest.0 && lhs._digest.1 == rhs._digest.1
 	}
-	
+
 	public var data: Data {
-		var v = self
-		return withUnsafeBytes(of: &v) {
+		var sself = self
+		return withUnsafeBytes(of: &sself) {
 			return Data(bytes: $0.baseAddress!, count: $0.count)
 		}
 	}
-	
+
 	public var bytes: (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8) {
 		var v = self
 		return withUnsafeBytes(of: &v) {

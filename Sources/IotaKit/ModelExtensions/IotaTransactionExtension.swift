@@ -8,14 +8,14 @@
 import Foundation
 
 public extension IotaTransaction {
-	
+
 	/// Constructor for IotaTransaction.
 	///
 	/// - Parameter trytes: The Trytes.
 	init(trytes: String) {
 		self.transactionObject(trytes: trytes)
 	}
-	
+
 	/// Converts a valid Trytes to a IotaTransaction object.
 	///
 	/// - Parameter trytes: The Trytes.
@@ -44,7 +44,6 @@ public extension IotaTransaction {
 		self.attachmentTimestampUpperBound = UInt64(IotaConverter.longValue(transactionTrits.slice(from: 7911, to: 7938)))
 		self.nonce = trytes.substring(from: 2646, to: 2673)
 	}
-	
 	/// Returns a String of Trytes from the current state.
 	var trytes: String {
 		let valueTrits = IotaConverter.trits(trytes: Int(self.value), length: 81)
@@ -77,31 +76,30 @@ public extension IotaTransaction {
 }
 
 extension IotaTransaction: Equatable {
-	
+
 	/// Implements the Equatable protocol for `IotaTransaction`.
 	///
 	/// - Parameters:
 	///   - lhs: A IotaTransaction.
 	///   - rhs: Another IotaTransaction.
 	/// - Returns: `true` if the two objects contain the same data, `false` otherwise.
-	public static func ==(lhs: IotaTransaction, rhs: IotaTransaction) -> Bool {
-		if lhs.hash != rhs.hash { return false }
-		if lhs.address != rhs.address { return false }
-		if lhs.tag != rhs.tag { return false }
-		if lhs.value != rhs.value { return false }
-		if lhs.signatureFragments != rhs.signatureFragments { return false }
-		if lhs.obsoleteTag != rhs.obsoleteTag { return false }
-		if lhs.timestamp != rhs.timestamp { return false }
-		if lhs.currentIndex != rhs.currentIndex { return false }
-		if lhs.lastIndex != rhs.lastIndex { return false }
-		if lhs.bundle != rhs.bundle { return false }
-		if lhs.trunkTransaction != rhs.trunkTransaction { return false }
-		if lhs.branchTransaction != rhs.branchTransaction { return false }
-		if lhs.attachmentTimestamp != rhs.attachmentTimestamp { return false }
-		if lhs.attachmentTimestampLowerBound != rhs.attachmentTimestampLowerBound { return false }
-		if lhs.attachmentTimestampUpperBound != rhs.attachmentTimestampUpperBound { return false }
-		if lhs.nonce != rhs.nonce { return false }
+	public static func == (lhs: IotaTransaction, rhs: IotaTransaction) -> Bool {
+		if lhs.hash != rhs.hash
+		|| lhs.address != rhs.address
+		|| lhs.tag != rhs.tag
+		|| lhs.value != rhs.value
+		|| lhs.signatureFragments != rhs.signatureFragments
+		|| lhs.obsoleteTag != rhs.obsoleteTag
+		|| lhs.timestamp != rhs.timestamp
+		|| lhs.currentIndex != rhs.currentIndex
+		|| lhs.lastIndex != rhs.lastIndex
+		|| lhs.bundle != rhs.bundle
+		|| lhs.trunkTransaction != rhs.trunkTransaction
+		|| lhs.branchTransaction != rhs.branchTransaction
+		|| lhs.attachmentTimestamp != rhs.attachmentTimestamp
+		|| lhs.attachmentTimestampLowerBound != rhs.attachmentTimestampLowerBound
+		|| lhs.attachmentTimestampUpperBound != rhs.attachmentTimestampUpperBound
+		|| lhs.nonce != rhs.nonce { return false }
 		return true
 	}
 }
-

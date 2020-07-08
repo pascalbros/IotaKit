@@ -14,10 +14,10 @@ import cpow
 
 /// C implementation of Pearl Diver (PoW).
 public class CPearlDiver: IotaLocalPoW {
-    
+
     /// Constructor of CPearlDiver.
     public init() { }
-    
+
 	/// Perform the PoW synchronously.
 	///
 	/// - Parameters:
@@ -35,17 +35,17 @@ public class CPearlDiver: IotaLocalPoW {
         }
         return ""
     }
-	
+
 	/// Perform the PoW asynchronously on `.userInitiated` queue.
 	///
 	/// - Parameters:
 	///   - trytes: Trytes as String.
 	///   - minWeightMagnitude: Minimum Weight Magnitude.
 	///   - result: Trytes as String.
-    public func performPoW(trytes: String, minWeightMagnitude: Int, result: @escaping (String) -> ()) {
+    public func performPoW(trytes: String, minWeightMagnitude: Int, result: @escaping (String) -> Void) {
 		DispatchQueue.global(qos: .userInitiated).async {
-			let r = self.performPoW(trytes: trytes, minWeightMagnitude: minWeightMagnitude)
-			result(r)
+			let theResult = self.performPoW(trytes: trytes, minWeightMagnitude: minWeightMagnitude)
+			result(theResult)
 		}
     }
 }

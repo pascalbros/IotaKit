@@ -10,31 +10,43 @@ import Foundation
 struct PAWSRequest: WebServices {
 	fileprivate static let defaultTimeout = 60
 	fileprivate init() { }
-	
-	static func GET(destination: String, timeout: Int = defaultTimeout, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void) {
-		
+
+	static func GET(
+		destination: String,
+		timeout: Int = defaultTimeout,
+		successHandler: @escaping (_ response: String) -> Void,
+		errorHandler: @escaping (_ error: IotaAPIError) -> Void) {
 		self.getRequest(destination: destination, successHandler: successHandler, errorHandler: errorHandler)
 	}
-	
-	static func POST(data: Dictionary<String, Any>, destination: String, timeout: Int = defaultTimeout, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void) {
-		
+
+	static func POST(
+		data: [String: Any],
+		destination: String, timeout: Int = defaultTimeout,
+		successHandler: @escaping (_ response: String) -> Void,
+		errorHandler: @escaping (_ error: Error) -> Void) {
 		self.request(type: "POST", data: data, destination: destination, timeout: timeout, successHandler: successHandler, errorHandler: errorHandler)
 	}
-	
-	static func getRequest(destination: String, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void) {
+
+	static func getRequest(
+		destination: String,
+		successHandler: @escaping (_ response: String) -> Void,
+		errorHandler: @escaping (_ error: IotaAPIError) -> Void) {
 		guard let url = URL(string: destination) else { errorHandler(IotaAPIError("Malformed URL")); return }
-		URLSession.shared.dataTask(with: url) { (data, response, error) in
+		URLSession.shared.dataTask(with: url) { (data, _, error) in
 			if error != nil {
 				errorHandler(IotaAPIError(error!.localizedDescription))
 			}
-			
 			guard let data = data else { return }
 			successHandler(String(data: data, encoding: .utf8)!)
 		}.resume()
 	}
-	
-	
-	static func request(type: String, data: Dictionary<String, Any>, destination: String, timeout: Int, successHandler: @escaping (_ response: String) -> Void, errorHandler: @escaping (_ error: Error) -> Void){
+
+	static func request(
+		type: String,
+		data: [String: Any],
+		destination: String, timeout: Int,
+		successHandler: @escaping (_ response: String) -> Void,
+		errorHandler: @escaping (_ error: Error) -> Void) {
 		var request = URLRequest(url: URL(string: destination)!)
 		request.httpMethod = type
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -44,30 +56,18 @@ struct PAWSRequest: WebServices {
 		if let postString = data.toJson() {
 			parameters = postString
 		}
-		
 		request.httpBody = parameters.data(using: String.Encoding.utf8)
-		let task = URLSession.shared.dataTask(with: request as URLRequest) {
-			data, response, error in
-			
-			if let e = error {
-				errorHandler(e)
-			}else{
-				
-				let responseString = String(data: data!, encoding: .utf8)
-				
-				if let r1 = response {
-					if let r = r1 as? HTTPURLResponse {
-						if r.statusCode != 200 {
-							errorHandler(IotaAPIError("Code:\(r.statusCode) \(responseString ?? "")"))
-							return
-						}
-					}
-				}
-				
-				successHandler(responseString!);
+		let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+			if let error = error { errorHandler(error); return }
+			let responseString = String(data: data!, encoding: .utf8)
+			guard let response1 = response else { successHandler(responseString!); return }
+			guard let response = response1 as? HTTPURLResponse else { successHandler(responseString!); return }
+			guard response.statusCode == 200 else {
+				errorHandler(IotaAPIError("Code:\(response.statusCode) \(responseString ?? "")"))
+				return
 			}
+			successHandler(responseString!)
 		}
-		
 		task.resume()
 	}
 }
