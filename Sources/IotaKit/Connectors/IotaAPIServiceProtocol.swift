@@ -38,6 +38,12 @@ protocol IotaAPIServices {
 		addresses: [String],
 		_ success: @escaping (_ balances: [String: Int64]) -> Void,
 		_ error: @escaping (Error) -> Void)
+	
+	static func balancesArray(
+		nodeAddress: String,
+		addresses: [String],
+		_ success: @escaping (_ balances: [(address: String, balance: Int64)]) -> Void,
+		_ error: @escaping (Error) -> Void)
 
 	static func findTransactions(
 		nodeAddress: String,

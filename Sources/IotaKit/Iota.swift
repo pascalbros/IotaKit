@@ -77,6 +77,16 @@ public class Iota: IotaDebuggable {
 	public func balances(addresses: [String], _ success: @escaping (_ balances: [String: Int64]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.balances(nodeAddress: self.address, addresses: addresses, success, error)
 	}
+	
+	/// Returns the confirmed balance of the requested addresses.
+	///
+	/// - Parameters:
+	///   - addresses: List of addresses.
+	///   - success: Success block.
+	///   - error: Error block.
+	public func balancesArray(addresses: [String], _ success: @escaping (_ balances: [(address: String, balance: Int64)]) -> Void, error: @escaping (Error) -> Void) {
+		APIServices.balancesArray(nodeAddress: self.address, addresses: addresses, success, error)
+	}
 
 	/// Find the transactions which match the specified addresses.
 	///
