@@ -77,14 +77,17 @@ public class Iota: IotaDebuggable {
 	public func balances(addresses: [String], _ success: @escaping (_ balances: [String: Int64]) -> Void, error: @escaping (Error) -> Void) {
 		APIServices.balances(nodeAddress: self.address, addresses: addresses, success, error)
 	}
-	
+
 	/// Returns the confirmed balance of the requested addresses.
 	///
 	/// - Parameters:
 	///   - addresses: List of addresses.
 	///   - success: Success block.
 	///   - error: Error block.
-	public func balancesArray(addresses: [String], _ success: @escaping (_ balances: [(address: String, balance: Int64)]) -> Void, error: @escaping (Error) -> Void) {
+	public func balancesArray(
+		addresses: [String],
+		_ success: @escaping (_ balances: [(address: String, balance: Int64)]) -> Void,
+		error: @escaping (Error) -> Void) {
 		APIServices.balancesArray(nodeAddress: self.address, addresses: addresses, success, error)
 	}
 
@@ -833,23 +836,22 @@ extension Iota {
 			totalValue += transfer.value
 		}
 		if totalValue != 0 {
-			if inputs != nil && inputs!.isEmpty {
-				if !validateInputs {
-					self.addRemainder(seed: seed,
-									  security: security,
-									  inputs: inputs!,
-									  bundle: bundle,
-									  tag: tag,
-									  totalValue: Int64(totalValue),
-									  remainderAddress: remainder,
-									  signatureFragment: signatureFragments,
-									  success,
-									  error: error)
-					return
+			if let inputs = inputs, inputs.isEmpty {
+				if validateInputs {
+					let result = inputs.reduce(into: 0){ $0 += $1.balance }
+					guard result <= totalValue else { error(IotaAPIError("Invalid inputs")); return }
 				}
-				//TODO Validate inputs
-				error(IotaAPIError("Not implemented yet"))
-				return
+				self.addRemainder(seed: seed,
+								  security: security,
+								  inputs: inputs,
+								  bundle: bundle,
+								  tag: tag,
+								  totalValue: Int64(totalValue),
+								  remainderAddress: remainder,
+								  signatureFragment: signatureFragments,
+								  success,
+								  error: error)
+				
 			} else {
 				self.inputs(seed: seed, security: security, threshold: totalValue, canDoubleSpend: false, { (resultInputs) in
 					var remainderAddress = remainder
@@ -870,7 +872,6 @@ extension Iota {
 						error: error)
 				}, error: error)
 			}
-			return
 		} else {
 			bundle.finalize(customCurl: nil)
 			bundle.addTrytes(signatureFragments: signatureFragments)
@@ -885,7 +886,6 @@ extension Iota {
 			success(bundleTrytes)
 			return
 		}
-		//error(IotaAPIError("Invalid inputs"))
 	}
 
 	typealias InputsAndAddresses = (inputs: [IotaInput], accountAddresses: [IotaAddress])

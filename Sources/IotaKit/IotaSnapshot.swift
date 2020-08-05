@@ -50,12 +50,10 @@ public class IotaTransition: IotaDebuggable {
 				result(IotaTransitionResult(addressIndex: startAddressIndex+res.count, totalAmount: 0))
 				return
 			}
-			
-			for i in res.indices.reversed() {
-				if res[i].balance > 0 {
-					result(IotaTransitionResult(addressIndex: startAddressIndex+i+1, totalAmount: 0))
-					return
-				}
+
+			for i in res.indices.reversed() where res[i].balance > 0 {
+				result(IotaTransitionResult(addressIndex: startAddressIndex+i+1, totalAmount: 0))
+				return
 			}
 			fatalError("Error in _checkAddresses, should never reach here")
 		}, error: error)
