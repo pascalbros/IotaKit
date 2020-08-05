@@ -14,6 +14,7 @@ The IOTA Swift API Library
 - [x] Transfer (>0i tx)
 - [x] Promote
 - [x] Multisignature Support
+- [x] Support for Wallets and Snapshots
 
 ## Compatibility
 
@@ -41,7 +42,7 @@ Compile it directly from Xcode project or follow the Ubuntu instructions
 
 ### CocoaPods
 
-`pod 'IotaKit', '~> 0.8.5'`
+`pod 'IotaKit'`
 
 ## Class Reference
 
