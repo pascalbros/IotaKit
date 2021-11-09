@@ -1,5 +1,6 @@
 # IotaKit
 **DEPRECATED. Please use the new library [IOTA wallet binding](https://github.com/pascalbros/iota-wallet.rs-swift-binding)**
+
 The IOTA Swift API Library
 
 **Please, be careful, it's a work-in-progress project**
